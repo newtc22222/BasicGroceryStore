@@ -45,7 +45,7 @@ namespace GroceryStore
         ~Staff() { }
         
         public Staff(string iD, string name, string gender, DateTime dateOfBirth, string citizenID,
-                     string address, string phone, string email, Image? images)
+                     string address, string phone, string email, Image images)
         {
             this.iD = iD;
             this.name = name;
