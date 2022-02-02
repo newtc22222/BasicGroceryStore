@@ -35,6 +35,7 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Messaging" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -68,6 +69,12 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UCHomePage.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UCHomePage.Designer.cs">
+      <DependentUpon>UCHomePage.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -79,7 +86,11 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="UCHomePage.resx">
+      <DependentUpon>UCHomePage.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -92,6 +103,30 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Close_26px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\subtract_26px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8_home_32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8_product_32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8_purchase_order_32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8_import_32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8_plot_32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8_staff_32.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
