@@ -29,12 +29,29 @@ namespace BasicGroceryStore
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea5 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend5 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series5 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.pnlMain = new System.Windows.Forms.Panel();
             this.gbYourInfor = new System.Windows.Forms.GroupBox();
+            this.btnChangeYourInfor = new System.Windows.Forms.Button();
+            this.lblYourGender = new System.Windows.Forms.Label();
+            this.lblYourName = new System.Windows.Forms.Label();
+            this.lblYourPhone = new System.Windows.Forms.Label();
+            this.lblYourEmail = new System.Windows.Forms.Label();
             this.picCustomerLevel = new System.Windows.Forms.GroupBox();
+            this.dgvCustomer = new System.Windows.Forms.DataGridView();
+            this.btnChangeCustomerInfor = new System.Windows.Forms.Button();
+            this.btnAddCustomer = new System.Windows.Forms.Button();
+            this.gbCustomerLevel = new System.Windows.Forms.GroupBox();
+            this.txtCustomerDateJoin = new System.Windows.Forms.DateTimePicker();
+            this.txtCustomerName = new System.Windows.Forms.TextBox();
+            this.txtCustomerValue = new System.Windows.Forms.TextBox();
+            this.txtCustomerPhone = new System.Windows.Forms.TextBox();
+            this.label8 = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
             this.gbStoreContact = new System.Windows.Forms.GroupBox();
             this.btnChangeStoreInfor = new System.Windows.Forms.Button();
             this.lblPhone = new System.Windows.Forms.Label();
@@ -57,50 +74,33 @@ namespace BasicGroceryStore
             this.txtIncomeDay = new System.Windows.Forms.TextBox();
             this.btnReloadValue = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.picStoreLocation = new System.Windows.Forms.PictureBox();
             this.pictContact = new System.Windows.Forms.PictureBox();
             this.picYoutube = new System.Windows.Forms.PictureBox();
             this.picLinkedIn = new System.Windows.Forms.PictureBox();
             this.picInsta = new System.Windows.Forms.PictureBox();
             this.picFace = new System.Windows.Forms.PictureBox();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.lblYourPhone = new System.Windows.Forms.Label();
-            this.lblYourEmail = new System.Windows.Forms.Label();
-            this.lblYourGender = new System.Windows.Forms.Label();
-            this.lblYourName = new System.Windows.Forms.Label();
-            this.btnChangeYourInfor = new System.Windows.Forms.Button();
-            this.label6 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
-            this.label8 = new System.Windows.Forms.Label();
-            this.label9 = new System.Windows.Forms.Label();
-            this.txtCustomerPhone = new System.Windows.Forms.TextBox();
-            this.txtCustomerValue = new System.Windows.Forms.TextBox();
-            this.txtCustomerName = new System.Windows.Forms.TextBox();
-            this.txtCustomerDateJoin = new System.Windows.Forms.DateTimePicker();
-            this.gbCustomerLevel = new System.Windows.Forms.GroupBox();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
-            this.btnAddCustomer = new System.Windows.Forms.Button();
-            this.btnChangeCustomerInfor = new System.Windows.Forms.Button();
-            this.dgvCustomer = new System.Windows.Forms.DataGridView();
             this.pnlMain.SuspendLayout();
             this.gbYourInfor.SuspendLayout();
             this.picCustomerLevel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvCustomer)).BeginInit();
+            this.gbCustomerLevel.SuspendLayout();
             this.gbStoreContact.SuspendLayout();
             this.gbStoreInfor.SuspendLayout();
             this.gbStatisticProduct.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chartProduct)).BeginInit();
             this.gbProductNewImport.SuspendLayout();
             this.pnlValue.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picStoreLocation)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictContact)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picYoutube)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picLinkedIn)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picInsta)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picFace)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            this.gbCustomerLevel.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvCustomer)).BeginInit();
             this.SuspendLayout();
             // 
             // pnlMain
@@ -132,6 +132,57 @@ namespace BasicGroceryStore
             this.gbYourInfor.TabStop = false;
             this.gbYourInfor.Text = "Thông tin cá nhân";
             // 
+            // btnChangeYourInfor
+            // 
+            this.btnChangeYourInfor.ForeColor = System.Drawing.Color.Black;
+            this.btnChangeYourInfor.Location = new System.Drawing.Point(195, 210);
+            this.btnChangeYourInfor.Name = "btnChangeYourInfor";
+            this.btnChangeYourInfor.Size = new System.Drawing.Size(466, 42);
+            this.btnChangeYourInfor.TabIndex = 20;
+            this.btnChangeYourInfor.Text = "Đổi thông tin cá nhân";
+            this.btnChangeYourInfor.UseVisualStyleBackColor = true;
+            this.btnChangeYourInfor.Click += new System.EventHandler(this.btnChangeYourInfor_Click);
+            // 
+            // lblYourGender
+            // 
+            this.lblYourGender.AutoSize = true;
+            this.lblYourGender.ForeColor = System.Drawing.Color.White;
+            this.lblYourGender.Location = new System.Drawing.Point(190, 82);
+            this.lblYourGender.Name = "lblYourGender";
+            this.lblYourGender.Size = new System.Drawing.Size(113, 26);
+            this.lblYourGender.TabIndex = 23;
+            this.lblYourGender.Text = "Giới tính: ";
+            // 
+            // lblYourName
+            // 
+            this.lblYourName.AutoSize = true;
+            this.lblYourName.ForeColor = System.Drawing.Color.White;
+            this.lblYourName.Location = new System.Drawing.Point(190, 39);
+            this.lblYourName.Name = "lblYourName";
+            this.lblYourName.Size = new System.Drawing.Size(94, 26);
+            this.lblYourName.TabIndex = 22;
+            this.lblYourName.Text = "Họ tên: ";
+            // 
+            // lblYourPhone
+            // 
+            this.lblYourPhone.AutoSize = true;
+            this.lblYourPhone.ForeColor = System.Drawing.Color.White;
+            this.lblYourPhone.Location = new System.Drawing.Point(190, 168);
+            this.lblYourPhone.Name = "lblYourPhone";
+            this.lblYourPhone.Size = new System.Drawing.Size(162, 26);
+            this.lblYourPhone.TabIndex = 21;
+            this.lblYourPhone.Text = "Số điện thoại: ";
+            // 
+            // lblYourEmail
+            // 
+            this.lblYourEmail.AutoSize = true;
+            this.lblYourEmail.ForeColor = System.Drawing.Color.White;
+            this.lblYourEmail.Location = new System.Drawing.Point(190, 125);
+            this.lblYourEmail.Name = "lblYourEmail";
+            this.lblYourEmail.Size = new System.Drawing.Size(82, 26);
+            this.lblYourEmail.TabIndex = 20;
+            this.lblYourEmail.Text = "Email: ";
+            // 
             // picCustomerLevel
             // 
             this.picCustomerLevel.Controls.Add(this.dgvCustomer);
@@ -152,6 +203,120 @@ namespace BasicGroceryStore
             this.picCustomerLevel.TabIndex = 2;
             this.picCustomerLevel.TabStop = false;
             this.picCustomerLevel.Text = "Thông tin khách hàng";
+            // 
+            // dgvCustomer
+            // 
+            this.dgvCustomer.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvCustomer.Location = new System.Drawing.Point(6, 243);
+            this.dgvCustomer.Name = "dgvCustomer";
+            this.dgvCustomer.Size = new System.Drawing.Size(656, 332);
+            this.dgvCustomer.TabIndex = 33;
+            this.dgvCustomer.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvCustomer_CellClick);
+            // 
+            // btnChangeCustomerInfor
+            // 
+            this.btnChangeCustomerInfor.ForeColor = System.Drawing.Color.Black;
+            this.btnChangeCustomerInfor.Location = new System.Drawing.Point(349, 195);
+            this.btnChangeCustomerInfor.Name = "btnChangeCustomerInfor";
+            this.btnChangeCustomerInfor.Size = new System.Drawing.Size(312, 42);
+            this.btnChangeCustomerInfor.TabIndex = 32;
+            this.btnChangeCustomerInfor.Text = "Đổi thông tin khách hàng";
+            this.btnChangeCustomerInfor.UseVisualStyleBackColor = true;
+            this.btnChangeCustomerInfor.Click += new System.EventHandler(this.btnChangeCustomerInfor_Click);
+            // 
+            // btnAddCustomer
+            // 
+            this.btnAddCustomer.ForeColor = System.Drawing.Color.Black;
+            this.btnAddCustomer.Location = new System.Drawing.Point(6, 195);
+            this.btnAddCustomer.Name = "btnAddCustomer";
+            this.btnAddCustomer.Size = new System.Drawing.Size(337, 42);
+            this.btnAddCustomer.TabIndex = 24;
+            this.btnAddCustomer.Text = "Thêm khách hàng";
+            this.btnAddCustomer.UseVisualStyleBackColor = true;
+            this.btnAddCustomer.Click += new System.EventHandler(this.btnAddCustomer_Click);
+            // 
+            // gbCustomerLevel
+            // 
+            this.gbCustomerLevel.Controls.Add(this.pictureBox2);
+            this.gbCustomerLevel.Location = new System.Drawing.Point(511, 39);
+            this.gbCustomerLevel.Name = "gbCustomerLevel";
+            this.gbCustomerLevel.Size = new System.Drawing.Size(150, 150);
+            this.gbCustomerLevel.TabIndex = 31;
+            this.gbCustomerLevel.TabStop = false;
+            this.gbCustomerLevel.Text = "Cấp độ";
+            // 
+            // txtCustomerDateJoin
+            // 
+            this.txtCustomerDateJoin.Enabled = false;
+            this.txtCustomerDateJoin.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.txtCustomerDateJoin.Location = new System.Drawing.Point(192, 114);
+            this.txtCustomerDateJoin.Name = "txtCustomerDateJoin";
+            this.txtCustomerDateJoin.Size = new System.Drawing.Size(313, 31);
+            this.txtCustomerDateJoin.TabIndex = 30;
+            // 
+            // txtCustomerName
+            // 
+            this.txtCustomerName.Location = new System.Drawing.Point(192, 39);
+            this.txtCustomerName.Name = "txtCustomerName";
+            this.txtCustomerName.ReadOnly = true;
+            this.txtCustomerName.Size = new System.Drawing.Size(313, 31);
+            this.txtCustomerName.TabIndex = 29;
+            // 
+            // txtCustomerValue
+            // 
+            this.txtCustomerValue.Location = new System.Drawing.Point(192, 151);
+            this.txtCustomerValue.Name = "txtCustomerValue";
+            this.txtCustomerValue.ReadOnly = true;
+            this.txtCustomerValue.Size = new System.Drawing.Size(313, 31);
+            this.txtCustomerValue.TabIndex = 28;
+            // 
+            // txtCustomerPhone
+            // 
+            this.txtCustomerPhone.Location = new System.Drawing.Point(192, 77);
+            this.txtCustomerPhone.Name = "txtCustomerPhone";
+            this.txtCustomerPhone.ReadOnly = true;
+            this.txtCustomerPhone.Size = new System.Drawing.Size(313, 31);
+            this.txtCustomerPhone.TabIndex = 11;
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.ForeColor = System.Drawing.Color.Black;
+            this.label8.Location = new System.Drawing.Point(15, 118);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(171, 26);
+            this.label8.TabIndex = 27;
+            this.label8.Text = "Ngày tham gia:";
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.ForeColor = System.Drawing.Color.Black;
+            this.label9.Location = new System.Drawing.Point(16, 156);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(172, 26);
+            this.label9.TabIndex = 26;
+            this.label9.Text = "Giá trị tích lũy: ";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.ForeColor = System.Drawing.Color.Black;
+            this.label6.Location = new System.Drawing.Point(14, 42);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(94, 26);
+            this.label6.TabIndex = 25;
+            this.label6.Text = "Họ tên: ";
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.ForeColor = System.Drawing.Color.Black;
+            this.label7.Location = new System.Drawing.Point(15, 80);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(162, 26);
+            this.label7.TabIndex = 24;
+            this.label7.Text = "Số điện thoại: ";
             // 
             // gbStoreContact
             // 
@@ -183,6 +348,7 @@ namespace BasicGroceryStore
             this.btnChangeStoreInfor.TabIndex = 11;
             this.btnChangeStoreInfor.Text = "Đổi thông tin";
             this.btnChangeStoreInfor.UseVisualStyleBackColor = true;
+            this.btnChangeStoreInfor.Click += new System.EventHandler(this.btnChangeStoreInfor_Click);
             // 
             // lblPhone
             // 
@@ -238,18 +404,18 @@ namespace BasicGroceryStore
             // 
             // chartProduct
             // 
-            chartArea1.Name = "ChartArea1";
-            this.chartProduct.ChartAreas.Add(chartArea1);
-            legend1.Name = "Legend1";
-            this.chartProduct.Legends.Add(legend1);
+            chartArea5.Name = "ChartArea1";
+            this.chartProduct.ChartAreas.Add(chartArea5);
+            legend5.Name = "Legend1";
+            this.chartProduct.Legends.Add(legend5);
             this.chartProduct.Location = new System.Drawing.Point(6, 30);
             this.chartProduct.Name = "chartProduct";
             this.chartProduct.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.Pastel;
-            series1.ChartArea = "ChartArea1";
-            series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Pie;
-            series1.Legend = "Legend1";
-            series1.Name = "Series1";
-            this.chartProduct.Series.Add(series1);
+            series5.ChartArea = "ChartArea1";
+            series5.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Pie;
+            series5.Legend = "Legend1";
+            series5.Name = "Series1";
+            this.chartProduct.Series.Add(series5);
             this.chartProduct.Size = new System.Drawing.Size(306, 265);
             this.chartProduct.TabIndex = 0;
             this.chartProduct.Text = "Product";
@@ -381,6 +547,7 @@ namespace BasicGroceryStore
             this.btnReloadValue.TabIndex = 1;
             this.btnReloadValue.Text = "Lọc lại";
             this.btnReloadValue.UseVisualStyleBackColor = true;
+            this.btnReloadValue.Click += new System.EventHandler(this.btnReloadValue_Click);
             // 
             // label1
             // 
@@ -392,6 +559,24 @@ namespace BasicGroceryStore
             this.label1.TabIndex = 0;
             this.label1.Text = "Thu nhập trong ngày";
             // 
+            // pictureBox1
+            // 
+            this.pictureBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.pictureBox1.Location = new System.Drawing.Point(18, 39);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(150, 200);
+            this.pictureBox1.TabIndex = 0;
+            this.pictureBox1.TabStop = false;
+            // 
+            // pictureBox2
+            // 
+            this.pictureBox2.BackColor = System.Drawing.Color.DeepPink;
+            this.pictureBox2.Location = new System.Drawing.Point(22, 30);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(110, 110);
+            this.pictureBox2.TabIndex = 0;
+            this.pictureBox2.TabStop = false;
+            // 
             // picStoreLocation
             // 
             this.picStoreLocation.Cursor = System.Windows.Forms.Cursors.Hand;
@@ -402,6 +587,7 @@ namespace BasicGroceryStore
             this.picStoreLocation.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
             this.picStoreLocation.TabIndex = 19;
             this.picStoreLocation.TabStop = false;
+            this.picStoreLocation.Click += new System.EventHandler(this.picStoreLocation_Click);
             // 
             // pictContact
             // 
@@ -413,6 +599,7 @@ namespace BasicGroceryStore
             this.pictContact.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
             this.pictContact.TabIndex = 18;
             this.pictContact.TabStop = false;
+            this.pictContact.Click += new System.EventHandler(this.pictContact_Click);
             // 
             // picYoutube
             // 
@@ -424,6 +611,7 @@ namespace BasicGroceryStore
             this.picYoutube.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
             this.picYoutube.TabIndex = 17;
             this.picYoutube.TabStop = false;
+            this.picYoutube.Click += new System.EventHandler(this.picYoutube_Click);
             // 
             // picLinkedIn
             // 
@@ -435,6 +623,7 @@ namespace BasicGroceryStore
             this.picLinkedIn.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
             this.picLinkedIn.TabIndex = 16;
             this.picLinkedIn.TabStop = false;
+            this.picLinkedIn.Click += new System.EventHandler(this.picLinkedIn_Click);
             // 
             // picInsta
             // 
@@ -446,6 +635,7 @@ namespace BasicGroceryStore
             this.picInsta.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
             this.picInsta.TabIndex = 15;
             this.picInsta.TabStop = false;
+            this.picInsta.Click += new System.EventHandler(this.picInsta_Click);
             // 
             // picFace
             // 
@@ -457,185 +647,7 @@ namespace BasicGroceryStore
             this.picFace.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
             this.picFace.TabIndex = 14;
             this.picFace.TabStop = false;
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.pictureBox1.Location = new System.Drawing.Point(18, 39);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(150, 200);
-            this.pictureBox1.TabIndex = 0;
-            this.pictureBox1.TabStop = false;
-            // 
-            // lblYourPhone
-            // 
-            this.lblYourPhone.AutoSize = true;
-            this.lblYourPhone.ForeColor = System.Drawing.Color.White;
-            this.lblYourPhone.Location = new System.Drawing.Point(190, 168);
-            this.lblYourPhone.Name = "lblYourPhone";
-            this.lblYourPhone.Size = new System.Drawing.Size(162, 26);
-            this.lblYourPhone.TabIndex = 21;
-            this.lblYourPhone.Text = "Số điện thoại: ";
-            // 
-            // lblYourEmail
-            // 
-            this.lblYourEmail.AutoSize = true;
-            this.lblYourEmail.ForeColor = System.Drawing.Color.White;
-            this.lblYourEmail.Location = new System.Drawing.Point(190, 125);
-            this.lblYourEmail.Name = "lblYourEmail";
-            this.lblYourEmail.Size = new System.Drawing.Size(82, 26);
-            this.lblYourEmail.TabIndex = 20;
-            this.lblYourEmail.Text = "Email: ";
-            // 
-            // lblYourGender
-            // 
-            this.lblYourGender.AutoSize = true;
-            this.lblYourGender.ForeColor = System.Drawing.Color.White;
-            this.lblYourGender.Location = new System.Drawing.Point(190, 82);
-            this.lblYourGender.Name = "lblYourGender";
-            this.lblYourGender.Size = new System.Drawing.Size(113, 26);
-            this.lblYourGender.TabIndex = 23;
-            this.lblYourGender.Text = "Giới tính: ";
-            // 
-            // lblYourName
-            // 
-            this.lblYourName.AutoSize = true;
-            this.lblYourName.ForeColor = System.Drawing.Color.White;
-            this.lblYourName.Location = new System.Drawing.Point(190, 39);
-            this.lblYourName.Name = "lblYourName";
-            this.lblYourName.Size = new System.Drawing.Size(94, 26);
-            this.lblYourName.TabIndex = 22;
-            this.lblYourName.Text = "Họ tên: ";
-            // 
-            // btnChangeYourInfor
-            // 
-            this.btnChangeYourInfor.ForeColor = System.Drawing.Color.Black;
-            this.btnChangeYourInfor.Location = new System.Drawing.Point(195, 210);
-            this.btnChangeYourInfor.Name = "btnChangeYourInfor";
-            this.btnChangeYourInfor.Size = new System.Drawing.Size(466, 42);
-            this.btnChangeYourInfor.TabIndex = 20;
-            this.btnChangeYourInfor.Text = "Đổi thông tin cá nhân";
-            this.btnChangeYourInfor.UseVisualStyleBackColor = true;
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.ForeColor = System.Drawing.Color.Black;
-            this.label6.Location = new System.Drawing.Point(14, 42);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(94, 26);
-            this.label6.TabIndex = 25;
-            this.label6.Text = "Họ tên: ";
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.ForeColor = System.Drawing.Color.Black;
-            this.label7.Location = new System.Drawing.Point(15, 80);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(162, 26);
-            this.label7.TabIndex = 24;
-            this.label7.Text = "Số điện thoại: ";
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.ForeColor = System.Drawing.Color.Black;
-            this.label8.Location = new System.Drawing.Point(15, 118);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(171, 26);
-            this.label8.TabIndex = 27;
-            this.label8.Text = "Ngày tham gia:";
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.ForeColor = System.Drawing.Color.Black;
-            this.label9.Location = new System.Drawing.Point(16, 156);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(172, 26);
-            this.label9.TabIndex = 26;
-            this.label9.Text = "Giá trị tích lũy: ";
-            // 
-            // txtCustomerPhone
-            // 
-            this.txtCustomerPhone.Location = new System.Drawing.Point(192, 77);
-            this.txtCustomerPhone.Name = "txtCustomerPhone";
-            this.txtCustomerPhone.ReadOnly = true;
-            this.txtCustomerPhone.Size = new System.Drawing.Size(313, 31);
-            this.txtCustomerPhone.TabIndex = 11;
-            // 
-            // txtCustomerValue
-            // 
-            this.txtCustomerValue.Location = new System.Drawing.Point(192, 151);
-            this.txtCustomerValue.Name = "txtCustomerValue";
-            this.txtCustomerValue.ReadOnly = true;
-            this.txtCustomerValue.Size = new System.Drawing.Size(313, 31);
-            this.txtCustomerValue.TabIndex = 28;
-            // 
-            // txtCustomerName
-            // 
-            this.txtCustomerName.Location = new System.Drawing.Point(192, 39);
-            this.txtCustomerName.Name = "txtCustomerName";
-            this.txtCustomerName.ReadOnly = true;
-            this.txtCustomerName.Size = new System.Drawing.Size(313, 31);
-            this.txtCustomerName.TabIndex = 29;
-            // 
-            // txtCustomerDateJoin
-            // 
-            this.txtCustomerDateJoin.Enabled = false;
-            this.txtCustomerDateJoin.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.txtCustomerDateJoin.Location = new System.Drawing.Point(192, 114);
-            this.txtCustomerDateJoin.Name = "txtCustomerDateJoin";
-            this.txtCustomerDateJoin.Size = new System.Drawing.Size(313, 31);
-            this.txtCustomerDateJoin.TabIndex = 30;
-            // 
-            // gbCustomerLevel
-            // 
-            this.gbCustomerLevel.Controls.Add(this.pictureBox2);
-            this.gbCustomerLevel.Location = new System.Drawing.Point(511, 39);
-            this.gbCustomerLevel.Name = "gbCustomerLevel";
-            this.gbCustomerLevel.Size = new System.Drawing.Size(150, 150);
-            this.gbCustomerLevel.TabIndex = 31;
-            this.gbCustomerLevel.TabStop = false;
-            this.gbCustomerLevel.Text = "Cấp độ";
-            // 
-            // pictureBox2
-            // 
-            this.pictureBox2.BackColor = System.Drawing.Color.DeepPink;
-            this.pictureBox2.Location = new System.Drawing.Point(22, 30);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(110, 110);
-            this.pictureBox2.TabIndex = 0;
-            this.pictureBox2.TabStop = false;
-            // 
-            // btnAddCustomer
-            // 
-            this.btnAddCustomer.ForeColor = System.Drawing.Color.Black;
-            this.btnAddCustomer.Location = new System.Drawing.Point(6, 195);
-            this.btnAddCustomer.Name = "btnAddCustomer";
-            this.btnAddCustomer.Size = new System.Drawing.Size(337, 42);
-            this.btnAddCustomer.TabIndex = 24;
-            this.btnAddCustomer.Text = "Thêm khách hàng";
-            this.btnAddCustomer.UseVisualStyleBackColor = true;
-            // 
-            // btnChangeCustomerInfor
-            // 
-            this.btnChangeCustomerInfor.ForeColor = System.Drawing.Color.Black;
-            this.btnChangeCustomerInfor.Location = new System.Drawing.Point(349, 195);
-            this.btnChangeCustomerInfor.Name = "btnChangeCustomerInfor";
-            this.btnChangeCustomerInfor.Size = new System.Drawing.Size(312, 42);
-            this.btnChangeCustomerInfor.TabIndex = 32;
-            this.btnChangeCustomerInfor.Text = "Đổi thông tin khách hàng";
-            this.btnChangeCustomerInfor.UseVisualStyleBackColor = true;
-            // 
-            // dgvCustomer
-            // 
-            this.dgvCustomer.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvCustomer.Location = new System.Drawing.Point(6, 243);
-            this.dgvCustomer.Name = "dgvCustomer";
-            this.dgvCustomer.Size = new System.Drawing.Size(656, 332);
-            this.dgvCustomer.TabIndex = 33;
+            this.picFace.Click += new System.EventHandler(this.picFace_Click);
             // 
             // UCHomePage
             // 
@@ -651,6 +663,8 @@ namespace BasicGroceryStore
             this.gbYourInfor.PerformLayout();
             this.picCustomerLevel.ResumeLayout(false);
             this.picCustomerLevel.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvCustomer)).EndInit();
+            this.gbCustomerLevel.ResumeLayout(false);
             this.gbStoreContact.ResumeLayout(false);
             this.gbStoreContact.PerformLayout();
             this.gbStoreInfor.ResumeLayout(false);
@@ -659,16 +673,14 @@ namespace BasicGroceryStore
             this.gbProductNewImport.ResumeLayout(false);
             this.pnlValue.ResumeLayout(false);
             this.pnlValue.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.picStoreLocation)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictContact)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.picYoutube)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.picLinkedIn)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.picInsta)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.picFace)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            this.gbCustomerLevel.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvCustomer)).EndInit();
             this.ResumeLayout(false);
 
         }

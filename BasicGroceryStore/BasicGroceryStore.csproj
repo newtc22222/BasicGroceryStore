@@ -81,6 +81,36 @@
     <Compile Include="UCHomePage.Designer.cs">
       <DependentUpon>UCHomePage.cs</DependentUpon>
     </Compile>
+    <Compile Include="UCImported.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UCImported.Designer.cs">
+      <DependentUpon>UCImported.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UCOrdered.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UCOrdered.Designer.cs">
+      <DependentUpon>UCOrdered.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UCProduct.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UCProduct.Designer.cs">
+      <DependentUpon>UCProduct.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UCStaff.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UCStaff.Designer.cs">
+      <DependentUpon>UCStaff.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UCStatistic.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UCStatistic.Designer.cs">
+      <DependentUpon>UCStatistic.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -91,6 +121,21 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UCHomePage.resx">
       <DependentUpon>UCHomePage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UCImported.resx">
+      <DependentUpon>UCImported.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UCOrdered.resx">
+      <DependentUpon>UCOrdered.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UCProduct.resx">
+      <DependentUpon>UCProduct.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UCStaff.resx">
+      <DependentUpon>UCStaff.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UCStatistic.resx">
+      <DependentUpon>UCStatistic.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

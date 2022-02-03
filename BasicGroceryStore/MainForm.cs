@@ -32,9 +32,15 @@ namespace BasicGroceryStore
         private void AddTabToControl()
         {
             pnlMain.Controls.Add(UCHomePage.Instance);
+            pnlMain.Controls.Add(UCImported.Instance);
+            pnlMain.Controls.Add(UCOrdered.Instance);
+            pnlMain.Controls.Add(UCProduct.Instance);
+            pnlMain.Controls.Add(UCStatistic.Instance);
+            pnlMain.Controls.Add(UCStaff.Instance);
             ShowTabUsing(btnHomePage.Text);
         }
 
+        #region ButtonControl
         private void btnClose_Click(object sender, EventArgs e)
         {
             if (MessageBox.Show("Bạn có muốn thoát khỏi ứng dụng?", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
@@ -52,26 +58,31 @@ namespace BasicGroceryStore
         private void btnStaff_Click(object sender, EventArgs e)
         {
             ShowTabUsing(btnStaff.Text);
+            UCStaff.Instance.BringToFront();
         }
 
         private void btnProduct_Click(object sender, EventArgs e)
         {
             ShowTabUsing(btnProduct.Text);
+            UCProduct.Instance.BringToFront();
         }
 
         private void btnOrder_Click(object sender, EventArgs e)
         {
             ShowTabUsing(btnOrder.Text);
+            UCOrdered.Instance.BringToFront();
         }
 
         private void btnImport_Click(object sender, EventArgs e)
         {
             ShowTabUsing(btnImport.Text);
+            UCImported.Instance.BringToFront();
         }
 
         private void btnStatistic_Click(object sender, EventArgs e)
         {
             ShowTabUsing(btnStatistic.Text);
+            UCStatistic.Instance.BringToFront();
         }
 
         private void btnHomePage_Click(object sender, EventArgs e)
@@ -79,6 +90,7 @@ namespace BasicGroceryStore
             ShowTabUsing(btnHomePage.Text);
             UCHomePage.Instance.BringToFront();
         }
+        #endregion
 
         private void MainForm_FormClosed(object sender, FormClosedEventArgs e)
         {
