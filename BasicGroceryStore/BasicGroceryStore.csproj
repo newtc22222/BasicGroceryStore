@@ -75,40 +75,40 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <Compile Include="UCHomePage.cs">
+    <Compile Include="UserControl\UCHomePage.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="UCHomePage.Designer.cs">
+    <Compile Include="UserControl\UCHomePage.Designer.cs">
       <DependentUpon>UCHomePage.cs</DependentUpon>
     </Compile>
-    <Compile Include="UCImported.cs">
+    <Compile Include="UserControl\UCImported.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="UCImported.Designer.cs">
+    <Compile Include="UserControl\UCImported.Designer.cs">
       <DependentUpon>UCImported.cs</DependentUpon>
     </Compile>
-    <Compile Include="UCOrdered.cs">
+    <Compile Include="UserControl\UCOrdered.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="UCOrdered.Designer.cs">
+    <Compile Include="UserControl\UCOrdered.Designer.cs">
       <DependentUpon>UCOrdered.cs</DependentUpon>
     </Compile>
-    <Compile Include="UCProduct.cs">
+    <Compile Include="UserControl\UCProduct.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="UCProduct.Designer.cs">
+    <Compile Include="UserControl\UCProduct.Designer.cs">
       <DependentUpon>UCProduct.cs</DependentUpon>
     </Compile>
-    <Compile Include="UCStaff.cs">
+    <Compile Include="UserControl\UCStaff.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="UCStaff.Designer.cs">
+    <Compile Include="UserControl\UCStaff.Designer.cs">
       <DependentUpon>UCStaff.cs</DependentUpon>
     </Compile>
-    <Compile Include="UCStatistic.cs">
+    <Compile Include="UserControl\UCStatistic.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="UCStatistic.Designer.cs">
+    <Compile Include="UserControl\UCStatistic.Designer.cs">
       <DependentUpon>UCStatistic.cs</DependentUpon>
     </Compile>
     <EmbeddedResource Include="MainForm.resx">
@@ -119,22 +119,22 @@
       <SubType>Designer</SubType>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="UCHomePage.resx">
+    <EmbeddedResource Include="UserControl\UCHomePage.resx">
       <DependentUpon>UCHomePage.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UCImported.resx">
+    <EmbeddedResource Include="UserControl\UCImported.resx">
       <DependentUpon>UCImported.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UCOrdered.resx">
+    <EmbeddedResource Include="UserControl\UCOrdered.resx">
       <DependentUpon>UCOrdered.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UCProduct.resx">
+    <EmbeddedResource Include="UserControl\UCProduct.resx">
       <DependentUpon>UCProduct.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UCStaff.resx">
+    <EmbeddedResource Include="UserControl\UCStaff.resx">
       <DependentUpon>UCStaff.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UCStatistic.resx">
+    <EmbeddedResource Include="UserControl\UCStatistic.resx">
       <DependentUpon>UCStatistic.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
@@ -191,6 +191,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\icons8_call_32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Form\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
