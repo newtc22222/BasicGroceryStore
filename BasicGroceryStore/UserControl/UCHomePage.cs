@@ -64,22 +64,22 @@ namespace BasicGroceryStore
 
         private void picFace_Click(object sender, EventArgs e)
         {
-
+            System.Diagnostics.Process.Start("https://www.facebook.com/phi.f1n3/");
         }
 
         private void picInsta_Click(object sender, EventArgs e)
         {
-
+            System.Diagnostics.Process.Start("https://www.instagram.com/phi_fine_174/");
         }
 
         private void picLinkedIn_Click(object sender, EventArgs e)
         {
-
+            System.Diagnostics.Process.Start("https://www.linkedin.com/in/f1-fine-5005a821b/");
         }
 
         private void picStoreLocation_Click(object sender, EventArgs e)
         {
-
+            System.Diagnostics.Process.Start("https://goo.gl/maps/vo8q51C3nzS5srxW9");
         }
 
         private void pictContact_Click(object sender, EventArgs e)
