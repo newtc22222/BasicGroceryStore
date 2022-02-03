@@ -36,6 +36,7 @@
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Messaging" />
+    <Reference Include="System.Windows.Forms.DataVisualization" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -69,6 +70,11 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
     <Compile Include="UCHomePage.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -80,14 +86,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <Compile Include="Properties\Resources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DependentUpon>Resources.resx</DependentUpon>
-      <DesignTime>True</DesignTime>
-    </Compile>
     <EmbeddedResource Include="UCHomePage.resx">
       <DependentUpon>UCHomePage.cs</DependentUpon>
     </EmbeddedResource>
@@ -127,6 +128,24 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\icons8_staff_32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8_location_32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8_facebook_48.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8_Instagram_32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8_linkedin_32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8_YouTube_32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8_call_32.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
