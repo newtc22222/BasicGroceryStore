@@ -75,10 +75,10 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <Compile Include="UCBrowser.cs">
+    <Compile Include="UserControl\UCBrowser.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="UCBrowser.Designer.cs">
+    <Compile Include="UserControl\UCBrowser.Designer.cs">
       <DependentUpon>UCBrowser.cs</DependentUpon>
     </Compile>
     <Compile Include="UserControl\UCHomePage.cs">
@@ -125,7 +125,7 @@
       <SubType>Designer</SubType>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="UCBrowser.resx">
+    <EmbeddedResource Include="UserControl\UCBrowser.resx">
       <DependentUpon>UCBrowser.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserControl\UCHomePage.resx">

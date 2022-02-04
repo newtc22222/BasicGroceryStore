@@ -37,7 +37,7 @@ namespace BasicGroceryStore
             pnlMain.Controls.Add(UCProduct.Instance);
             pnlMain.Controls.Add(UCStatistic.Instance);
             pnlMain.Controls.Add(UCStaff.Instance);
-            pnlMain.Controls.Add(UCBrowser.Instance);
+            //pnlMain.Controls.Add(UCBrowser.Instance);
             ShowTabUsing(btnHomePage.Text);
         }
 
@@ -94,8 +94,8 @@ namespace BasicGroceryStore
 
         private void btnBrowser_Click(object sender, EventArgs e)
         {
-            ShowTabUsing(btnBrowser.Text);
-            UCBrowser.Instance.BringToFront();
+            //ShowTabUsing(btnBrowser.Text);
+            //UCBrowser.Instance.BringToFront();
         }
         #endregion
 
