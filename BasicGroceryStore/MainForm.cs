@@ -37,6 +37,7 @@ namespace BasicGroceryStore
             pnlMain.Controls.Add(UCProduct.Instance);
             pnlMain.Controls.Add(UCStatistic.Instance);
             pnlMain.Controls.Add(UCStaff.Instance);
+            pnlMain.Controls.Add(UCBrowser.Instance);
             ShowTabUsing(btnHomePage.Text);
         }
 
@@ -90,6 +91,12 @@ namespace BasicGroceryStore
             ShowTabUsing(btnHomePage.Text);
             UCHomePage.Instance.BringToFront();
         }
+
+        private void btnBrowser_Click(object sender, EventArgs e)
+        {
+            ShowTabUsing(btnBrowser.Text);
+            UCBrowser.Instance.BringToFront();
+        }
         #endregion
 
         private void MainForm_FormClosed(object sender, FormClosedEventArgs e)
@@ -125,6 +132,6 @@ namespace BasicGroceryStore
         {
             mouseIsDown = false;
         }
-        #endregion 
+        #endregion
     }
 }

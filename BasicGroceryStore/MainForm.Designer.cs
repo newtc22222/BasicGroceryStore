@@ -35,17 +35,18 @@ namespace BasicGroceryStore
             this.pnlControl = new System.Windows.Forms.Panel();
             this.lblTime = new System.Windows.Forms.Label();
             this.monthCalendar1 = new System.Windows.Forms.MonthCalendar();
+            this.pnlMove = new System.Windows.Forms.Panel();
+            this.lblTabShow = new System.Windows.Forms.Label();
+            this.timer = new System.Windows.Forms.Timer(this.components);
+            this.btnBrowser = new System.Windows.Forms.Button();
             this.btnStaff = new System.Windows.Forms.Button();
             this.btnStatistic = new System.Windows.Forms.Button();
             this.btnImport = new System.Windows.Forms.Button();
             this.btnOrder = new System.Windows.Forms.Button();
             this.btnProduct = new System.Windows.Forms.Button();
             this.btnHomePage = new System.Windows.Forms.Button();
-            this.pnlMove = new System.Windows.Forms.Panel();
-            this.lblTabShow = new System.Windows.Forms.Label();
             this.btnMinimize = new System.Windows.Forms.Button();
             this.btnClose = new System.Windows.Forms.Button();
-            this.timer = new System.Windows.Forms.Timer(this.components);
             this.pnlContainer.SuspendLayout();
             this.pnlControl.SuspendLayout();
             this.pnlMove.SuspendLayout();
@@ -72,6 +73,7 @@ namespace BasicGroceryStore
             // pnlControl
             // 
             this.pnlControl.BackColor = System.Drawing.Color.Gold;
+            this.pnlControl.Controls.Add(this.btnBrowser);
             this.pnlControl.Controls.Add(this.lblTime);
             this.pnlControl.Controls.Add(this.monthCalendar1);
             this.pnlControl.Controls.Add(this.btnStaff);
@@ -99,6 +101,46 @@ namespace BasicGroceryStore
             this.monthCalendar1.Location = new System.Drawing.Point(11, 633);
             this.monthCalendar1.Name = "monthCalendar1";
             this.monthCalendar1.TabIndex = 6;
+            // 
+            // pnlMove
+            // 
+            this.pnlMove.BackColor = System.Drawing.Color.DarkOrange;
+            this.pnlMove.Controls.Add(this.lblTabShow);
+            this.pnlMove.Controls.Add(this.btnMinimize);
+            this.pnlMove.Controls.Add(this.btnClose);
+            this.pnlMove.Location = new System.Drawing.Point(0, 0);
+            this.pnlMove.Name = "pnlMove";
+            this.pnlMove.Size = new System.Drawing.Size(1600, 40);
+            this.pnlMove.TabIndex = 0;
+            this.pnlMove.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pnlMove_MouseDown);
+            this.pnlMove.MouseMove += new System.Windows.Forms.MouseEventHandler(this.pnlMove_MouseMove);
+            this.pnlMove.MouseUp += new System.Windows.Forms.MouseEventHandler(this.pnlMove_MouseUp);
+            // 
+            // lblTabShow
+            // 
+            this.lblTabShow.AutoSize = true;
+            this.lblTabShow.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.lblTabShow.Location = new System.Drawing.Point(12, 7);
+            this.lblTabShow.Name = "lblTabShow";
+            this.lblTabShow.Size = new System.Drawing.Size(208, 26);
+            this.lblTabShow.TabIndex = 2;
+            this.lblTabShow.Text = "Tab đang hiển thị: ";
+            // 
+            // timer
+            // 
+            this.timer.Tick += new System.EventHandler(this.timer_Tick);
+            // 
+            // btnBrowser
+            // 
+            this.btnBrowser.Image = global::BasicGroceryStore.Properties.Resources.icons8_mint_browser_32;
+            this.btnBrowser.Location = new System.Drawing.Point(3, 390);
+            this.btnBrowser.Name = "btnBrowser";
+            this.btnBrowser.Size = new System.Drawing.Size(241, 53);
+            this.btnBrowser.TabIndex = 8;
+            this.btnBrowser.Text = "TRÌNH DUYỆT";
+            this.btnBrowser.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnBrowser.UseVisualStyleBackColor = true;
+            this.btnBrowser.Click += new System.EventHandler(this.btnBrowser_Click);
             // 
             // btnStaff
             // 
@@ -172,30 +214,6 @@ namespace BasicGroceryStore
             this.btnHomePage.UseVisualStyleBackColor = true;
             this.btnHomePage.Click += new System.EventHandler(this.btnHomePage_Click);
             // 
-            // pnlMove
-            // 
-            this.pnlMove.BackColor = System.Drawing.Color.DarkOrange;
-            this.pnlMove.Controls.Add(this.lblTabShow);
-            this.pnlMove.Controls.Add(this.btnMinimize);
-            this.pnlMove.Controls.Add(this.btnClose);
-            this.pnlMove.Location = new System.Drawing.Point(0, 0);
-            this.pnlMove.Name = "pnlMove";
-            this.pnlMove.Size = new System.Drawing.Size(1600, 40);
-            this.pnlMove.TabIndex = 0;
-            this.pnlMove.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pnlMove_MouseDown);
-            this.pnlMove.MouseMove += new System.Windows.Forms.MouseEventHandler(this.pnlMove_MouseMove);
-            this.pnlMove.MouseUp += new System.Windows.Forms.MouseEventHandler(this.pnlMove_MouseUp);
-            // 
-            // lblTabShow
-            // 
-            this.lblTabShow.AutoSize = true;
-            this.lblTabShow.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.lblTabShow.Location = new System.Drawing.Point(12, 7);
-            this.lblTabShow.Name = "lblTabShow";
-            this.lblTabShow.Size = new System.Drawing.Size(208, 26);
-            this.lblTabShow.TabIndex = 2;
-            this.lblTabShow.Text = "Tab đang hiển thị: ";
-            // 
             // btnMinimize
             // 
             this.btnMinimize.Image = global::BasicGroceryStore.Properties.Resources.subtract_26px;
@@ -215,10 +233,6 @@ namespace BasicGroceryStore
             this.btnClose.TabIndex = 0;
             this.btnClose.UseVisualStyleBackColor = true;
             this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
-            // 
-            // timer
-            // 
-            this.timer.Tick += new System.EventHandler(this.timer_Tick);
             // 
             // MainForm
             // 
@@ -258,6 +272,7 @@ namespace BasicGroceryStore
         private System.Windows.Forms.Label lblTime;
         private System.Windows.Forms.MonthCalendar monthCalendar1;
         private System.Windows.Forms.Timer timer;
+        private System.Windows.Forms.Button btnBrowser;
     }
 }
 

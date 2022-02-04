@@ -73,6 +73,36 @@ namespace BasicGroceryStore.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap go_back_64px {
+            get {
+                object obj = ResourceManager.GetObject("go_back_64px", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap hexagon_reload_64px {
+            get {
+                object obj = ResourceManager.GetObject("hexagon_reload_64px", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap home_50px {
+            get {
+                object obj = ResourceManager.GetObject("home_50px", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap icons8_call_32 {
             get {
                 object obj = ResourceManager.GetObject("icons8_call_32", resourceCulture);
@@ -143,6 +173,16 @@ namespace BasicGroceryStore.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap icons8_mint_browser_32 {
+            get {
+                object obj = ResourceManager.GetObject("icons8_mint_browser_32", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap icons8_plot_32 {
             get {
                 object obj = ResourceManager.GetObject("icons8_plot_32", resourceCulture);
@@ -186,6 +226,36 @@ namespace BasicGroceryStore.Properties {
         internal static System.Drawing.Bitmap icons8_YouTube_32 {
             get {
                 object obj = ResourceManager.GetObject("icons8_YouTube_32", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap mint_browser_64px {
+            get {
+                object obj = ResourceManager.GetObject("mint_browser_64px", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap redo_64px {
+            get {
+                object obj = ResourceManager.GetObject("redo_64px", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap search_64px {
+            get {
+                object obj = ResourceManager.GetObject("search_64px", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

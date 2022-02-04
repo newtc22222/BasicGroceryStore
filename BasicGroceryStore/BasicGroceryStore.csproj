@@ -75,6 +75,12 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <Compile Include="UCBrowser.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UCBrowser.Designer.cs">
+      <DependentUpon>UCBrowser.cs</DependentUpon>
+    </Compile>
     <Compile Include="UserControl\UCHomePage.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -118,6 +124,9 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <SubType>Designer</SubType>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UCBrowser.resx">
+      <DependentUpon>UCBrowser.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserControl\UCHomePage.resx">
       <DependentUpon>UCHomePage.cs</DependentUpon>
@@ -194,6 +203,27 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Form\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\home_50px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\go_back_64px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\redo_64px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\hexagon_reload_64px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\search_64px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\mint_browser_64px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8_mint_browser_32.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
