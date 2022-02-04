@@ -28,5 +28,11 @@ namespace BasicGroceryStore
         {
             InitializeComponent();
         }
+
+        private void radReportToday_CheckedChanged(object sender, EventArgs e)
+        {
+            chbReportIncome.Enabled = !radReportToday.Checked;
+            chbReportSpending.Enabled = !radReportToday.Checked;
+        }
     }
 }

@@ -34,6 +34,31 @@ namespace BasicGroceryStore
             this.cbDateContract = new System.Windows.Forms.ComboBox();
             this.pnlMain = new System.Windows.Forms.Panel();
             this.gbDetail = new System.Windows.Forms.GroupBox();
+            this.btnEdit = new System.Windows.Forms.Button();
+            this.btnMakeContract = new System.Windows.Forms.Button();
+            this.gbContractsAndAccount = new System.Windows.Forms.GroupBox();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.label11 = new System.Windows.Forms.Label();
+            this.btnShowPassword = new System.Windows.Forms.Button();
+            this.btnChangePassword = new System.Windows.Forms.Button();
+            this.label10 = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
+            this.txtPassword = new System.Windows.Forms.TextBox();
+            this.txtUsername = new System.Windows.Forms.TextBox();
+            this.dtPickDoB = new System.Windows.Forms.DateTimePicker();
+            this.cbGender = new System.Windows.Forms.ComboBox();
+            this.txtPhone = new System.Windows.Forms.MaskedTextBox();
+            this.txtCitizenID = new System.Windows.Forms.MaskedTextBox();
+            this.txtEmail = new System.Windows.Forms.TextBox();
+            this.txtAddress = new System.Windows.Forms.TextBox();
+            this.txtName = new System.Windows.Forms.TextBox();
+            this.label8 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
             this.picRepresent = new System.Windows.Forms.PictureBox();
             this.gbFilter = new System.Windows.Forms.GroupBox();
             this.dgvStaff = new System.Windows.Forms.DataGridView();
@@ -57,40 +82,15 @@ namespace BasicGroceryStore
             this.chbAddress = new System.Windows.Forms.CheckBox();
             this.chbAge = new System.Windows.Forms.CheckBox();
             this.chbName = new System.Windows.Forms.CheckBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
-            this.label8 = new System.Windows.Forms.Label();
-            this.txtName = new System.Windows.Forms.TextBox();
-            this.txtAddress = new System.Windows.Forms.TextBox();
-            this.txtEmail = new System.Windows.Forms.TextBox();
-            this.txtCitizenID = new System.Windows.Forms.MaskedTextBox();
-            this.txtPhone = new System.Windows.Forms.MaskedTextBox();
-            this.cbGender = new System.Windows.Forms.ComboBox();
-            this.dtPickDoB = new System.Windows.Forms.DateTimePicker();
-            this.gbContractsAndAccount = new System.Windows.Forms.GroupBox();
-            this.btnMakeContract = new System.Windows.Forms.Button();
-            this.btnEdit = new System.Windows.Forms.Button();
-            this.txtUsername = new System.Windows.Forms.TextBox();
-            this.txtPassword = new System.Windows.Forms.TextBox();
-            this.label9 = new System.Windows.Forms.Label();
-            this.label10 = new System.Windows.Forms.Label();
-            this.btnChangePassword = new System.Windows.Forms.Button();
-            this.btnShowPassword = new System.Windows.Forms.Button();
-            this.label11 = new System.Windows.Forms.Label();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.pnlMain.SuspendLayout();
             this.gbDetail.SuspendLayout();
+            this.gbContractsAndAccount.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picRepresent)).BeginInit();
             this.gbFilter.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvStaff)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numUDTo)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numUDFrom)).BeginInit();
-            this.gbContractsAndAccount.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // cbDateContract
@@ -105,7 +105,7 @@ namespace BasicGroceryStore
             // 
             // pnlMain
             // 
-            this.pnlMain.BackColor = System.Drawing.Color.Bisque;
+            this.pnlMain.BackColor = System.Drawing.Color.Peru;
             this.pnlMain.Controls.Add(this.gbDetail);
             this.pnlMain.Controls.Add(this.gbFilter);
             this.pnlMain.Font = new System.Drawing.Font("Montserrat", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -116,6 +116,7 @@ namespace BasicGroceryStore
             // 
             // gbDetail
             // 
+            this.gbDetail.BackColor = System.Drawing.Color.LightSalmon;
             this.gbDetail.Controls.Add(this.btnEdit);
             this.gbDetail.Controls.Add(this.btnMakeContract);
             this.gbDetail.Controls.Add(this.gbContractsAndAccount);
@@ -141,6 +142,244 @@ namespace BasicGroceryStore
             this.gbDetail.TabStop = false;
             this.gbDetail.Text = "Thông tin nhân viên và hợp đồng";
             // 
+            // btnEdit
+            // 
+            this.btnEdit.Location = new System.Drawing.Point(142, 812);
+            this.btnEdit.Name = "btnEdit";
+            this.btnEdit.Size = new System.Drawing.Size(285, 36);
+            this.btnEdit.TabIndex = 31;
+            this.btnEdit.Text = "Sửa thông tin nhân viên";
+            this.btnEdit.UseVisualStyleBackColor = true;
+            // 
+            // btnMakeContract
+            // 
+            this.btnMakeContract.Location = new System.Drawing.Point(433, 812);
+            this.btnMakeContract.Name = "btnMakeContract";
+            this.btnMakeContract.Size = new System.Drawing.Size(202, 36);
+            this.btnMakeContract.TabIndex = 24;
+            this.btnMakeContract.Text = "Tạo hợp đồng";
+            this.btnMakeContract.UseVisualStyleBackColor = true;
+            // 
+            // gbContractsAndAccount
+            // 
+            this.gbContractsAndAccount.BackColor = System.Drawing.Color.Salmon;
+            this.gbContractsAndAccount.Controls.Add(this.dataGridView1);
+            this.gbContractsAndAccount.Controls.Add(this.label11);
+            this.gbContractsAndAccount.Controls.Add(this.btnShowPassword);
+            this.gbContractsAndAccount.Controls.Add(this.btnChangePassword);
+            this.gbContractsAndAccount.Controls.Add(this.label10);
+            this.gbContractsAndAccount.Controls.Add(this.label9);
+            this.gbContractsAndAccount.Controls.Add(this.txtPassword);
+            this.gbContractsAndAccount.Controls.Add(this.txtUsername);
+            this.gbContractsAndAccount.Location = new System.Drawing.Point(6, 332);
+            this.gbContractsAndAccount.Name = "gbContractsAndAccount";
+            this.gbContractsAndAccount.Size = new System.Drawing.Size(629, 474);
+            this.gbContractsAndAccount.TabIndex = 30;
+            this.gbContractsAndAccount.TabStop = false;
+            this.gbContractsAndAccount.Text = "Thông tin hợp đồng và tài khoản";
+            // 
+            // dataGridView1
+            // 
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Location = new System.Drawing.Point(11, 207);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.Size = new System.Drawing.Size(612, 261);
+            this.dataGridView1.TabIndex = 37;
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Font = new System.Drawing.Font("Montserrat SemiBold", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label11.Location = new System.Drawing.Point(6, 178);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(346, 26);
+            this.label11.TabIndex = 36;
+            this.label11.Text = "Danh sách hợp đồng với cửa hàng";
+            // 
+            // btnShowPassword
+            // 
+            this.btnShowPassword.Location = new System.Drawing.Point(289, 125);
+            this.btnShowPassword.Name = "btnShowPassword";
+            this.btnShowPassword.Size = new System.Drawing.Size(164, 33);
+            this.btnShowPassword.TabIndex = 35;
+            this.btnShowPassword.Text = "HIện mật khẩu";
+            this.btnShowPassword.UseVisualStyleBackColor = true;
+            // 
+            // btnChangePassword
+            // 
+            this.btnChangePassword.Location = new System.Drawing.Point(459, 125);
+            this.btnChangePassword.Name = "btnChangePassword";
+            this.btnChangePassword.Size = new System.Drawing.Size(164, 33);
+            this.btnChangePassword.TabIndex = 32;
+            this.btnChangePassword.Text = "Đổi mật khẩu";
+            this.btnChangePassword.UseVisualStyleBackColor = true;
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(39, 91);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(102, 26);
+            this.label10.TabIndex = 34;
+            this.label10.Text = "Mật khẩu";
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(39, 45);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(103, 26);
+            this.label9.TabIndex = 32;
+            this.label9.Text = "Tài khoản";
+            // 
+            // txtPassword
+            // 
+            this.txtPassword.Location = new System.Drawing.Point(179, 86);
+            this.txtPassword.Name = "txtPassword";
+            this.txtPassword.ReadOnly = true;
+            this.txtPassword.Size = new System.Drawing.Size(444, 31);
+            this.txtPassword.TabIndex = 33;
+            // 
+            // txtUsername
+            // 
+            this.txtUsername.Location = new System.Drawing.Point(179, 42);
+            this.txtUsername.Name = "txtUsername";
+            this.txtUsername.ReadOnly = true;
+            this.txtUsername.Size = new System.Drawing.Size(444, 31);
+            this.txtUsername.TabIndex = 32;
+            // 
+            // dtPickDoB
+            // 
+            this.dtPickDoB.Enabled = false;
+            this.dtPickDoB.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dtPickDoB.Location = new System.Drawing.Point(297, 119);
+            this.dtPickDoB.MaxDate = new System.DateTime(2100, 12, 31, 0, 0, 0, 0);
+            this.dtPickDoB.MinDate = new System.DateTime(1980, 1, 1, 0, 0, 0, 0);
+            this.dtPickDoB.Name = "dtPickDoB";
+            this.dtPickDoB.Size = new System.Drawing.Size(186, 31);
+            this.dtPickDoB.TabIndex = 29;
+            this.dtPickDoB.Value = new System.DateTime(2000, 1, 1, 0, 0, 0, 0);
+            // 
+            // cbGender
+            // 
+            this.cbGender.DisplayMember = "nam";
+            this.cbGender.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbGender.FormattingEnabled = true;
+            this.cbGender.Items.AddRange(new object[] {
+            "nam",
+            "nữ",
+            "khác"});
+            this.cbGender.Location = new System.Drawing.Point(297, 73);
+            this.cbGender.Name = "cbGender";
+            this.cbGender.Size = new System.Drawing.Size(187, 34);
+            this.cbGender.TabIndex = 24;
+            // 
+            // txtPhone
+            // 
+            this.txtPhone.Location = new System.Drawing.Point(297, 243);
+            this.txtPhone.Mask = "0000-000-000";
+            this.txtPhone.Name = "txtPhone";
+            this.txtPhone.ReadOnly = true;
+            this.txtPhone.Size = new System.Drawing.Size(187, 31);
+            this.txtPhone.TabIndex = 28;
+            // 
+            // txtCitizenID
+            // 
+            this.txtCitizenID.Location = new System.Drawing.Point(297, 161);
+            this.txtCitizenID.Mask = "000000000000";
+            this.txtCitizenID.Name = "txtCitizenID";
+            this.txtCitizenID.ReadOnly = true;
+            this.txtCitizenID.Size = new System.Drawing.Size(187, 31);
+            this.txtCitizenID.TabIndex = 27;
+            this.txtCitizenID.ValidatingType = typeof(int);
+            // 
+            // txtEmail
+            // 
+            this.txtEmail.Location = new System.Drawing.Point(297, 284);
+            this.txtEmail.Name = "txtEmail";
+            this.txtEmail.ReadOnly = true;
+            this.txtEmail.Size = new System.Drawing.Size(338, 31);
+            this.txtEmail.TabIndex = 26;
+            // 
+            // txtAddress
+            // 
+            this.txtAddress.Location = new System.Drawing.Point(297, 202);
+            this.txtAddress.Name = "txtAddress";
+            this.txtAddress.ReadOnly = true;
+            this.txtAddress.Size = new System.Drawing.Size(338, 31);
+            this.txtAddress.TabIndex = 25;
+            // 
+            // txtName
+            // 
+            this.txtName.Location = new System.Drawing.Point(297, 37);
+            this.txtName.Name = "txtName";
+            this.txtName.ReadOnly = true;
+            this.txtName.Size = new System.Drawing.Size(338, 31);
+            this.txtName.TabIndex = 24;
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(181, 287);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(66, 26);
+            this.label8.TabIndex = 7;
+            this.label8.Text = "Email";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(180, 246);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(111, 26);
+            this.label5.TabIndex = 6;
+            this.label5.Text = "Điện thoại";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(180, 205);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(78, 26);
+            this.label6.TabIndex = 5;
+            this.label6.Text = "Địa chỉ";
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(180, 164);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(70, 26);
+            this.label7.TabIndex = 4;
+            this.label7.Text = "CCCD";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(180, 123);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(106, 26);
+            this.label4.TabIndex = 3;
+            this.label4.Text = "Ngày sinh";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(180, 82);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(49, 26);
+            this.label3.TabIndex = 2;
+            this.label3.Text = "Giới";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(180, 41);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(76, 26);
+            this.label2.TabIndex = 1;
+            this.label2.Text = "Họ tên";
+            // 
             // picRepresent
             // 
             this.picRepresent.BackColor = System.Drawing.Color.Linen;
@@ -152,7 +391,7 @@ namespace BasicGroceryStore
             // 
             // gbFilter
             // 
-            this.gbFilter.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(237)))), ((int)(((byte)(191)))), ((int)(((byte)(128)))));
+            this.gbFilter.BackColor = System.Drawing.Color.LightSalmon;
             this.gbFilter.Controls.Add(this.dgvStaff);
             this.gbFilter.Controls.Add(this.btnAddNew);
             this.gbFilter.Controls.Add(this.btnReload);
@@ -425,244 +664,6 @@ namespace BasicGroceryStore
             this.chbName.UseVisualStyleBackColor = true;
             this.chbName.CheckedChanged += new System.EventHandler(this.chbName_CheckedChanged);
             // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(180, 41);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(76, 26);
-            this.label2.TabIndex = 1;
-            this.label2.Text = "Họ tên";
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(180, 82);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(49, 26);
-            this.label3.TabIndex = 2;
-            this.label3.Text = "Giới";
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(180, 123);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(106, 26);
-            this.label4.TabIndex = 3;
-            this.label4.Text = "Ngày sinh";
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(180, 246);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(111, 26);
-            this.label5.TabIndex = 6;
-            this.label5.Text = "Điện thoại";
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(180, 205);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(78, 26);
-            this.label6.TabIndex = 5;
-            this.label6.Text = "Địa chỉ";
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(180, 164);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(70, 26);
-            this.label7.TabIndex = 4;
-            this.label7.Text = "CCCD";
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(181, 287);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(66, 26);
-            this.label8.TabIndex = 7;
-            this.label8.Text = "Email";
-            // 
-            // txtName
-            // 
-            this.txtName.Location = new System.Drawing.Point(297, 37);
-            this.txtName.Name = "txtName";
-            this.txtName.ReadOnly = true;
-            this.txtName.Size = new System.Drawing.Size(338, 31);
-            this.txtName.TabIndex = 24;
-            // 
-            // txtAddress
-            // 
-            this.txtAddress.Location = new System.Drawing.Point(297, 202);
-            this.txtAddress.Name = "txtAddress";
-            this.txtAddress.ReadOnly = true;
-            this.txtAddress.Size = new System.Drawing.Size(338, 31);
-            this.txtAddress.TabIndex = 25;
-            // 
-            // txtEmail
-            // 
-            this.txtEmail.Location = new System.Drawing.Point(297, 284);
-            this.txtEmail.Name = "txtEmail";
-            this.txtEmail.ReadOnly = true;
-            this.txtEmail.Size = new System.Drawing.Size(338, 31);
-            this.txtEmail.TabIndex = 26;
-            // 
-            // txtCitizenID
-            // 
-            this.txtCitizenID.Location = new System.Drawing.Point(297, 161);
-            this.txtCitizenID.Mask = "000000000000";
-            this.txtCitizenID.Name = "txtCitizenID";
-            this.txtCitizenID.ReadOnly = true;
-            this.txtCitizenID.Size = new System.Drawing.Size(187, 31);
-            this.txtCitizenID.TabIndex = 27;
-            this.txtCitizenID.ValidatingType = typeof(int);
-            // 
-            // txtPhone
-            // 
-            this.txtPhone.Location = new System.Drawing.Point(297, 243);
-            this.txtPhone.Mask = "0000-000-000";
-            this.txtPhone.Name = "txtPhone";
-            this.txtPhone.ReadOnly = true;
-            this.txtPhone.Size = new System.Drawing.Size(187, 31);
-            this.txtPhone.TabIndex = 28;
-            // 
-            // cbGender
-            // 
-            this.cbGender.DisplayMember = "nam";
-            this.cbGender.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbGender.FormattingEnabled = true;
-            this.cbGender.Items.AddRange(new object[] {
-            "nam",
-            "nữ",
-            "khác"});
-            this.cbGender.Location = new System.Drawing.Point(297, 73);
-            this.cbGender.Name = "cbGender";
-            this.cbGender.Size = new System.Drawing.Size(187, 34);
-            this.cbGender.TabIndex = 24;
-            // 
-            // dtPickDoB
-            // 
-            this.dtPickDoB.Enabled = false;
-            this.dtPickDoB.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtPickDoB.Location = new System.Drawing.Point(297, 119);
-            this.dtPickDoB.MaxDate = new System.DateTime(2100, 12, 31, 0, 0, 0, 0);
-            this.dtPickDoB.MinDate = new System.DateTime(1980, 1, 1, 0, 0, 0, 0);
-            this.dtPickDoB.Name = "dtPickDoB";
-            this.dtPickDoB.Size = new System.Drawing.Size(186, 31);
-            this.dtPickDoB.TabIndex = 29;
-            this.dtPickDoB.Value = new System.DateTime(2000, 1, 1, 0, 0, 0, 0);
-            // 
-            // gbContractsAndAccount
-            // 
-            this.gbContractsAndAccount.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(174)))), ((int)(((byte)(112)))));
-            this.gbContractsAndAccount.Controls.Add(this.dataGridView1);
-            this.gbContractsAndAccount.Controls.Add(this.label11);
-            this.gbContractsAndAccount.Controls.Add(this.btnShowPassword);
-            this.gbContractsAndAccount.Controls.Add(this.btnChangePassword);
-            this.gbContractsAndAccount.Controls.Add(this.label10);
-            this.gbContractsAndAccount.Controls.Add(this.label9);
-            this.gbContractsAndAccount.Controls.Add(this.txtPassword);
-            this.gbContractsAndAccount.Controls.Add(this.txtUsername);
-            this.gbContractsAndAccount.Location = new System.Drawing.Point(6, 332);
-            this.gbContractsAndAccount.Name = "gbContractsAndAccount";
-            this.gbContractsAndAccount.Size = new System.Drawing.Size(629, 474);
-            this.gbContractsAndAccount.TabIndex = 30;
-            this.gbContractsAndAccount.TabStop = false;
-            this.gbContractsAndAccount.Text = "Thông tin hợp đồng và tài khoản";
-            // 
-            // btnMakeContract
-            // 
-            this.btnMakeContract.Location = new System.Drawing.Point(433, 812);
-            this.btnMakeContract.Name = "btnMakeContract";
-            this.btnMakeContract.Size = new System.Drawing.Size(202, 36);
-            this.btnMakeContract.TabIndex = 24;
-            this.btnMakeContract.Text = "Tạo hợp đồng";
-            this.btnMakeContract.UseVisualStyleBackColor = true;
-            // 
-            // btnEdit
-            // 
-            this.btnEdit.Location = new System.Drawing.Point(142, 812);
-            this.btnEdit.Name = "btnEdit";
-            this.btnEdit.Size = new System.Drawing.Size(285, 36);
-            this.btnEdit.TabIndex = 31;
-            this.btnEdit.Text = "Sửa thông tin nhân viên";
-            this.btnEdit.UseVisualStyleBackColor = true;
-            // 
-            // txtUsername
-            // 
-            this.txtUsername.Location = new System.Drawing.Point(179, 42);
-            this.txtUsername.Name = "txtUsername";
-            this.txtUsername.ReadOnly = true;
-            this.txtUsername.Size = new System.Drawing.Size(444, 31);
-            this.txtUsername.TabIndex = 32;
-            // 
-            // txtPassword
-            // 
-            this.txtPassword.Location = new System.Drawing.Point(179, 86);
-            this.txtPassword.Name = "txtPassword";
-            this.txtPassword.ReadOnly = true;
-            this.txtPassword.Size = new System.Drawing.Size(444, 31);
-            this.txtPassword.TabIndex = 33;
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(39, 45);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(103, 26);
-            this.label9.TabIndex = 32;
-            this.label9.Text = "Tài khoản";
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(39, 91);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(102, 26);
-            this.label10.TabIndex = 34;
-            this.label10.Text = "Mật khẩu";
-            // 
-            // btnChangePassword
-            // 
-            this.btnChangePassword.Location = new System.Drawing.Point(459, 125);
-            this.btnChangePassword.Name = "btnChangePassword";
-            this.btnChangePassword.Size = new System.Drawing.Size(164, 33);
-            this.btnChangePassword.TabIndex = 32;
-            this.btnChangePassword.Text = "Đổi mật khẩu";
-            this.btnChangePassword.UseVisualStyleBackColor = true;
-            // 
-            // btnShowPassword
-            // 
-            this.btnShowPassword.Location = new System.Drawing.Point(289, 125);
-            this.btnShowPassword.Name = "btnShowPassword";
-            this.btnShowPassword.Size = new System.Drawing.Size(164, 33);
-            this.btnShowPassword.TabIndex = 35;
-            this.btnShowPassword.Text = "HIện mật khẩu";
-            this.btnShowPassword.UseVisualStyleBackColor = true;
-            // 
-            // label11
-            // 
-            this.label11.AutoSize = true;
-            this.label11.Font = new System.Drawing.Font("Montserrat SemiBold", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label11.Location = new System.Drawing.Point(6, 178);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(346, 26);
-            this.label11.TabIndex = 36;
-            this.label11.Text = "Danh sách hợp đồng với cửa hàng";
-            // 
-            // dataGridView1
-            // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(11, 207);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(612, 261);
-            this.dataGridView1.TabIndex = 37;
-            // 
             // UCStaff
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 26F);
@@ -675,15 +676,15 @@ namespace BasicGroceryStore
             this.pnlMain.ResumeLayout(false);
             this.gbDetail.ResumeLayout(false);
             this.gbDetail.PerformLayout();
+            this.gbContractsAndAccount.ResumeLayout(false);
+            this.gbContractsAndAccount.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.picRepresent)).EndInit();
             this.gbFilter.ResumeLayout(false);
             this.gbFilter.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvStaff)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numUDTo)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numUDFrom)).EndInit();
-            this.gbContractsAndAccount.ResumeLayout(false);
-            this.gbContractsAndAccount.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
 
         }

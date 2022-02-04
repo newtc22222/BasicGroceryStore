@@ -29,21 +29,23 @@ namespace BasicGroceryStore
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea5 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend5 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series5 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.pnlMain = new System.Windows.Forms.Panel();
             this.gbYourInfor = new System.Windows.Forms.GroupBox();
             this.btnChangeYourInfor = new System.Windows.Forms.Button();
             this.lblYourGender = new System.Windows.Forms.Label();
             this.lblYourName = new System.Windows.Forms.Label();
             this.lblYourPhone = new System.Windows.Forms.Label();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.lblYourEmail = new System.Windows.Forms.Label();
             this.picCustomerLevel = new System.Windows.Forms.GroupBox();
             this.dgvCustomer = new System.Windows.Forms.DataGridView();
             this.btnChangeCustomerInfor = new System.Windows.Forms.Button();
             this.btnAddCustomer = new System.Windows.Forms.Button();
             this.gbCustomerLevel = new System.Windows.Forms.GroupBox();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.txtCustomerDateJoin = new System.Windows.Forms.DateTimePicker();
             this.txtCustomerName = new System.Windows.Forms.TextBox();
             this.txtCustomerValue = new System.Windows.Forms.TextBox();
@@ -54,6 +56,12 @@ namespace BasicGroceryStore
             this.label7 = new System.Windows.Forms.Label();
             this.gbStoreContact = new System.Windows.Forms.GroupBox();
             this.btnChangeStoreInfor = new System.Windows.Forms.Button();
+            this.picStoreLocation = new System.Windows.Forms.PictureBox();
+            this.pictContact = new System.Windows.Forms.PictureBox();
+            this.picYoutube = new System.Windows.Forms.PictureBox();
+            this.picLinkedIn = new System.Windows.Forms.PictureBox();
+            this.picInsta = new System.Windows.Forms.PictureBox();
+            this.picFace = new System.Windows.Forms.PictureBox();
             this.lblPhone = new System.Windows.Forms.Label();
             this.lblEmail = new System.Windows.Forms.Label();
             this.lblAddress = new System.Windows.Forms.Label();
@@ -74,38 +82,30 @@ namespace BasicGroceryStore
             this.txtIncomeDay = new System.Windows.Forms.TextBox();
             this.btnReloadValue = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
-            this.picStoreLocation = new System.Windows.Forms.PictureBox();
-            this.pictContact = new System.Windows.Forms.PictureBox();
-            this.picYoutube = new System.Windows.Forms.PictureBox();
-            this.picLinkedIn = new System.Windows.Forms.PictureBox();
-            this.picInsta = new System.Windows.Forms.PictureBox();
-            this.picFace = new System.Windows.Forms.PictureBox();
             this.pnlMain.SuspendLayout();
             this.gbYourInfor.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.picCustomerLevel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvCustomer)).BeginInit();
             this.gbCustomerLevel.SuspendLayout();
-            this.gbStoreContact.SuspendLayout();
-            this.gbStoreInfor.SuspendLayout();
-            this.gbStatisticProduct.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.chartProduct)).BeginInit();
-            this.gbProductNewImport.SuspendLayout();
-            this.pnlValue.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
+            this.gbStoreContact.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picStoreLocation)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictContact)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picYoutube)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picLinkedIn)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picInsta)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picFace)).BeginInit();
+            this.gbStoreInfor.SuspendLayout();
+            this.gbStatisticProduct.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.chartProduct)).BeginInit();
+            this.gbProductNewImport.SuspendLayout();
+            this.pnlValue.SuspendLayout();
             this.SuspendLayout();
             // 
             // pnlMain
             // 
-            this.pnlMain.BackColor = System.Drawing.Color.LightSkyBlue;
+            this.pnlMain.BackColor = System.Drawing.Color.DeepSkyBlue;
             this.pnlMain.Controls.Add(this.gbYourInfor);
             this.pnlMain.Controls.Add(this.picCustomerLevel);
             this.pnlMain.Controls.Add(this.gbStoreContact);
@@ -173,6 +173,15 @@ namespace BasicGroceryStore
             this.lblYourPhone.TabIndex = 21;
             this.lblYourPhone.Text = "Số điện thoại: ";
             // 
+            // pictureBox1
+            // 
+            this.pictureBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.pictureBox1.Location = new System.Drawing.Point(18, 39);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(150, 200);
+            this.pictureBox1.TabIndex = 0;
+            this.pictureBox1.TabStop = false;
+            // 
             // lblYourEmail
             // 
             this.lblYourEmail.AutoSize = true;
@@ -185,6 +194,7 @@ namespace BasicGroceryStore
             // 
             // picCustomerLevel
             // 
+            this.picCustomerLevel.BackColor = System.Drawing.Color.LightSkyBlue;
             this.picCustomerLevel.Controls.Add(this.dgvCustomer);
             this.picCustomerLevel.Controls.Add(this.btnChangeCustomerInfor);
             this.picCustomerLevel.Controls.Add(this.btnAddCustomer);
@@ -244,6 +254,15 @@ namespace BasicGroceryStore
             this.gbCustomerLevel.TabIndex = 31;
             this.gbCustomerLevel.TabStop = false;
             this.gbCustomerLevel.Text = "Cấp độ";
+            // 
+            // pictureBox2
+            // 
+            this.pictureBox2.BackColor = System.Drawing.Color.DeepPink;
+            this.pictureBox2.Location = new System.Drawing.Point(22, 30);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(110, 110);
+            this.pictureBox2.TabIndex = 0;
+            this.pictureBox2.TabStop = false;
             // 
             // txtCustomerDateJoin
             // 
@@ -350,6 +369,78 @@ namespace BasicGroceryStore
             this.btnChangeStoreInfor.UseVisualStyleBackColor = true;
             this.btnChangeStoreInfor.Click += new System.EventHandler(this.btnChangeStoreInfor_Click);
             // 
+            // picStoreLocation
+            // 
+            this.picStoreLocation.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.picStoreLocation.Image = global::BasicGroceryStore.Properties.Resources.icons8_location_32;
+            this.picStoreLocation.Location = new System.Drawing.Point(6, 201);
+            this.picStoreLocation.Name = "picStoreLocation";
+            this.picStoreLocation.Size = new System.Drawing.Size(60, 60);
+            this.picStoreLocation.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.picStoreLocation.TabIndex = 19;
+            this.picStoreLocation.TabStop = false;
+            this.picStoreLocation.Click += new System.EventHandler(this.picStoreLocation_Click);
+            // 
+            // pictContact
+            // 
+            this.pictContact.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.pictContact.Image = global::BasicGroceryStore.Properties.Resources.icons8_call_32;
+            this.pictContact.Location = new System.Drawing.Point(336, 201);
+            this.pictContact.Name = "pictContact";
+            this.pictContact.Size = new System.Drawing.Size(60, 60);
+            this.pictContact.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.pictContact.TabIndex = 18;
+            this.pictContact.TabStop = false;
+            this.pictContact.Click += new System.EventHandler(this.pictContact_Click);
+            // 
+            // picYoutube
+            // 
+            this.picYoutube.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.picYoutube.Image = global::BasicGroceryStore.Properties.Resources.icons8_YouTube_32;
+            this.picYoutube.Location = new System.Drawing.Point(270, 201);
+            this.picYoutube.Name = "picYoutube";
+            this.picYoutube.Size = new System.Drawing.Size(60, 60);
+            this.picYoutube.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.picYoutube.TabIndex = 17;
+            this.picYoutube.TabStop = false;
+            this.picYoutube.Click += new System.EventHandler(this.picYoutube_Click);
+            // 
+            // picLinkedIn
+            // 
+            this.picLinkedIn.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.picLinkedIn.Image = global::BasicGroceryStore.Properties.Resources.icons8_linkedin_32;
+            this.picLinkedIn.Location = new System.Drawing.Point(204, 201);
+            this.picLinkedIn.Name = "picLinkedIn";
+            this.picLinkedIn.Size = new System.Drawing.Size(60, 60);
+            this.picLinkedIn.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.picLinkedIn.TabIndex = 16;
+            this.picLinkedIn.TabStop = false;
+            this.picLinkedIn.Click += new System.EventHandler(this.picLinkedIn_Click);
+            // 
+            // picInsta
+            // 
+            this.picInsta.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.picInsta.Image = global::BasicGroceryStore.Properties.Resources.icons8_Instagram_32;
+            this.picInsta.Location = new System.Drawing.Point(138, 201);
+            this.picInsta.Name = "picInsta";
+            this.picInsta.Size = new System.Drawing.Size(60, 60);
+            this.picInsta.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.picInsta.TabIndex = 15;
+            this.picInsta.TabStop = false;
+            this.picInsta.Click += new System.EventHandler(this.picInsta_Click);
+            // 
+            // picFace
+            // 
+            this.picFace.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.picFace.Image = global::BasicGroceryStore.Properties.Resources.icons8_facebook_48;
+            this.picFace.Location = new System.Drawing.Point(72, 201);
+            this.picFace.Name = "picFace";
+            this.picFace.Size = new System.Drawing.Size(60, 60);
+            this.picFace.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.picFace.TabIndex = 14;
+            this.picFace.TabStop = false;
+            this.picFace.Click += new System.EventHandler(this.picFace_Click);
+            // 
             // lblPhone
             // 
             this.lblPhone.AutoSize = true;
@@ -382,6 +473,7 @@ namespace BasicGroceryStore
             // 
             // gbStoreInfor
             // 
+            this.gbStoreInfor.BackColor = System.Drawing.Color.LightSkyBlue;
             this.gbStoreInfor.Controls.Add(this.gbStatisticProduct);
             this.gbStoreInfor.Controls.Add(this.gbProductNewImport);
             this.gbStoreInfor.Controls.Add(this.pnlValue);
@@ -404,18 +496,18 @@ namespace BasicGroceryStore
             // 
             // chartProduct
             // 
-            chartArea5.Name = "ChartArea1";
-            this.chartProduct.ChartAreas.Add(chartArea5);
-            legend5.Name = "Legend1";
-            this.chartProduct.Legends.Add(legend5);
+            chartArea1.Name = "ChartArea1";
+            this.chartProduct.ChartAreas.Add(chartArea1);
+            legend1.Name = "Legend1";
+            this.chartProduct.Legends.Add(legend1);
             this.chartProduct.Location = new System.Drawing.Point(6, 30);
             this.chartProduct.Name = "chartProduct";
             this.chartProduct.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.Pastel;
-            series5.ChartArea = "ChartArea1";
-            series5.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Pie;
-            series5.Legend = "Legend1";
-            series5.Name = "Series1";
-            this.chartProduct.Series.Add(series5);
+            series1.ChartArea = "ChartArea1";
+            series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Pie;
+            series1.Legend = "Legend1";
+            series1.Name = "Series1";
+            this.chartProduct.Series.Add(series1);
             this.chartProduct.Size = new System.Drawing.Size(306, 265);
             this.chartProduct.TabIndex = 0;
             this.chartProduct.Text = "Product";
@@ -559,96 +651,6 @@ namespace BasicGroceryStore
             this.label1.TabIndex = 0;
             this.label1.Text = "Thu nhập trong ngày";
             // 
-            // pictureBox1
-            // 
-            this.pictureBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.pictureBox1.Location = new System.Drawing.Point(18, 39);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(150, 200);
-            this.pictureBox1.TabIndex = 0;
-            this.pictureBox1.TabStop = false;
-            // 
-            // pictureBox2
-            // 
-            this.pictureBox2.BackColor = System.Drawing.Color.DeepPink;
-            this.pictureBox2.Location = new System.Drawing.Point(22, 30);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(110, 110);
-            this.pictureBox2.TabIndex = 0;
-            this.pictureBox2.TabStop = false;
-            // 
-            // picStoreLocation
-            // 
-            this.picStoreLocation.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.picStoreLocation.Image = global::BasicGroceryStore.Properties.Resources.icons8_location_32;
-            this.picStoreLocation.Location = new System.Drawing.Point(6, 201);
-            this.picStoreLocation.Name = "picStoreLocation";
-            this.picStoreLocation.Size = new System.Drawing.Size(60, 60);
-            this.picStoreLocation.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
-            this.picStoreLocation.TabIndex = 19;
-            this.picStoreLocation.TabStop = false;
-            this.picStoreLocation.Click += new System.EventHandler(this.picStoreLocation_Click);
-            // 
-            // pictContact
-            // 
-            this.pictContact.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.pictContact.Image = global::BasicGroceryStore.Properties.Resources.icons8_call_32;
-            this.pictContact.Location = new System.Drawing.Point(336, 201);
-            this.pictContact.Name = "pictContact";
-            this.pictContact.Size = new System.Drawing.Size(60, 60);
-            this.pictContact.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
-            this.pictContact.TabIndex = 18;
-            this.pictContact.TabStop = false;
-            this.pictContact.Click += new System.EventHandler(this.pictContact_Click);
-            // 
-            // picYoutube
-            // 
-            this.picYoutube.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.picYoutube.Image = global::BasicGroceryStore.Properties.Resources.icons8_YouTube_32;
-            this.picYoutube.Location = new System.Drawing.Point(270, 201);
-            this.picYoutube.Name = "picYoutube";
-            this.picYoutube.Size = new System.Drawing.Size(60, 60);
-            this.picYoutube.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
-            this.picYoutube.TabIndex = 17;
-            this.picYoutube.TabStop = false;
-            this.picYoutube.Click += new System.EventHandler(this.picYoutube_Click);
-            // 
-            // picLinkedIn
-            // 
-            this.picLinkedIn.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.picLinkedIn.Image = global::BasicGroceryStore.Properties.Resources.icons8_linkedin_32;
-            this.picLinkedIn.Location = new System.Drawing.Point(204, 201);
-            this.picLinkedIn.Name = "picLinkedIn";
-            this.picLinkedIn.Size = new System.Drawing.Size(60, 60);
-            this.picLinkedIn.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
-            this.picLinkedIn.TabIndex = 16;
-            this.picLinkedIn.TabStop = false;
-            this.picLinkedIn.Click += new System.EventHandler(this.picLinkedIn_Click);
-            // 
-            // picInsta
-            // 
-            this.picInsta.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.picInsta.Image = global::BasicGroceryStore.Properties.Resources.icons8_Instagram_32;
-            this.picInsta.Location = new System.Drawing.Point(138, 201);
-            this.picInsta.Name = "picInsta";
-            this.picInsta.Size = new System.Drawing.Size(60, 60);
-            this.picInsta.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
-            this.picInsta.TabIndex = 15;
-            this.picInsta.TabStop = false;
-            this.picInsta.Click += new System.EventHandler(this.picInsta_Click);
-            // 
-            // picFace
-            // 
-            this.picFace.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.picFace.Image = global::BasicGroceryStore.Properties.Resources.icons8_facebook_48;
-            this.picFace.Location = new System.Drawing.Point(72, 201);
-            this.picFace.Name = "picFace";
-            this.picFace.Size = new System.Drawing.Size(60, 60);
-            this.picFace.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
-            this.picFace.TabIndex = 14;
-            this.picFace.TabStop = false;
-            this.picFace.Click += new System.EventHandler(this.picFace_Click);
-            // 
             // UCHomePage
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(13F, 26F);
@@ -661,26 +663,26 @@ namespace BasicGroceryStore
             this.pnlMain.ResumeLayout(false);
             this.gbYourInfor.ResumeLayout(false);
             this.gbYourInfor.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.picCustomerLevel.ResumeLayout(false);
             this.picCustomerLevel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvCustomer)).EndInit();
             this.gbCustomerLevel.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.gbStoreContact.ResumeLayout(false);
             this.gbStoreContact.PerformLayout();
-            this.gbStoreInfor.ResumeLayout(false);
-            this.gbStatisticProduct.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.chartProduct)).EndInit();
-            this.gbProductNewImport.ResumeLayout(false);
-            this.pnlValue.ResumeLayout(false);
-            this.pnlValue.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.picStoreLocation)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictContact)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.picYoutube)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.picLinkedIn)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.picInsta)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.picFace)).EndInit();
+            this.gbStoreInfor.ResumeLayout(false);
+            this.gbStatisticProduct.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.chartProduct)).EndInit();
+            this.gbProductNewImport.ResumeLayout(false);
+            this.pnlValue.ResumeLayout(false);
+            this.pnlValue.PerformLayout();
             this.ResumeLayout(false);
 
         }
