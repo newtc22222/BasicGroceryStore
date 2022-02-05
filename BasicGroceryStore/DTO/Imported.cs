@@ -1,4 +1,4 @@
-﻿namespace GroceryStore
+﻿namespace BasicGroceryStore
 {
     class Imported : Bills
     {

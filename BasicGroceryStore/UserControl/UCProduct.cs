@@ -28,5 +28,10 @@ namespace BasicGroceryStore
         {
             InitializeComponent();
         }
+
+        private void btnEditProduct_Click(object sender, EventArgs e)
+        {
+            new FormProduct().ShowDialog();
+        }
     }
 }

@@ -1,4 +1,4 @@
-﻿namespace GroceryStore
+﻿namespace BasicGroceryStore
 {
     class Supplier
     {

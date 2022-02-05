@@ -32,14 +32,14 @@ namespace BasicGroceryStore
         public UCStaff()
         {
             InitializeComponent();
-            UpdateComboboxInfor();
+            LoadContentCombobox();
         }
 
-        private void UpdateComboboxInfor()
+        private void LoadContentCombobox()
         {
-            cbTypeWork.DataSource = Enum.GetValues(typeof(GroceryStore.TypeWork));
-            cbSpells.DataSource = Enum.GetValues(typeof(GroceryStore.Spells));
-            cbDateContract.DataSource = Enum.GetValues(typeof(GroceryStore.StatusOfConstract));
+            cbTypeWork.DataSource = Enum.GetValues(typeof(TypeWork));
+            cbSpells.DataSource = Enum.GetValues(typeof(Spells));
+            cbDateContract.DataSource = Enum.GetValues(typeof(StatusOfConstract));
         }
 
         #region Filter_Change
@@ -82,7 +82,7 @@ namespace BasicGroceryStore
         private void cbTypeWork_SelectedIndexChanged(object sender, EventArgs e)
         {
             flagSpells = true;
-            if (cbTypeWork.SelectedItem.ToString() == GroceryStore.TypeWork.fulltime.ToString())
+            if (cbTypeWork.SelectedItem.ToString() == TypeWork.fulltime.ToString())
             {
                 flagSpells = false;
             }
@@ -90,5 +90,10 @@ namespace BasicGroceryStore
             chbSpells.Enabled = flagSpells;
         }
         #endregion
+
+        private void btnAddNew_Click(object sender, EventArgs e)
+        {
+            new FormStaff().ShowDialog();
+        }
     }
 }

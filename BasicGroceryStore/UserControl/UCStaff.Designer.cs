@@ -386,6 +386,7 @@ namespace BasicGroceryStore
             this.picRepresent.Location = new System.Drawing.Point(6, 41);
             this.picRepresent.Name = "picRepresent";
             this.picRepresent.Size = new System.Drawing.Size(168, 224);
+            this.picRepresent.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.picRepresent.TabIndex = 0;
             this.picRepresent.TabStop = false;
             // 
@@ -437,6 +438,7 @@ namespace BasicGroceryStore
             this.btnAddNew.TabIndex = 21;
             this.btnAddNew.Text = "Thêm mới";
             this.btnAddNew.UseVisualStyleBackColor = true;
+            this.btnAddNew.Click += new System.EventHandler(this.btnAddNew_Click);
             // 
             // btnReload
             // 

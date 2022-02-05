@@ -49,16 +49,16 @@ namespace BasicGroceryStore
             this.txtSupplierID = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
-            this.textBox6 = new System.Windows.Forms.TextBox();
-            this.textBox5 = new System.Windows.Forms.TextBox();
+            this.txtNote = new System.Windows.Forms.TextBox();
+            this.txtPrice = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
-            this.textBox4 = new System.Windows.Forms.TextBox();
+            this.txtQuantity = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
-            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.txtUnit = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.txtTypeProduct = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.txtName = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.picRepresent = new System.Windows.Forms.PictureBox();
             this.gbFilter = new System.Windows.Forms.GroupBox();
@@ -72,8 +72,8 @@ namespace BasicGroceryStore
             this.numUDTo = new System.Windows.Forms.NumericUpDown();
             this.numUDFrom = new System.Windows.Forms.NumericUpDown();
             this.cbTypeProduct = new System.Windows.Forms.ComboBox();
-            this.txtSupplier = new System.Windows.Forms.TextBox();
-            this.txtName = new System.Windows.Forms.TextBox();
+            this.txtSupplierFilter = new System.Windows.Forms.TextBox();
+            this.txtNameFilter = new System.Windows.Forms.TextBox();
             this.chbTypeProduct = new System.Windows.Forms.CheckBox();
             this.chbSupplier = new System.Windows.Forms.CheckBox();
             this.chbPrice = new System.Windows.Forms.CheckBox();
@@ -108,16 +108,16 @@ namespace BasicGroceryStore
             this.gbDetail.Controls.Add(this.btnEditProduct);
             this.gbDetail.Controls.Add(this.gbSupplier);
             this.gbDetail.Controls.Add(this.label7);
-            this.gbDetail.Controls.Add(this.textBox6);
-            this.gbDetail.Controls.Add(this.textBox5);
+            this.gbDetail.Controls.Add(this.txtNote);
+            this.gbDetail.Controls.Add(this.txtPrice);
             this.gbDetail.Controls.Add(this.label6);
-            this.gbDetail.Controls.Add(this.textBox4);
+            this.gbDetail.Controls.Add(this.txtQuantity);
             this.gbDetail.Controls.Add(this.label5);
-            this.gbDetail.Controls.Add(this.textBox3);
+            this.gbDetail.Controls.Add(this.txtUnit);
             this.gbDetail.Controls.Add(this.label4);
-            this.gbDetail.Controls.Add(this.textBox2);
+            this.gbDetail.Controls.Add(this.txtTypeProduct);
             this.gbDetail.Controls.Add(this.label3);
-            this.gbDetail.Controls.Add(this.textBox1);
+            this.gbDetail.Controls.Add(this.txtName);
             this.gbDetail.Controls.Add(this.label2);
             this.gbDetail.Controls.Add(this.picRepresent);
             this.gbDetail.Font = new System.Drawing.Font("Montserrat", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -145,6 +145,7 @@ namespace BasicGroceryStore
             this.btnEditProduct.TabIndex = 32;
             this.btnEditProduct.Text = "Chỉnh sửa thông tin sản phẩm";
             this.btnEditProduct.UseVisualStyleBackColor = true;
+            this.btnEditProduct.Click += new System.EventHandler(this.btnEditProduct_Click);
             // 
             // gbSupplier
             // 
@@ -209,7 +210,7 @@ namespace BasicGroceryStore
             // txtSupplierPhone
             // 
             this.txtSupplierPhone.Font = new System.Drawing.Font("Montserrat", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtSupplierPhone.Location = new System.Drawing.Point(191, 171);
+            this.txtSupplierPhone.Location = new System.Drawing.Point(135, 175);
             this.txtSupplierPhone.Name = "txtSupplierPhone";
             this.txtSupplierPhone.ReadOnly = true;
             this.txtSupplierPhone.Size = new System.Drawing.Size(290, 27);
@@ -218,7 +219,7 @@ namespace BasicGroceryStore
             // label12
             // 
             this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(29, 174);
+            this.label12.Location = new System.Drawing.Point(8, 178);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(115, 22);
             this.label12.TabIndex = 47;
@@ -227,16 +228,16 @@ namespace BasicGroceryStore
             // txtSupplierEmail
             // 
             this.txtSupplierEmail.Font = new System.Drawing.Font("Montserrat", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtSupplierEmail.Location = new System.Drawing.Point(192, 136);
+            this.txtSupplierEmail.Location = new System.Drawing.Point(136, 140);
             this.txtSupplierEmail.Name = "txtSupplierEmail";
             this.txtSupplierEmail.ReadOnly = true;
-            this.txtSupplierEmail.Size = new System.Drawing.Size(432, 27);
+            this.txtSupplierEmail.Size = new System.Drawing.Size(481, 27);
             this.txtSupplierEmail.TabIndex = 46;
             // 
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(30, 139);
+            this.label11.Location = new System.Drawing.Point(9, 143);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(55, 22);
             this.label11.TabIndex = 45;
@@ -245,16 +246,16 @@ namespace BasicGroceryStore
             // txtSupplierAddress
             // 
             this.txtSupplierAddress.Font = new System.Drawing.Font("Montserrat", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtSupplierAddress.Location = new System.Drawing.Point(191, 101);
+            this.txtSupplierAddress.Location = new System.Drawing.Point(135, 105);
             this.txtSupplierAddress.Name = "txtSupplierAddress";
             this.txtSupplierAddress.ReadOnly = true;
-            this.txtSupplierAddress.Size = new System.Drawing.Size(432, 27);
+            this.txtSupplierAddress.Size = new System.Drawing.Size(481, 27);
             this.txtSupplierAddress.TabIndex = 44;
             // 
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(29, 104);
+            this.label10.Location = new System.Drawing.Point(8, 108);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(99, 22);
             this.label10.TabIndex = 43;
@@ -263,16 +264,16 @@ namespace BasicGroceryStore
             // txtSupplierName
             // 
             this.txtSupplierName.Font = new System.Drawing.Font("Montserrat", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtSupplierName.Location = new System.Drawing.Point(192, 66);
+            this.txtSupplierName.Location = new System.Drawing.Point(136, 70);
             this.txtSupplierName.Name = "txtSupplierName";
             this.txtSupplierName.ReadOnly = true;
-            this.txtSupplierName.Size = new System.Drawing.Size(432, 27);
+            this.txtSupplierName.Size = new System.Drawing.Size(481, 27);
             this.txtSupplierName.TabIndex = 42;
             // 
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(30, 69);
+            this.label9.Location = new System.Drawing.Point(9, 73);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(107, 22);
             this.label9.TabIndex = 41;
@@ -281,7 +282,7 @@ namespace BasicGroceryStore
             // txtSupplierID
             // 
             this.txtSupplierID.Font = new System.Drawing.Font("Montserrat", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtSupplierID.Location = new System.Drawing.Point(192, 31);
+            this.txtSupplierID.Location = new System.Drawing.Point(136, 35);
             this.txtSupplierID.Name = "txtSupplierID";
             this.txtSupplierID.ReadOnly = true;
             this.txtSupplierID.Size = new System.Drawing.Size(290, 27);
@@ -290,7 +291,7 @@ namespace BasicGroceryStore
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(30, 34);
+            this.label8.Location = new System.Drawing.Point(9, 38);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(121, 22);
             this.label8.TabIndex = 39;
@@ -299,28 +300,28 @@ namespace BasicGroceryStore
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(580, 287);
+            this.label7.Location = new System.Drawing.Point(563, 287);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(55, 22);
+            this.label7.Size = new System.Drawing.Size(72, 22);
             this.label7.TabIndex = 36;
-            this.label7.Text = "Mô tả";
+            this.label7.Text = "Ghi chú";
             // 
-            // textBox6
+            // txtNote
             // 
-            this.textBox6.Location = new System.Drawing.Point(6, 239);
-            this.textBox6.Multiline = true;
-            this.textBox6.Name = "textBox6";
-            this.textBox6.ReadOnly = true;
-            this.textBox6.Size = new System.Drawing.Size(629, 70);
-            this.textBox6.TabIndex = 35;
+            this.txtNote.Location = new System.Drawing.Point(6, 239);
+            this.txtNote.Multiline = true;
+            this.txtNote.Name = "txtNote";
+            this.txtNote.ReadOnly = true;
+            this.txtNote.Size = new System.Drawing.Size(629, 70);
+            this.txtNote.TabIndex = 35;
             // 
-            // textBox5
+            // txtPrice
             // 
-            this.textBox5.Location = new System.Drawing.Point(326, 202);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.ReadOnly = true;
-            this.textBox5.Size = new System.Drawing.Size(311, 27);
-            this.textBox5.TabIndex = 34;
+            this.txtPrice.Location = new System.Drawing.Point(326, 202);
+            this.txtPrice.Name = "txtPrice";
+            this.txtPrice.ReadOnly = true;
+            this.txtPrice.Size = new System.Drawing.Size(311, 27);
+            this.txtPrice.TabIndex = 34;
             // 
             // label6
             // 
@@ -331,13 +332,13 @@ namespace BasicGroceryStore
             this.label6.TabIndex = 33;
             this.label6.Text = "Giá niêm yết";
             // 
-            // textBox4
+            // txtQuantity
             // 
-            this.textBox4.Location = new System.Drawing.Point(326, 164);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.ReadOnly = true;
-            this.textBox4.Size = new System.Drawing.Size(311, 27);
-            this.textBox4.TabIndex = 32;
+            this.txtQuantity.Location = new System.Drawing.Point(326, 164);
+            this.txtQuantity.Name = "txtQuantity";
+            this.txtQuantity.ReadOnly = true;
+            this.txtQuantity.Size = new System.Drawing.Size(311, 27);
+            this.txtQuantity.TabIndex = 32;
             // 
             // label5
             // 
@@ -348,13 +349,13 @@ namespace BasicGroceryStore
             this.label5.TabIndex = 31;
             this.label5.Text = "Số lượng kho";
             // 
-            // textBox3
+            // txtUnit
             // 
-            this.textBox3.Location = new System.Drawing.Point(326, 127);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.ReadOnly = true;
-            this.textBox3.Size = new System.Drawing.Size(311, 27);
-            this.textBox3.TabIndex = 30;
+            this.txtUnit.Location = new System.Drawing.Point(326, 127);
+            this.txtUnit.Name = "txtUnit";
+            this.txtUnit.ReadOnly = true;
+            this.txtUnit.Size = new System.Drawing.Size(311, 27);
+            this.txtUnit.TabIndex = 30;
             // 
             // label4
             // 
@@ -365,13 +366,13 @@ namespace BasicGroceryStore
             this.label4.TabIndex = 29;
             this.label4.Text = "Đơn vị";
             // 
-            // textBox2
+            // txtTypeProduct
             // 
-            this.textBox2.Location = new System.Drawing.Point(326, 90);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.ReadOnly = true;
-            this.textBox2.Size = new System.Drawing.Size(311, 27);
-            this.textBox2.TabIndex = 28;
+            this.txtTypeProduct.Location = new System.Drawing.Point(326, 90);
+            this.txtTypeProduct.Name = "txtTypeProduct";
+            this.txtTypeProduct.ReadOnly = true;
+            this.txtTypeProduct.Size = new System.Drawing.Size(311, 27);
+            this.txtTypeProduct.TabIndex = 28;
             // 
             // label3
             // 
@@ -382,14 +383,14 @@ namespace BasicGroceryStore
             this.label3.TabIndex = 27;
             this.label3.Text = "Loại sản phẩm";
             // 
-            // textBox1
+            // txtName
             // 
-            this.textBox1.Location = new System.Drawing.Point(325, 33);
-            this.textBox1.Multiline = true;
-            this.textBox1.Name = "textBox1";
-            this.textBox1.ReadOnly = true;
-            this.textBox1.Size = new System.Drawing.Size(311, 51);
-            this.textBox1.TabIndex = 26;
+            this.txtName.Location = new System.Drawing.Point(325, 33);
+            this.txtName.Multiline = true;
+            this.txtName.Name = "txtName";
+            this.txtName.ReadOnly = true;
+            this.txtName.Size = new System.Drawing.Size(311, 51);
+            this.txtName.TabIndex = 26;
             // 
             // label2
             // 
@@ -406,6 +407,7 @@ namespace BasicGroceryStore
             this.picRepresent.Location = new System.Drawing.Point(6, 43);
             this.picRepresent.Name = "picRepresent";
             this.picRepresent.Size = new System.Drawing.Size(180, 180);
+            this.picRepresent.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.picRepresent.TabIndex = 1;
             this.picRepresent.TabStop = false;
             // 
@@ -422,8 +424,8 @@ namespace BasicGroceryStore
             this.gbFilter.Controls.Add(this.numUDTo);
             this.gbFilter.Controls.Add(this.numUDFrom);
             this.gbFilter.Controls.Add(this.cbTypeProduct);
-            this.gbFilter.Controls.Add(this.txtSupplier);
-            this.gbFilter.Controls.Add(this.txtName);
+            this.gbFilter.Controls.Add(this.txtSupplierFilter);
+            this.gbFilter.Controls.Add(this.txtNameFilter);
             this.gbFilter.Controls.Add(this.chbTypeProduct);
             this.gbFilter.Controls.Add(this.chbSupplier);
             this.gbFilter.Controls.Add(this.chbPrice);
@@ -550,19 +552,19 @@ namespace BasicGroceryStore
             this.cbTypeProduct.Size = new System.Drawing.Size(475, 34);
             this.cbTypeProduct.TabIndex = 22;
             // 
-            // txtSupplier
+            // txtSupplierFilter
             // 
-            this.txtSupplier.Location = new System.Drawing.Point(201, 139);
-            this.txtSupplier.Name = "txtSupplier";
-            this.txtSupplier.Size = new System.Drawing.Size(475, 31);
-            this.txtSupplier.TabIndex = 21;
+            this.txtSupplierFilter.Location = new System.Drawing.Point(201, 139);
+            this.txtSupplierFilter.Name = "txtSupplierFilter";
+            this.txtSupplierFilter.Size = new System.Drawing.Size(475, 31);
+            this.txtSupplierFilter.TabIndex = 21;
             // 
-            // txtName
+            // txtNameFilter
             // 
-            this.txtName.Location = new System.Drawing.Point(201, 43);
-            this.txtName.Name = "txtName";
-            this.txtName.Size = new System.Drawing.Size(475, 31);
-            this.txtName.TabIndex = 20;
+            this.txtNameFilter.Location = new System.Drawing.Point(201, 43);
+            this.txtNameFilter.Name = "txtNameFilter";
+            this.txtNameFilter.Size = new System.Drawing.Size(475, 31);
+            this.txtNameFilter.TabIndex = 20;
             // 
             // chbTypeProduct
             // 
@@ -647,8 +649,8 @@ namespace BasicGroceryStore
         private System.Windows.Forms.NumericUpDown numUDTo;
         private System.Windows.Forms.NumericUpDown numUDFrom;
         private System.Windows.Forms.ComboBox cbTypeProduct;
-        private System.Windows.Forms.TextBox txtSupplier;
-        private System.Windows.Forms.TextBox txtName;
+        private System.Windows.Forms.TextBox txtSupplierFilter;
+        private System.Windows.Forms.TextBox txtNameFilter;
         private System.Windows.Forms.CheckBox chbTypeProduct;
         private System.Windows.Forms.CheckBox chbSupplier;
         private System.Windows.Forms.CheckBox chbPrice;
@@ -660,21 +662,21 @@ namespace BasicGroceryStore
         private System.Windows.Forms.Button btnReload;
         private System.Windows.Forms.Button btnDelete;
         private System.Windows.Forms.PictureBox picRepresent;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox txtName;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox textBox5;
+        private System.Windows.Forms.TextBox txtPrice;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.TextBox textBox4;
+        private System.Windows.Forms.TextBox txtQuantity;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.TextBox txtUnit;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox txtTypeProduct;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Button btnLoadSupplier;
         private System.Windows.Forms.Button btnEditProduct;
         private System.Windows.Forms.GroupBox gbSupplier;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.TextBox textBox6;
+        private System.Windows.Forms.TextBox txtNote;
         private System.Windows.Forms.Button btnSeeMoreSupplier;
         private System.Windows.Forms.Button btnEditSupplier;
         private System.Windows.Forms.GroupBox gbProductOfSupplier;

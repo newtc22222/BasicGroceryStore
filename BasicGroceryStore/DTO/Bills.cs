@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace GroceryStore
+namespace BasicGroceryStore
 {
     abstract class Bills
     {

@@ -1,6 +1,6 @@
 ﻿using System.Drawing;
 
-namespace GroceryStore
+namespace BasicGroceryStore
 {
     class Product
     {
