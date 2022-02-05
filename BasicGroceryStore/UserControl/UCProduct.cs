@@ -33,5 +33,20 @@ namespace BasicGroceryStore
         {
             new FormProduct().ShowDialog();
         }
+
+        private void btnAddNew_Click(object sender, EventArgs e)
+        {
+            new FormProduct().ShowDialog();
+        }
+
+        private void btnEditSupplier_Click(object sender, EventArgs e)
+        {
+            new FormSupplier().ShowDialog();
+        }
+
+        private void btnSeeMoreSupplier_Click(object sender, EventArgs e)
+        {
+            new FormSupplierSynthetic().ShowDialog();
+        }
     }
 }

@@ -62,23 +62,29 @@
     <Compile Include="DTO\Product.cs" />
     <Compile Include="DTO\Staff.cs" />
     <Compile Include="DTO\Supplier.cs" />
-    <Compile Include="FormProduct.cs">
+    <Compile Include="Form\FormProduct.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormProduct.Designer.cs">
+    <Compile Include="Form\FormProduct.Designer.cs">
       <DependentUpon>FormProduct.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormStaff.cs">
+    <Compile Include="Form\FormStaff.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormStaff.Designer.cs">
+    <Compile Include="Form\FormStaff.Designer.cs">
       <DependentUpon>FormStaff.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormSupplier.cs">
+    <Compile Include="Form\FormSupplier.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormSupplier.Designer.cs">
+    <Compile Include="Form\FormSupplier.Designer.cs">
       <DependentUpon>FormSupplier.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Form\FormSupplierSynthetic.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\FormSupplierSynthetic.Designer.cs">
+      <DependentUpon>FormSupplierSynthetic.cs</DependentUpon>
     </Compile>
     <Compile Include="Form\MainForm.cs">
       <SubType>Form</SubType>
@@ -135,14 +141,17 @@
     <Compile Include="UserControl\UCStatistic.Designer.cs">
       <DependentUpon>UCStatistic.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="FormProduct.resx">
+    <EmbeddedResource Include="Form\FormProduct.resx">
       <DependentUpon>FormProduct.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FormStaff.resx">
+    <EmbeddedResource Include="Form\FormStaff.resx">
       <DependentUpon>FormStaff.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FormSupplier.resx">
+    <EmbeddedResource Include="Form\FormSupplier.resx">
       <DependentUpon>FormSupplier.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\FormSupplierSynthetic.resx">
+      <DependentUpon>FormSupplierSynthetic.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Form\MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>

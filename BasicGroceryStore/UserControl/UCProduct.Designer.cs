@@ -179,6 +179,7 @@ namespace BasicGroceryStore
             this.btnSeeMoreSupplier.TabIndex = 50;
             this.btnSeeMoreSupplier.Text = "Xem thêm nhà cung cấp khác";
             this.btnSeeMoreSupplier.UseVisualStyleBackColor = true;
+            this.btnSeeMoreSupplier.Click += new System.EventHandler(this.btnSeeMoreSupplier_Click);
             // 
             // btnEditSupplier
             // 
@@ -188,6 +189,7 @@ namespace BasicGroceryStore
             this.btnEditSupplier.TabIndex = 39;
             this.btnEditSupplier.Text = "Điều chỉnh thông tin";
             this.btnEditSupplier.UseVisualStyleBackColor = true;
+            this.btnEditSupplier.Click += new System.EventHandler(this.btnEditSupplier_Click);
             // 
             // gbProductOfSupplier
             // 
@@ -447,16 +449,17 @@ namespace BasicGroceryStore
             // 
             // btnAddNew
             // 
-            this.btnAddNew.Location = new System.Drawing.Point(115, 812);
+            this.btnAddNew.Location = new System.Drawing.Point(15, 812);
             this.btnAddNew.Name = "btnAddNew";
             this.btnAddNew.Size = new System.Drawing.Size(183, 36);
             this.btnAddNew.TabIndex = 30;
             this.btnAddNew.Text = "Thêm mới";
             this.btnAddNew.UseVisualStyleBackColor = true;
+            this.btnAddNew.Click += new System.EventHandler(this.btnAddNew_Click);
             // 
             // btnReload
             // 
-            this.btnReload.Location = new System.Drawing.Point(304, 812);
+            this.btnReload.Location = new System.Drawing.Point(15, 239);
             this.btnReload.Name = "btnReload";
             this.btnReload.Size = new System.Drawing.Size(183, 36);
             this.btnReload.TabIndex = 29;

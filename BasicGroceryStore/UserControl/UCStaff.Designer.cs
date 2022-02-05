@@ -425,14 +425,14 @@ namespace BasicGroceryStore
             // dgvStaff
             // 
             this.dgvStaff.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvStaff.Location = new System.Drawing.Point(19, 332);
+            this.dgvStaff.Location = new System.Drawing.Point(19, 345);
             this.dgvStaff.Name = "dgvStaff";
-            this.dgvStaff.Size = new System.Drawing.Size(661, 474);
+            this.dgvStaff.Size = new System.Drawing.Size(661, 461);
             this.dgvStaff.TabIndex = 23;
             // 
             // btnAddNew
             // 
-            this.btnAddNew.Location = new System.Drawing.Point(119, 812);
+            this.btnAddNew.Location = new System.Drawing.Point(19, 812);
             this.btnAddNew.Name = "btnAddNew";
             this.btnAddNew.Size = new System.Drawing.Size(183, 36);
             this.btnAddNew.TabIndex = 21;
@@ -442,9 +442,9 @@ namespace BasicGroceryStore
             // 
             // btnReload
             // 
-            this.btnReload.Location = new System.Drawing.Point(308, 812);
+            this.btnReload.Location = new System.Drawing.Point(19, 303);
             this.btnReload.Name = "btnReload";
-            this.btnReload.Size = new System.Drawing.Size(183, 36);
+            this.btnReload.Size = new System.Drawing.Size(183, 37);
             this.btnReload.TabIndex = 20;
             this.btnReload.Text = "Tải lại";
             this.btnReload.UseVisualStyleBackColor = true;
@@ -460,7 +460,7 @@ namespace BasicGroceryStore
             // 
             // btnFind
             // 
-            this.btnFind.Location = new System.Drawing.Point(497, 290);
+            this.btnFind.Location = new System.Drawing.Point(497, 303);
             this.btnFind.Name = "btnFind";
             this.btnFind.Size = new System.Drawing.Size(183, 36);
             this.btnFind.TabIndex = 18;
@@ -469,7 +469,7 @@ namespace BasicGroceryStore
             // 
             // btnClear
             // 
-            this.btnClear.Location = new System.Drawing.Point(308, 290);
+            this.btnClear.Location = new System.Drawing.Point(308, 303);
             this.btnClear.Name = "btnClear";
             this.btnClear.Size = new System.Drawing.Size(183, 36);
             this.btnClear.TabIndex = 17;
