@@ -30,6 +30,8 @@ namespace BasicGroceryStore
         private void InitializeComponent()
         {
             this.pnlMove = new System.Windows.Forms.Panel();
+            this.btnMinimize = new System.Windows.Forms.Button();
+            this.btnClose = new System.Windows.Forms.Button();
             this.label12 = new System.Windows.Forms.Label();
             this.txtSupplierEmail = new System.Windows.Forms.TextBox();
             this.label11 = new System.Windows.Forms.Label();
@@ -42,23 +44,44 @@ namespace BasicGroceryStore
             this.btnCancel = new System.Windows.Forms.Button();
             this.btnSave = new System.Windows.Forms.Button();
             this.txtPhone = new System.Windows.Forms.MaskedTextBox();
-            this.btnMinimize = new System.Windows.Forms.Button();
-            this.btnClose = new System.Windows.Forms.Button();
+            this.lblTabShow = new System.Windows.Forms.Label();
             this.pnlMove.SuspendLayout();
             this.SuspendLayout();
             // 
             // pnlMove
             // 
             this.pnlMove.BackColor = System.Drawing.Color.OrangeRed;
+            this.pnlMove.Controls.Add(this.lblTabShow);
             this.pnlMove.Controls.Add(this.btnMinimize);
             this.pnlMove.Controls.Add(this.btnClose);
             this.pnlMove.Location = new System.Drawing.Point(0, 0);
             this.pnlMove.Name = "pnlMove";
             this.pnlMove.Size = new System.Drawing.Size(674, 40);
             this.pnlMove.TabIndex = 4;
+            this.pnlMove.Tag = "";
             this.pnlMove.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pnlMove_MouseDown);
             this.pnlMove.MouseMove += new System.Windows.Forms.MouseEventHandler(this.pnlMove_MouseMove);
-            this.pnlMove.MouseUp += new System.Windows.Forms.MouseEventHandler(this.pnlMove_MouseMove);
+            this.pnlMove.MouseUp += new System.Windows.Forms.MouseEventHandler(this.pnlMove_MouseUp);
+            // 
+            // btnMinimize
+            // 
+            this.btnMinimize.Image = global::BasicGroceryStore.Properties.Resources.subtract_26px;
+            this.btnMinimize.Location = new System.Drawing.Point(538, 0);
+            this.btnMinimize.Name = "btnMinimize";
+            this.btnMinimize.Size = new System.Drawing.Size(63, 40);
+            this.btnMinimize.TabIndex = 3;
+            this.btnMinimize.UseVisualStyleBackColor = true;
+            this.btnMinimize.Click += new System.EventHandler(this.btnMinimize_Click);
+            // 
+            // btnClose
+            // 
+            this.btnClose.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.btnClose.Image = global::BasicGroceryStore.Properties.Resources.Close_26px;
+            this.btnClose.Location = new System.Drawing.Point(608, 0);
+            this.btnClose.Name = "btnClose";
+            this.btnClose.Size = new System.Drawing.Size(63, 40);
+            this.btnClose.TabIndex = 2;
+            this.btnClose.UseVisualStyleBackColor = true;
             // 
             // label12
             // 
@@ -166,25 +189,15 @@ namespace BasicGroceryStore
             this.txtPhone.Size = new System.Drawing.Size(314, 31);
             this.txtPhone.TabIndex = 66;
             // 
-            // btnMinimize
+            // lblTabShow
             // 
-            this.btnMinimize.Image = global::BasicGroceryStore.Properties.Resources.subtract_26px;
-            this.btnMinimize.Location = new System.Drawing.Point(538, 0);
-            this.btnMinimize.Name = "btnMinimize";
-            this.btnMinimize.Size = new System.Drawing.Size(63, 40);
-            this.btnMinimize.TabIndex = 3;
-            this.btnMinimize.UseVisualStyleBackColor = true;
-            this.btnMinimize.Click += new System.EventHandler(this.btnMinimize_Click);
-            // 
-            // btnClose
-            // 
-            this.btnClose.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.btnClose.Image = global::BasicGroceryStore.Properties.Resources.Close_26px;
-            this.btnClose.Location = new System.Drawing.Point(608, 0);
-            this.btnClose.Name = "btnClose";
-            this.btnClose.Size = new System.Drawing.Size(63, 40);
-            this.btnClose.TabIndex = 2;
-            this.btnClose.UseVisualStyleBackColor = true;
+            this.lblTabShow.AutoSize = true;
+            this.lblTabShow.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.lblTabShow.Location = new System.Drawing.Point(13, 7);
+            this.lblTabShow.Name = "lblTabShow";
+            this.lblTabShow.Size = new System.Drawing.Size(264, 26);
+            this.lblTabShow.TabIndex = 4;
+            this.lblTabShow.Text = "Thông tin nhà cung cấp";
             // 
             // FormSupplier
             // 
@@ -211,6 +224,7 @@ namespace BasicGroceryStore
             this.Name = "FormSupplier";
             this.Text = "FormSupplier";
             this.pnlMove.ResumeLayout(false);
+            this.pnlMove.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -233,5 +247,6 @@ namespace BasicGroceryStore
         private System.Windows.Forms.Button btnCancel;
         private System.Windows.Forms.Button btnSave;
         private System.Windows.Forms.MaskedTextBox txtPhone;
+        private System.Windows.Forms.Label lblTabShow;
     }
 }

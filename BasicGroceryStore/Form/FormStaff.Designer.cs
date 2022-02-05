@@ -64,6 +64,7 @@ namespace BasicGroceryStore
             this.label10 = new System.Windows.Forms.Label();
             this.txtContractID = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
+            this.lblTabShow = new System.Windows.Forms.Label();
             this.pnlMove.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picRepresent)).BeginInit();
             this.gbContract.SuspendLayout();
@@ -72,6 +73,7 @@ namespace BasicGroceryStore
             // pnlMove
             // 
             this.pnlMove.BackColor = System.Drawing.Color.OrangeRed;
+            this.pnlMove.Controls.Add(this.lblTabShow);
             this.pnlMove.Controls.Add(this.btnMinimize);
             this.pnlMove.Controls.Add(this.btnClose);
             this.pnlMove.Location = new System.Drawing.Point(0, 0);
@@ -403,6 +405,17 @@ namespace BasicGroceryStore
             this.label9.TabIndex = 51;
             this.label9.Text = "Mã hợp đồng";
             // 
+            // lblTabShow
+            // 
+            this.lblTabShow.AutoSize = true;
+            this.lblTabShow.Font = new System.Drawing.Font("Montserrat Medium", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTabShow.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.lblTabShow.Location = new System.Drawing.Point(12, 7);
+            this.lblTabShow.Name = "lblTabShow";
+            this.lblTabShow.Size = new System.Drawing.Size(225, 26);
+            this.lblTabShow.TabIndex = 4;
+            this.lblTabShow.Text = "Thông tin nhân viên";
+            // 
             // FormStaff
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 26F);
@@ -435,6 +448,7 @@ namespace BasicGroceryStore
             this.Name = "FormStaff";
             this.Text = "FormStaff";
             this.pnlMove.ResumeLayout(false);
+            this.pnlMove.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picRepresent)).EndInit();
             this.gbContract.ResumeLayout(false);
             this.gbContract.PerformLayout();
@@ -480,5 +494,6 @@ namespace BasicGroceryStore
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.ComboBox cbSpells;
         private System.Windows.Forms.ComboBox cbTypeWork;
+        private System.Windows.Forms.Label lblTabShow;
     }
 }

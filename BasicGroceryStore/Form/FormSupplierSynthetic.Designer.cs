@@ -48,6 +48,7 @@ namespace BasicGroceryStore
             this.btnReload = new System.Windows.Forms.Button();
             this.btnClear = new System.Windows.Forms.Button();
             this.btnAddNew = new System.Windows.Forms.Button();
+            this.lblTabShow = new System.Windows.Forms.Label();
             this.pnlMove.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvProductOfSupplier)).BeginInit();
             this.SuspendLayout();
@@ -55,6 +56,7 @@ namespace BasicGroceryStore
             // pnlMove
             // 
             this.pnlMove.BackColor = System.Drawing.Color.OrangeRed;
+            this.pnlMove.Controls.Add(this.lblTabShow);
             this.pnlMove.Controls.Add(this.btnMinimize);
             this.pnlMove.Controls.Add(this.btnClose);
             this.pnlMove.Location = new System.Drawing.Point(0, 0);
@@ -238,6 +240,17 @@ namespace BasicGroceryStore
             this.btnAddNew.Text = "Thêm nhà cung cấp";
             this.btnAddNew.UseVisualStyleBackColor = true;
             // 
+            // lblTabShow
+            // 
+            this.lblTabShow.AutoSize = true;
+            this.lblTabShow.Font = new System.Drawing.Font("Montserrat Medium", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTabShow.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.lblTabShow.Location = new System.Drawing.Point(12, 6);
+            this.lblTabShow.Name = "lblTabShow";
+            this.lblTabShow.Size = new System.Drawing.Size(261, 26);
+            this.lblTabShow.TabIndex = 4;
+            this.lblTabShow.Text = "Tổng hợp nhà cung cấp";
+            // 
             // FormSupplierSynthetic
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 22F);
@@ -263,10 +276,11 @@ namespace BasicGroceryStore
             this.Controls.Add(this.txtSupplierName);
             this.Font = new System.Drawing.Font("Montserrat", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.Margin = new System.Windows.Forms.Padding(5);
             this.Name = "FormSupplierSynthetic";
             this.Text = "FormSupplierSynthetic";
             this.pnlMove.ResumeLayout(false);
+            this.pnlMove.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvProductOfSupplier)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -294,5 +308,6 @@ namespace BasicGroceryStore
         private System.Windows.Forms.Button btnReload;
         private System.Windows.Forms.Button btnClear;
         private System.Windows.Forms.Button btnAddNew;
+        private System.Windows.Forms.Label lblTabShow;
     }
 }
