@@ -50,6 +50,7 @@
   <ItemGroup>
     <Compile Include="AdditionalFunctions.cs" />
     <Compile Include="BusinessLogicLayer\BLL.cs" />
+    <Compile Include="DataAccessLayer\Config.cs" />
     <Compile Include="DataAccessLayer\DAL.cs" />
     <Compile Include="DTO\Bills.cs" />
     <Compile Include="DTO\BillsDetail.cs" />
