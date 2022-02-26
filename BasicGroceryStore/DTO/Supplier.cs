@@ -1,6 +1,6 @@
 ﻿namespace BasicGroceryStore
 {
-    class Supplier
+    public class Supplier
     {
         private string iD;
         private string name;

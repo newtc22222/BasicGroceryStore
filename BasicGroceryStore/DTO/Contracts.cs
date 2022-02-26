@@ -2,7 +2,7 @@
 
 namespace BasicGroceryStore
 {
-    class Contracts
+    public class Contracts
     {
         private string iD;
         private string staffID;

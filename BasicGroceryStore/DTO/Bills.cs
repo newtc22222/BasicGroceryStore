@@ -2,7 +2,7 @@
 
 namespace BasicGroceryStore
 {
-    abstract class Bills
+    public abstract class Bills
     {
         private string iD;
         private DateTime dateCreate;

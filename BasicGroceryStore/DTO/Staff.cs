@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace BasicGroceryStore
 {
-    class Staff
+    public class Staff
     {
         private string iD;
         private string name;

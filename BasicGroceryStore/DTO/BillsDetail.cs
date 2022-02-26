@@ -1,6 +1,6 @@
 ﻿namespace BasicGroceryStore
 {
-    abstract class BillsDetail
+    public abstract class BillsDetail
     {
         private int iD;
         private string billID;

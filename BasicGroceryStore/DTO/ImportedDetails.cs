@@ -1,6 +1,6 @@
 ﻿namespace BasicGroceryStore
 {
-    class ImportedDetails : BillsDetail
+    public class ImportedDetails : BillsDetail
     {
     }
 }
