@@ -28,4 +28,12 @@ namespace BasicGroceryStore
         Expiration_Soon,
         Expired
     }
+
+    public enum SettingAccount
+    {
+        Login,
+        Logout,
+        Information,
+        Support
+    }
 }

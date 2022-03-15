@@ -95,5 +95,51 @@ namespace BasicGroceryStore
         {
             new FormStaff().ShowDialog();
         }
+
+        private void btnReload_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnClear_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnFind_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnShowPassword_Click(object sender, EventArgs e)
+        {
+            btnShowPassword.Text = (btnShowPassword.Text == "Hiện mật khẩu") ? "Ẩn mật khẩu" : "Hiện mật khẩu";
+            txtPassword.PasswordChar = (txtPassword.PasswordChar == '*') ? '\0' : '*';
+        }
+
+        private void btnChangePassword_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnEdit_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnEditStaffInfor_Click(object sender, EventArgs e)
+        {
+            new FormStaff(new Staff()).ShowDialog();
+        }
+
+        private void btnMakeContract_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnDelete_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

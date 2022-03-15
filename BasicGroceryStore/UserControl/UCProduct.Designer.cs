@@ -60,7 +60,6 @@ namespace BasicGroceryStore
             this.label3 = new System.Windows.Forms.Label();
             this.txtName = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.picRepresent = new System.Windows.Forms.PictureBox();
             this.gbFilter = new System.Windows.Forms.GroupBox();
             this.dgvProduct = new System.Windows.Forms.DataGridView();
             this.btnAddNew = new System.Windows.Forms.Button();
@@ -78,16 +77,17 @@ namespace BasicGroceryStore
             this.chbSupplier = new System.Windows.Forms.CheckBox();
             this.chbPrice = new System.Windows.Forms.CheckBox();
             this.chbName = new System.Windows.Forms.CheckBox();
+            this.picRepresent = new System.Windows.Forms.PictureBox();
             this.pnlMain.SuspendLayout();
             this.gbDetail.SuspendLayout();
             this.gbSupplier.SuspendLayout();
             this.gbProductOfSupplier.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvProductOfSupplier)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.picRepresent)).BeginInit();
             this.gbFilter.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvProduct)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numUDTo)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numUDFrom)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picRepresent)).BeginInit();
             this.SuspendLayout();
             // 
             // pnlMain
@@ -136,6 +136,7 @@ namespace BasicGroceryStore
             this.btnLoadSupplier.TabIndex = 38;
             this.btnLoadSupplier.Text = "Tải thông tin nhà cung cấp";
             this.btnLoadSupplier.UseVisualStyleBackColor = true;
+            this.btnLoadSupplier.Click += new System.EventHandler(this.btnLoadSupplier_Click);
             // 
             // btnEditProduct
             // 
@@ -403,16 +404,6 @@ namespace BasicGroceryStore
             this.label2.TabIndex = 25;
             this.label2.Text = "Tên sản phẩm";
             // 
-            // picRepresent
-            // 
-            this.picRepresent.BackColor = System.Drawing.Color.Linen;
-            this.picRepresent.Location = new System.Drawing.Point(6, 43);
-            this.picRepresent.Name = "picRepresent";
-            this.picRepresent.Size = new System.Drawing.Size(180, 180);
-            this.picRepresent.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.picRepresent.TabIndex = 1;
-            this.picRepresent.TabStop = false;
-            // 
             // gbFilter
             // 
             this.gbFilter.BackColor = System.Drawing.Color.SpringGreen;
@@ -465,6 +456,7 @@ namespace BasicGroceryStore
             this.btnReload.TabIndex = 29;
             this.btnReload.Text = "Tải lại";
             this.btnReload.UseVisualStyleBackColor = true;
+            this.btnReload.Click += new System.EventHandler(this.btnReload_Click);
             // 
             // btnDelete
             // 
@@ -474,6 +466,7 @@ namespace BasicGroceryStore
             this.btnDelete.TabIndex = 28;
             this.btnDelete.Text = "Xóa thông tin";
             this.btnDelete.UseVisualStyleBackColor = true;
+            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
             // 
             // btnFind
             // 
@@ -483,6 +476,7 @@ namespace BasicGroceryStore
             this.btnFind.TabIndex = 27;
             this.btnFind.Text = "Tìm";
             this.btnFind.UseVisualStyleBackColor = true;
+            this.btnFind.Click += new System.EventHandler(this.btnFind_Click);
             // 
             // btnClear
             // 
@@ -492,6 +486,7 @@ namespace BasicGroceryStore
             this.btnClear.TabIndex = 26;
             this.btnClear.Text = "Làm trống";
             this.btnClear.UseVisualStyleBackColor = true;
+            this.btnClear.Click += new System.EventHandler(this.btnClear_Click);
             // 
             // label1
             // 
@@ -617,6 +612,16 @@ namespace BasicGroceryStore
             this.chbName.Text = "Tên sản phẩm";
             this.chbName.UseVisualStyleBackColor = true;
             // 
+            // picRepresent
+            // 
+            this.picRepresent.BackColor = System.Drawing.Color.Linen;
+            this.picRepresent.Location = new System.Drawing.Point(6, 43);
+            this.picRepresent.Name = "picRepresent";
+            this.picRepresent.Size = new System.Drawing.Size(180, 180);
+            this.picRepresent.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.picRepresent.TabIndex = 1;
+            this.picRepresent.TabStop = false;
+            // 
             // UCProduct
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 26F);
@@ -633,12 +638,12 @@ namespace BasicGroceryStore
             this.gbSupplier.PerformLayout();
             this.gbProductOfSupplier.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvProductOfSupplier)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.picRepresent)).EndInit();
             this.gbFilter.ResumeLayout(false);
             this.gbFilter.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvProduct)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numUDTo)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numUDFrom)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picRepresent)).EndInit();
             this.ResumeLayout(false);
 
         }

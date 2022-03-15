@@ -31,6 +31,7 @@ namespace BasicGroceryStore
 
         private void AddTabToControl()
         {
+            cbSetting.DataSource = Enum.GetValues(typeof(SettingAccount));
             pnlMain.Controls.Add(UCHomePage.Instance);
             pnlMain.Controls.Add(UCImported.Instance);
             pnlMain.Controls.Add(UCOrdered.Instance);
@@ -38,6 +39,7 @@ namespace BasicGroceryStore
             pnlMain.Controls.Add(UCStatistic.Instance);
             pnlMain.Controls.Add(UCStaff.Instance);
             //pnlMain.Controls.Add(UCBrowser.Instance);
+            pnlMain.Controls.Add(UCCalendar.Instance);
             ShowTabUsing(btnHomePage.Text);
         }
 
@@ -97,6 +99,12 @@ namespace BasicGroceryStore
             //ShowTabUsing(btnBrowser.Text);
             //UCBrowser.Instance.BringToFront();
         }
+
+        private void btnCalendar_Click(object sender, EventArgs e)
+        {
+            ShowTabUsing(btnCalendar.Text);
+            UCCalendar.Instance.BringToFront();
+        }
         #endregion
 
         private void MainForm_FormClosed(object sender, FormClosedEventArgs e)
@@ -133,5 +141,13 @@ namespace BasicGroceryStore
             mouseIsDown = false;
         }
         #endregion
+
+        private void cbSetting_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if(cbSetting.SelectedItem.ToString() == SettingAccount.Login.ToString())
+            {
+                new FormLogin().ShowDialog();
+            }
+        }
     }
 }

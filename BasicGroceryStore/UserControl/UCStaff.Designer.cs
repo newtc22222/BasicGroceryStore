@@ -34,7 +34,7 @@ namespace BasicGroceryStore
             this.cbDateContract = new System.Windows.Forms.ComboBox();
             this.pnlMain = new System.Windows.Forms.Panel();
             this.gbDetail = new System.Windows.Forms.GroupBox();
-            this.btnEdit = new System.Windows.Forms.Button();
+            this.btnEditStaffInfor = new System.Windows.Forms.Button();
             this.btnMakeContract = new System.Windows.Forms.Button();
             this.gbContractsAndAccount = new System.Windows.Forms.GroupBox();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
@@ -117,7 +117,7 @@ namespace BasicGroceryStore
             // gbDetail
             // 
             this.gbDetail.BackColor = System.Drawing.Color.LightSalmon;
-            this.gbDetail.Controls.Add(this.btnEdit);
+            this.gbDetail.Controls.Add(this.btnEditStaffInfor);
             this.gbDetail.Controls.Add(this.btnMakeContract);
             this.gbDetail.Controls.Add(this.gbContractsAndAccount);
             this.gbDetail.Controls.Add(this.dtPickDoB);
@@ -142,14 +142,15 @@ namespace BasicGroceryStore
             this.gbDetail.TabStop = false;
             this.gbDetail.Text = "Thông tin nhân viên và hợp đồng";
             // 
-            // btnEdit
+            // btnEditStaffInfor
             // 
-            this.btnEdit.Location = new System.Drawing.Point(142, 812);
-            this.btnEdit.Name = "btnEdit";
-            this.btnEdit.Size = new System.Drawing.Size(285, 36);
-            this.btnEdit.TabIndex = 31;
-            this.btnEdit.Text = "Sửa thông tin nhân viên";
-            this.btnEdit.UseVisualStyleBackColor = true;
+            this.btnEditStaffInfor.Location = new System.Drawing.Point(142, 812);
+            this.btnEditStaffInfor.Name = "btnEditStaffInfor";
+            this.btnEditStaffInfor.Size = new System.Drawing.Size(285, 36);
+            this.btnEditStaffInfor.TabIndex = 31;
+            this.btnEditStaffInfor.Text = "Sửa thông tin nhân viên";
+            this.btnEditStaffInfor.UseVisualStyleBackColor = true;
+            this.btnEditStaffInfor.Click += new System.EventHandler(this.btnEditStaffInfor_Click);
             // 
             // btnMakeContract
             // 
@@ -159,6 +160,7 @@ namespace BasicGroceryStore
             this.btnMakeContract.TabIndex = 24;
             this.btnMakeContract.Text = "Tạo hợp đồng";
             this.btnMakeContract.UseVisualStyleBackColor = true;
+            this.btnMakeContract.Click += new System.EventHandler(this.btnMakeContract_Click);
             // 
             // gbContractsAndAccount
             // 
@@ -202,8 +204,9 @@ namespace BasicGroceryStore
             this.btnShowPassword.Name = "btnShowPassword";
             this.btnShowPassword.Size = new System.Drawing.Size(164, 33);
             this.btnShowPassword.TabIndex = 35;
-            this.btnShowPassword.Text = "HIện mật khẩu";
+            this.btnShowPassword.Text = "Hiện mật khẩu";
             this.btnShowPassword.UseVisualStyleBackColor = true;
+            this.btnShowPassword.Click += new System.EventHandler(this.btnShowPassword_Click);
             // 
             // btnChangePassword
             // 
@@ -213,6 +216,7 @@ namespace BasicGroceryStore
             this.btnChangePassword.TabIndex = 32;
             this.btnChangePassword.Text = "Đổi mật khẩu";
             this.btnChangePassword.UseVisualStyleBackColor = true;
+            this.btnChangePassword.Click += new System.EventHandler(this.btnChangePassword_Click);
             // 
             // label10
             // 
@@ -236,6 +240,7 @@ namespace BasicGroceryStore
             // 
             this.txtPassword.Location = new System.Drawing.Point(179, 86);
             this.txtPassword.Name = "txtPassword";
+            this.txtPassword.PasswordChar = '*';
             this.txtPassword.ReadOnly = true;
             this.txtPassword.Size = new System.Drawing.Size(444, 31);
             this.txtPassword.TabIndex = 33;
@@ -448,6 +453,7 @@ namespace BasicGroceryStore
             this.btnReload.TabIndex = 20;
             this.btnReload.Text = "Tải lại";
             this.btnReload.UseVisualStyleBackColor = true;
+            this.btnReload.Click += new System.EventHandler(this.btnReload_Click);
             // 
             // btnDelete
             // 
@@ -457,6 +463,7 @@ namespace BasicGroceryStore
             this.btnDelete.TabIndex = 19;
             this.btnDelete.Text = "Xóa thông tin";
             this.btnDelete.UseVisualStyleBackColor = true;
+            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
             // 
             // btnFind
             // 
@@ -466,6 +473,7 @@ namespace BasicGroceryStore
             this.btnFind.TabIndex = 18;
             this.btnFind.Text = "Tìm";
             this.btnFind.UseVisualStyleBackColor = true;
+            this.btnFind.Click += new System.EventHandler(this.btnFind_Click);
             // 
             // btnClear
             // 
@@ -475,6 +483,7 @@ namespace BasicGroceryStore
             this.btnClear.TabIndex = 17;
             this.btnClear.Text = "Làm trống";
             this.btnClear.UseVisualStyleBackColor = true;
+            this.btnClear.Click += new System.EventHandler(this.btnClear_Click);
             // 
             // label1
             // 
@@ -733,7 +742,7 @@ namespace BasicGroceryStore
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Button btnEdit;
+        private System.Windows.Forms.Button btnEditStaffInfor;
         private System.Windows.Forms.Button btnMakeContract;
         private System.Windows.Forms.GroupBox gbContractsAndAccount;
         private System.Windows.Forms.DataGridView dataGridView1;

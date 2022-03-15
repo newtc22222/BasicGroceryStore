@@ -223,6 +223,16 @@ namespace BasicGroceryStore.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap icons8_Tear_Off_Calendar_32 {
+            get {
+                object obj = ResourceManager.GetObject("icons8_Tear-Off_Calendar_32", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap icons8_YouTube_32 {
             get {
                 object obj = ResourceManager.GetObject("icons8_YouTube_32", resourceCulture);

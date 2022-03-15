@@ -97,10 +97,22 @@
     <Compile Include="Interface\IStaff.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Form\FormLogin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\FormLogin.Designer.cs">
+      <DependentUpon>FormLogin.cs</DependentUpon>
+    </Compile>
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="UCCalendar.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UCCalendar.Designer.cs">
+      <DependentUpon>UCCalendar.cs</DependentUpon>
     </Compile>
     <Compile Include="UserControl\UCBrowser.cs">
       <SubType>UserControl</SubType>
@@ -144,6 +156,9 @@
     <Compile Include="UserControl\UCStatistic.Designer.cs">
       <DependentUpon>UCStatistic.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Form\FormLogin.resx">
+      <DependentUpon>FormLogin.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Form\FormProduct.resx">
       <DependentUpon>FormProduct.cs</DependentUpon>
     </EmbeddedResource>
@@ -163,6 +178,9 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <SubType>Designer</SubType>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UCCalendar.resx">
+      <DependentUpon>UCCalendar.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserControl\UCBrowser.resx">
       <DependentUpon>UCBrowser.cs</DependentUpon>
@@ -240,7 +258,9 @@
   <ItemGroup>
     <None Include="Resources\icons8_call_32.png" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <None Include="Resources\icons8_Tear-Off_Calendar_32.png" />
+  </ItemGroup>
   <ItemGroup>
     <None Include="Resources\home_50px.png" />
   </ItemGroup>

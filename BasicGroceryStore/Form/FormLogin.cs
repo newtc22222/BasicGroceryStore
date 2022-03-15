@@ -10,31 +10,21 @@ using System.Windows.Forms;
 
 namespace BasicGroceryStore
 {
-    public partial class FormStaff : Form
+    public partial class FormLogin : Form
     {
         #region Properties
         private Point firstPoint;
         private bool mouseIsDown = false;
-        private Staff staff = null;
         #endregion
-        
-        public FormStaff()
+
+        public FormLogin()
         {
             InitializeComponent();
-            LoadContentCombobox();
         }
 
-        public FormStaff(Staff staff)
+        private void btnMinimize_Click(object sender, EventArgs e)
         {
-            InitializeComponent();
-            LoadContentCombobox();
-            this.staff = staff;
-        }
-
-        private void LoadContentCombobox()
-        {
-            cbTypeWork.DataSource = Enum.GetValues(typeof(TypeWork));
-            cbSpells.DataSource = Enum.GetValues(typeof(Spells));
+            this.WindowState = FormWindowState.Minimized;
         }
 
         #region MoveForm
@@ -61,18 +51,5 @@ namespace BasicGroceryStore
             mouseIsDown = false;
         }
         #endregion
-
-        private void btnMinimize_Click(object sender, EventArgs e)
-        {
-            this.WindowState = FormWindowState.Minimized;
-        }
-
-        private void btnChooseImage_Click(object sender, EventArgs e)
-        {
-            if (openFileDialog.ShowDialog() == DialogResult.OK)
-            {
-                picRepresent.Image = Image.FromFile(openFileDialog.FileName);
-            }
-        }
     }
 }
