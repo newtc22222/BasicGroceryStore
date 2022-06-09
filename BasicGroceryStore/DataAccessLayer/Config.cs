@@ -1,20 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace BasicGroceryStore
+﻿namespace BasicGroceryStore
 {
     internal class Config
     {
-        private static string databaseName = "PhiVo-Z1704";
+        private static string databaseName = @"PHIVO_Z1704\PHIVO";
         private static string userName = "";
         private static string passWord = "";
 
         public static string getSQLConnectionString()
         {
             return $"Data Source={databaseName};Initial Catalog=GroceryStore;Integrated Security=True";
+            //return @"Data Source=PHIVO_Z1704\PHIVO;Initial Catalog=GroceryStore;Integrated Security=True";
         }
 
         public static string getSQLConnectionStringWithUser()

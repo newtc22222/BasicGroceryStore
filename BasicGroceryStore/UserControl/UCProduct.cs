@@ -27,6 +27,13 @@ namespace BasicGroceryStore
         public UCProduct()
         {
             InitializeComponent();
+            LoadData();
+        }
+
+        public void LoadData()
+        {
+            dgvProduct.Controls.Clear();
+            dgvProduct.DataSource = BLL.Instance.getAllProduct();
         }
 
         private void btnEditProduct_Click(object sender, EventArgs e)

@@ -48,10 +48,19 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AdditionalFunctions.cs" />
-    <Compile Include="BusinessLogicLayer\BLL.cs" />
+    <Compile Include="DTO\Account.cs" />
+    <Compile Include="DataAccessLayer\DAO_Account.cs" />
+    <Compile Include="DataAccessLayer\DAO_Bill.cs" />
+    <Compile Include="DataAccessLayer\DAO_BillDetails.cs" />
+    <Compile Include="DataAccessLayer\DAO_Contract.cs" />
+    <Compile Include="DataAccessLayer\DAO_CustomerMember.cs" />
+    <Compile Include="DataAccessLayer\DAO_Supplier.cs" />
+    <Compile Include="DataAccessLayer\DAO_Product.cs" />
+    <Compile Include="DataAccessLayer\DAO_Staff.cs" />
+    <Compile Include="ExtraEnumAndFunction\AdditionalFunctions.cs" />
+    <Compile Include="BUS\BLL.cs" />
     <Compile Include="DataAccessLayer\Config.cs" />
-    <Compile Include="DataAccessLayer\DAL.cs" />
+    <Compile Include="DataAccessLayer\DAO.cs" />
     <Compile Include="DTO\Bills.cs" />
     <Compile Include="DTO\BillsDetail.cs" />
     <Compile Include="DTO\Contracts.cs" />
@@ -93,8 +102,6 @@
     <Compile Include="Form\MainForm.Designer.cs">
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Interface\IProduct.cs" />
-    <Compile Include="Interface\IStaff.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Form\FormLogin.cs">
@@ -108,10 +115,10 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <Compile Include="UCCalendar.cs">
+    <Compile Include="UserControl\UCCalendar.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="UCCalendar.Designer.cs">
+    <Compile Include="UserControl\UCCalendar.Designer.cs">
       <DependentUpon>UCCalendar.cs</DependentUpon>
     </Compile>
     <Compile Include="UserControl\UCBrowser.cs">
@@ -179,7 +186,7 @@
       <SubType>Designer</SubType>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="UCCalendar.resx">
+    <EmbeddedResource Include="UserControl\UCCalendar.resx">
       <DependentUpon>UCCalendar.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserControl\UCBrowser.resx">
@@ -281,6 +288,10 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\icons8_mint_browser_32.png" />
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <Content Include="ExtraData\StoreInformation.xml" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

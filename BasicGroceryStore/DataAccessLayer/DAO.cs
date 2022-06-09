@@ -1,38 +1,40 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data;
+﻿using System.Data;
 using System.Data.SqlClient;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+
 
 namespace BasicGroceryStore
 {
-    public class DAL
+    public class DAO
     {
         private string connectionString = Config.getSQLConnectionString();
         private static SqlConnection connection;
         private static SqlCommand cmd;
 
-        public DAL()
+        private static DAO instance;
+        public static DAO Instance
         {
-            try
+            get
             {
-                connection = new SqlConnection(connectionString);
-                if (connection.State == ConnectionState.Open)
+                if(instance == null)
                 {
-                    connection.Close();
+                    instance = new DAO();  
                 }
-                connection.Open();
-                cmd = connection.CreateCommand();
-            }
-            catch (SqlException)
-            {
-
+                return instance;
             }
         }
 
-        public static void ExcuteNonQuery(string sqlExpess, CommandType type, params SqlParameter[] param)
+        public DAO()
+        {
+            connection = new SqlConnection(connectionString);
+            if (connection.State == ConnectionState.Open)
+            {
+                connection.Close();
+            }
+            connection.Open();
+            cmd = connection.CreateCommand();
+        }
+
+        public int ExcuteNonQuery(string sqlExpess, CommandType type, params SqlParameter[] param)
         {
             cmd.CommandType = type;
             cmd.CommandText = sqlExpess;
@@ -41,13 +43,13 @@ namespace BasicGroceryStore
             {
                 cmd.Parameters.Add(a);
             }
-            cmd.ExecuteNonQuery();
+            return cmd.ExecuteNonQuery();
         }
 
-        public static DataTable ExecuteQuery(string strSql, CommandType ct, params SqlParameter[] param)
+        public DataTable ExecuteQuery(string sqlExpess, CommandType type, params SqlParameter[] param)
         {
-            cmd.CommandText = strSql;
-            cmd.CommandType = ct;
+            cmd.CommandType = type;
+            cmd.CommandText = sqlExpess;
             cmd.Parameters.Clear();
             if (param != null)
             {
@@ -60,18 +62,23 @@ namespace BasicGroceryStore
             return dt;
         }
 
-        public static object ExecuteScalar(string sql, CommandType type)
+        public object ExecuteScalar(string sql, CommandType type, params SqlParameter[] param)
         {
             object result;
             cmd.CommandType = type;
             cmd.CommandText = sql;
+            if (param != null)
+            {
+                foreach (SqlParameter p in param)
+                    cmd.Parameters.Add(p);
+            }
             try
             {
                 result = cmd.ExecuteScalar();
             }
-            catch (SqlException e)
+            catch (SqlException)
             {
-                throw e;
+                return null;
             }
             return result;
         }
