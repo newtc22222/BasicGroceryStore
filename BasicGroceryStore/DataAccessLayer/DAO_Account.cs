@@ -7,7 +7,7 @@ namespace BasicGroceryStore
     {
         public static bool createAccount(Account acc)
         {
-            return (DAO.Instance.ExcuteNonQuery("sp_InsertAccount", CommandType.StoredProcedure, 
+            return (DAO.Instance.ExecuteNonQuery("sp_InsertAccount", CommandType.StoredProcedure, 
                 new SqlParameter("@StaffID", acc.Staff_id),
                 new SqlParameter("@Username", acc.Username),
                 new SqlParameter("@Password", acc.Password)) > 0) ? true : false;
@@ -15,7 +15,7 @@ namespace BasicGroceryStore
 
         public static bool updateAccount(Account acc)
         {
-            return (DAO.Instance.ExcuteNonQuery("sp_UpdateAccount", CommandType.StoredProcedure,
+            return (DAO.Instance.ExecuteNonQuery("sp_UpdateAccount", CommandType.StoredProcedure,
                 new SqlParameter("@StaffID", acc.Staff_id),
                 new SqlParameter("@Username", acc.Username),
                 new SqlParameter("@Password", acc.Password)) > 0) ? true : false;
@@ -23,13 +23,20 @@ namespace BasicGroceryStore
 
         public static bool deleteAccount(Account acc)
         {
-            return (DAO.Instance.ExcuteNonQuery("sp_DeleteAccount", CommandType.StoredProcedure,
+            return (DAO.Instance.ExecuteNonQuery("sp_DeleteAccount", CommandType.StoredProcedure,
                 new SqlParameter("@StaffID", acc.Staff_id)) > 0) ? true : false;
+        }
+
+        public static void SaveAccount(Account acc, bool isSave)
+        {
+            DAO_Information dao = new DAO_Information("Account.xml");
+            dao.updateSaveAccount(acc, isSave);
         }
 
         public static string checkLogin(string username, string password)
         {
-            return (string)DAO.Instance.ExecuteScalar($"select func_CheckLogin('{username}', '{password}')", CommandType.Text);
+            object staff_id = DAO.Instance.ExecuteScalar($"select dbo.func_CheckLogin('{username}', '{password}')", CommandType.Text);
+            return staff_id.ToString();
         }
     }
 }

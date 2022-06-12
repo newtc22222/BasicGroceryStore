@@ -2,7 +2,7 @@
 
 namespace BasicGroceryStore
 {
-    public abstract class Bills
+    public abstract class Bill
     {
         private string iD;
         private DateTime dateCreate;
@@ -14,7 +14,7 @@ namespace BasicGroceryStore
         public float Value { get => value; set => this.value = value; }
         public string StaffID { get => staffID; set => staffID = value; }
 
-        public Bills()
+        public Bill()
         {
             this.iD = AdditionalFunctions.MakeIDByTime();
             this.dateCreate = DateTime.Now;
@@ -22,9 +22,9 @@ namespace BasicGroceryStore
             this.staffID = "";
         }
 
-        ~Bills() { }
+        ~Bill() { }
 
-        public Bills(string iD, DateTime dateCreate, float value, string staffID)
+        public Bill(string iD, DateTime dateCreate, float value, string staffID)
         {
             this.iD = iD;
             this.dateCreate = dateCreate;

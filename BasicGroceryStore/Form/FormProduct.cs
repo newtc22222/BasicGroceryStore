@@ -1,11 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace BasicGroceryStore
@@ -20,11 +14,45 @@ namespace BasicGroceryStore
         public FormProduct()
         {
             InitializeComponent();
+            LoadDataCombobox();
+            LoadProductInformation(new Product());
+        }
+
+        public FormProduct(Product product)
+        {
+            InitializeComponent();
+            LoadDataCombobox();
+            LoadProductInformation(product);
+        }
+
+        private void LoadDataCombobox()
+        {
+            cbTypeProduct.DataSource = BLL.Instance.getAllTypeOfProduct();
+            cbUnit.DataSource = BLL.Instance.getAllUnit();
+            
+            cbSupplier.DataSource = new BindingSource(BLL.Instance.getDictionarySupplier(), null);
+            cbSupplier.DisplayMember = "Value";
+            cbSupplier.ValueMember = "Key";
+        }
+
+        private void LoadProductInformation(Product product)
+        {
+            txtProductID.Text = product.ID;
+            txtName.Text = product.Name;
+            txtPrice.Text = product.Price.ToString();
+            txtNote.Text = product.Note;
+            txtQuantity.Text = product.Quantity.ToString();
+
+            cbTypeProduct.Text = product.TypeProduct;
+            cbUnit.Text = product.Unit;
+            cbSupplier.SelectedValue = product.SupplierID;
+
+            picRepresent.Image = product.Image;
         }
 
         private void btnMinimize_Click(object sender, EventArgs e)
         {
-            this.WindowState = FormWindowState.Minimized;
+            WindowState = FormWindowState.Minimized;
         }
 
         private void btnChooseImage_Click(object sender, EventArgs e)
@@ -54,9 +82,9 @@ namespace BasicGroceryStore
                 int yDiff = firstPoint.Y - e.Location.Y;
 
                 // Set the new point
-                int x = this.Location.X - xDiff;
-                int y = this.Location.Y - yDiff;
-                this.Location = new Point(x, y);
+                int x = Location.X - xDiff;
+                int y = Location.Y - yDiff;
+                Location = new Point(x, y);
             }
         }
         private void pnlMove_MouseUp(object sender, MouseEventArgs e)

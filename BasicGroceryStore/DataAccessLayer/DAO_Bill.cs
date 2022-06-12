@@ -1,9 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Data.SqlClient;
+
 
 namespace BasicGroceryStore
 {
@@ -11,43 +9,79 @@ namespace BasicGroceryStore
     {
         // Imported or Ordered
 
-        public static bool createBill(Bills bill, string typeBill, string customerName)
+        public static bool createBill(Bill bill, string typeBill, string customerName)
         {
-            if (customerName == null)
-                return true;
-            return false;
+            SqlParameter[] param = new SqlParameter[] {
+                    new SqlParameter("@ID", bill.ID),
+                    new SqlParameter("@DateCreate", bill.DateCreate),
+                    new SqlParameter("@Value", bill.Value),
+                    new SqlParameter("@StaffID", bill.StaffID) };
+
+            if (customerName != "") // for Ordered
+            {
+                param[param.Length] = new SqlParameter("@CustomerName", customerName);
+            }
+
+            return (DAO.Instance.ExecuteNonQuery($"exec sp_Insert{typeBill}", CommandType.StoredProcedure, param) > 0) ? true : false;
         }
 
-        public static bool updateBill(Bills bill, string typeBill, string customerName)
+        public static bool updateBill(Bill bill, string typeBill, string customerName)
         {
-            if (customerName == null)
-                return true;
-            return false;
+            SqlParameter[] param = new SqlParameter[] {
+                    new SqlParameter("@ID", bill.ID),
+                    new SqlParameter("@DateCreate", bill.DateCreate),
+                    new SqlParameter("@Value", bill.Value),
+                    new SqlParameter("@StaffID", bill.StaffID) };
+
+            if (customerName != "") // for Ordered
+            {
+                param[param.Length] = new SqlParameter("@CustomerName", customerName);
+            }
+
+            return (DAO.Instance.ExecuteNonQuery($"exec sp_Update{typeBill}", CommandType.StoredProcedure, param) > 0) ? true : false;
         }
 
         public static bool deleteBill(string typeBill, string id)
         {
-            return false;
+            return (DAO.Instance.ExecuteNonQuery($"exec sp_Delete{typeBill}", CommandType.StoredProcedure, 
+                new SqlParameter("@ID", id)) > 0) ? true : false;
         }
 
-        public DataTable getAllBill(string typeBill)
+        public static DataTable getAllBill(string typeBill)
         {
             return DAO.Instance.ExecuteQuery($"select * from {typeBill}", CommandType.Text, null);
         }
 
         public static int getQuantityOfBill(string typeBill)
         {
+            return (int)DAO.Instance.ExecuteScalar($"select func_NumberOf{typeBill}()", CommandType.Text);
+        }
+
+        public static float getTotalValueOfBill_Single(string typeBill, string id)
+        {
+            return (float)DAO.Instance.ExecuteScalar($"select sum(Price * Quantity) from {typeBill} where Id={id}", CommandType.Text);
+        }
+
+        public static float? getTotalValueOfBill_All(string typeBill)
+        {
+            return (float?)DAO.Instance.ExecuteScalar($"select sum(Price * Quantity) from {typeBill}", CommandType.Text);
+        }
+
+        public static float getTotalValueOfBill_Day(string typeBill, DateTime date)
+        {
             return 0;
         }
 
-        public static int getTotalValueOfBill(string typeBill)
+        public static float getTotalValueOfBill_Month(string typeBill)
         {
             return 0;
         }
 
         public DataTable FindBillByDateRange(string typeBill, DateTime from, DateTime to)
         {
-            return null;
+            string dateFrom = AdditionalFunctions.getDateString(from);
+            string dateTo = AdditionalFunctions.getDateString(to);
+            return DAO.Instance.ExecuteQuery($"select * from func_Find{typeBill}ByDateRange('{dateFrom}', {dateTo})", CommandType.Text);
         }
     }
 }

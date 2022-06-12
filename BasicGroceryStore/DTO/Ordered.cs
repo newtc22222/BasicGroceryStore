@@ -2,7 +2,7 @@
 
 namespace BasicGroceryStore
 {
-    public class Ordered : Bills
+    public class Ordered : Bill
     {
         private string customerName;
 

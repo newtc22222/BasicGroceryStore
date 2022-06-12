@@ -1,4 +1,4 @@
-﻿using System;
+﻿using System.Collections.Generic;
 using System.Data;
 
 namespace BasicGroceryStore
@@ -17,9 +17,39 @@ namespace BasicGroceryStore
         }
 
         #region Product
+        public bool createProduct(Product product)
+        {
+            return DAO_Product.createProduct(product);
+        }
+
+        public bool updateProduct(Product product)
+        {
+            return DAO_Product.updateProduct(product);
+        }
+
+        public bool deleteProduct(string id)
+        {
+            return DAO_Product.deleteProduct(id);
+        }
+
         public DataTable getAllProduct()
         {
             return DAO_Product.getAllProduct();
+        }
+
+        public DataTable getAllProductOfSupplier(string supplier_id)
+        {
+            return DAO_Product.getAllProductOfSupplier(supplier_id);
+        }
+
+        public List<string> getAllTypeOfProduct()
+        {
+            return DAO_Product.getAllTypeOfProduct();
+        }
+
+        public List<string> getAllUnit()
+        {
+            return DAO_Product.getAllUnit();
         }
 
         public DataTable FindProductByName(string name)
@@ -49,72 +79,270 @@ namespace BasicGroceryStore
             return DAO_Staff.getAllStaff();
         }
 
-        public void FindStaffByAddress(string address)
+        public Staff getStaff(string id)
         {
-            throw new NotImplementedException();
+            return DAO_Staff.getStaff(id);
         }
 
-        public void FindStaffByAgeRange(int from, int to)
+        public DataTable FindStaffByAddress(string address)
         {
-            throw new NotImplementedException();
+            return DAO_Staff.FindStaffByAddress(address);
         }
 
-        public void FindStaffByContractsStatus(string contractsStatus)
+        public DataTable FindStaffByAgeRange(int from, int to)
         {
-            throw new NotImplementedException();
+            return DAO_Staff.FindStaffByAgeRange(from, to);
         }
 
-        public void FindStaffByGender(string gender)
+        public DataTable FindStaffByContractsStatus(string contractsStatus)
         {
-            throw new NotImplementedException();
+            return DAO_Staff.FindStaffByContract(contractsStatus);
         }
 
-        public void FindStaffByName(string name)
+        public DataTable FindStaffByGender(string gender)
         {
-            throw new NotImplementedException();
+            return DAO_Staff.FindStaffByGender(gender);
         }
 
-        public void FindStaffBySpells(Spells spells)
+        public DataTable FindStaffByName(string name)
         {
-            throw new NotImplementedException();
+            return DAO_Staff.FindStaffByName(name);
         }
 
-        public void FindStaffByTypeWork(TypeWork type)
+        public DataTable FindStaffBySpells(string spells)
         {
-            throw new NotImplementedException();
+            return DAO_Staff.FindStaffBySpells(spells);
+        }
+
+        public DataTable FindStaffByTypeWork(string type)
+        {
+            return DAO_Staff.FindStaffByTypeWork(type);
         }
         #endregion
 
         #region Account
+        public bool updateAccount(Account acc)
+        {
+            return DAO_Account.updateAccount(acc);
+        }
 
+        public bool deleteAccount(Account acc)
+        {
+            return DAO_Account.deleteAccount(acc);
+        }
+
+        public string CheckLogin(string username, string password)
+        {
+            return DAO_Account.checkLogin(username, password);
+        }
+
+        public void SaveAccount(Account acc, bool isSave)
+        {
+            DAO_Account.SaveAccount(acc, isSave);
+        }
         #endregion
 
         #region CustomerMember
+        public DataTable getAllCustomerMember()
+        {
+            return DAO_CustomerMember.getAllCustomerMember();
+        }
+        public bool createCustomerMember(CustomerMember cus)
+        {
+            return DAO_CustomerMember.createCustomerMember(cus);
+        }
 
+        public bool updateCustomerMember(CustomerMember cus)
+        {
+            return DAO_CustomerMember.updateCustomerMember(cus);
+        }
+
+        public bool deleteCustomerMember(string name)
+        {
+            return DAO_CustomerMember.deleteCustomerMember(name);
+        }
         #endregion
 
         #region Imported
-        
+        public DataTable getAllImported()
+        {
+            return DAO_Bill.getAllBill("Imported");
+        }
+
+        public bool createImported(Imported bill)
+        {
+            return DAO_Bill.createBill(bill, "Imported", "");
+        }
+
+        public bool updateImported(Imported bill)
+        {
+            return DAO_Bill.updateBill(bill, "Imported", "");
+        }
+
+        public bool deleteImported(string bill_id)
+        {
+            return DAO_Bill.deleteBill("Imported", bill_id);
+        }
+
+        public int getQuantityOfImported()
+        {
+            return DAO_Bill.getQuantityOfBill("Imported");
+        }
+
+        public float getTotalValueOfImported_Single(string id)
+        {
+            return DAO_Bill.getTotalValueOfBill_Single("Imported", id);
+        }
+
+        public float getTotalValueOfImported_All()
+        {
+            float? value = DAO_Bill.getTotalValueOfBill_All("Imported");
+            if (value == null)
+                return 0;
+            return value.Value;
+        }
         #endregion
 
         #region ImportedDetail
-        
+        public bool createImportedDetail(BillDetail item)
+        {
+            return DAO_BillDetails.createBillDetail(item, "Imported");
+        }
+
+        public bool updateImportedDetail(BillDetail item)
+        {
+            return DAO_BillDetails.updateBillDetail(item, "Imported");
+        }
+
+        public bool deleteImportedDetail(BillDetail item)
+        {
+            return DAO_BillDetails.deleteBillDetail(item, "Imported");
+        }
+
+        public DataTable getImportedDetails(Bill bill)
+        {
+            return DAO_BillDetails.getAllItem_BillDetail("Imported", bill.ID);
+        }
         #endregion
 
         #region Ordered
-        
+        public DataTable getAllOrdered()
+        {
+            return DAO_Bill.getAllBill("Ordered");
+        }
+
+        public bool createOrdered(Ordered bill)
+        {
+            return DAO_Bill.createBill(bill, "Ordered", bill.CustomerName);
+        }
+
+        public bool updateOrdered(Ordered bill)
+        {
+            return DAO_Bill.updateBill(bill, "Ordered", bill.CustomerName);
+        }
+
+        public bool deleteOrdered(string bill_id)
+        {
+            return DAO_Bill.deleteBill("Ordered", bill_id);
+        }
+
+        public int getQuantityOfOrdered()
+        {
+            return DAO_Bill.getQuantityOfBill("Ordered");
+        }
+
+        public float getTotalValueOfOrdered_Single(string id)
+        {
+            return DAO_Bill.getTotalValueOfBill_Single("Ordered", id);
+        }
+
+        public float getTotalValueOfOrdered_All()
+        {
+            float? value = DAO_Bill.getTotalValueOfBill_All("Imported");
+            if (value == null)
+                return 0;
+            return value.Value;
+        }
         #endregion
 
         #region OrderedDetail
-        
+        public bool createOrderedDetail(BillDetail item)
+        {
+            return DAO_BillDetails.createBillDetail(item, "Ordered");
+        }
+
+        public bool updateOrderedDetail(BillDetail item)
+        {
+            return DAO_BillDetails.updateBillDetail(item, "Ordered");
+        }
+
+        public bool deleteOrderedDetail(BillDetail item)
+        {
+            return DAO_BillDetails.deleteBillDetail(item, "Ordered");
+        }
+
+        public DataTable getOrderedDetails(Bill bill)
+        {
+            return DAO_BillDetails.getAllItem_BillDetail("Ordered", bill.ID);
+        }
         #endregion
 
         #region Supplier
-        
+        public bool createSupplier(Supplier sup)
+        {
+            return DAO_Supplier.createSupplier(sup);
+        }
+        public bool updateSupplier(Supplier sup)
+        {
+            return DAO_Supplier.updateSupplier(sup);
+        }
+        public bool deleteSupplier(string sup_id)
+        {
+            return DAO_Supplier.deleteSupplier(sup_id);
+        }
+
+        public Supplier getSupplier(string id)
+        {
+            return DAO_Supplier.getSupplier(id);
+        }
+
+        public DataTable getAllSupplier()
+        {
+            return DAO_Supplier.getAllSupplier();
+        }
+
+        public Dictionary<string, string> getDictionarySupplier()
+        {
+            return DAO_Supplier.getDictionarySupplier();
+        }
+
+        public DataTable FindSupplierByAddress(string address)
+        {
+            return DAO_Supplier.FindSupplierByAddress(address);
+        }
+        public DataTable FindSupplierByName(string name)
+        {
+            return DAO_Supplier.FindSupplierByName(name);
+        }
+        public DataTable FindSupplierByTypeProduct(string type)
+        {
+            return DAO_Supplier.FindSupplierByTypeProduct(type);
+        }
         #endregion
 
         #region Contract
-        
+        public bool createContract(Contracts contract)
+        {
+            return DAO_Contract.createContract(contract);
+        }
+        public bool updateContract(Contracts contract)
+        {
+            return DAO_Contract.updateContract(contract);
+        }
+        public bool deleteContract(string contract_id)
+        {
+            return DAO_Contract.deleteContract(contract_id);
+        }
         #endregion
     }
 }

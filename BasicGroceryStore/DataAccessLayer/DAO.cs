@@ -1,7 +1,6 @@
 ﻿using System.Data;
 using System.Data.SqlClient;
 
-
 namespace BasicGroceryStore
 {
     public class DAO
@@ -34,7 +33,7 @@ namespace BasicGroceryStore
             cmd = connection.CreateCommand();
         }
 
-        public int ExcuteNonQuery(string sqlExpess, CommandType type, params SqlParameter[] param)
+        public int ExecuteNonQuery(string sqlExpess, CommandType type, params SqlParameter[] param)
         {
             cmd.CommandType = type;
             cmd.CommandText = sqlExpess;

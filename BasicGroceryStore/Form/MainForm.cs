@@ -1,11 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace BasicGroceryStore
@@ -15,6 +10,7 @@ namespace BasicGroceryStore
         #region Properties
         private Point firstPoint;
         private bool mouseIsDown = false;
+        public static List<string> choosing = new List<string>() { "LOGIN", "LOGOUT", "SUPPORT", "INFORMATION" };
         #endregion
 
         public MainForm()
@@ -31,7 +27,7 @@ namespace BasicGroceryStore
 
         private void AddTabToControl()
         {
-            cbSetting.DataSource = Enum.GetValues(typeof(SettingAccount));
+            cbSetting.DataSource = choosing;
             pnlMain.Controls.Add(UCHomePage.Instance);
             pnlMain.Controls.Add(UCImported.Instance);
             pnlMain.Controls.Add(UCOrdered.Instance);
@@ -143,10 +139,23 @@ namespace BasicGroceryStore
         #endregion
 
         private void cbSetting_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if(cbSetting.SelectedItem.ToString() == SettingAccount.Login.ToString())
+        {           
+            if(cbSetting.SelectedItem.ToString() == "LOGIN" && UCHomePage.Instance.staff_using == null)
             {
                 new FormLogin().ShowDialog();
+            }
+            if(cbSetting.SelectedItem.ToString() == "LOGOUT")
+            {
+                UCHomePage.Instance.staff_using = null;
+                UCHomePage.Instance.LoadStaffData();
+            }
+            if(cbSetting.SelectedItem.ToString() == "SUPPORT")
+            {
+
+            }
+            if(cbSetting.SelectedItem.ToString() == "INFORMATION")
+            {
+
             }
         }
     }

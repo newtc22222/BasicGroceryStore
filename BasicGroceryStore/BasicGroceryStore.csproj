@@ -48,6 +48,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DataAccessLayer\DAO_Information.cs" />
     <Compile Include="DTO\Account.cs" />
     <Compile Include="DataAccessLayer\DAO_Account.cs" />
     <Compile Include="DataAccessLayer\DAO_Bill.cs" />
@@ -61,8 +62,8 @@
     <Compile Include="BUS\BLL.cs" />
     <Compile Include="DataAccessLayer\Config.cs" />
     <Compile Include="DataAccessLayer\DAO.cs" />
-    <Compile Include="DTO\Bills.cs" />
-    <Compile Include="DTO\BillsDetail.cs" />
+    <Compile Include="DTO\Bill.cs" />
+    <Compile Include="DTO\BillDetail.cs" />
     <Compile Include="DTO\Contracts.cs" />
     <Compile Include="DTO\CustomerMember.cs" />
     <Compile Include="DTO\Imported.cs" />
@@ -291,7 +292,13 @@
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
+    <Content Include="ExtraData\Account.xml" />
     <Content Include="ExtraData\StoreInformation.xml" />
+    <Content Include="Resources\Copper.png" />
+    <Content Include="Resources\Golden.png" />
+    <Content Include="Resources\None.png" />
+    <Content Include="Resources\Platinum.png" />
+    <Content Include="Resources\Silver.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

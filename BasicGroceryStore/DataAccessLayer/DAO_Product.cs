@@ -1,6 +1,6 @@
-﻿using System.Data;
+﻿using System.Collections.Generic;
+using System.Data;
 using System.Data.SqlClient;
-
 
 namespace BasicGroceryStore
 {
@@ -8,7 +8,7 @@ namespace BasicGroceryStore
     {
         public static bool createProduct(Product product)
         {
-            return (DAO.Instance.ExcuteNonQuery("sp_InsertProduct", 
+            return (DAO.Instance.ExecuteNonQuery("sp_InsertProduct", 
                     CommandType.StoredProcedure, 
                     new SqlParameter("@ID", product.ID),
                     new SqlParameter("@Name", product.Name),
@@ -23,7 +23,7 @@ namespace BasicGroceryStore
 
         public static bool updateProduct(Product product)
         {
-            return (DAO.Instance.ExcuteNonQuery("sp_UpdateProduct",
+            return (DAO.Instance.ExecuteNonQuery("sp_UpdateProduct",
                      CommandType.StoredProcedure,
                      new SqlParameter("@ID", product.ID),
                      new SqlParameter("@Name", product.Name),
@@ -38,13 +38,40 @@ namespace BasicGroceryStore
 
         public static bool deleteProduct(string id)
         {
-            return (DAO.Instance.ExcuteNonQuery("sp_DeleteProduct",
+            return (DAO.Instance.ExecuteNonQuery("sp_DeleteProduct",
                     CommandType.StoredProcedure, new SqlParameter("@id", id)) > 0) ? true : false;
         }
 
         public static DataTable getAllProduct()
         {
-            return DAO.Instance.ExecuteQuery("SELECT * FROM Product", CommandType.Text, null);
+            return DAO.Instance.ExecuteQuery("select * from Product", CommandType.Text, null);
+        }
+
+        public static DataTable getAllProductOfSupplier(string supplier_id)
+        {
+            return DAO.Instance.ExecuteQuery("select * from Product where SupplierID = @sup_id", CommandType.Text, new SqlParameter("@sup_id", supplier_id));
+        }
+
+        public static List<string> getAllTypeOfProduct()
+        {
+            List<string> typeProduct = new List<string>();
+            DataTable tb = DAO.Instance.ExecuteQuery("select distinct TypeProduct from Product", CommandType.Text);
+            for (int i = 0; i < tb.Rows.Count; i++)
+            {
+                typeProduct.Add(tb.Rows[i][0].ToString());
+            }
+            return typeProduct;
+        }
+
+        public static List<string> getAllUnit()
+        {
+            List<string> unit = new List<string>();
+            DataTable tb = DAO.Instance.ExecuteQuery("select distinct Unit from Product", CommandType.Text);
+            for (int i = 0; i < tb.Rows.Count; i++)
+            {
+                unit.Add(tb.Rows[i][0].ToString());
+            }
+            return unit;
         }
 
         public static int getNumberOfProduct_depot()

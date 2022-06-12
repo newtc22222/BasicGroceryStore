@@ -20,6 +20,18 @@ namespace BasicGroceryStore
         public FormSupplier()
         {
             InitializeComponent();
+            LoadSupplier(new Supplier());
+        }
+
+        public FormSupplier(Supplier supplier)
+        {
+            InitializeComponent();
+            LoadSupplier(supplier);
+        }
+
+        private void LoadSupplier(Supplier supplier)
+        {
+
         }
 
         private void btnMinimize_Click(object sender, EventArgs e)

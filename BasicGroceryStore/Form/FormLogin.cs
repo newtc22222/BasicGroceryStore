@@ -1,11 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace BasicGroceryStore
@@ -20,6 +15,16 @@ namespace BasicGroceryStore
         public FormLogin()
         {
             InitializeComponent();
+            LoadAccount();
+        }
+
+        private void LoadAccount()
+        {
+            DAO_Information dao = new DAO_Information("Account.xml");
+            List<object> data = dao.loadSaveAccount();
+            txtUsername.Text = data[1].ToString();
+            txtPassword.Text = data[2].ToString();
+            chbRemember.Checked = Boolean.Parse(data[3].ToString());
         }
 
         private void btnMinimize_Click(object sender, EventArgs e)
@@ -51,5 +56,30 @@ namespace BasicGroceryStore
             mouseIsDown = false;
         }
         #endregion
+
+        private void btnLogin_Click(object sender, EventArgs e)
+        {
+            string username = txtUsername.Text.Trim();
+            string password = txtPassword.Text.Trim();
+            string staff_id = BLL.Instance.CheckLogin(username, password);
+            if (staff_id != "")
+            {
+                Account main_login = new Account(staff_id, username, password);
+                BLL.Instance.SaveAccount(main_login, chbRemember.Checked);
+                UCHomePage.Instance.staff_using = BLL.Instance.getStaff(staff_id);
+                UCHomePage.Instance.LoadStaffData();
+                Close();
+            } 
+            else
+            {
+                MessageBox.Show("Tài khoản không hợp lệ!\nVui lòng liên hệ với bên hỗ trợ hoặc tắt biểu mẫu này\nđể hoạt động ứng dụng bình thường!", "THÔNG BÁO", 
+                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+        }
+
+        private void btnSupport_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Chưa có thông tin!", "THÔNG BÁO HỖ TRỢ", MessageBoxButtons.OK);
+        }
     }
 }

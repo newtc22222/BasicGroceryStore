@@ -1,6 +1,6 @@
 ﻿namespace BasicGroceryStore
 {
-    public abstract class BillsDetail
+    public abstract class BillDetail
     {
         private int iD;
         private string billID;
@@ -14,7 +14,7 @@
         public float Price { get => price; set => price = value; }
         public int Quantity { get => quantity; set => quantity = value; }
 
-        public BillsDetail()
+        public BillDetail()
         {
             this.iD = 0;
             this.billID = "";
@@ -23,9 +23,9 @@
             this.quantity = 0;
         }
 
-        ~BillsDetail() { }
+        ~BillDetail() { }
 
-        public BillsDetail(int iD, string billID, string productID, float price, int quantity)
+        public BillDetail(int iD, string billID, string productID, float price, int quantity)
         {
             this.iD = iD;
             this.billID = billID;
