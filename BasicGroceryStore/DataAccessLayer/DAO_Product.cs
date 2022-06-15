@@ -15,7 +15,7 @@ namespace BasicGroceryStore
                     new SqlParameter("@TypeProduct", product.TypeProduct),
                     new SqlParameter("@Unit", product.Unit),
                     new SqlParameter("@Quantity", product.Quantity),
-                    new SqlParameter("@Image", product.Image),
+                    new SqlParameter("@Image", AdditionalFunctions.ConvertImageToByteArray(product.Image)),
                     new SqlParameter("@Note", product.Note),
                     new SqlParameter("@Price", product.Price),
                     new SqlParameter("@SupplierID", product.SupplierID)) > 0) ? true : false;
@@ -30,7 +30,7 @@ namespace BasicGroceryStore
                      new SqlParameter("@TypeProduct", product.TypeProduct),
                      new SqlParameter("@Unit", product.Unit),
                      new SqlParameter("@Quantity", product.Quantity),
-                     new SqlParameter("@Image", product.Image),
+                     new SqlParameter("@Image", AdditionalFunctions.ConvertImageToByteArray(product.Image)),
                      new SqlParameter("@Note", product.Note),
                      new SqlParameter("@Price", product.Price),
                      new SqlParameter("@SupplierID", product.SupplierID)) > 0) ? true : false;
@@ -81,12 +81,12 @@ namespace BasicGroceryStore
 
         public static DataTable FindProductByTypeProduct(string typeProduct)
         {
-            return DAO.Instance.ExecuteQuery($"select * from dbo.func_FindProductByTypeProduct('{typeProduct}')", CommandType.Text);
+            return DAO.Instance.ExecuteQuery($"select * from dbo.func_FindProductByTypeProduct(N'{typeProduct}')", CommandType.Text);
         }
 
         public static DataTable FindProductByName(string name)
         {
-            return DAO.Instance.ExecuteQuery($"select * from dbo.func_FindProductByName('{name}')", CommandType.Text);
+            return DAO.Instance.ExecuteQuery($"select * from dbo.func_FindProductByName(N'{name}')", CommandType.Text);
         }
 
         public static DataTable FindProductByPriceRange(float from, float to)
@@ -94,9 +94,9 @@ namespace BasicGroceryStore
             return DAO.Instance.ExecuteQuery($"select * from dbo.func_FindProductByPriceRange({from}, {to})", CommandType.Text);
         }
 
-        public static DataTable FindProductBySupplier(string supplierID)
+        public static DataTable FindProductBySupplier(string supplierName)
         {
-            return DAO.Instance.ExecuteQuery($"select * from dbo.func_FindProductBySupplier('{supplierID}')", CommandType.Text);
+            return DAO.Instance.ExecuteQuery($"select * from dbo.func_FindProductBySupplier(N'{supplierName}')", CommandType.Text);
         }
     }
 }

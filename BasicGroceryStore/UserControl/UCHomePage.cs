@@ -11,7 +11,7 @@ namespace BasicGroceryStore
     public partial class UCHomePage : UserControl
     {
         private string link_map, link_fb, link_ig, link_linkedin, link_ut;
-        public Staff staff_using;
+        public Staff staff_using = null;
 
         static UCHomePage _obj;
         public static UCHomePage Instance
@@ -157,6 +157,9 @@ namespace BasicGroceryStore
 
         private void dgvCustomer_CellClick(object sender, DataGridViewCellEventArgs e)
         {
+            if (dgvCustomer.CurrentCell.RowIndex == dgvCustomer.RowCount - 1)
+                return;
+
             txtCustomerName.Text = dgvCustomer.CurrentRow.Cells[0].Value.ToString();
             txtCustomerPhone.Text = dgvCustomer.CurrentRow.Cells[1].Value.ToString();
             dtCustomerDateJoin.Value = (DateTime)dgvCustomer.CurrentRow.Cells[2].Value;

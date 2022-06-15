@@ -10,7 +10,7 @@ namespace BasicGroceryStore
         #region Properties
         private Point firstPoint;
         private bool mouseIsDown = false;
-        public static List<string> choosing = new List<string>() { "LOGIN", "LOGOUT", "SUPPORT", "INFORMATION" };
+        public static List<string> choosing = new List<string>() { "LOGIN", "LOGOUT", "SUPPORT", "INFORMATION", "EXIT" };
         #endregion
 
         public MainForm()
@@ -143,11 +143,22 @@ namespace BasicGroceryStore
             if(cbSetting.SelectedItem.ToString() == "LOGIN" && UCHomePage.Instance.staff_using == null)
             {
                 new FormLogin().ShowDialog();
+                UCOrdered.Instance.settingStaffInformation();
+                UCImported.Instance.settingStaffInformation();
             }
             if(cbSetting.SelectedItem.ToString() == "LOGOUT")
             {
-                UCHomePage.Instance.staff_using = null;
-                UCHomePage.Instance.LoadStaffData();
+                if (UCHomePage.Instance.staff_using == null)
+                    return;
+
+                if(MessageBox.Show("Bạn có muốn kết thúc phiên đăng nhập không?", "THÔNG BÁO", 
+                    MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                {
+                    UCHomePage.Instance.staff_using = null;
+                    UCHomePage.Instance.LoadStaffData();
+                    UCOrdered.Instance.settingStaffInformation();
+                    UCImported.Instance.settingStaffInformation();
+                }
             }
             if(cbSetting.SelectedItem.ToString() == "SUPPORT")
             {
@@ -156,6 +167,14 @@ namespace BasicGroceryStore
             if(cbSetting.SelectedItem.ToString() == "INFORMATION")
             {
 
+            }
+            if (cbSetting.SelectedItem.ToString() == "EXIT")
+            {
+                if (MessageBox.Show("Bạn có muốn tắt ứng dụng không?", "THÔNG BÁO", 
+                    MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                {
+                    Application.Exit();
+                }
             }
         }
     }

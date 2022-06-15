@@ -62,9 +62,9 @@ namespace BasicGroceryStore
             return DAO_Product.FindProductByPriceRange(from, to);
         }
 
-        public DataTable FindProductBySupplier(string supplierID)
+        public DataTable FindProductBySupplier(string supplierName)
         {
-            return DAO_Product.FindProductBySupplier(supplierID);
+            return DAO_Product.FindProductBySupplier(supplierName);
         }
 
         public DataTable FindProductByTypeProduct(string typeProduct)

@@ -67,7 +67,7 @@
     <Compile Include="DTO\Contracts.cs" />
     <Compile Include="DTO\CustomerMember.cs" />
     <Compile Include="DTO\Imported.cs" />
-    <Compile Include="DTO\ImportedDetails.cs" />
+    <Compile Include="DTO\ImportedDetail.cs" />
     <Compile Include="DTO\Ordered.cs" />
     <Compile Include="DTO\OrderedDetail.cs" />
     <Compile Include="DTO\Product.cs" />

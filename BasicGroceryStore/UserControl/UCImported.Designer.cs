@@ -29,14 +29,16 @@ namespace BasicGroceryStore
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.pnlMain = new System.Windows.Forms.Panel();
             this.gbMakeBill = new System.Windows.Forms.GroupBox();
             this.btnMakeBills = new System.Windows.Forms.Button();
             this.btnCancelBill = new System.Windows.Forms.Button();
             this.gbListProduct = new System.Windows.Forms.GroupBox();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.dgvImportedDetails = new System.Windows.Forms.DataGridView();
             this.dtPickDateCreate = new System.Windows.Forms.DateTimePicker();
             this.txtStaffName = new System.Windows.Forms.TextBox();
             this.txtBillID = new System.Windows.Forms.TextBox();
@@ -46,6 +48,7 @@ namespace BasicGroceryStore
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.gbFilter = new System.Windows.Forms.GroupBox();
+            this.dgvProduct = new System.Windows.Forms.DataGridView();
             this.btnReload = new System.Windows.Forms.Button();
             this.btnMakeNewProduct = new System.Windows.Forms.Button();
             this.btnCheckSupplier = new System.Windows.Forms.Button();
@@ -57,21 +60,21 @@ namespace BasicGroceryStore
             this.numUDTo = new System.Windows.Forms.NumericUpDown();
             this.numUDFrom = new System.Windows.Forms.NumericUpDown();
             this.cbTypeProduct = new System.Windows.Forms.ComboBox();
-            this.txtSupplier = new System.Windows.Forms.TextBox();
-            this.txtName = new System.Windows.Forms.TextBox();
+            this.txtSupplierFilter = new System.Windows.Forms.TextBox();
+            this.txtNameFilter = new System.Windows.Forms.TextBox();
             this.chbTypeProduct = new System.Windows.Forms.CheckBox();
             this.chbSupplier = new System.Windows.Forms.CheckBox();
             this.chbPrice = new System.Windows.Forms.CheckBox();
             this.chbName = new System.Windows.Forms.CheckBox();
-            this.dgvProduct = new System.Windows.Forms.DataGridView();
+            this.toolTip = new System.Windows.Forms.ToolTip(this.components);
             this.pnlMain.SuspendLayout();
             this.gbMakeBill.SuspendLayout();
             this.gbListProduct.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvImportedDetails)).BeginInit();
             this.gbFilter.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvProduct)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numUDTo)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numUDFrom)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvProduct)).BeginInit();
             this.SuspendLayout();
             // 
             // pnlMain
@@ -114,6 +117,7 @@ namespace BasicGroceryStore
             this.btnMakeBills.TabIndex = 38;
             this.btnMakeBills.Text = "Tạo phiếu nhập";
             this.btnMakeBills.UseVisualStyleBackColor = true;
+            this.btnMakeBills.Click += new System.EventHandler(this.btnMakeBills_Click);
             // 
             // btnCancelBill
             // 
@@ -123,10 +127,11 @@ namespace BasicGroceryStore
             this.btnCancelBill.TabIndex = 32;
             this.btnCancelBill.Text = "Hủy phiếu nhập";
             this.btnCancelBill.UseVisualStyleBackColor = true;
+            this.btnCancelBill.Click += new System.EventHandler(this.btnCancelBill_Click);
             // 
             // gbListProduct
             // 
-            this.gbListProduct.Controls.Add(this.dataGridView1);
+            this.gbListProduct.Controls.Add(this.dgvImportedDetails);
             this.gbListProduct.Location = new System.Drawing.Point(6, 239);
             this.gbListProduct.Name = "gbListProduct";
             this.gbListProduct.Size = new System.Drawing.Size(629, 567);
@@ -134,13 +139,25 @@ namespace BasicGroceryStore
             this.gbListProduct.TabStop = false;
             this.gbListProduct.Text = "Danh sách sản phẩm nhập kho";
             // 
-            // dataGridView1
+            // dgvImportedDetails
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(6, 30);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(617, 531);
-            this.dataGridView1.TabIndex = 32;
+            this.dgvImportedDetails.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.BlueViolet;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvImportedDetails.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            this.dgvImportedDetails.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvImportedDetails.EnableHeadersVisualStyles = false;
+            this.dgvImportedDetails.Location = new System.Drawing.Point(6, 30);
+            this.dgvImportedDetails.Name = "dgvImportedDetails";
+            this.dgvImportedDetails.Size = new System.Drawing.Size(617, 531);
+            this.dgvImportedDetails.TabIndex = 32;
+            this.toolTip.SetToolTip(this.dgvImportedDetails, "Nhấn đúp chuột để giảm số lượng sản phẩm");
+            this.dgvImportedDetails.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvImportedDetails_CellContentClick);
             // 
             // dtPickDateCreate
             // 
@@ -229,8 +246,8 @@ namespace BasicGroceryStore
             this.gbFilter.Controls.Add(this.numUDTo);
             this.gbFilter.Controls.Add(this.numUDFrom);
             this.gbFilter.Controls.Add(this.cbTypeProduct);
-            this.gbFilter.Controls.Add(this.txtSupplier);
-            this.gbFilter.Controls.Add(this.txtName);
+            this.gbFilter.Controls.Add(this.txtSupplierFilter);
+            this.gbFilter.Controls.Add(this.txtNameFilter);
             this.gbFilter.Controls.Add(this.chbTypeProduct);
             this.gbFilter.Controls.Add(this.chbSupplier);
             this.gbFilter.Controls.Add(this.chbPrice);
@@ -242,6 +259,33 @@ namespace BasicGroceryStore
             this.gbFilter.TabStop = false;
             this.gbFilter.Text = "Lọc thông tin";
             // 
+            // dgvProduct
+            // 
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.MediumPurple;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvProduct.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            this.dgvProduct.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvProduct.DefaultCellStyle = dataGridViewCellStyle3;
+            this.dgvProduct.EnableHeadersVisualStyles = false;
+            this.dgvProduct.Location = new System.Drawing.Point(15, 281);
+            this.dgvProduct.Name = "dgvProduct";
+            this.dgvProduct.ReadOnly = true;
+            this.dgvProduct.Size = new System.Drawing.Size(661, 483);
+            this.dgvProduct.TabIndex = 34;
+            this.dgvProduct.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvProduct_CellDoubleClick);
+            // 
             // btnReload
             // 
             this.btnReload.Location = new System.Drawing.Point(15, 239);
@@ -250,6 +294,7 @@ namespace BasicGroceryStore
             this.btnReload.TabIndex = 33;
             this.btnReload.Text = "Tải lại";
             this.btnReload.UseVisualStyleBackColor = true;
+            this.btnReload.Click += new System.EventHandler(this.btnReload_Click);
             // 
             // btnMakeNewProduct
             // 
@@ -259,6 +304,7 @@ namespace BasicGroceryStore
             this.btnMakeNewProduct.TabIndex = 32;
             this.btnMakeNewProduct.Text = "Thêm sản phẩm mới";
             this.btnMakeNewProduct.UseVisualStyleBackColor = true;
+            this.btnMakeNewProduct.Click += new System.EventHandler(this.btnMakeNewProduct_Click);
             // 
             // btnCheckSupplier
             // 
@@ -269,6 +315,7 @@ namespace BasicGroceryStore
             this.btnCheckSupplier.TabIndex = 30;
             this.btnCheckSupplier.Text = "Thông tin các nhà cung cấp";
             this.btnCheckSupplier.UseVisualStyleBackColor = true;
+            this.btnCheckSupplier.Click += new System.EventHandler(this.btnCheckSupplier_Click);
             // 
             // btnChooseProduct
             // 
@@ -278,6 +325,7 @@ namespace BasicGroceryStore
             this.btnChooseProduct.TabIndex = 29;
             this.btnChooseProduct.Text = "Chọn sản phẩm";
             this.btnChooseProduct.UseVisualStyleBackColor = true;
+            this.btnChooseProduct.Click += new System.EventHandler(this.btnChooseProduct_Click);
             // 
             // btnCheckHistory
             // 
@@ -287,6 +335,7 @@ namespace BasicGroceryStore
             this.btnCheckHistory.TabIndex = 28;
             this.btnCheckHistory.Text = "Lịch sử nhập hàng";
             this.btnCheckHistory.UseVisualStyleBackColor = true;
+            this.btnCheckHistory.Click += new System.EventHandler(this.btnCheckHistory_Click);
             // 
             // btnFind
             // 
@@ -296,6 +345,7 @@ namespace BasicGroceryStore
             this.btnFind.TabIndex = 27;
             this.btnFind.Text = "Tìm";
             this.btnFind.UseVisualStyleBackColor = true;
+            this.btnFind.Click += new System.EventHandler(this.btnFind_Click);
             // 
             // btnClear
             // 
@@ -368,19 +418,19 @@ namespace BasicGroceryStore
             this.cbTypeProduct.Size = new System.Drawing.Size(475, 32);
             this.cbTypeProduct.TabIndex = 22;
             // 
-            // txtSupplier
+            // txtSupplierFilter
             // 
-            this.txtSupplier.Location = new System.Drawing.Point(201, 139);
-            this.txtSupplier.Name = "txtSupplier";
-            this.txtSupplier.Size = new System.Drawing.Size(475, 29);
-            this.txtSupplier.TabIndex = 21;
+            this.txtSupplierFilter.Location = new System.Drawing.Point(201, 139);
+            this.txtSupplierFilter.Name = "txtSupplierFilter";
+            this.txtSupplierFilter.Size = new System.Drawing.Size(475, 29);
+            this.txtSupplierFilter.TabIndex = 21;
             // 
-            // txtName
+            // txtNameFilter
             // 
-            this.txtName.Location = new System.Drawing.Point(201, 43);
-            this.txtName.Name = "txtName";
-            this.txtName.Size = new System.Drawing.Size(475, 29);
-            this.txtName.TabIndex = 20;
+            this.txtNameFilter.Location = new System.Drawing.Point(201, 43);
+            this.txtNameFilter.Name = "txtNameFilter";
+            this.txtNameFilter.Size = new System.Drawing.Size(475, 29);
+            this.txtNameFilter.TabIndex = 20;
             // 
             // chbTypeProduct
             // 
@@ -430,32 +480,6 @@ namespace BasicGroceryStore
             this.chbName.Text = "Tên sản phẩm";
             this.chbName.UseVisualStyleBackColor = true;
             // 
-            // dgvProduct
-            // 
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.MediumPurple;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvProduct.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
-            this.dgvProduct.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvProduct.DefaultCellStyle = dataGridViewCellStyle2;
-            this.dgvProduct.EnableHeadersVisualStyles = false;
-            this.dgvProduct.Location = new System.Drawing.Point(15, 281);
-            this.dgvProduct.Name = "dgvProduct";
-            this.dgvProduct.ReadOnly = true;
-            this.dgvProduct.Size = new System.Drawing.Size(661, 483);
-            this.dgvProduct.TabIndex = 34;
-            // 
             // UCImported
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 24F);
@@ -469,12 +493,12 @@ namespace BasicGroceryStore
             this.gbMakeBill.ResumeLayout(false);
             this.gbMakeBill.PerformLayout();
             this.gbListProduct.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvImportedDetails)).EndInit();
             this.gbFilter.ResumeLayout(false);
             this.gbFilter.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvProduct)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numUDTo)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numUDFrom)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvProduct)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -486,7 +510,7 @@ namespace BasicGroceryStore
         private System.Windows.Forms.Button btnMakeBills;
         private System.Windows.Forms.Button btnCancelBill;
         private System.Windows.Forms.GroupBox gbListProduct;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView dgvImportedDetails;
         private System.Windows.Forms.DateTimePicker dtPickDateCreate;
         private System.Windows.Forms.TextBox txtStaffName;
         private System.Windows.Forms.TextBox txtBillID;
@@ -507,12 +531,13 @@ namespace BasicGroceryStore
         private System.Windows.Forms.NumericUpDown numUDTo;
         private System.Windows.Forms.NumericUpDown numUDFrom;
         private System.Windows.Forms.ComboBox cbTypeProduct;
-        private System.Windows.Forms.TextBox txtSupplier;
-        private System.Windows.Forms.TextBox txtName;
+        private System.Windows.Forms.TextBox txtSupplierFilter;
+        private System.Windows.Forms.TextBox txtNameFilter;
         private System.Windows.Forms.CheckBox chbTypeProduct;
         private System.Windows.Forms.CheckBox chbSupplier;
         private System.Windows.Forms.CheckBox chbPrice;
         private System.Windows.Forms.CheckBox chbName;
         private System.Windows.Forms.DataGridView dgvProduct;
+        private System.Windows.Forms.ToolTip toolTip;
     }
 }

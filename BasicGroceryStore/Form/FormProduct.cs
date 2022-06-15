@@ -9,11 +9,14 @@ namespace BasicGroceryStore
         #region Properties
         private Point firstPoint;
         private bool mouseIsDown = false;
+        private bool isNewProduct;
         #endregion
 
         public FormProduct()
         {
             InitializeComponent();
+            isNewProduct = true;
+
             LoadDataCombobox();
             LoadProductInformation(new Product());
         }
@@ -21,6 +24,8 @@ namespace BasicGroceryStore
         public FormProduct(Product product)
         {
             InitializeComponent();
+            isNewProduct = false;
+
             LoadDataCombobox();
             LoadProductInformation(product);
         }
@@ -45,7 +50,9 @@ namespace BasicGroceryStore
 
             cbTypeProduct.Text = product.TypeProduct;
             cbUnit.Text = product.Unit;
-            cbSupplier.SelectedValue = product.SupplierID;
+            
+            if(product.SupplierID != "")
+                cbSupplier.SelectedValue = product.SupplierID;
 
             picRepresent.Image = product.Image;
         }
@@ -66,6 +73,7 @@ namespace BasicGroceryStore
         private void btnAddSupplier_Click(object sender, EventArgs e)
         {
             new FormSupplier().ShowDialog();
+            LoadDataCombobox();
         }
 
         #region MoveForm
@@ -92,5 +100,55 @@ namespace BasicGroceryStore
             mouseIsDown = false;
         }
         #endregion
+
+        private void btnSave_Click(object sender, EventArgs e)
+        {
+            if (!isValid())
+                return;
+
+            Product product = new Product();
+            product.ID = txtProductID.Text;
+            product.Name = txtName.Text;
+            product.TypeProduct = cbTypeProduct.Text;
+            product.Unit = cbUnit.Text;
+            product.SupplierID = cbSupplier.SelectedValue.ToString();
+            product.Image = picRepresent.Image;
+            product.Quantity = int.Parse(txtQuantity.Text);
+            product.Note = txtNote.Text;
+            product.Price = float.Parse(txtPrice.Text);
+
+            if (isNewProduct)
+            {
+                if (BLL.Instance.createProduct(product))
+                {
+                    MessageBox.Show("Thêm sản phẩm mới thành công!", "THÔNG BÁO", MessageBoxButtons.OK);
+                    Close();
+                }
+                else
+                {
+                    MessageBox.Show("Có lỗi trong quá trình thêm!\n Vui lòng kiểm tra lại dữ liệu!", "LỖI", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            else
+            {
+                if (BLL.Instance.updateProduct(product))
+                {
+                    MessageBox.Show("Cập nhật sản phẩm thành công!", "THÔNG BÁO", MessageBoxButtons.OK);
+                    Close();
+                }
+                else
+                {
+                    MessageBox.Show("Có lỗi trong quá trình sửa!\n Vui lòng kiểm tra lại dữ liệu!", "LỖI", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            
+        }
+
+        private bool isValid()
+        {
+            if(txtName.Text == "")
+                return false;
+            return true;
+        }
     }
 }

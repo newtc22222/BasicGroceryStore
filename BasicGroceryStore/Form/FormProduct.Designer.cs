@@ -248,6 +248,7 @@ namespace BasicGroceryStore
             this.btnSave.TabIndex = 63;
             this.btnSave.Text = "Lưu thông tin";
             this.btnSave.UseVisualStyleBackColor = true;
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
             // label7
             // 

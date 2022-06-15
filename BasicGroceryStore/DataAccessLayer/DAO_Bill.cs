@@ -17,12 +17,12 @@ namespace BasicGroceryStore
                     new SqlParameter("@Value", bill.Value),
                     new SqlParameter("@StaffID", bill.StaffID) };
 
-            if (customerName != "") // for Ordered
+            if (typeBill == "Ordered") // for Ordered
             {
                 param[param.Length] = new SqlParameter("@CustomerName", customerName);
             }
 
-            return (DAO.Instance.ExecuteNonQuery($"exec sp_Insert{typeBill}", CommandType.StoredProcedure, param) > 0) ? true : false;
+            return (DAO.Instance.ExecuteNonQuery($"sp_Insert{typeBill}", CommandType.StoredProcedure, param) > 0) ? true : false;
         }
 
         public static bool updateBill(Bill bill, string typeBill, string customerName)
@@ -33,12 +33,12 @@ namespace BasicGroceryStore
                     new SqlParameter("@Value", bill.Value),
                     new SqlParameter("@StaffID", bill.StaffID) };
 
-            if (customerName != "") // for Ordered
+            if (typeBill == "Ordered") // for Ordered
             {
                 param[param.Length] = new SqlParameter("@CustomerName", customerName);
             }
 
-            return (DAO.Instance.ExecuteNonQuery($"exec sp_Update{typeBill}", CommandType.StoredProcedure, param) > 0) ? true : false;
+            return (DAO.Instance.ExecuteNonQuery($"sp_Update{typeBill}", CommandType.StoredProcedure, param) > 0) ? true : false;
         }
 
         public static bool deleteBill(string typeBill, string id)
@@ -54,7 +54,7 @@ namespace BasicGroceryStore
 
         public static int getQuantityOfBill(string typeBill)
         {
-            return (int)DAO.Instance.ExecuteScalar($"select func_NumberOf{typeBill}()", CommandType.Text);
+            return (int)DAO.Instance.ExecuteScalar($"select dbo.func_NumberOf{typeBill}()", CommandType.Text);
         }
 
         public static float getTotalValueOfBill_Single(string typeBill, string id)
@@ -81,7 +81,7 @@ namespace BasicGroceryStore
         {
             string dateFrom = AdditionalFunctions.getDateString(from);
             string dateTo = AdditionalFunctions.getDateString(to);
-            return DAO.Instance.ExecuteQuery($"select * from func_Find{typeBill}ByDateRange('{dateFrom}', {dateTo})", CommandType.Text);
+            return DAO.Instance.ExecuteQuery($"select * from dbo.func_Find{typeBill}ByDateRange('{dateFrom}', {dateTo})", CommandType.Text);
         }
     }
 }
