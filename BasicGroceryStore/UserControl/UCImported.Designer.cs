@@ -154,6 +154,7 @@ namespace BasicGroceryStore
             this.dgvImportedDetails.EnableHeadersVisualStyles = false;
             this.dgvImportedDetails.Location = new System.Drawing.Point(6, 30);
             this.dgvImportedDetails.Name = "dgvImportedDetails";
+            this.dgvImportedDetails.ReadOnly = true;
             this.dgvImportedDetails.Size = new System.Drawing.Size(617, 531);
             this.dgvImportedDetails.TabIndex = 32;
             this.toolTip.SetToolTip(this.dgvImportedDetails, "Nhấn đúp chuột để giảm số lượng sản phẩm");
@@ -277,7 +278,7 @@ namespace BasicGroceryStore
             this.dgvProduct.ReadOnly = true;
             this.dgvProduct.Size = new System.Drawing.Size(661, 483);
             this.dgvProduct.TabIndex = 34;
-            this.dgvProduct.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvProduct_CellDoubleClick);
+            this.dgvProduct.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvProduct_CellContentClick);
             // 
             // btnReload
             // 

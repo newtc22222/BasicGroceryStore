@@ -148,6 +148,8 @@ namespace BasicGroceryStore
         {
             if(txtName.Text == "")
                 return false;
+            if (picRepresent.Image == null)
+                return false;
             return true;
         }
     }

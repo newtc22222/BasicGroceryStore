@@ -5,6 +5,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -35,12 +36,13 @@ namespace BasicGroceryStore
             InitializeComponent();
             LoadContentCombobox();
 
-            LoadData();
+            //LoadData();
             _staff = new Staff();
         }
 
         private void LoadData()
         {
+            ClearInformation();
             dgvStaff.Controls.Clear();
 
             dgvStaff.DataSource = BLL.Instance.getAllStaff();
@@ -48,6 +50,26 @@ namespace BasicGroceryStore
             dgvStaff.Columns[4].Visible = false;
             dgvStaff.Columns[7].Visible = false;
             dgvStaff.Columns[8].Visible = false;
+        }
+
+        private void ClearInformation()
+        {
+            picRepresent.Image = null;
+            txtName.Clear();
+            txtGender.Clear();
+            txtCitizenID.Clear();
+            txtAddress.Clear();
+            txtPhone.Clear();
+            txtEmail.Clear();
+            ClearStaffSecretInformation();
+        }
+
+        private void ClearStaffSecretInformation()
+        {
+            txtUsername.Clear();
+            txtPassword.Clear();
+            dgvContracts.Controls.Clear();
+            dgvContracts.DataSource = null;
         }
 
         private void LoadContentCombobox()
@@ -113,12 +135,13 @@ namespace BasicGroceryStore
 
         private void btnReload_Click(object sender, EventArgs e)
         {
-
+            LoadData();
         }
 
         private void btnClear_Click(object sender, EventArgs e)
         {
-
+            txtNameFilter.Clear();
+            txtAddressFilter.Clear();
         }
 
         private void btnFind_Click(object sender, EventArgs e)
@@ -150,11 +173,24 @@ namespace BasicGroceryStore
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
-
+            if(MessageBox.Show($"Xóa thông tin nhân viên {_staff.Name}?", "CẢNH BÁO", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
+            {
+                if (BLL.Instance.deleteStaff(_staff.ID))
+                {
+                    MessageBox.Show($"Xóa thông tin nhân viên {_staff.Name} thành công!", "THÔNG BÁO", MessageBoxButtons.OK);
+                    _staff = new Staff();
+                }
+                else
+                {
+                    MessageBox.Show($"Xóa thông tin nhân viên {_staff.Name} không thành công!", "LỖI", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
         }
 
         private void dgvStaff_CellClick(object sender, DataGridViewCellEventArgs e)
         {
+            ClearStaffSecretInformation();
+
             _staff.ID = dgvStaff.CurrentRow.Cells[0].Value.ToString();
             _staff.Name = dgvStaff.CurrentRow.Cells[1].Value.ToString();
             _staff.Gender = dgvStaff.CurrentRow.Cells[2].Value.ToString();
@@ -163,9 +199,11 @@ namespace BasicGroceryStore
             _staff.Address = dgvStaff.CurrentRow.Cells[5].Value.ToString();
             _staff.Phone = dgvStaff.CurrentRow.Cells[6].Value.ToString();
             _staff.Email = dgvStaff.CurrentRow.Cells[7].Value.ToString();
-            
+
             if (dgvStaff.CurrentRow.Cells[8].Value != DBNull.Value)
                 _staff.Images = AdditionalFunctions.ConvertByteArrayToImage((byte[])dgvStaff.CurrentRow.Cells[8].Value);
+            else
+                _staff.Images = null;
 
             txtName.Text = _staff.Name;
             txtGender.Text = _staff.Gender;
@@ -178,9 +216,13 @@ namespace BasicGroceryStore
             picRepresent.Image = _staff.Images;
         }
 
-        private void btnLoadContract_Click(object sender, EventArgs e)
+        private void btnLoadStaffInfor_Click(object sender, EventArgs e)
         {
+            Account acc = BLL.Instance.getAccountByStaffID(_staff.ID);
+            txtUsername.Text = acc.Username;
+            txtPassword.Text = acc.Password;
 
+            dgvContracts.DataSource = BLL.Instance.getAllContractOfStaff(_staff.ID);
         }
     }
 }

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.Threading;
 using System.Windows.Forms;
 
 namespace BasicGroceryStore
@@ -16,6 +17,7 @@ namespace BasicGroceryStore
         public MainForm()
         {
             InitializeComponent();
+            //new Thread(AddTabToControl).Start();
             AddTabToControl();
             timer.Start();
         }

@@ -1,4 +1,5 @@
-﻿using System.Data;
+﻿using System;
+using System.Data;
 using System.Data.SqlClient;
 
 namespace BasicGroceryStore
@@ -33,6 +34,18 @@ namespace BasicGroceryStore
         {
             return (DAO.Instance.ExecuteNonQuery("exec sp_DeleteContracts", CommandType.StoredProcedure,
                 new SqlParameter("@ID", id)) > 0) ? true : false;
+        }
+
+        public static DataTable getAllConstractOfStaff(string staff_id)
+        {
+            return DAO.Instance.ExecuteQuery($"select * from Contracts where StaffID={staff_id}", CommandType.Text, null);
+        }
+
+        public static Contracts getNewestConstractOfStaff(string staff_id)
+        {
+            DataTable dt = DAO.Instance.ExecuteQuery($"select * from Contracts where StaffID={staff_id} order by DayStart DESC", CommandType.Text, null);
+            return new Contracts(dt.Rows[0][0].ToString(), staff_id, (DateTime)dt.Rows[0][2], (DateTime)dt.Rows[0][3],
+                dt.Rows[0][4].ToString(), dt.Rows[0][5].ToString(), float.Parse(dt.Rows[0][6].ToString()));
         }
     }
 }

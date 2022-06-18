@@ -20,6 +20,8 @@ namespace BasicGroceryStore
 
         public static byte[] ConvertImageToByteArray(Image image)
         {
+            if(image == null)
+                return null;
             MemoryStream ms = new MemoryStream();
             image.Save(ms, ImageFormat.Png);
             return ms.ToArray();
@@ -31,6 +33,7 @@ namespace BasicGroceryStore
             Image img = Image.FromStream(ms, true);
             return img;
         }
+
     }
 
     public enum TypeWork { parttime, fulltime }

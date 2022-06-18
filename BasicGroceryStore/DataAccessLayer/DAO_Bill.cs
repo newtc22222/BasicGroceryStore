@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
 
@@ -11,18 +12,18 @@ namespace BasicGroceryStore
 
         public static bool createBill(Bill bill, string typeBill, string customerName)
         {
-            SqlParameter[] param = new SqlParameter[] {
-                    new SqlParameter("@ID", bill.ID),
-                    new SqlParameter("@DateCreate", bill.DateCreate),
-                    new SqlParameter("@Value", bill.Value),
-                    new SqlParameter("@StaffID", bill.StaffID) };
-
+            List<SqlParameter> param = new List<SqlParameter>() {
+                new SqlParameter("@ID", bill.ID),
+                new SqlParameter("@DateCreate", bill.DateCreate),
+                new SqlParameter("@Value", bill.Value),
+                new SqlParameter("@StaffID", bill.StaffID) };
+        
             if (typeBill == "Ordered") // for Ordered
             {
-                param[param.Length] = new SqlParameter("@CustomerName", customerName);
+                param.Add(new SqlParameter("@CustomerName", customerName));
             }
 
-            return (DAO.Instance.ExecuteNonQuery($"sp_Insert{typeBill}", CommandType.StoredProcedure, param) > 0) ? true : false;
+            return (DAO.Instance.ExecuteNonQuery($"sp_Insert{typeBill}", CommandType.StoredProcedure, param.ToArray()) > 0) ? true : false;
         }
 
         public static bool updateBill(Bill bill, string typeBill, string customerName)
@@ -59,17 +60,20 @@ namespace BasicGroceryStore
 
         public static float getTotalValueOfBill_Single(string typeBill, string id)
         {
-            return (float)DAO.Instance.ExecuteScalar($"select sum(Price * Quantity) from {typeBill} where Id={id}", CommandType.Text);
+            return (float)DAO.Instance.ExecuteScalar($"select value from {typeBill} where Id={id}", CommandType.Text);
         }
 
-        public static float? getTotalValueOfBill_All(string typeBill)
+        public static double? getTotalValueOfBill_All(string typeBill)
         {
-            return (float?)DAO.Instance.ExecuteScalar($"select sum(Price * Quantity) from {typeBill}", CommandType.Text);
+            string query = $"select sum(x.value) from {typeBill} x";
+            return (double?)DAO.Instance.ExecuteScalar(query, CommandType.Text, null);
         }
 
-        public static float getTotalValueOfBill_Day(string typeBill, DateTime date)
+        public static float? getTotalValueOfBill_Day(string typeBill)
         {
-            return 0;
+            if(typeBill == "Imported")
+                return (float?)DAO.Instance.ExecuteScalar($"select dbo.func_TotalBuyOfDay({DateTime.Today})", CommandType.Text);
+            return (float?)DAO.Instance.ExecuteScalar($"select dbo.func_TotalSellOfDay({DateTime.Today})", CommandType.Text);
         }
 
         public static float getTotalValueOfBill_Month(string typeBill)

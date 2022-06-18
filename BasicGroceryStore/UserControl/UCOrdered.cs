@@ -144,13 +144,14 @@ namespace BasicGroceryStore
                 case DialogResult.Yes:
                     break;
                 case DialogResult.No:
-                    for (int i = 1; i < table.Rows.Count; i++)
+                    for (int i = 0; i < table.Rows.Count; i++)
                     {
-                        _orderedDetails.Add(new OrderedDetail(i, _order.ID, table.Rows[i][0].ToString(),
+                        _orderedDetails.Add(new OrderedDetail(i + 1, _order.ID, table.Rows[i][0].ToString(),
                             float.Parse(table.Rows[i][3].ToString()), int.Parse(table.Rows[i][4].ToString())));
                     }
 
                     _order.StaffID = UCHomePage.Instance.staff_using.ID;
+                    _order.CustomerName = txtCustomerName.Text.Trim();
                     _order.Value = float.Parse(txtTotalPrice.Text);
 
                     if (BLL.Instance.createOrdered(_order))
@@ -165,6 +166,9 @@ namespace BasicGroceryStore
                             }
                         }
                         MessageBox.Show("Đã lưu thông tin hóa đơn!", "THÔNG BÁO");
+                        LoadData();
+                        UCImported.Instance.LoadData();
+                        UCProduct.Instance.LoadData();
                     }
                     else
                     {
@@ -196,76 +200,6 @@ namespace BasicGroceryStore
         private void btnCheckCustomer_Click(object sender, EventArgs e)
         {
 
-        }
-
-        private void dgvProduct_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
-        {
-            if (dgvProduct.CurrentCell.RowIndex == dgvProduct.RowCount - 1)
-                return;
-
-            if (dgvOrderedDetails.DataSource == null)
-            {
-                _order = settingInformation();
-                _orderedDetails = new List<OrderedDetail>();
-                createTableBillDetails();
-            }
-
-            string product_id = dgvProduct.CurrentRow.Cells[0].Value.ToString();
-            string name = dgvProduct.CurrentRow.Cells[1].Value.ToString();
-            string unit = dgvProduct.CurrentRow.Cells[3].Value.ToString();
-            float price = float.Parse(dgvProduct.CurrentRow.Cells[7].Value.ToString());
-
-            int store_quantity = int.Parse(dgvProduct.CurrentRow.Cells[4].Value.ToString());
-
-            if (table.Rows.Contains(product_id))
-            {
-                DataRow[] row = table.Select("ProductID = " + product_id);
-                int new_quantity = int.Parse(table.Rows[table.Rows.IndexOf(row[0])][4].ToString()) + 1;
-
-                if(new_quantity > store_quantity)
-                {
-                    MessageBox.Show("Không đủ số lượng trong kho!", "THÔNG BÁO", MessageBoxButtons.OK);
-                    return;
-                }
-
-                table.Rows[table.Rows.IndexOf(row[0])][4] = new_quantity;
-                table.Rows[table.Rows.IndexOf(row[0])][5] = new_quantity * price;
-            }
-            else if (store_quantity > 0)
-            {
-                table.Rows.Add(product_id, name, unit, price, 1, price * 1);
-            }
-            else
-            {
-                MessageBox.Show("Không đủ số lượng trong kho!", "THÔNG BÁO", MessageBoxButtons.OK);
-                return;
-            }
-            
-            changeBills(table);
-        }
-
-        private void dgvOrderDetails_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
-        {
-            if (dgvOrderedDetails.CurrentCell.RowIndex == dgvOrderedDetails.RowCount - 1)
-                return;
-
-            DataRowView currentDataRowView = (DataRowView)dgvOrderedDetails.CurrentRow.DataBoundItem;
-            DataRow row = currentDataRowView.Row;
-
-            int quantity = int.Parse(row[4].ToString());
-            if (quantity > 1)
-            {
-                int new_quantity = quantity - 1;
-                float price = float.Parse(table.Rows[table.Rows.IndexOf(row)][3].ToString());
-                table.Rows[table.Rows.IndexOf(row)][4] = new_quantity;
-                table.Rows[table.Rows.IndexOf(row)][5] = new_quantity * price;
-            }
-            else
-            {
-                table.Rows.Remove(row);
-            }
-
-            changeBills(table);
         }
 
         private void btnFind_Click(object sender, EventArgs e)
@@ -308,6 +242,78 @@ namespace BasicGroceryStore
 
             dgvProduct.Controls.Clear();
             dgvProduct.DataSource = table;
+        }
+
+        private void dgvOrderedDetails_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (dgvOrderedDetails.CurrentCell.RowIndex == dgvOrderedDetails.RowCount - 1)
+                return;
+
+            DataRowView currentDataRowView = (DataRowView)dgvOrderedDetails.CurrentRow.DataBoundItem;
+            DataRow row = currentDataRowView.Row;
+
+            int quantity = int.Parse(row[4].ToString());
+            if (quantity > 1)
+            {
+                int new_quantity = quantity - 1;
+                float price = float.Parse(table.Rows[table.Rows.IndexOf(row)][3].ToString());
+                table.Rows[table.Rows.IndexOf(row)][4] = new_quantity;
+                table.Rows[table.Rows.IndexOf(row)][5] = new_quantity * price;
+            }
+            else
+            {
+                table.Rows.Remove(row);
+            }
+
+            changeBills(table);
+        }
+
+        private void dgvProduct_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (dgvProduct.CurrentCell.RowIndex == dgvProduct.RowCount - 1)
+                return;
+
+            if (dgvOrderedDetails.DataSource == null)
+            {
+                _order = settingInformation();
+                _orderedDetails = new List<OrderedDetail>();
+                createTableBillDetails();
+            }
+
+            string product_id = dgvProduct.CurrentRow.Cells[0].Value.ToString();
+            string name = dgvProduct.CurrentRow.Cells[1].Value.ToString();
+            string unit = dgvProduct.CurrentRow.Cells[3].Value.ToString();
+            float price = float.Parse(dgvProduct.CurrentRow.Cells[7].Value.ToString());
+
+            int store_quantity = int.Parse(dgvProduct.CurrentRow.Cells[4].Value.ToString());
+
+            if (table.Rows.Contains(product_id))
+            {
+                DataRow row = table.Select("ProductID = " + product_id)[0];
+                int row_index = table.Rows.IndexOf(row);
+
+                int new_quantity = int.Parse(table.Rows[row_index][4].ToString()) + 1;
+
+                if (new_quantity > store_quantity)
+                {
+                    MessageBox.Show("Không đủ số lượng trong kho!", "THÔNG BÁO", MessageBoxButtons.OK);
+                    return;
+                }
+
+                table.Rows[row_index][4] = new_quantity;
+                table.Rows[row_index][5] = new_quantity * price;
+            }
+            else if (store_quantity > 0)
+            {
+                table.Rows.Add(product_id, name, unit, price, 1, price * 1);
+            }
+            else
+            {
+                MessageBox.Show("Không đủ số lượng trong kho!", "THÔNG BÁO", MessageBoxButtons.OK);
+                return;
+            }
+
+            changeBills(table);
         }
     }
 }

@@ -27,6 +27,12 @@ namespace BasicGroceryStore
                 new SqlParameter("@StaffID", acc.Staff_id)) > 0) ? true : false;
         }
 
+        public static Account getAccountByStaffID(string staff_id)
+        {
+            DataTable dt = DAO.Instance.ExecuteQuery($"select * from Account where StaffID = {staff_id}", CommandType.Text, null);
+            return new Account(staff_id, dt.Rows[0][1].ToString(), dt.Rows[0][2].ToString());
+        }
+
         public static void SaveAccount(Account acc, bool isSave)
         {
             DAO_Information dao = new DAO_Information("Account.xml");

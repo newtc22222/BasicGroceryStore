@@ -128,6 +128,7 @@ namespace BasicGroceryStore
             // 
             // cbGender
             // 
+            this.cbGender.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbGender.FormattingEnabled = true;
             this.cbGender.Location = new System.Drawing.Point(349, 126);
             this.cbGender.Name = "cbGender";
@@ -361,6 +362,7 @@ namespace BasicGroceryStore
             this.cbTypeWork.Name = "cbTypeWork";
             this.cbTypeWork.Size = new System.Drawing.Size(258, 32);
             this.cbTypeWork.TabIndex = 55;
+            this.cbTypeWork.SelectedIndexChanged += new System.EventHandler(this.cbTypeWork_SelectedIndexChanged);
             // 
             // cbSpells
             // 

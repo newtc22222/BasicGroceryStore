@@ -9,7 +9,7 @@ namespace BasicGroceryStore
     {
         public static bool createStaff(Staff staff)
         {
-            return (DAO.Instance.ExecuteNonQuery("exec sp_InsertStaff",
+            return (DAO.Instance.ExecuteNonQuery("sp_InsertStaff",
                     CommandType.StoredProcedure,
                     new SqlParameter("@ID", staff.ID),
                     new SqlParameter("@Name", staff.Name),
@@ -24,7 +24,7 @@ namespace BasicGroceryStore
 
         public static bool updateStaff(Staff staff)
         {
-            return (DAO.Instance.ExecuteNonQuery("exec sp_UpdateStaff",
+            return (DAO.Instance.ExecuteNonQuery("sp_UpdateStaff",
                      CommandType.StoredProcedure,
                      new SqlParameter("@ID", staff.ID),
                      new SqlParameter("@Name", staff.Name),
@@ -39,13 +39,15 @@ namespace BasicGroceryStore
 
         public static bool deleteStaff(string id)
         {
-            return (DAO.Instance.ExecuteNonQuery("exec sp_DeleteStaff",
+            return (DAO.Instance.ExecuteNonQuery("sp_DeleteStaff",
                     CommandType.StoredProcedure, new SqlParameter("@id", id)) > 0) ? true : false;
         }
 
         public static Staff getStaff(string id)
         {
             DataTable dt = DAO.Instance.ExecuteQuery($"select * from Staff where Id='{id}'", CommandType.Text, null);
+            //if (dt.Rows[0] == null)
+            //    return null;
             DataRow row = dt.Rows[0];
 
             Image image = null;

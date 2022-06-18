@@ -121,7 +121,7 @@ namespace BasicGroceryStore
 
         public void LoadStaffData()
         {
-            if(staff_using != null)
+            if (staff_using != null)
             {
                 lblYourName.Text = $"Họ tên: {staff_using.Name}";
                 lblYourGender.Text = $"Giới tính: {staff_using.Gender}";
@@ -139,23 +139,7 @@ namespace BasicGroceryStore
             }
         }
 
-        public void LoadIncomeData()
-        {
-            float income = BLL.Instance.getTotalValueOfOrdered_All();
-            float spending = BLL.Instance.getTotalValueOfImported_All();
-            txtTotalIncome.Text = income.ToString();
-            txtTotalSpending.Text = spending.ToString();
-            txtProfit.Text = (income / spending * 100).ToString() + " %";
-        }
-
-        private Image LoadLevelCustomer(string level)
-        {
-            string path = Path.GetDirectoryName(Directory.GetCurrentDirectory());
-            path = path.Replace("bin", "Resources/") + level.Trim() + ".png";
-            return Image.FromFile(path);
-        }
-
-        private void dgvCustomer_CellClick(object sender, DataGridViewCellEventArgs e)
+        private void dgvCustomer_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             if (dgvCustomer.CurrentCell.RowIndex == dgvCustomer.RowCount - 1)
                 return;
@@ -165,6 +149,30 @@ namespace BasicGroceryStore
             dtCustomerDateJoin.Value = (DateTime)dgvCustomer.CurrentRow.Cells[2].Value;
             txtCustomerValue.Text = dgvCustomer.CurrentRow.Cells[3].Value.ToString();
             picCustomerLevel.BackgroundImage = LoadLevelCustomer(dgvCustomer.CurrentRow.Cells[4].Value.ToString());
+        }
+
+        public void LoadIncomeData()
+        {
+            txtIncomeDay.Text = BLL.Instance.getTotalSellValue_DAY().ToString();
+            txtSpendingDay.Text = BLL.Instance.getTotalBuyValue_DAY().ToString();
+
+            double income = BLL.Instance.getTotalValueOfOrdered_All(); // Thu nhap
+            double spending = BLL.Instance.getTotalValueOfImported_All(); // Chi tra
+            txtTotalIncome.Text = income.ToString();
+            txtTotalSpending.Text = spending.ToString();
+            txtProfit.Text = ((income - spending) / spending * 100).ToString() + " %";
+        }
+
+        private Image LoadLevelCustomer(string level)
+        {
+            string path = Path.GetDirectoryName(Directory.GetCurrentDirectory());
+            path = path.Replace("bin", "Resources/") + level.Trim() + ".png";
+            return Image.FromFile(path);
+        }
+
+        private void btnReloadCustomer_Click(object sender, EventArgs e)
+        {
+            LoadCustomerData();
         }
     }
 }

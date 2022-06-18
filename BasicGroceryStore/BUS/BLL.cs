@@ -146,6 +146,11 @@ namespace BasicGroceryStore
             return DAO_Account.deleteAccount(acc);
         }
 
+        public Account getAccountByStaffID(string staff_id)
+        {
+            return DAO_Account.getAccountByStaffID(staff_id);
+        }
+
         public string CheckLogin(string username, string password)
         {
             return DAO_Account.checkLogin(username, password);
@@ -209,9 +214,17 @@ namespace BasicGroceryStore
             return DAO_Bill.getTotalValueOfBill_Single("Imported", id);
         }
 
-        public float getTotalValueOfImported_All()
+        public double getTotalValueOfImported_All()
         {
-            float? value = DAO_Bill.getTotalValueOfBill_All("Imported");
+            double? value = DAO_Bill.getTotalValueOfBill_All("Imported");
+            if (value == null)
+                return 0;
+            return value.Value;
+        }
+
+        public float getTotalBuyValue_DAY()
+        {
+            float? value = DAO_Bill.getTotalValueOfBill_Day("Imported");
             if (value == null)
                 return 0;
             return value.Value;
@@ -271,9 +284,17 @@ namespace BasicGroceryStore
             return DAO_Bill.getTotalValueOfBill_Single("Ordered", id);
         }
 
-        public float getTotalValueOfOrdered_All()
+        public double getTotalValueOfOrdered_All()
         {
-            float? value = DAO_Bill.getTotalValueOfBill_All("Imported");
+            double? value = DAO_Bill.getTotalValueOfBill_All("Ordered");
+            if (value == null)
+                return 0;
+            return value.Value;
+        }
+
+        public float getTotalSellValue_DAY()
+        {
+            float? value = DAO_Bill.getTotalValueOfBill_Day("Ordered");
             if (value == null)
                 return 0;
             return value.Value;
@@ -357,6 +378,15 @@ namespace BasicGroceryStore
         public bool deleteContract(string contract_id)
         {
             return DAO_Contract.deleteContract(contract_id);
+        }
+        public DataTable getAllContractOfStaff(string staff_id)
+        {
+            return DAO_Contract.getAllConstractOfStaff(staff_id);
+        }
+
+        public Contracts getNewestContractOfStaff(string staff_id)
+        {
+            return DAO_Contract.getNewestConstractOfStaff(staff_id);
         }
         #endregion
     }

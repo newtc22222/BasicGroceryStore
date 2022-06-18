@@ -147,9 +147,9 @@ namespace BasicGroceryStore
                 case DialogResult.Yes:
                     break;
                 case DialogResult.No:
-                    for (int i = 1; i < table.Rows.Count; i++)
+                    for (int i = 0; i < table.Rows.Count; i++)
                     {
-                        _importedDetails.Add(new ImportedDetail(i, _import.ID, table.Rows[i][0].ToString(),
+                        _importedDetails.Add(new ImportedDetail(i + 1, _import.ID, table.Rows[i][0].ToString(),
                             float.Parse(table.Rows[i][3].ToString()), int.Parse(table.Rows[i][4].ToString())));
                     }
 
@@ -167,6 +167,9 @@ namespace BasicGroceryStore
                             BLL.Instance.createImportedDetail(item);
                         }
                         MessageBox.Show("Đã lưu thông tin hóa đơn!", "THÔNG BÁO");
+                        LoadData();
+                        UCOrdered.Instance.LoadData();
+                        UCProduct.Instance.LoadData();
                     }
                     else
                     {
@@ -198,39 +201,6 @@ namespace BasicGroceryStore
         private void btnCheckSupplier_Click(object sender, EventArgs e)
         {
             new FormSupplierSynthetic().ShowDialog();
-        }
-
-        private void dgvProduct_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
-        {
-            if (dgvProduct.CurrentCell.RowIndex == dgvProduct.RowCount - 1)
-                return;
-
-            if (dgvImportedDetails.DataSource == null)
-            {
-                _import = settingInformation();
-                _importedDetails = new List<ImportedDetail>();
-                createTableBillDetails();
-            }
-
-            string product_id = dgvProduct.CurrentRow.Cells[0].Value.ToString();
-            string name = dgvProduct.CurrentRow.Cells[1].Value.ToString();
-            string unit = dgvProduct.CurrentRow.Cells[3].Value.ToString();
-            float price = float.Parse(dgvProduct.CurrentRow.Cells[7].Value.ToString());
-
-            if (table.Rows.Contains(product_id))
-            {
-                DataRow[] row = table.Select("ProductID = " + product_id);
-                int new_quantity = int.Parse(table.Rows[table.Rows.IndexOf(row[0])][4].ToString()) + 1;
-
-                table.Rows[table.Rows.IndexOf(row[0])][4] = new_quantity;
-                table.Rows[table.Rows.IndexOf(row[0])][5] = new_quantity * price;
-            }
-            else
-            {
-                table.Rows.Add(product_id, name, unit, price, 1, price * 1);
-            }
-
-            changeBills(table);
         }
 
         private void dgvImportedDetails_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -297,6 +267,41 @@ namespace BasicGroceryStore
 
             dgvProduct.Controls.Clear();
             dgvProduct.DataSource = table;
+        }
+
+        private void dgvProduct_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (dgvProduct.CurrentCell.RowIndex == dgvProduct.RowCount - 1)
+                return;
+
+            if (dgvImportedDetails.DataSource == null)
+            {
+                _import = settingInformation();
+                _importedDetails = new List<ImportedDetail>();
+                createTableBillDetails();
+            }
+
+            string product_id = dgvProduct.CurrentRow.Cells[0].Value.ToString();
+            string name = dgvProduct.CurrentRow.Cells[1].Value.ToString();
+            string unit = dgvProduct.CurrentRow.Cells[3].Value.ToString();
+            float price = float.Parse(dgvProduct.CurrentRow.Cells[7].Value.ToString());
+
+            if (table.Rows.Contains(product_id))
+            {
+                DataRow row = table.Select("ProductID = " + product_id)[0];
+                int row_index = table.Rows.IndexOf(row);
+
+                int new_quantity = int.Parse(table.Rows[row_index][4].ToString()) + 1;
+
+                table.Rows[row_index][4] = new_quantity;
+                table.Rows[row_index][5] = new_quantity * price;
+            }
+            else
+            {
+                table.Rows.Add(product_id, name, unit, price, 1, price * 1);
+            }
+
+            changeBills(table);
         }
     }
 }

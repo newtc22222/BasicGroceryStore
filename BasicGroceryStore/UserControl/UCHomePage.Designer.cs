@@ -31,7 +31,6 @@ namespace BasicGroceryStore
         {
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
             System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
             System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
@@ -44,6 +43,7 @@ namespace BasicGroceryStore
             this.picStaff = new System.Windows.Forms.PictureBox();
             this.lblYourEmail = new System.Windows.Forms.Label();
             this.pnlCustomer = new System.Windows.Forms.GroupBox();
+            this.btnReloadCustomer = new System.Windows.Forms.Button();
             this.dgvCustomer = new System.Windows.Forms.DataGridView();
             this.btnChangeCustomerInfor = new System.Windows.Forms.Button();
             this.btnAddCustomer = new System.Windows.Forms.Button();
@@ -127,6 +127,7 @@ namespace BasicGroceryStore
             this.gbYourInfor.Controls.Add(this.lblYourPhone);
             this.gbYourInfor.Controls.Add(this.picStaff);
             this.gbYourInfor.Controls.Add(this.lblYourEmail);
+            this.gbYourInfor.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.gbYourInfor.ForeColor = System.Drawing.Color.White;
             this.gbYourInfor.Location = new System.Drawing.Point(680, 590);
             this.gbYourInfor.Name = "gbYourInfor";
@@ -152,7 +153,7 @@ namespace BasicGroceryStore
             this.lblYourGender.ForeColor = System.Drawing.Color.White;
             this.lblYourGender.Location = new System.Drawing.Point(190, 82);
             this.lblYourGender.Name = "lblYourGender";
-            this.lblYourGender.Size = new System.Drawing.Size(99, 24);
+            this.lblYourGender.Size = new System.Drawing.Size(71, 16);
             this.lblYourGender.TabIndex = 23;
             this.lblYourGender.Text = "Giới tính: ";
             // 
@@ -162,7 +163,7 @@ namespace BasicGroceryStore
             this.lblYourName.ForeColor = System.Drawing.Color.White;
             this.lblYourName.Location = new System.Drawing.Point(190, 39);
             this.lblYourName.Name = "lblYourName";
-            this.lblYourName.Size = new System.Drawing.Size(84, 24);
+            this.lblYourName.Size = new System.Drawing.Size(60, 16);
             this.lblYourName.TabIndex = 22;
             this.lblYourName.Text = "Họ tên: ";
             // 
@@ -172,7 +173,7 @@ namespace BasicGroceryStore
             this.lblYourPhone.ForeColor = System.Drawing.Color.White;
             this.lblYourPhone.Location = new System.Drawing.Point(190, 168);
             this.lblYourPhone.Name = "lblYourPhone";
-            this.lblYourPhone.Size = new System.Drawing.Size(146, 24);
+            this.lblYourPhone.Size = new System.Drawing.Size(106, 16);
             this.lblYourPhone.TabIndex = 21;
             this.lblYourPhone.Text = "Số điện thoại: ";
             // 
@@ -182,6 +183,7 @@ namespace BasicGroceryStore
             this.picStaff.Location = new System.Drawing.Point(18, 39);
             this.picStaff.Name = "picStaff";
             this.picStaff.Size = new System.Drawing.Size(150, 200);
+            this.picStaff.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.picStaff.TabIndex = 0;
             this.picStaff.TabStop = false;
             // 
@@ -191,13 +193,14 @@ namespace BasicGroceryStore
             this.lblYourEmail.ForeColor = System.Drawing.Color.White;
             this.lblYourEmail.Location = new System.Drawing.Point(190, 125);
             this.lblYourEmail.Name = "lblYourEmail";
-            this.lblYourEmail.Size = new System.Drawing.Size(74, 24);
+            this.lblYourEmail.Size = new System.Drawing.Size(54, 16);
             this.lblYourEmail.TabIndex = 20;
             this.lblYourEmail.Text = "Email: ";
             // 
             // pnlCustomer
             // 
             this.pnlCustomer.BackColor = System.Drawing.Color.LightSkyBlue;
+            this.pnlCustomer.Controls.Add(this.btnReloadCustomer);
             this.pnlCustomer.Controls.Add(this.dgvCustomer);
             this.pnlCustomer.Controls.Add(this.btnChangeCustomerInfor);
             this.pnlCustomer.Controls.Add(this.btnAddCustomer);
@@ -210,6 +213,7 @@ namespace BasicGroceryStore
             this.pnlCustomer.Controls.Add(this.label9);
             this.pnlCustomer.Controls.Add(this.label6);
             this.pnlCustomer.Controls.Add(this.label7);
+            this.pnlCustomer.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.pnlCustomer.Location = new System.Drawing.Point(679, 3);
             this.pnlCustomer.Name = "pnlCustomer";
             this.pnlCustomer.Size = new System.Drawing.Size(668, 581);
@@ -217,48 +221,51 @@ namespace BasicGroceryStore
             this.pnlCustomer.TabStop = false;
             this.pnlCustomer.Text = "Thông tin khách hàng";
             // 
+            // btnReloadCustomer
+            // 
+            this.btnReloadCustomer.ForeColor = System.Drawing.Color.Black;
+            this.btnReloadCustomer.Location = new System.Drawing.Point(6, 195);
+            this.btnReloadCustomer.Name = "btnReloadCustomer";
+            this.btnReloadCustomer.Size = new System.Drawing.Size(214, 42);
+            this.btnReloadCustomer.TabIndex = 34;
+            this.btnReloadCustomer.Text = "Tải lại thông tin";
+            this.btnReloadCustomer.UseVisualStyleBackColor = true;
+            this.btnReloadCustomer.Click += new System.EventHandler(this.btnReloadCustomer_Click);
+            // 
             // dgvCustomer
             // 
             this.dgvCustomer.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.Window;
             dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.dgvCustomer.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvCustomer.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvCustomer.DefaultCellStyle = dataGridViewCellStyle2;
             this.dgvCustomer.EnableHeadersVisualStyles = false;
             this.dgvCustomer.Location = new System.Drawing.Point(6, 243);
             this.dgvCustomer.Name = "dgvCustomer";
             this.dgvCustomer.ReadOnly = true;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvCustomer.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvCustomer.RowHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.dgvCustomer.Size = new System.Drawing.Size(656, 332);
             this.dgvCustomer.TabIndex = 33;
-            this.dgvCustomer.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvCustomer_CellClick);
+            this.dgvCustomer.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvCustomer_CellContentClick);
             // 
             // btnChangeCustomerInfor
             // 
             this.btnChangeCustomerInfor.ForeColor = System.Drawing.Color.Black;
-            this.btnChangeCustomerInfor.Location = new System.Drawing.Point(349, 195);
+            this.btnChangeCustomerInfor.Location = new System.Drawing.Point(452, 195);
             this.btnChangeCustomerInfor.Name = "btnChangeCustomerInfor";
-            this.btnChangeCustomerInfor.Size = new System.Drawing.Size(312, 42);
+            this.btnChangeCustomerInfor.Size = new System.Drawing.Size(209, 42);
             this.btnChangeCustomerInfor.TabIndex = 32;
             this.btnChangeCustomerInfor.Text = "Đổi thông tin khách hàng";
             this.btnChangeCustomerInfor.UseVisualStyleBackColor = true;
@@ -267,9 +274,9 @@ namespace BasicGroceryStore
             // btnAddCustomer
             // 
             this.btnAddCustomer.ForeColor = System.Drawing.Color.Black;
-            this.btnAddCustomer.Location = new System.Drawing.Point(6, 195);
+            this.btnAddCustomer.Location = new System.Drawing.Point(226, 195);
             this.btnAddCustomer.Name = "btnAddCustomer";
-            this.btnAddCustomer.Size = new System.Drawing.Size(337, 42);
+            this.btnAddCustomer.Size = new System.Drawing.Size(220, 42);
             this.btnAddCustomer.TabIndex = 24;
             this.btnAddCustomer.Text = "Thêm khách hàng";
             this.btnAddCustomer.UseVisualStyleBackColor = true;
@@ -287,7 +294,7 @@ namespace BasicGroceryStore
             // 
             // picCustomerLevel
             // 
-            this.picCustomerLevel.BackColor = System.Drawing.Color.DeepPink;
+            this.picCustomerLevel.BackColor = System.Drawing.Color.Thistle;
             this.picCustomerLevel.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.picCustomerLevel.Location = new System.Drawing.Point(22, 30);
             this.picCustomerLevel.Name = "picCustomerLevel";
@@ -301,7 +308,7 @@ namespace BasicGroceryStore
             this.dtCustomerDateJoin.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.dtCustomerDateJoin.Location = new System.Drawing.Point(192, 114);
             this.dtCustomerDateJoin.Name = "dtCustomerDateJoin";
-            this.dtCustomerDateJoin.Size = new System.Drawing.Size(313, 29);
+            this.dtCustomerDateJoin.Size = new System.Drawing.Size(313, 22);
             this.dtCustomerDateJoin.TabIndex = 30;
             // 
             // txtCustomerName
@@ -309,7 +316,7 @@ namespace BasicGroceryStore
             this.txtCustomerName.Location = new System.Drawing.Point(192, 39);
             this.txtCustomerName.Name = "txtCustomerName";
             this.txtCustomerName.ReadOnly = true;
-            this.txtCustomerName.Size = new System.Drawing.Size(313, 29);
+            this.txtCustomerName.Size = new System.Drawing.Size(313, 22);
             this.txtCustomerName.TabIndex = 29;
             // 
             // txtCustomerValue
@@ -317,7 +324,7 @@ namespace BasicGroceryStore
             this.txtCustomerValue.Location = new System.Drawing.Point(192, 151);
             this.txtCustomerValue.Name = "txtCustomerValue";
             this.txtCustomerValue.ReadOnly = true;
-            this.txtCustomerValue.Size = new System.Drawing.Size(313, 29);
+            this.txtCustomerValue.Size = new System.Drawing.Size(313, 22);
             this.txtCustomerValue.TabIndex = 28;
             // 
             // txtCustomerPhone
@@ -325,7 +332,7 @@ namespace BasicGroceryStore
             this.txtCustomerPhone.Location = new System.Drawing.Point(192, 77);
             this.txtCustomerPhone.Name = "txtCustomerPhone";
             this.txtCustomerPhone.ReadOnly = true;
-            this.txtCustomerPhone.Size = new System.Drawing.Size(313, 29);
+            this.txtCustomerPhone.Size = new System.Drawing.Size(313, 22);
             this.txtCustomerPhone.TabIndex = 11;
             // 
             // label8
@@ -334,7 +341,7 @@ namespace BasicGroceryStore
             this.label8.ForeColor = System.Drawing.Color.Black;
             this.label8.Location = new System.Drawing.Point(15, 118);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(149, 24);
+            this.label8.Size = new System.Drawing.Size(111, 16);
             this.label8.TabIndex = 27;
             this.label8.Text = "Ngày tham gia:";
             // 
@@ -344,7 +351,7 @@ namespace BasicGroceryStore
             this.label9.ForeColor = System.Drawing.Color.Black;
             this.label9.Location = new System.Drawing.Point(16, 156);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(148, 24);
+            this.label9.Size = new System.Drawing.Size(108, 16);
             this.label9.TabIndex = 26;
             this.label9.Text = "Giá trị tích lũy: ";
             // 
@@ -354,7 +361,7 @@ namespace BasicGroceryStore
             this.label6.ForeColor = System.Drawing.Color.Black;
             this.label6.Location = new System.Drawing.Point(14, 42);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(84, 24);
+            this.label6.Size = new System.Drawing.Size(60, 16);
             this.label6.TabIndex = 25;
             this.label6.Text = "Họ tên: ";
             // 
@@ -364,7 +371,7 @@ namespace BasicGroceryStore
             this.label7.ForeColor = System.Drawing.Color.Black;
             this.label7.Location = new System.Drawing.Point(15, 80);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(146, 24);
+            this.label7.Size = new System.Drawing.Size(106, 16);
             this.label7.TabIndex = 24;
             this.label7.Text = "Số điện thoại: ";
             // 
@@ -771,5 +778,6 @@ namespace BasicGroceryStore
         private System.Windows.Forms.DataGridView dgvCustomer;
         private System.Windows.Forms.Button btnChangeCustomerInfor;
         private System.Windows.Forms.Button btnAddCustomer;
+        private System.Windows.Forms.Button btnReloadCustomer;
     }
 }

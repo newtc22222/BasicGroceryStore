@@ -34,6 +34,8 @@ namespace BasicGroceryStore
             this.cbDateContract = new System.Windows.Forms.ComboBox();
             this.pnlMain = new System.Windows.Forms.Panel();
             this.gbDetail = new System.Windows.Forms.GroupBox();
+            this.txtGender = new System.Windows.Forms.TextBox();
+            this.btnLoadStaffInfor = new System.Windows.Forms.Button();
             this.btnEditStaffInfor = new System.Windows.Forms.Button();
             this.btnMakeContract = new System.Windows.Forms.Button();
             this.gbContractsAndAccount = new System.Windows.Forms.GroupBox();
@@ -81,8 +83,6 @@ namespace BasicGroceryStore
             this.chbAddress = new System.Windows.Forms.CheckBox();
             this.chbAge = new System.Windows.Forms.CheckBox();
             this.chbName = new System.Windows.Forms.CheckBox();
-            this.btnLoadContract = new System.Windows.Forms.Button();
-            this.txtGender = new System.Windows.Forms.TextBox();
             this.pnlMain.SuspendLayout();
             this.gbDetail.SuspendLayout();
             this.gbContractsAndAccount.SuspendLayout();
@@ -119,7 +119,7 @@ namespace BasicGroceryStore
             // 
             this.gbDetail.BackColor = System.Drawing.Color.LightSalmon;
             this.gbDetail.Controls.Add(this.txtGender);
-            this.gbDetail.Controls.Add(this.btnLoadContract);
+            this.gbDetail.Controls.Add(this.btnLoadStaffInfor);
             this.gbDetail.Controls.Add(this.btnEditStaffInfor);
             this.gbDetail.Controls.Add(this.btnMakeContract);
             this.gbDetail.Controls.Add(this.gbContractsAndAccount);
@@ -144,6 +144,24 @@ namespace BasicGroceryStore
             this.gbDetail.TabIndex = 1;
             this.gbDetail.TabStop = false;
             this.gbDetail.Text = "Thông tin nhân viên và hợp đồng";
+            // 
+            // txtGender
+            // 
+            this.txtGender.Location = new System.Drawing.Point(297, 79);
+            this.txtGender.Name = "txtGender";
+            this.txtGender.ReadOnly = true;
+            this.txtGender.Size = new System.Drawing.Size(187, 22);
+            this.txtGender.TabIndex = 33;
+            // 
+            // btnLoadStaffInfor
+            // 
+            this.btnLoadStaffInfor.Location = new System.Drawing.Point(297, 812);
+            this.btnLoadStaffInfor.Name = "btnLoadStaffInfor";
+            this.btnLoadStaffInfor.Size = new System.Drawing.Size(162, 36);
+            this.btnLoadStaffInfor.TabIndex = 32;
+            this.btnLoadStaffInfor.Text = "Tải thông tin";
+            this.btnLoadStaffInfor.UseVisualStyleBackColor = true;
+            this.btnLoadStaffInfor.Click += new System.EventHandler(this.btnLoadStaffInfor_Click);
             // 
             // btnEditStaffInfor
             // 
@@ -668,24 +686,6 @@ namespace BasicGroceryStore
             this.chbName.UseVisualStyleBackColor = true;
             this.chbName.CheckedChanged += new System.EventHandler(this.chbName_CheckedChanged);
             // 
-            // btnLoadContract
-            // 
-            this.btnLoadContract.Location = new System.Drawing.Point(297, 812);
-            this.btnLoadContract.Name = "btnLoadContract";
-            this.btnLoadContract.Size = new System.Drawing.Size(162, 36);
-            this.btnLoadContract.TabIndex = 32;
-            this.btnLoadContract.Text = "Tải thông tin";
-            this.btnLoadContract.UseVisualStyleBackColor = true;
-            this.btnLoadContract.Click += new System.EventHandler(this.btnLoadContract_Click);
-            // 
-            // txtGender
-            // 
-            this.txtGender.Location = new System.Drawing.Point(297, 79);
-            this.txtGender.Name = "txtGender";
-            this.txtGender.ReadOnly = true;
-            this.txtGender.Size = new System.Drawing.Size(187, 22);
-            this.txtGender.TabIndex = 33;
-            // 
             // UCStaff
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 24F);
@@ -763,7 +763,7 @@ namespace BasicGroceryStore
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.TextBox txtPassword;
         private System.Windows.Forms.TextBox txtUsername;
-        private System.Windows.Forms.Button btnLoadContract;
+        private System.Windows.Forms.Button btnLoadStaffInfor;
         private System.Windows.Forms.TextBox txtGender;
     }
 }
