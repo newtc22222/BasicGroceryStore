@@ -14,6 +14,7 @@ namespace BasicGroceryStore
     {
         #region Properties
         private bool flagSpells;
+        private Staff _staff;
         #endregion
 
         static UCStaff _obj;
@@ -33,6 +34,20 @@ namespace BasicGroceryStore
         {
             InitializeComponent();
             LoadContentCombobox();
+
+            LoadData();
+            _staff = new Staff();
+        }
+
+        private void LoadData()
+        {
+            dgvStaff.Controls.Clear();
+
+            dgvStaff.DataSource = BLL.Instance.getAllStaff();
+            dgvStaff.Columns[0].Visible = false;
+            dgvStaff.Columns[4].Visible = false;
+            dgvStaff.Columns[7].Visible = false;
+            dgvStaff.Columns[8].Visible = false;
         }
 
         private void LoadContentCombobox()
@@ -93,7 +108,7 @@ namespace BasicGroceryStore
 
         private void btnAddNew_Click(object sender, EventArgs e)
         {
-            new FormStaff().ShowDialog();
+            new FormStaff(new Staff()).ShowDialog();
         }
 
         private void btnReload_Click(object sender, EventArgs e)
@@ -122,14 +137,10 @@ namespace BasicGroceryStore
 
         }
 
-        private void btnEdit_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void btnEditStaffInfor_Click(object sender, EventArgs e)
         {
-            new FormStaff(new Staff()).ShowDialog();
+            if (_staff.Name != "")
+                new FormStaff(_staff).ShowDialog();
         }
 
         private void btnMakeContract_Click(object sender, EventArgs e)
@@ -138,6 +149,36 @@ namespace BasicGroceryStore
         }
 
         private void btnDelete_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void dgvStaff_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            _staff.ID = dgvStaff.CurrentRow.Cells[0].Value.ToString();
+            _staff.Name = dgvStaff.CurrentRow.Cells[1].Value.ToString();
+            _staff.Gender = dgvStaff.CurrentRow.Cells[2].Value.ToString();
+            _staff.DateOfBirth = (DateTime)dgvStaff.CurrentRow.Cells[3].Value;
+            _staff.CitizenID = dgvStaff.CurrentRow.Cells[4].Value.ToString();
+            _staff.Address = dgvStaff.CurrentRow.Cells[5].Value.ToString();
+            _staff.Phone = dgvStaff.CurrentRow.Cells[6].Value.ToString();
+            _staff.Email = dgvStaff.CurrentRow.Cells[7].Value.ToString();
+            
+            if (dgvStaff.CurrentRow.Cells[8].Value != DBNull.Value)
+                _staff.Images = AdditionalFunctions.ConvertByteArrayToImage((byte[])dgvStaff.CurrentRow.Cells[8].Value);
+
+            txtName.Text = _staff.Name;
+            txtGender.Text = _staff.Gender;
+            dtPickDoB.Value = _staff.DateOfBirth;
+            txtCitizenID.Text = _staff.CitizenID;
+            txtAddress.Text = _staff.Address;
+            txtEmail.Text = _staff.Email;
+            txtPhone.Text = _staff.Phone;
+
+            picRepresent.Image = _staff.Images;
+        }
+
+        private void btnLoadContract_Click(object sender, EventArgs e)
         {
 
         }

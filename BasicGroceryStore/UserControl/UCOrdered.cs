@@ -133,7 +133,8 @@ namespace BasicGroceryStore
 
         private void btnCancelBill_Click(object sender, EventArgs e)
         {
-            clearInformation();
+            if (MessageBox.Show("Hủy toàn bộ phiếu bán hàng?", "CẢNH BÁO", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
+                clearInformation();
         }
 
         private void btnMakeBills_Click(object sender, EventArgs e)
@@ -214,17 +215,30 @@ namespace BasicGroceryStore
             string unit = dgvProduct.CurrentRow.Cells[3].Value.ToString();
             float price = float.Parse(dgvProduct.CurrentRow.Cells[7].Value.ToString());
 
+            int store_quantity = int.Parse(dgvProduct.CurrentRow.Cells[4].Value.ToString());
+
             if (table.Rows.Contains(product_id))
             {
                 DataRow[] row = table.Select("ProductID = " + product_id);
                 int new_quantity = int.Parse(table.Rows[table.Rows.IndexOf(row[0])][4].ToString()) + 1;
 
+                if(new_quantity > store_quantity)
+                {
+                    MessageBox.Show("Không đủ số lượng trong kho!", "THÔNG BÁO", MessageBoxButtons.OK);
+                    return;
+                }
+
                 table.Rows[table.Rows.IndexOf(row[0])][4] = new_quantity;
                 table.Rows[table.Rows.IndexOf(row[0])][5] = new_quantity * price;
             }
-            else
+            else if (store_quantity > 0)
             {
                 table.Rows.Add(product_id, name, unit, price, 1, price * 1);
+            }
+            else
+            {
+                MessageBox.Show("Không đủ số lượng trong kho!", "THÔNG BÁO", MessageBoxButtons.OK);
+                return;
             }
             
             changeBills(table);

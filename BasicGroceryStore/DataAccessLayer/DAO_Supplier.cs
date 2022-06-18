@@ -8,7 +8,7 @@ namespace BasicGroceryStore
     {
         public static bool createSupplier(Supplier supplier)
         {
-            return (DAO.Instance.ExecuteNonQuery("exec sp_InsertSupplier", CommandType.StoredProcedure,
+            return (DAO.Instance.ExecuteNonQuery("sp_InsertSupplier", CommandType.StoredProcedure,
                 new SqlParameter("@Id", supplier.ID),
                 new SqlParameter("@Name", supplier.Name),
                 new SqlParameter("@Address", supplier.Address),
@@ -18,7 +18,7 @@ namespace BasicGroceryStore
 
         public static bool updateSupplier(Supplier supplier)
         {
-            return (DAO.Instance.ExecuteNonQuery("exec sp_UpdateSupplier", CommandType.StoredProcedure,
+            return (DAO.Instance.ExecuteNonQuery("sp_UpdateSupplier", CommandType.StoredProcedure,
                 new SqlParameter("@Id", supplier.ID),
                 new SqlParameter("@Name", supplier.Name),
                 new SqlParameter("@Address", supplier.Address),
@@ -28,7 +28,7 @@ namespace BasicGroceryStore
 
         public static bool deleteSupplier(string id)
         {
-            return (DAO.Instance.ExecuteNonQuery("exec sp_DeleteSupplier", CommandType.StoredProcedure,
+            return (DAO.Instance.ExecuteNonQuery("sp_DeleteSupplier", CommandType.StoredProcedure,
                 new SqlParameter("@Id", id)) > 0) ? true : false;
         }
 

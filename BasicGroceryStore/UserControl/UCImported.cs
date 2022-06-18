@@ -136,7 +136,8 @@ namespace BasicGroceryStore
 
         private void btnCancelBill_Click(object sender, EventArgs e)
         {
-            clearInformation();
+            if(MessageBox.Show("Hủy toàn bộ phiếu nhập hàng?", "CẢNH BÁO", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
+                clearInformation();
         }
 
         private void btnMakeBills_Click(object sender, EventArgs e)
@@ -152,7 +153,11 @@ namespace BasicGroceryStore
                             float.Parse(table.Rows[i][3].ToString()), int.Parse(table.Rows[i][4].ToString())));
                     }
 
-                    _import.StaffID = UCHomePage.Instance.staff_using.ID;
+                    if (UCHomePage.Instance.staff_using.ID != null)
+                        _import.StaffID = UCHomePage.Instance.staff_using.ID;
+                    else
+                        _import.StaffID = null;
+                    
                     _import.Value = float.Parse(txtTotalPrice.Text);
 
                     if (BLL.Instance.createImported(_import))

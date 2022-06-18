@@ -84,6 +84,21 @@ namespace BasicGroceryStore
             return DAO_Staff.getStaff(id);
         }
 
+        public bool createStaff(Staff staff)
+        {
+            return DAO_Staff.createStaff(staff);
+        }
+
+        public bool updateStaff(Staff staff)
+        {
+            return DAO_Staff.updateStaff(staff);
+        }
+
+        public bool deleteStaff(string staff_id)
+        {
+            return DAO_Staff.deleteStaff(staff_id);
+        }
+
         public DataTable FindStaffByAddress(string address)
         {
             return DAO_Staff.FindStaffByAddress(address);

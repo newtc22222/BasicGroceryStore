@@ -32,6 +32,17 @@ namespace BasicGroceryStore
             txtPhone.Text = supplier.Contact;
         }
 
+        private bool checkInformation(Supplier supplier)
+        {
+            if (supplier.Name == "" || supplier.Address == "")
+                return false;
+            if(supplier.Contact == "" || supplier.Contact.Length < 10)
+                return false;
+            if(!supplier.Email.Contains("@"))
+                return false;
+            return true;
+        }
+
         private void btnMinimize_Click(object sender, EventArgs e)
         {
             WindowState = FormWindowState.Minimized;
@@ -61,5 +72,48 @@ namespace BasicGroceryStore
             mouseIsDown = false;
         }
         #endregion
+
+        private void btnSave_Click(object sender, EventArgs e)
+        {
+            Supplier _supplier = new Supplier();
+            _supplier.ID = txtSupplierID.Text;
+            _supplier.Name = txtSupplierName.Text.Trim();
+            _supplier.Address = txtSupplierAddress.Text.Trim();
+            _supplier.Email = txtSupplierEmail.Text.Trim();
+            _supplier.Contact = txtPhone.Text.Trim();
+
+            if (checkInformation(_supplier))
+            {
+                if(BLL.Instance.getSupplier(_supplier.ID) == null) // new Supplier
+                {
+                    if (BLL.Instance.createSupplier(_supplier))
+                    {
+                        MessageBox.Show("Thêm thông tin Nhà cung cấp thành công!", "THÔNG BÁO", MessageBoxButtons.OK);
+                        Close();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Thêm thông tin Nhà cung cấp không thành công!", "LỖI", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                } 
+                else
+                {
+                    if (BLL.Instance.updateSupplier(_supplier))
+                    {
+                        MessageBox.Show("Cập nhật thông tin Nhà cung cấp thành công!", "THÔNG BÁO", MessageBoxButtons.OK);
+                        Close();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Có lỗi xảy ra trong quá trình cập nhật!", "LỖI", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+            } 
+            else
+            {
+                MessageBox.Show("Thông tin chưa phù hợp!\nVui lòng điều chỉnh lại!", "LỖI", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+        }
     }
 }

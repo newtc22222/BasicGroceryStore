@@ -21,6 +21,8 @@ namespace BasicGroceryStore
         private void LoadData()
         {
             dgvSupplier.Controls.Clear();
+            cbTypeProductFilter.DataSource = BLL.Instance.getAllTypeOfProduct();
+
             dgvSupplier.DataSource = BLL.Instance.getAllSupplier();
             supplier_choosing = new Supplier();
         }

@@ -30,6 +30,7 @@ namespace BasicGroceryStore
         private void InitializeComponent()
         {
             this.pnlMove = new System.Windows.Forms.Panel();
+            this.lblTabShow = new System.Windows.Forms.Label();
             this.btnMinimize = new System.Windows.Forms.Button();
             this.btnClose = new System.Windows.Forms.Button();
             this.label12 = new System.Windows.Forms.Label();
@@ -44,7 +45,6 @@ namespace BasicGroceryStore
             this.btnCancel = new System.Windows.Forms.Button();
             this.btnSave = new System.Windows.Forms.Button();
             this.txtPhone = new System.Windows.Forms.MaskedTextBox();
-            this.lblTabShow = new System.Windows.Forms.Label();
             this.pnlMove.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -62,6 +62,16 @@ namespace BasicGroceryStore
             this.pnlMove.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pnlMove_MouseDown);
             this.pnlMove.MouseMove += new System.Windows.Forms.MouseEventHandler(this.pnlMove_MouseMove);
             this.pnlMove.MouseUp += new System.Windows.Forms.MouseEventHandler(this.pnlMove_MouseUp);
+            // 
+            // lblTabShow
+            // 
+            this.lblTabShow.AutoSize = true;
+            this.lblTabShow.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.lblTabShow.Location = new System.Drawing.Point(13, 7);
+            this.lblTabShow.Name = "lblTabShow";
+            this.lblTabShow.Size = new System.Drawing.Size(233, 24);
+            this.lblTabShow.TabIndex = 4;
+            this.lblTabShow.Text = "Thông tin nhà cung cấp";
             // 
             // btnMinimize
             // 
@@ -88,16 +98,16 @@ namespace BasicGroceryStore
             this.label12.AutoSize = true;
             this.label12.Location = new System.Drawing.Point(10, 261);
             this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(151, 26);
+            this.label12.Size = new System.Drawing.Size(134, 24);
             this.label12.TabIndex = 57;
             this.label12.Text = "Số điện thoại";
             // 
             // txtSupplierEmail
             // 
-            this.txtSupplierEmail.Font = new System.Drawing.Font("Montserrat", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtSupplierEmail.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtSupplierEmail.Location = new System.Drawing.Point(185, 218);
             this.txtSupplierEmail.Name = "txtSupplierEmail";
-            this.txtSupplierEmail.Size = new System.Drawing.Size(477, 31);
+            this.txtSupplierEmail.Size = new System.Drawing.Size(477, 29);
             this.txtSupplierEmail.TabIndex = 56;
             // 
             // label11
@@ -105,13 +115,13 @@ namespace BasicGroceryStore
             this.label11.AutoSize = true;
             this.label11.Location = new System.Drawing.Point(11, 219);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(71, 26);
+            this.label11.Size = new System.Drawing.Size(62, 24);
             this.label11.TabIndex = 55;
             this.label11.Text = "Email";
             // 
             // txtSupplierAddress
             // 
-            this.txtSupplierAddress.Font = new System.Drawing.Font("Montserrat", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtSupplierAddress.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtSupplierAddress.Location = new System.Drawing.Point(187, 130);
             this.txtSupplierAddress.Multiline = true;
             this.txtSupplierAddress.Name = "txtSupplierAddress";
@@ -123,16 +133,16 @@ namespace BasicGroceryStore
             this.label10.AutoSize = true;
             this.label10.Location = new System.Drawing.Point(12, 131);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(131, 26);
+            this.label10.Size = new System.Drawing.Size(114, 24);
             this.label10.TabIndex = 53;
             this.label10.Text = "Địa chỉ kho";
             // 
             // txtSupplierName
             // 
-            this.txtSupplierName.Font = new System.Drawing.Font("Montserrat", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtSupplierName.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtSupplierName.Location = new System.Drawing.Point(187, 88);
             this.txtSupplierName.Name = "txtSupplierName";
-            this.txtSupplierName.Size = new System.Drawing.Size(477, 31);
+            this.txtSupplierName.Size = new System.Drawing.Size(477, 29);
             this.txtSupplierName.TabIndex = 52;
             // 
             // label9
@@ -140,17 +150,17 @@ namespace BasicGroceryStore
             this.label9.AutoSize = true;
             this.label9.Location = new System.Drawing.Point(13, 89);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(141, 26);
+            this.label9.Size = new System.Drawing.Size(129, 24);
             this.label9.TabIndex = 51;
             this.label9.Text = "Tên đại diện";
             // 
             // txtSupplierID
             // 
-            this.txtSupplierID.Font = new System.Drawing.Font("Montserrat", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtSupplierID.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtSupplierID.Location = new System.Drawing.Point(187, 46);
             this.txtSupplierID.Name = "txtSupplierID";
             this.txtSupplierID.ReadOnly = true;
-            this.txtSupplierID.Size = new System.Drawing.Size(314, 31);
+            this.txtSupplierID.Size = new System.Drawing.Size(314, 29);
             this.txtSupplierID.TabIndex = 50;
             // 
             // label8
@@ -158,7 +168,7 @@ namespace BasicGroceryStore
             this.label8.AutoSize = true;
             this.label8.Location = new System.Drawing.Point(13, 47);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(157, 26);
+            this.label8.Size = new System.Drawing.Size(139, 24);
             this.label8.TabIndex = 49;
             this.label8.Text = "Mã định danh";
             // 
@@ -180,28 +190,19 @@ namespace BasicGroceryStore
             this.btnSave.TabIndex = 65;
             this.btnSave.Text = "Lưu thông tin";
             this.btnSave.UseVisualStyleBackColor = true;
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
             // txtPhone
             // 
             this.txtPhone.Location = new System.Drawing.Point(185, 261);
             this.txtPhone.Mask = "0000-000-000";
             this.txtPhone.Name = "txtPhone";
-            this.txtPhone.Size = new System.Drawing.Size(314, 31);
+            this.txtPhone.Size = new System.Drawing.Size(314, 29);
             this.txtPhone.TabIndex = 66;
-            // 
-            // lblTabShow
-            // 
-            this.lblTabShow.AutoSize = true;
-            this.lblTabShow.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.lblTabShow.Location = new System.Drawing.Point(13, 7);
-            this.lblTabShow.Name = "lblTabShow";
-            this.lblTabShow.Size = new System.Drawing.Size(264, 26);
-            this.lblTabShow.TabIndex = 4;
-            this.lblTabShow.Text = "Thông tin nhà cung cấp";
             // 
             // FormSupplier
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(13F, 26F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 24F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.PeachPuff;
             this.ClientSize = new System.Drawing.Size(674, 354);
@@ -218,7 +219,7 @@ namespace BasicGroceryStore
             this.Controls.Add(this.txtSupplierID);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.pnlMove);
-            this.Font = new System.Drawing.Font("Montserrat Medium", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Margin = new System.Windows.Forms.Padding(7, 6, 7, 6);
             this.Name = "FormSupplier";
