@@ -51,6 +51,9 @@ namespace BasicGroceryStore
         public static Supplier getSupplier(string id)
         {
             DataTable data = DAO.Instance.ExecuteQuery($"select * from Supplier where Id={id}", CommandType.Text);
+            if (data.Rows.Count == 0)
+                return null;
+
             DataRow row = data.Rows[0];
             if(!row.IsNull("Name"))
                 return new Supplier(id, row[1].ToString(), row[2].ToString(), row[3].ToString(), row[4].ToString());
@@ -59,17 +62,17 @@ namespace BasicGroceryStore
 
         public static DataTable FindSupplierByAddress(string address)
         {
-            return DAO.Instance.ExecuteQuery($"select * from func_FindSupplierByAddress('{address}')", CommandType.Text);
+            return DAO.Instance.ExecuteQuery($"select * from func_FindSupplierByAddress(N'{address}')", CommandType.Text);
         }
 
         public static DataTable FindSupplierByName(string name)
         {
-            return DAO.Instance.ExecuteQuery($"select * from func_FindSupplierByName('{name}')", CommandType.Text);
+            return DAO.Instance.ExecuteQuery($"select * from func_FindSupplierByName(N'{name}')", CommandType.Text);
         }
 
         public static DataTable FindSupplierByTypeProduct(string typeProduct)
         {
-            return DAO.Instance.ExecuteQuery($"select * from func_FindSupplierByTypeProduct('{typeProduct}')", CommandType.Text);
+            return DAO.Instance.ExecuteQuery($"select * from func_FindSupplierByTypeProduct(N'{typeProduct}')", CommandType.Text);
         }
     }
 }

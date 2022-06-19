@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Data;
 using System.Drawing;
 using System.Windows.Forms;
 
@@ -25,6 +26,29 @@ namespace BasicGroceryStore
 
             dgvSupplier.DataSource = BLL.Instance.getAllSupplier();
             supplier_choosing = new Supplier();
+        }
+
+        private DataTable getTableFilter(DataTable table, DataTable table_filter)
+        {
+            DataTable dataTable;
+            if (table == null)
+            {
+                table = table_filter;
+                table.PrimaryKey = new DataColumn[] { table.Columns["ID"] };
+                dataTable = table;
+            }
+            else
+            {
+                dataTable = table.Clone();
+                foreach (DataRow row in table_filter.Rows)
+                {
+                    if (table.Rows.Contains(row[0]))
+                    {
+                        dataTable.ImportRow(row);
+                    }
+                }
+            }
+            return dataTable;
         }
 
         private void btnMinimize_Click(object sender, EventArgs e)
@@ -68,6 +92,7 @@ namespace BasicGroceryStore
                     {
                         supplier_choosing = null;
                         MessageBox.Show("Đã xóa thông tin thành công!", "THÔNG BÁO");
+                        LoadData();
                     } 
                     else
                     {
@@ -82,7 +107,6 @@ namespace BasicGroceryStore
         {
             txtSupplierNameFilter.Clear();
             txtSupplierAddressFilter.Clear();
-            txtProductNameFilter.Clear();
         }
 
         private void btnAddNew_Click(object sender, EventArgs e)
@@ -114,7 +138,45 @@ namespace BasicGroceryStore
 
         private void btnFind_Click(object sender, EventArgs e)
         {
+            DataTable table = null;
+            DataTable table_filter;
 
+            if (!chbSupplierName.Checked && !chbSupplierAddress.Checked && !chbTypeProduct.Checked)
+                return;
+
+            if (chbSupplierName.Checked)
+            {
+                table_filter = BLL.Instance.FindSupplierByName(txtSupplierNameFilter.Text.Trim());
+                table = getTableFilter(table, table_filter);
+            }
+            if (chbSupplierAddress.Checked)
+            {
+                table_filter = BLL.Instance.FindSupplierByAddress(txtSupplierAddressFilter.Text.Trim());
+                table = getTableFilter(table, table_filter);
+            }
+            if (chbTypeProduct.Checked)
+            {
+                table_filter = BLL.Instance.FindSupplierByTypeProduct(cbTypeProductFilter.Text);
+                table = getTableFilter(table, table_filter);
+            }
+
+            dgvSupplier.Controls.Clear();
+            dgvSupplier.DataSource = table;
+        }
+
+        private void chbSupplierName_CheckedChanged(object sender, EventArgs e)
+        {
+            txtSupplierNameFilter.Enabled = chbSupplierName.Checked;
+        }
+
+        private void chbSupplierAddress_CheckedChanged(object sender, EventArgs e)
+        {
+            txtSupplierAddressFilter.Enabled = chbSupplierAddress.Checked;
+        }
+
+        private void chbTypeProduct_CheckedChanged(object sender, EventArgs e)
+        {
+            cbTypeProductFilter.Enabled = chbTypeProduct.Checked;
         }
     }
 }

@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Data;
 
 namespace BasicGroceryStore
@@ -222,9 +223,17 @@ namespace BasicGroceryStore
             return value.Value;
         }
 
-        public float getTotalBuyValue_DAY()
+        public double getTotalBuyValue_DAY(DateTime date)
         {
-            float? value = DAO_Bill.getTotalValueOfBill_Day("Imported");
+            double? value = DAO_Bill.getTotalValueOfBill_Day("Imported", date);
+            if (value == null)
+                return 0;
+            return value.Value;
+        }
+
+        public double getTotalBuyValue_MONTH(DateTime date)
+        {
+            double? value = DAO_Bill.getTotalValueOfBill_Month("Imported", date);
             if (value == null)
                 return 0;
             return value.Value;
@@ -292,9 +301,17 @@ namespace BasicGroceryStore
             return value.Value;
         }
 
-        public float getTotalSellValue_DAY()
+        public double getTotalSellValue_DAY(DateTime date)
         {
-            float? value = DAO_Bill.getTotalValueOfBill_Day("Ordered");
+            double? value = DAO_Bill.getTotalValueOfBill_Day("Ordered", date);
+            if (value == null)
+                return 0;
+            return value.Value;
+        }
+
+        public double getTotalSellValue_MONTH(DateTime date)
+        {
+            double? value = DAO_Bill.getTotalValueOfBill_Month("Ordered", date);
             if (value == null)
                 return 0;
             return value.Value;

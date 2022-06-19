@@ -37,7 +37,7 @@ namespace BasicGroceryStore
             pnlMain.Controls.Add(UCStatistic.Instance);
             pnlMain.Controls.Add(UCStaff.Instance);
             //pnlMain.Controls.Add(UCBrowser.Instance);
-            pnlMain.Controls.Add(UCCalendar.Instance);
+            //pnlMain.Controls.Add(UCCalendar.Instance);
             ShowTabUsing(btnHomePage.Text);
         }
 
@@ -168,7 +168,7 @@ namespace BasicGroceryStore
             }
             if(cbSetting.SelectedItem.ToString() == "INFORMATION")
             {
-
+                MessageBox.Show("Ứng dụng này là dự án cá nhân nhỏ của Võ Nhật Phi!\nMọi thông tin muốn tìm hiểu thêm vui lòng liên hệ 0947679570!");
             }
             if (cbSetting.SelectedItem.ToString() == "EXIT")
             {

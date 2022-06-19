@@ -29,8 +29,7 @@ namespace BasicGroceryStore
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.pnlMove = new System.Windows.Forms.Panel();
             this.lblTabShow = new System.Windows.Forms.Label();
             this.btnMinimize = new System.Windows.Forms.Button();
@@ -43,11 +42,9 @@ namespace BasicGroceryStore
             this.btnFind = new System.Windows.Forms.Button();
             this.btnExit = new System.Windows.Forms.Button();
             this.cbTypeProductFilter = new System.Windows.Forms.ComboBox();
-            this.txtProductNameFilter = new System.Windows.Forms.TextBox();
             this.chbTypeProduct = new System.Windows.Forms.CheckBox();
-            this.chbName = new System.Windows.Forms.CheckBox();
-            this.checkBox1 = new System.Windows.Forms.CheckBox();
-            this.checkBox2 = new System.Windows.Forms.CheckBox();
+            this.chbSupplierAddress = new System.Windows.Forms.CheckBox();
+            this.chbSupplierName = new System.Windows.Forms.CheckBox();
             this.btnReload = new System.Windows.Forms.Button();
             this.btnClear = new System.Windows.Forms.Button();
             this.btnAddNew = new System.Windows.Forms.Button();
@@ -102,7 +99,7 @@ namespace BasicGroceryStore
             // 
             // btnEditSupplier
             // 
-            this.btnEditSupplier.Location = new System.Drawing.Point(11, 466);
+            this.btnEditSupplier.Location = new System.Drawing.Point(10, 425);
             this.btnEditSupplier.Name = "btnEditSupplier";
             this.btnEditSupplier.Size = new System.Drawing.Size(245, 36);
             this.btnEditSupplier.TabIndex = 39;
@@ -129,25 +126,17 @@ namespace BasicGroceryStore
             // dgvSupplier
             // 
             this.dgvSupplier.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvSupplier.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvSupplier.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
             this.dgvSupplier.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvSupplier.DefaultCellStyle = dataGridViewCellStyle2;
             this.dgvSupplier.EnableHeadersVisualStyles = false;
-            this.dgvSupplier.Location = new System.Drawing.Point(11, 267);
+            this.dgvSupplier.Location = new System.Drawing.Point(10, 226);
             this.dgvSupplier.Name = "dgvSupplier";
             this.dgvSupplier.Size = new System.Drawing.Size(678, 193);
             this.dgvSupplier.TabIndex = 49;
@@ -155,7 +144,7 @@ namespace BasicGroceryStore
             // 
             // btnDelete
             // 
-            this.btnDelete.Location = new System.Drawing.Point(506, 466);
+            this.btnDelete.Location = new System.Drawing.Point(505, 425);
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Size = new System.Drawing.Size(183, 36);
             this.btnDelete.TabIndex = 51;
@@ -165,7 +154,7 @@ namespace BasicGroceryStore
             // 
             // btnFind
             // 
-            this.btnFind.Location = new System.Drawing.Point(506, 225);
+            this.btnFind.Location = new System.Drawing.Point(505, 184);
             this.btnFind.Name = "btnFind";
             this.btnFind.Size = new System.Drawing.Size(183, 36);
             this.btnFind.TabIndex = 50;
@@ -176,7 +165,7 @@ namespace BasicGroceryStore
             // btnExit
             // 
             this.btnExit.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.btnExit.Location = new System.Drawing.Point(506, 508);
+            this.btnExit.Location = new System.Drawing.Point(505, 467);
             this.btnExit.Name = "btnExit";
             this.btnExit.Size = new System.Drawing.Size(183, 36);
             this.btnExit.TabIndex = 52;
@@ -187,69 +176,53 @@ namespace BasicGroceryStore
             // 
             this.cbTypeProductFilter.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbTypeProductFilter.FormattingEnabled = true;
-            this.cbTypeProductFilter.Location = new System.Drawing.Point(215, 178);
+            this.cbTypeProductFilter.Location = new System.Drawing.Point(216, 139);
             this.cbTypeProductFilter.Name = "cbTypeProductFilter";
             this.cbTypeProductFilter.Size = new System.Drawing.Size(475, 28);
             this.cbTypeProductFilter.TabIndex = 56;
-            // 
-            // txtProductNameFilter
-            // 
-            this.txtProductNameFilter.Location = new System.Drawing.Point(216, 137);
-            this.txtProductNameFilter.Name = "txtProductNameFilter";
-            this.txtProductNameFilter.Size = new System.Drawing.Size(475, 26);
-            this.txtProductNameFilter.TabIndex = 55;
             // 
             // chbTypeProduct
             // 
             this.chbTypeProduct.AutoSize = true;
             this.chbTypeProduct.Checked = true;
             this.chbTypeProduct.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.chbTypeProduct.Location = new System.Drawing.Point(12, 180);
+            this.chbTypeProduct.Location = new System.Drawing.Point(11, 141);
             this.chbTypeProduct.Name = "chbTypeProduct";
             this.chbTypeProduct.Size = new System.Drawing.Size(132, 24);
             this.chbTypeProduct.TabIndex = 54;
             this.chbTypeProduct.Text = "Loại sản phẩm";
             this.chbTypeProduct.UseVisualStyleBackColor = true;
+            this.chbTypeProduct.CheckedChanged += new System.EventHandler(this.chbTypeProduct_CheckedChanged);
             // 
-            // chbName
+            // chbSupplierAddress
             // 
-            this.chbName.AutoSize = true;
-            this.chbName.Checked = true;
-            this.chbName.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.chbName.Location = new System.Drawing.Point(12, 139);
-            this.chbName.Name = "chbName";
-            this.chbName.Size = new System.Drawing.Size(129, 24);
-            this.chbName.TabIndex = 53;
-            this.chbName.Text = "Tên sản phẩm";
-            this.chbName.UseVisualStyleBackColor = true;
+            this.chbSupplierAddress.AutoSize = true;
+            this.chbSupplierAddress.Checked = true;
+            this.chbSupplierAddress.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.chbSupplierAddress.Location = new System.Drawing.Point(12, 98);
+            this.chbSupplierAddress.Name = "chbSupplierAddress";
+            this.chbSupplierAddress.Size = new System.Drawing.Size(176, 24);
+            this.chbSupplierAddress.TabIndex = 58;
+            this.chbSupplierAddress.Text = "Địa chỉ nhà cung cấp";
+            this.chbSupplierAddress.UseVisualStyleBackColor = true;
+            this.chbSupplierAddress.CheckedChanged += new System.EventHandler(this.chbSupplierAddress_CheckedChanged);
             // 
-            // checkBox1
+            // chbSupplierName
             // 
-            this.checkBox1.AutoSize = true;
-            this.checkBox1.Checked = true;
-            this.checkBox1.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBox1.Location = new System.Drawing.Point(12, 98);
-            this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(176, 24);
-            this.checkBox1.TabIndex = 58;
-            this.checkBox1.Text = "Địa chỉ nhà cung cấp";
-            this.checkBox1.UseVisualStyleBackColor = true;
-            // 
-            // checkBox2
-            // 
-            this.checkBox2.AutoSize = true;
-            this.checkBox2.Checked = true;
-            this.checkBox2.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBox2.Location = new System.Drawing.Point(12, 57);
-            this.checkBox2.Name = "checkBox2";
-            this.checkBox2.Size = new System.Drawing.Size(155, 24);
-            this.checkBox2.TabIndex = 57;
-            this.checkBox2.Text = "Tên nhà cung cấp";
-            this.checkBox2.UseVisualStyleBackColor = true;
+            this.chbSupplierName.AutoSize = true;
+            this.chbSupplierName.Checked = true;
+            this.chbSupplierName.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.chbSupplierName.Location = new System.Drawing.Point(12, 57);
+            this.chbSupplierName.Name = "chbSupplierName";
+            this.chbSupplierName.Size = new System.Drawing.Size(155, 24);
+            this.chbSupplierName.TabIndex = 57;
+            this.chbSupplierName.Text = "Tên nhà cung cấp";
+            this.chbSupplierName.UseVisualStyleBackColor = true;
+            this.chbSupplierName.CheckedChanged += new System.EventHandler(this.chbSupplierName_CheckedChanged);
             // 
             // btnReload
             // 
-            this.btnReload.Location = new System.Drawing.Point(11, 225);
+            this.btnReload.Location = new System.Drawing.Point(10, 184);
             this.btnReload.Name = "btnReload";
             this.btnReload.Size = new System.Drawing.Size(183, 36);
             this.btnReload.TabIndex = 59;
@@ -259,7 +232,7 @@ namespace BasicGroceryStore
             // 
             // btnClear
             // 
-            this.btnClear.Location = new System.Drawing.Point(317, 225);
+            this.btnClear.Location = new System.Drawing.Point(316, 184);
             this.btnClear.Name = "btnClear";
             this.btnClear.Size = new System.Drawing.Size(183, 36);
             this.btnClear.TabIndex = 60;
@@ -269,7 +242,7 @@ namespace BasicGroceryStore
             // 
             // btnAddNew
             // 
-            this.btnAddNew.Location = new System.Drawing.Point(12, 508);
+            this.btnAddNew.Location = new System.Drawing.Point(11, 467);
             this.btnAddNew.Name = "btnAddNew";
             this.btnAddNew.Size = new System.Drawing.Size(245, 36);
             this.btnAddNew.TabIndex = 61;
@@ -282,16 +255,14 @@ namespace BasicGroceryStore
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Moccasin;
-            this.ClientSize = new System.Drawing.Size(700, 552);
+            this.ClientSize = new System.Drawing.Size(700, 511);
             this.Controls.Add(this.btnAddNew);
             this.Controls.Add(this.btnClear);
             this.Controls.Add(this.btnReload);
-            this.Controls.Add(this.checkBox1);
-            this.Controls.Add(this.checkBox2);
+            this.Controls.Add(this.chbSupplierAddress);
+            this.Controls.Add(this.chbSupplierName);
             this.Controls.Add(this.cbTypeProductFilter);
-            this.Controls.Add(this.txtProductNameFilter);
             this.Controls.Add(this.chbTypeProduct);
-            this.Controls.Add(this.chbName);
             this.Controls.Add(this.btnExit);
             this.Controls.Add(this.btnDelete);
             this.Controls.Add(this.btnFind);
@@ -326,11 +297,9 @@ namespace BasicGroceryStore
         private System.Windows.Forms.Button btnFind;
         private System.Windows.Forms.Button btnExit;
         private System.Windows.Forms.ComboBox cbTypeProductFilter;
-        private System.Windows.Forms.TextBox txtProductNameFilter;
         private System.Windows.Forms.CheckBox chbTypeProduct;
-        private System.Windows.Forms.CheckBox chbName;
-        private System.Windows.Forms.CheckBox checkBox1;
-        private System.Windows.Forms.CheckBox checkBox2;
+        private System.Windows.Forms.CheckBox chbSupplierAddress;
+        private System.Windows.Forms.CheckBox chbSupplierName;
         private System.Windows.Forms.Button btnReload;
         private System.Windows.Forms.Button btnClear;
         private System.Windows.Forms.Button btnAddNew;

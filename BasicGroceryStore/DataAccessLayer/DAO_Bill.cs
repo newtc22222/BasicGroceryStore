@@ -69,16 +69,32 @@ namespace BasicGroceryStore
             return (double?)DAO.Instance.ExecuteScalar(query, CommandType.Text, null);
         }
 
-        public static float? getTotalValueOfBill_Day(string typeBill)
+        public static double? getTotalValueOfBill_Day(string typeBill, DateTime date)
         {
             if(typeBill == "Imported")
-                return (float?)DAO.Instance.ExecuteScalar($"select dbo.func_TotalBuyOfDay({DateTime.Today})", CommandType.Text);
-            return (float?)DAO.Instance.ExecuteScalar($"select dbo.func_TotalSellOfDay({DateTime.Today})", CommandType.Text);
+            {
+                object value = DAO.Instance.ExecuteScalar($"select dbo.func_TotalBuyOfDay('{AdditionalFunctions.getDateString(date)}')", CommandType.Text);
+                return (value.ToString() == "") ? null : (double?)value;
+            }
+            else
+            {
+                object value = DAO.Instance.ExecuteScalar($"select dbo.func_TotalSellOfDay('{AdditionalFunctions.getDateString(date)}')", CommandType.Text);
+                return (value.ToString() == "") ? null : (double?)value;
+            }
         }
 
-        public static float getTotalValueOfBill_Month(string typeBill)
+        public static double? getTotalValueOfBill_Month(string typeBill, DateTime date)
         {
-            return 0;
+            if (typeBill == "Imported")
+            {
+                object value = DAO.Instance.ExecuteScalar($"select dbo.func_TotalBuyOfMonth({date.Month}, {date.Year})", CommandType.Text);
+                return (value.ToString() == "") ? null : (double?)value;
+            }
+            else
+            {
+                object value = DAO.Instance.ExecuteScalar($"select dbo.func_TotalSellOfMonth({date.Month}, {date.Year})", CommandType.Text);
+                return (value.ToString() == "") ? null : (double?)value;
+            }
         }
 
         public DataTable FindBillByDateRange(string typeBill, DateTime from, DateTime to)

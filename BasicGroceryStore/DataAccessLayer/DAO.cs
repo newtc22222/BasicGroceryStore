@@ -42,7 +42,14 @@ namespace BasicGroceryStore
             {
                 cmd.Parameters.Add(a);
             }
-            return cmd.ExecuteNonQuery();
+            try
+            {
+                return cmd.ExecuteNonQuery();
+            }
+            catch (SqlException)
+            {
+                return 0;
+            }
         }
 
         public DataTable ExecuteQuery(string sqlExpess, CommandType type, params SqlParameter[] param)
@@ -63,7 +70,6 @@ namespace BasicGroceryStore
 
         public object ExecuteScalar(string sql, CommandType type, params SqlParameter[] param)
         {
-            object result;
             cmd.CommandType = type;
             cmd.CommandText = sql;
             if (param != null)
@@ -71,15 +77,15 @@ namespace BasicGroceryStore
                 foreach (SqlParameter p in param)
                     cmd.Parameters.Add(p);
             }
+
             try
             {
-                result = cmd.ExecuteScalar();
+                return cmd.ExecuteScalar();
             }
             catch (SqlException)
             {
                 return null;
             }
-            return result;
         }
     }
 }

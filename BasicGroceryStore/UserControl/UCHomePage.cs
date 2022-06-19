@@ -153,8 +153,8 @@ namespace BasicGroceryStore
 
         public void LoadIncomeData()
         {
-            txtIncomeDay.Text = BLL.Instance.getTotalSellValue_DAY().ToString();
-            txtSpendingDay.Text = BLL.Instance.getTotalBuyValue_DAY().ToString();
+            txtIncomeDay.Text = BLL.Instance.getTotalSellValue_DAY(DateTime.Today).ToString();
+            txtSpendingDay.Text = BLL.Instance.getTotalBuyValue_DAY(DateTime.Today).ToString();
 
             double income = BLL.Instance.getTotalValueOfOrdered_All(); // Thu nhap
             double spending = BLL.Instance.getTotalValueOfImported_All(); // Chi tra
