@@ -36,7 +36,7 @@ namespace BasicGroceryStore
 
         public static DataTable getAllItem_BillDetail(string typeBill, string id)
         {
-            return DAO.Instance.ExecuteQuery($"select * from {typeBill}Details where {typeBill}Id={id}", CommandType.Text, null);
+            return DAO.Instance.ExecuteQuery($"select * from {typeBill}Detail where {typeBill}Id='{id}'", CommandType.Text, null);
         }
     }
 }

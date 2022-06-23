@@ -73,6 +73,12 @@
     <Compile Include="DTO\Product.cs" />
     <Compile Include="DTO\Staff.cs" />
     <Compile Include="DTO\Supplier.cs" />
+    <Compile Include="Form\FormBill.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\FormBill.Designer.cs">
+      <DependentUpon>FormBill.cs</DependentUpon>
+    </Compile>
     <Compile Include="Form\FormProduct.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -164,6 +170,9 @@
     <Compile Include="UserControl\UCStatistic.Designer.cs">
       <DependentUpon>UCStatistic.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Form\FormBill.resx">
+      <DependentUpon>FormBill.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Form\FormLogin.resx">
       <DependentUpon>FormLogin.cs</DependentUpon>
     </EmbeddedResource>

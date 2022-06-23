@@ -10,7 +10,7 @@ namespace BasicGroceryStore
     
         public Ordered() : base()
         {
-            this.customerName = "";
+            customerName = "";
         }
 
         public Ordered(string iD, DateTime dateCreate, float value, string staffID, string customerName) 

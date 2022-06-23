@@ -67,8 +67,8 @@ namespace BasicGroceryStore
             this.rad7daysProduct = new System.Windows.Forms.RadioButton();
             this.cbInformationPlus = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.gbSales = new System.Windows.Forms.GroupBox();
-            this.btnCreateChart = new System.Windows.Forms.Button();
             this.gbCheckTime = new System.Windows.Forms.GroupBox();
+            this.btnCreateChart = new System.Windows.Forms.Button();
             this.rad6months = new System.Windows.Forms.RadioButton();
             this.rad5years = new System.Windows.Forms.RadioButton();
             this.rad7days = new System.Windows.Forms.RadioButton();
@@ -460,16 +460,6 @@ namespace BasicGroceryStore
             this.gbSales.TabStop = false;
             this.gbSales.Text = "Thống kê doanh thu";
             // 
-            // btnCreateChart
-            // 
-            this.btnCreateChart.Location = new System.Drawing.Point(472, 24);
-            this.btnCreateChart.Name = "btnCreateChart";
-            this.btnCreateChart.Size = new System.Drawing.Size(304, 34);
-            this.btnCreateChart.TabIndex = 8;
-            this.btnCreateChart.Text = "Tạo biểu đồ";
-            this.btnCreateChart.UseVisualStyleBackColor = true;
-            this.btnCreateChart.Click += new System.EventHandler(this.btnCreateChart_Click);
-            // 
             // gbCheckTime
             // 
             this.gbCheckTime.BackColor = System.Drawing.Color.Turquoise;
@@ -484,6 +474,16 @@ namespace BasicGroceryStore
             this.gbCheckTime.TabIndex = 7;
             this.gbCheckTime.TabStop = false;
             this.gbCheckTime.Text = "Biểu đồ doanh thu";
+            // 
+            // btnCreateChart
+            // 
+            this.btnCreateChart.Location = new System.Drawing.Point(472, 24);
+            this.btnCreateChart.Name = "btnCreateChart";
+            this.btnCreateChart.Size = new System.Drawing.Size(304, 34);
+            this.btnCreateChart.TabIndex = 8;
+            this.btnCreateChart.Text = "Tạo biểu đồ";
+            this.btnCreateChart.UseVisualStyleBackColor = true;
+            this.btnCreateChart.Click += new System.EventHandler(this.btnCreateChart_Click);
             // 
             // rad6months
             // 
@@ -579,6 +579,7 @@ namespace BasicGroceryStore
             // 
             // dgvImportHistory
             // 
+            this.dgvImportHistory.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvImportHistory.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvImportHistory.Location = new System.Drawing.Point(6, 26);
             this.dgvImportHistory.Name = "dgvImportHistory";

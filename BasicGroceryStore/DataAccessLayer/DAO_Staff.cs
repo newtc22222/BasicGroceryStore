@@ -45,9 +45,10 @@ namespace BasicGroceryStore
 
         public static Staff getStaff(string id)
         {
+            if (id == "")
+                return null;
+
             DataTable dt = DAO.Instance.ExecuteQuery($"select * from Staff where Id='{id}'", CommandType.Text, null);
-            //if (dt.Rows[0] == null)
-            //    return null;
             DataRow row = dt.Rows[0];
 
             Image image = null;
