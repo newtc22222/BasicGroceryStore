@@ -10,8 +10,11 @@ namespace BasicGroceryStore
 {
     public partial class UCHomePage : UserControl
     {
-        private string link_map, link_fb, link_ig, link_linkedin, link_ut;
-        public Staff staff_using = null;
+        private BUS_Customer bus_customer;
+        private BUS_Imported bus_imported;
+        private BUS_Ordered bus_ordered;
+
+        private Dictionary<string, string> link;
 
         static UCHomePage _obj;
         public static UCHomePage Instance
@@ -28,10 +31,15 @@ namespace BasicGroceryStore
         public UCHomePage()
         {
             InitializeComponent();
-            Thread thread = new Thread(LoadStoreInformation);
-            thread.Start();
+
+            link = new Dictionary<string, string>();
+
+            bus_customer = new BUS_Customer();
+            bus_imported = new BUS_Imported();
+            bus_ordered = new BUS_Ordered();
+
+            new Thread(LoadStoreInformation).Start();
             LoadCustomerData();
-            LoadStaffData();
         }
 
         #region ButtonControl
@@ -65,27 +73,27 @@ namespace BasicGroceryStore
 
         private void picYoutube_Click(object sender, EventArgs e)
         {
-            Process.Start(link_ut);
+            Process.Start(link["youtube"]);
         }
 
         private void picFace_Click(object sender, EventArgs e)
         {
-            Process.Start(link_fb);
+            Process.Start(link["facebook"]);
         }
 
         private void picInsta_Click(object sender, EventArgs e)
         {
-            Process.Start(link_ig);
+            Process.Start(link["instagram"]);
         }
 
         private void picLinkedIn_Click(object sender, EventArgs e)
         {
-            Process.Start(link_linkedin);
+            Process.Start(link["linkedin"]);
         }
 
         private void picStoreLocation_Click(object sender, EventArgs e)
         {
-            Process.Start(link_map);
+            Process.Start(link["map"]);
         }
 
         private void pictContact_Click(object sender, EventArgs e)
@@ -98,36 +106,40 @@ namespace BasicGroceryStore
         public void LoadStoreInformation()
         {
             DAO_Information dao = new DAO_Information("StoreInformation.xml");
-            List<string> data = dao.loadInformation();
+            Dictionary<string, string> data = dao.LoadStoreInformation();
 
-            lblAddress.Text = "Địa chỉ: " + data[0];
+            lblAddress.Text = "Địa chỉ: " + data["address"];
             lblAddress.MaximumSize = new Size(560, 0);
             lblAddress.AutoSize = true;
 
-            lblEmail.Text = "Email: " + data[1];
-            lblPhone.Text = "Số điện thoại: " + data[2];
+            lblEmail.Text = "Email: " + data["email"];
+            lblPhone.Text = "Số điện thoại: " + data["phone"];
 
-            link_map = data[3];
-            link_fb = data[4];
-            link_ig = data[5];
-            link_linkedin = data[6];
-            link_ut = data[7];
+            link.Add("map", data["link_map"]);
+            link.Add("facebook", data["link_fb"]);
+            link.Add("instagram", data["link_ig"]);
+            link.Add("linkedin", data["link_linkedin"]);
+            link.Add("youtube", data["link_ut"]);
         }
 
         public void LoadCustomerData()
         {
-            dgvCustomer.DataSource =  BLL.Instance.getAllCustomerMember();
+            dgvCustomer.DataSource =  bus_customer.GetAllCustomer();
         }
 
-        public void LoadStaffData()
+        /// <summary>
+        /// Setting staff data to form
+        /// </summary>
+        /// <param name="staff"></param>
+        public void LoadStaffData(Staff staff)
         {
-            if (staff_using != null)
+            if (staff != null)
             {
-                lblYourName.Text = $"Họ tên: {staff_using.Name}";
-                lblYourGender.Text = $"Giới tính: {staff_using.Gender}";
-                lblYourEmail.Text = $"Email: {staff_using.Email}";
-                lblYourPhone.Text = $"Số điện thoại: {staff_using.Phone}";
-                picStaff.Image = staff_using.Images;
+                lblYourName.Text = $"Họ tên: {staff.Name}";
+                lblYourGender.Text = $"Giới tính: {staff.Gender}";
+                lblYourEmail.Text = $"Email: {staff.Email}";
+                lblYourPhone.Text = $"Số điện thoại: {staff.Phone}";
+                picStaff.Image = staff.Images;
             }
             else
             {
@@ -153,16 +165,25 @@ namespace BasicGroceryStore
 
         public void LoadIncomeData()
         {
-            txtIncomeDay.Text = BLL.Instance.getTotalSellValue_DAY(DateTime.Today).ToString();
-            txtSpendingDay.Text = BLL.Instance.getTotalBuyValue_DAY(DateTime.Today).ToString();
+            double income_day = bus_ordered.GetValueOfAllBills_Day(DateTime.Today).Value;
+            txtIncomeDay.Text = GetFormatString.GetCurrencyString(income_day);
+            double income = bus_ordered.GetValueOfAllBills().Value; // Thu nhap
+            txtTotalIncome.Text = GetFormatString.GetCurrencyString(income);
 
-            double income = BLL.Instance.getTotalValueOfOrdered_All(); // Thu nhap
-            double spending = BLL.Instance.getTotalValueOfImported_All(); // Chi tra
-            txtTotalIncome.Text = income.ToString();
-            txtTotalSpending.Text = spending.ToString();
-            txtProfit.Text = ((income - spending) / spending * 100).ToString() + " %";
+            double spending_day = bus_imported.GetValueOfAllBills_Day(DateTime.Today).Value;
+            txtSpendingDay.Text = GetFormatString.GetCurrencyString(spending_day);
+            double spending = bus_imported.GetValueOfAllBills().Value; // Chi tra
+            txtTotalSpending.Text = GetFormatString.GetCurrencyString(spending);
+
+
+            txtProfit.Text = ((income - spending) / spending * 100).ToString("N3") + " %";
         }
 
+        /// <summary>
+        /// Show image of customer's level
+        /// </summary>
+        /// <param name="level"></param>
+        /// <returns></returns>
         private Image LoadLevelCustomer(string level)
         {
             string path = Path.GetDirectoryName(Directory.GetCurrentDirectory());

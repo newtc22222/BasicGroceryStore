@@ -2,7 +2,7 @@
 
 namespace BasicGroceryStore
 {
-    public class CustomerMember
+    public class Customer
     {
         private string name;
         private string phone;
@@ -16,7 +16,7 @@ namespace BasicGroceryStore
         public float Value { get => value; set => this.value = value; }
         public Level E_level { get => e_level; set => e_level = value; }
 
-        public CustomerMember()
+        public Customer()
         {
             this.name = "";
             this.phone = "";
@@ -25,9 +25,9 @@ namespace BasicGroceryStore
             this.e_level = Level.None;
         }
 
-        ~CustomerMember() { }
+        ~Customer() { }
 
-        public CustomerMember(string name, string phone, DateTime dateJoin, float value, Level e_level)
+        public Customer(string name, string phone, DateTime dateJoin, float value, Level e_level)
         {
             this.name = name;
             this.phone = phone;

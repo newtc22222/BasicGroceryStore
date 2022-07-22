@@ -6,20 +6,21 @@ namespace BasicGroceryStore
 {
     public partial class FormSupplier : Form
     {
-        #region Properties
-        private Point firstPoint;
-        private bool mouseIsDown = false;
-        #endregion
+        private BUS_Supplier bus_supplier;
 
         public FormSupplier()
         {
             InitializeComponent();
+
+            bus_supplier = new BUS_Supplier();
             LoadSupplier(new Supplier());
         }
 
         public FormSupplier(Supplier supplier)
         {
             InitializeComponent();
+
+            bus_supplier = new BUS_Supplier();
             LoadSupplier(supplier);
         }
 
@@ -38,7 +39,7 @@ namespace BasicGroceryStore
                 return false;
             if(supplier.Contact == "" || supplier.Contact.Length < 10)
                 return false;
-            if(!supplier.Email.Contains("@"))
+            if(!Checking.IsValidEmail(supplier.Email))
                 return false;
             return true;
         }
@@ -49,6 +50,9 @@ namespace BasicGroceryStore
         }
 
         #region MoveForm
+        private Point firstPoint;
+        private bool mouseIsDown = false;
+
         private void pnlMove_MouseDown(object sender, MouseEventArgs e)
         {
             firstPoint = e.Location;
@@ -84,34 +88,37 @@ namespace BasicGroceryStore
 
             if (checkInformation(_supplier))
             {
-                if(BLL.Instance.getSupplier(_supplier.ID) == null) // new Supplier
+                if(bus_supplier.GetSupplier(_supplier.ID) == null) // new Supplier
                 {
-                    if (BLL.Instance.createSupplier(_supplier))
+                    if (bus_supplier.Create(_supplier))
                     {
                         MessageBox.Show("Thêm thông tin Nhà cung cấp thành công!", "THÔNG BÁO", MessageBoxButtons.OK);
                         Close();
                     }
                     else
                     {
-                        MessageBox.Show("Thêm thông tin Nhà cung cấp không thành công!", "LỖI", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MessageBox.Show("Thêm thông tin Nhà cung cấp không thành công!", "LỖI", 
+                            MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 } 
                 else
                 {
-                    if (BLL.Instance.updateSupplier(_supplier))
+                    if (bus_supplier.Update(_supplier))
                     {
                         MessageBox.Show("Cập nhật thông tin Nhà cung cấp thành công!", "THÔNG BÁO", MessageBoxButtons.OK);
                         Close();
                     }
                     else
                     {
-                        MessageBox.Show("Có lỗi xảy ra trong quá trình cập nhật!", "LỖI", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MessageBox.Show("Có lỗi xảy ra trong quá trình cập nhật!", "LỖI",
+                            MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 }
             } 
             else
             {
-                MessageBox.Show("Thông tin chưa phù hợp!\nVui lòng điều chỉnh lại!", "LỖI", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Thông tin chưa phù hợp!\nVui lòng điều chỉnh lại!", "LỖI", 
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
         }

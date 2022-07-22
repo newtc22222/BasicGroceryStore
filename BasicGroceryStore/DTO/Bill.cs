@@ -16,7 +16,7 @@ namespace BasicGroceryStore
 
         public Bill()
         {
-            this.iD = AdditionalFunctions.MakeIDByTime();
+            this.iD = GetFormatString.MakingIDNow();
             this.dateCreate = DateTime.Now;
             this.value = 0;
             this.staffID = "";

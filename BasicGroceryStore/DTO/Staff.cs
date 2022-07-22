@@ -27,7 +27,7 @@ namespace BasicGroceryStore
 
         public Staff()
         {
-            this.iD = AdditionalFunctions.MakeIDByTime();
+            this.iD = GetFormatString.MakingIDNow();
             this.name = "";
             this.gender = "nam";
             this.dateOfBirth = new DateTime(2000, 1, 1);
@@ -52,6 +52,11 @@ namespace BasicGroceryStore
             this.phone = phone;
             this.email = email;
             this.images = images;
+        }
+
+        public int getAge()
+        {
+            return (DateTime.Now.Year - this.dateOfBirth.Year);
         }
     }
 }

@@ -48,31 +48,42 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BusinessLogicLayer\BUS_Account.cs" />
+    <Compile Include="BusinessLogicLayer\BUS_Contract.cs" />
+    <Compile Include="BusinessLogicLayer\BUS_Customer.cs" />
+    <Compile Include="BusinessLogicLayer\BUS_Imported.cs" />
+    <Compile Include="BusinessLogicLayer\BUS_Imported_Item.cs" />
+    <Compile Include="BusinessLogicLayer\BUS_Ordered.cs" />
+    <Compile Include="BusinessLogicLayer\BUS_Ordered_Item.cs" />
+    <Compile Include="BusinessLogicLayer\BUS_Product.cs" />
+    <Compile Include="BusinessLogicLayer\BUS_Staff.cs" />
+    <Compile Include="BusinessLogicLayer\BUS_Supplier.cs" />
+    <Compile Include="Functions\Checking.cs" />
+    <Compile Include="Functions\Convert.cs" />
     <Compile Include="DataAccessLayer\DAO_Information.cs" />
     <Compile Include="DTO\Account.cs" />
     <Compile Include="DataAccessLayer\DAO_Account.cs" />
     <Compile Include="DataAccessLayer\DAO_Bill.cs" />
-    <Compile Include="DataAccessLayer\DAO_BillDetails.cs" />
+    <Compile Include="DataAccessLayer\DAO_Bill_Item.cs" />
     <Compile Include="DataAccessLayer\DAO_Contract.cs" />
-    <Compile Include="DataAccessLayer\DAO_CustomerMember.cs" />
+    <Compile Include="DataAccessLayer\DAO_Customer.cs" />
     <Compile Include="DataAccessLayer\DAO_Supplier.cs" />
     <Compile Include="DataAccessLayer\DAO_Product.cs" />
     <Compile Include="DataAccessLayer\DAO_Staff.cs" />
-    <Compile Include="ExtraEnumAndFunction\AdditionalFunctions.cs" />
-    <Compile Include="BUS\BLL.cs" />
     <Compile Include="DataAccessLayer\Config.cs" />
-    <Compile Include="DataAccessLayer\DAO.cs" />
+    <Compile Include="DataAccessLayer\DataProvider.cs" />
     <Compile Include="DTO\Bill.cs" />
-    <Compile Include="DTO\BillDetail.cs" />
-    <Compile Include="DTO\Contracts.cs" />
-    <Compile Include="DTO\CustomerMember.cs" />
+    <Compile Include="DTO\Bill_Item.cs" />
+    <Compile Include="DTO\Contract.cs" />
+    <Compile Include="DTO\Customer.cs" />
     <Compile Include="DTO\Imported.cs" />
-    <Compile Include="DTO\ImportedDetail.cs" />
+    <Compile Include="DTO\Imported_Item.cs" />
     <Compile Include="DTO\Ordered.cs" />
-    <Compile Include="DTO\OrderedDetail.cs" />
+    <Compile Include="DTO\Ordered_Item.cs" />
     <Compile Include="DTO\Product.cs" />
     <Compile Include="DTO\Staff.cs" />
     <Compile Include="DTO\Supplier.cs" />
+    <Compile Include="Enum\EnumCollection.cs" />
     <Compile Include="Form\FormBill.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -109,6 +120,15 @@
     <Compile Include="Form\MainForm.Designer.cs">
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Functions\GetFormatString.cs" />
+    <Compile Include="Services\IBillServices.cs" />
+    <Compile Include="Services\IContractServices.cs" />
+    <Compile Include="Services\ICustomerServices.cs" />
+    <Compile Include="Services\IStaffServices.cs" />
+    <Compile Include="Services\ISupplierServices.cs" />
+    <Compile Include="Services\IAccountServices.cs" />
+    <Compile Include="Services\IControl.cs" />
+    <Compile Include="Services\IProductServices.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Form\FormLogin.cs">
@@ -301,8 +321,8 @@
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
-    <Content Include="ExtraData\Account.xml" />
-    <Content Include="ExtraData\StoreInformation.xml" />
+    <Content Include="Data\Account.xml" />
+    <Content Include="Data\StoreInformation.xml" />
     <Content Include="Resources\Copper.png" />
     <Content Include="Resources\Golden.png" />
     <Content Include="Resources\None.png" />

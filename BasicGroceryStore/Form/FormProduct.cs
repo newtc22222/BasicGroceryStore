@@ -6,15 +6,16 @@ namespace BasicGroceryStore
 {
     public partial class FormProduct : Form
     {
-        #region Properties
-        private Point firstPoint;
-        private bool mouseIsDown = false;
+        private BUS_Product bus_product;
+        private BUS_Supplier bus_supplier;
         private bool isNewProduct;
-        #endregion
 
         public FormProduct()
         {
             InitializeComponent();
+
+            bus_product = new BUS_Product();
+            bus_supplier = new BUS_Supplier();
             isNewProduct = true;
 
             LoadDataCombobox();
@@ -24,6 +25,9 @@ namespace BasicGroceryStore
         public FormProduct(Product product)
         {
             InitializeComponent();
+
+            bus_product = new BUS_Product();
+            bus_supplier = new BUS_Supplier();
             isNewProduct = false;
 
             LoadDataCombobox();
@@ -32,10 +36,10 @@ namespace BasicGroceryStore
 
         private void LoadDataCombobox()
         {
-            cbTypeProduct.DataSource = BLL.Instance.getAllTypeOfProduct();
-            cbUnit.DataSource = BLL.Instance.getAllUnit();
+            cbTypeProduct.DataSource = bus_product.GetAllTypeOfProduct();
+            cbUnit.DataSource = bus_product.GetAllUnit();
             
-            cbSupplier.DataSource = new BindingSource(BLL.Instance.getDictionarySupplier(), null);
+            cbSupplier.DataSource = new BindingSource(bus_supplier.GetDictionarySupplier(), null);
             cbSupplier.DisplayMember = "Value";
             cbSupplier.ValueMember = "Key";
         }
@@ -77,6 +81,9 @@ namespace BasicGroceryStore
         }
 
         #region MoveForm
+        private Point firstPoint;
+        private bool mouseIsDown = false;
+
         private void pnlMove_MouseDown(object sender, MouseEventArgs e)
         {
             firstPoint = e.Location;
@@ -104,41 +111,46 @@ namespace BasicGroceryStore
         private void btnSave_Click(object sender, EventArgs e)
         {
             if (!isValid())
+            {
+                MessageBox.Show("Vui lòng cung cấp đủ thông tin!", "THÔNG BÁO", MessageBoxButtons.OK);
                 return;
+            }                
 
-            Product product = new Product();
-            product.ID = txtProductID.Text;
-            product.Name = txtName.Text;
-            product.TypeProduct = cbTypeProduct.Text;
-            product.Unit = cbUnit.Text;
-            product.SupplierID = cbSupplier.SelectedValue.ToString();
-            product.Image = picRepresent.Image;
-            product.Quantity = int.Parse(txtQuantity.Text);
-            product.Note = txtNote.Text;
-            product.Price = float.Parse(txtPrice.Text);
+            Product product = new Product(
+                iD: txtProductID.Text,
+                name: txtName.Text,
+                typeProduct: cbTypeProduct.Text,
+                unit: cbUnit.Text,
+                supplierID: cbSupplier.SelectedValue.ToString(),
+                image: picRepresent.Image,
+                quantity: int.Parse(txtQuantity.Text),
+                note: txtNote.Text,
+                price: float.Parse(txtPrice.Text));
 
             if (isNewProduct)
             {
-                if (BLL.Instance.createProduct(product))
+                if (bus_product.Create(product))
                 {
                     MessageBox.Show("Thêm sản phẩm mới thành công!", "THÔNG BÁO", MessageBoxButtons.OK);
                     Close();
                 }
                 else
                 {
-                    MessageBox.Show("Có lỗi trong quá trình thêm!\n Vui lòng kiểm tra lại dữ liệu!", "LỖI", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Có lỗi trong quá trình thêm!\n Vui lòng kiểm tra lại dữ liệu!", "LỖI",
+                        MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
             else
             {
-                if (BLL.Instance.updateProduct(product))
+                if (bus_product.Update(product))
                 {
                     MessageBox.Show("Cập nhật sản phẩm thành công!", "THÔNG BÁO", MessageBoxButtons.OK);
                     Close();
                 }
                 else
                 {
-                    MessageBox.Show("Có lỗi trong quá trình sửa!\n Vui lòng kiểm tra lại dữ liệu!", "LỖI", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Có lỗi trong quá trình sửa!\n Vui lòng kiểm tra lại dữ liệu!", "LỖI",
+                        MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
             

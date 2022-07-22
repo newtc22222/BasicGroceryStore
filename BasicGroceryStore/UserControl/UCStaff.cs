@@ -1,22 +1,16 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace BasicGroceryStore
 {
     public partial class UCStaff : UserControl
     {
-        #region Properties
+        private BUS_Staff bus_staff;
+        private BUS_Account bus_account;
+        private BUS_Contract bus_contract;
+
         private bool flagSpells;
         private Staff _staff;
-        #endregion
 
         static UCStaff _obj;
         public static UCStaff Instance
@@ -34,9 +28,13 @@ namespace BasicGroceryStore
         public UCStaff()
         {
             InitializeComponent();
+
+            bus_staff = new BUS_Staff();
+            bus_account = new BUS_Account();
+            bus_contract = new BUS_Contract();
             LoadContentCombobox();
 
-            //LoadData();
+            LoadData();
             _staff = new Staff();
         }
 
@@ -45,7 +43,7 @@ namespace BasicGroceryStore
             ClearInformation();
             dgvStaff.Controls.Clear();
 
-            dgvStaff.DataSource = BLL.Instance.getAllStaff();
+            dgvStaff.DataSource = bus_staff.GetAllStaff();
             dgvStaff.Columns[0].Visible = false;
             dgvStaff.Columns[4].Visible = false;
             dgvStaff.Columns[7].Visible = false;
@@ -76,7 +74,7 @@ namespace BasicGroceryStore
         {
             cbTypeWork.DataSource = Enum.GetValues(typeof(TypeWork));
             cbSpells.DataSource = Enum.GetValues(typeof(Spells));
-            cbDateContract.DataSource = Enum.GetValues(typeof(StatusOfConstract));
+            cbDateContract.DataSource = Enum.GetValues(typeof(StatusOfContract));
         }
 
         #region Filter_Change
@@ -175,7 +173,7 @@ namespace BasicGroceryStore
         {
             if(MessageBox.Show($"Xóa thông tin nhân viên {_staff.Name}?", "CẢNH BÁO", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
             {
-                if (BLL.Instance.deleteStaff(_staff.ID))
+                if (bus_staff.Delete(_staff))
                 {
                     MessageBox.Show($"Xóa thông tin nhân viên {_staff.Name} thành công!", "THÔNG BÁO", MessageBoxButtons.OK);
                     _staff = new Staff();
@@ -201,7 +199,7 @@ namespace BasicGroceryStore
             _staff.Email = dgvStaff.CurrentRow.Cells[7].Value.ToString();
 
             if (dgvStaff.CurrentRow.Cells[8].Value != DBNull.Value)
-                _staff.Images = AdditionalFunctions.ConvertByteArrayToImage((byte[])dgvStaff.CurrentRow.Cells[8].Value);
+                _staff.Images = Convert.ByteArrayToImage((byte[])dgvStaff.CurrentRow.Cells[8].Value);
             else
                 _staff.Images = null;
 
@@ -218,11 +216,11 @@ namespace BasicGroceryStore
 
         private void btnLoadStaffInfor_Click(object sender, EventArgs e)
         {
-            Account acc = BLL.Instance.getAccountByStaffID(_staff.ID);
+            Account acc = bus_account.GetAccountByStaffID(_staff.ID);
             txtUsername.Text = acc.Username;
             txtPassword.Text = acc.Password;
 
-            dgvContracts.DataSource = BLL.Instance.getAllContractOfStaff(_staff.ID);
+            dgvContracts.DataSource = bus_contract.GetAllContractOfStaff(_staff.ID);
         }
     }
 }

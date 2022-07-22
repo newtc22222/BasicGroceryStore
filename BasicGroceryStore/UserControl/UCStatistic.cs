@@ -1,17 +1,14 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+
 using System.Windows.Forms;
 
 namespace BasicGroceryStore
 {
     public partial class UCStatistic : UserControl
     {
+        private BUS_Imported bus_imported;
+        private BUS_Ordered bus_ordered;
+
         static UCStatistic _obj;
         public static UCStatistic Instance
         {
@@ -27,6 +24,9 @@ namespace BasicGroceryStore
         public UCStatistic()
         {
             InitializeComponent();
+
+            bus_imported = new BUS_Imported();
+            bus_ordered = new BUS_Ordered();
         }
 
         private void radReportToday_CheckedChanged(object sender, EventArgs e)
@@ -62,7 +62,7 @@ namespace BasicGroceryStore
         private void btnReloadSellingHistory_Click(object sender, EventArgs e)
         {
             dgvSellingHistory.Controls.Clear();
-            dgvSellingHistory.DataSource = BLL.Instance.getAllOrdered();
+            dgvSellingHistory.DataSource = bus_ordered.GetAllBill();
             dgvSellingHistory.Columns[0].Visible = false;
         }
 
@@ -74,7 +74,7 @@ namespace BasicGroceryStore
         private void btnReloadImportHistory_Click(object sender, EventArgs e)
         {
             dgvImportHistory.Controls.Clear();
-            dgvImportHistory.DataSource = BLL.Instance.getAllImported();
+            dgvImportHistory.DataSource = bus_imported.GetAllBill();
             dgvImportHistory.Columns[0].Visible = false;
         }
 
@@ -95,10 +95,10 @@ namespace BasicGroceryStore
 
                 for (DateTime date = last; date <= now; date = date.AddDays(1))
                 {
-                    double spending = BLL.Instance.getTotalBuyValue_DAY(date);
+                    double spending = bus_imported.GetValueOfAllBills_Day(date).Value;
                     chartSales.Series["Chi tiêu"].Points.AddXY(date.Day + "-" + date.Month, spending / 1000);
 
-                    double income = BLL.Instance.getTotalSellValue_DAY(date);
+                    double income = bus_ordered.GetValueOfAllBills_Day(date).Value;
                     chartSales.Series["Thu nhập"].Points.AddXY(date.Day + "-" + date.Month, income / 1000);
                 }
             } 
@@ -109,10 +109,10 @@ namespace BasicGroceryStore
 
                 for (DateTime date = last; date <= now; date = date.AddMonths(1))
                 {
-                    double spending = BLL.Instance.getTotalBuyValue_MONTH(date);
+                    double spending = bus_imported.GetValueOfAllBills_Month(date).Value;
                     chartSales.Series["Chi tiêu"].Points.AddXY(date.Month + "-" + date.Year, spending / 1000000);
 
-                    double income = BLL.Instance.getTotalSellValue_MONTH(date);
+                    double income = bus_ordered.GetValueOfAllBills_Month(date).Value;
                     chartSales.Series["Thu nhập"].Points.AddXY(date.Month + "-" + date.Year, income / 1000000);
                 }
             }
@@ -128,8 +128,8 @@ namespace BasicGroceryStore
                     {
                         DateTime new_date = new DateTime(date.Year, i, 1);
                         
-                        spending += BLL.Instance.getTotalBuyValue_MONTH(new_date);
-                        income += BLL.Instance.getTotalSellValue_MONTH(new_date);
+                        spending += bus_imported.GetValueOfAllBills_Month(new_date).Value;
+                        income += bus_ordered.GetValueOfAllBills_Month(new_date).Value;
                     }
                     chartSales.Series["Chi tiêu"].Points.AddXY(date.Year, spending / 1000000);
                     chartSales.Series["Thu nhập"].Points.AddXY(date.Year, income / 1000000);

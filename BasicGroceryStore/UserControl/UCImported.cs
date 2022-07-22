@@ -7,8 +7,12 @@ namespace BasicGroceryStore
 {
     public partial class UCImported : UserControl
     {
+        private BUS_Product bus_product;
+        private BUS_Imported bus_imported;
+        private BUS_Imported_Item bus_item;
+
         private Imported _import;
-        private List<ImportedDetail> _importedDetails;
+        private List<Imported_Item> _importedDetails;
         private DataTable table;
 
         static UCImported _obj;
@@ -26,13 +30,17 @@ namespace BasicGroceryStore
         public UCImported()
         {
             InitializeComponent();
+
+            bus_product = new BUS_Product();
+            bus_imported = new BUS_Imported();
+            bus_item = new BUS_Imported_Item();
         }
         public void LoadData()
         {
-            cbTypeProduct.DataSource = BLL.Instance.getAllTypeOfProduct();
+            cbTypeProduct.DataSource = bus_product.GetAllTypeOfProduct();
 
             dgvProduct.Controls.Clear();
-            dgvProduct.DataSource = BLL.Instance.getAllProduct();
+            dgvProduct.DataSource = bus_product.GetAllProduct();
             
 
             dgvProduct.Columns[0].Visible = false;
@@ -42,8 +50,8 @@ namespace BasicGroceryStore
 
         public void settingStaffInformation()
         {
-            if (UCHomePage.Instance.staff_using != null)
-                txtStaffName.Text = UCHomePage.Instance.staff_using.Name;
+            if (MainForm.staff_using != null)
+                txtStaffName.Text = MainForm.staff_using.Name;
             else
                 txtStaffName.Clear();
         }
@@ -145,31 +153,38 @@ namespace BasicGroceryStore
             switch (MessageBox.Show("Bạn có muốn in hóa đơn không?", "THÔNG BÁO", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question))
             {
                 case DialogResult.Yes:
-                    break;
+                    {
+                        break;
+                    }
                 case DialogResult.No:
                     for (int i = 0; i < table.Rows.Count; i++)
                     {
-                        _importedDetails.Add(new ImportedDetail(i + 1, _import.ID, table.Rows[i][0].ToString(),
-                            float.Parse(table.Rows[i][3].ToString()), int.Parse(table.Rows[i][4].ToString())));
+                        _importedDetails.Add(new Imported_Item(
+                            iD: i + 1,
+                            billID: _import.ID, 
+                            productID: table.Rows[i][0].ToString(),
+                            price: float.Parse(table.Rows[i][3].ToString()), 
+                            quantity: int.Parse(table.Rows[i][4].ToString()))
+                            );
                     }
 
-                    if (UCHomePage.Instance.staff_using.ID != null)
-                        _import.StaffID = UCHomePage.Instance.staff_using.ID;
+                    if (MainForm.staff_using != null)
+                        _import.StaffID = MainForm.staff_using.ID;
                     else
-                        _import.StaffID = null;
+                        _import.StaffID = "";
                     
                     _import.Value = float.Parse(txtTotalPrice.Text);
 
-                    if (BLL.Instance.createImported(_import))
+                    if (bus_imported.Create(_import))
                     {
-                        foreach (ImportedDetail item in _importedDetails)
+                        foreach (Imported_Item item in _importedDetails)
                         {
-                            BLL.Instance.createImportedDetail(item);
+                            bus_item.Create(item);
                         }
+
                         MessageBox.Show("Đã lưu thông tin hóa đơn!", "THÔNG BÁO");
-                        LoadData();
-                        UCOrdered.Instance.LoadData();
-                        UCProduct.Instance.LoadData();
+
+                        MainForm.LoadData.Invoke();
                     }
                     else
                     {
@@ -237,7 +252,7 @@ namespace BasicGroceryStore
 
             if (chbName.Checked)
             {
-                table_filter = BLL.Instance.FindProductByName(txtNameFilter.Text.Trim());
+                table_filter = bus_product.FindProductByName(txtNameFilter.Text.Trim());
                 table = getTableFilter(table, table_filter);
             }
             if (chbPrice.Checked)
@@ -251,17 +266,17 @@ namespace BasicGroceryStore
                     return;
                 }
 
-                table_filter = BLL.Instance.FindProductByPriceRange(from, to);
+                table_filter = bus_product.FindProductByPriceRange(from, to);
                 table = getTableFilter(table, table_filter);
             }
             if (chbSupplier.Checked)
             {
-                table_filter = BLL.Instance.FindProductBySupplier(txtSupplierFilter.Text.Trim());
+                table_filter = bus_product.FindProductBySupplier(txtSupplierFilter.Text.Trim());
                 table = getTableFilter(table, table_filter);
             }
             if (chbTypeProduct.Checked)
             {
-                table_filter = BLL.Instance.FindProductByTypeProduct(cbTypeProduct.Text.Trim());
+                table_filter = bus_product.FindProductByTypeProduct(cbTypeProduct.Text.Trim());
                 table = getTableFilter(table, table_filter);
             }
 
@@ -277,7 +292,7 @@ namespace BasicGroceryStore
             if (dgvImportedDetails.DataSource == null)
             {
                 _import = settingInformation();
-                _importedDetails = new List<ImportedDetail>();
+                _importedDetails = new List<Imported_Item>();
                 createTableBillDetails();
             }
 

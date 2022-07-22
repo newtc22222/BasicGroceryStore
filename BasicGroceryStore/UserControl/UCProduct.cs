@@ -6,6 +6,9 @@ namespace BasicGroceryStore
 {
     public partial class UCProduct : UserControl
     {
+        private BUS_Product bus_product;
+        private BUS_Supplier bus_supplier;
+
         private Product _product;
         private Supplier _supplier = null;
 
@@ -24,8 +27,11 @@ namespace BasicGroceryStore
         public UCProduct()
         {
             InitializeComponent();
+
+            bus_product = new BUS_Product();
+            bus_supplier = new BUS_Supplier();
+
             _product = new Product();
-            LoadData();
         }
 
         #region Function
@@ -34,10 +40,10 @@ namespace BasicGroceryStore
             ClearProductDataForm();
             ClearSupplierForm();
 
-            cbTypeProduct.DataSource = BLL.Instance.getAllTypeOfProduct();
+            cbTypeProduct.DataSource = bus_product.GetAllTypeOfProduct();
 
             dgvProduct.Controls.Clear();
-            dgvProduct.DataSource = BLL.Instance.getAllProduct();
+            dgvProduct.DataSource = bus_product.GetAllProduct();
 
             dgvProduct.Columns[0].Visible = false;
             dgvProduct.Columns[5].Visible = false;
@@ -120,7 +126,7 @@ namespace BasicGroceryStore
 
         private void btnLoadSupplier_Click(object sender, EventArgs e)
         {
-            _supplier = BLL.Instance.getSupplier(_product.SupplierID);
+            _supplier = bus_supplier.GetSupplier(_product.SupplierID);
 
             txtSupplierID.Text = _supplier.ID;
             txtSupplierName.Text = _supplier.Name;
@@ -128,7 +134,7 @@ namespace BasicGroceryStore
             txtSupplierEmail.Text = _supplier.Email;
             txtSupplierPhone.Text = _supplier.Contact;
 
-            dgvProductOfSupplier.DataSource = BLL.Instance.getAllProductOfSupplier(_supplier.ID);
+            dgvProductOfSupplier.DataSource = bus_product.GetProductOfSupplier(_supplier.ID);
             dgvProductOfSupplier.Columns[0].Visible = false;
             dgvProductOfSupplier.Columns[5].Visible = false;
             dgvProductOfSupplier.Columns[8].Visible = false;
@@ -139,7 +145,7 @@ namespace BasicGroceryStore
             if(MessageBox.Show($"Bạn có muốn xóa sản phẩm {_product.Name}?", "CẢNH BÁO", 
                 MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
             {
-                if (BLL.Instance.deleteProduct(_product.ID))
+                if (bus_product.Delete(_product))
                 {
                     MessageBox.Show("Đã xóa thông tin sản phẩm!", "THÔNG BÁO");
                     LoadData();
@@ -150,7 +156,7 @@ namespace BasicGroceryStore
                 }
             }
         }
-
+        
         private void btnReload_Click(object sender, EventArgs e)
         {
             LoadData();
@@ -175,7 +181,7 @@ namespace BasicGroceryStore
 
             if(chbName.Checked)
             {
-                table_filter = BLL.Instance.FindProductByName(txtNameFilter.Text.Trim());
+                table_filter = bus_product.FindProductByName(txtNameFilter.Text.Trim());
                 table = getTableFilter(table, table_filter);
             }
             if (chbPrice.Checked)
@@ -189,17 +195,17 @@ namespace BasicGroceryStore
                     return;
                 }
 
-                table_filter = BLL.Instance.FindProductByPriceRange(from, to);
+                table_filter = bus_product.FindProductByPriceRange(from, to);
                 table = getTableFilter(table, table_filter);
             }
             if (chbSupplier.Checked)
             {
-                table_filter = BLL.Instance.FindProductBySupplier(txtSupplierFilter.Text.Trim());
+                table_filter = bus_product.FindProductBySupplier(txtSupplierFilter.Text.Trim());
                 table = getTableFilter(table, table_filter);
             }
             if (chbTypeProduct.Checked)
             {
-                table_filter = BLL.Instance.FindProductByTypeProduct(cbTypeProduct.Text.Trim());
+                table_filter = bus_product.FindProductByTypeProduct(cbTypeProduct.Text.Trim());
                 table = getTableFilter(table, table_filter);
             }
 
@@ -221,7 +227,7 @@ namespace BasicGroceryStore
             _product.Quantity = int.Parse(dgvProduct.CurrentRow.Cells[4].Value.ToString());
 
             if (dgvProduct.CurrentRow.Cells[5].Value != DBNull.Value)
-                _product.Image = AdditionalFunctions.ConvertByteArrayToImage((byte[])dgvProduct.CurrentRow.Cells[5].Value);
+                _product.Image = Convert.ByteArrayToImage((byte[])dgvProduct.CurrentRow.Cells[5].Value);
             else
                 _product.Image = null;
 
@@ -251,7 +257,7 @@ namespace BasicGroceryStore
             _product.Quantity = int.Parse(dgvProductOfSupplier.CurrentRow.Cells[4].Value.ToString());
 
             if (dgvProductOfSupplier.CurrentRow.Cells[5].Value != DBNull.Value)
-                _product.Image = AdditionalFunctions.ConvertByteArrayToImage((byte[])dgvProductOfSupplier.CurrentRow.Cells[5].Value);
+                _product.Image = Convert.ByteArrayToImage((byte[])dgvProductOfSupplier.CurrentRow.Cells[5].Value);
             else
                 _product.Image = null;
 

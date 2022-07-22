@@ -2,7 +2,7 @@
 
 namespace BasicGroceryStore
 {
-    public class Contracts
+    public class Contract
     {
         private string iD;
         private string staffID;
@@ -20,9 +20,9 @@ namespace BasicGroceryStore
         public string E_spells { get => e_spells; set => e_spells = value; }
         public float SolidSalary { get => solidSalary; set => solidSalary = value; }
 
-        public Contracts()
+        public Contract()
         {
-            this.iD = AdditionalFunctions.MakeIDByTime();
+            this.iD = GetFormatString.MakingIDNow();
             this.staffID = "";
             this.dayStart = DateTime.Now;
             this.DayEnd = DateTime.Now.AddDays(30);
@@ -31,15 +31,15 @@ namespace BasicGroceryStore
             this.solidSalary = 0;
         }
 
-        ~Contracts() { }
+        ~Contract() { }
 
-        public Contracts(string iD, string staffID, DateTime dayStart, DateTime dayEnd, 
+        public Contract(string iD, string staffID, DateTime dayStart, DateTime dayEnd, 
                          string e_typeWork, string e_spells, float solidSalary)
         {
             this.iD = iD;
             this.staffID = staffID;
             this.dayStart = dayStart;
-            this.DayEnd = dayEnd;
+            this.dayEnd = dayEnd;
             this.e_typeWork = e_typeWork;
             this.e_spells = e_spells;
             this.solidSalary = solidSalary;

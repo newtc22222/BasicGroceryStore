@@ -1,35 +1,39 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace BasicGroceryStore
 {
     public partial class FormBill : Form
     {
-        #region Properties
-        private Point firstPoint;
-        private bool mouseIsDown = false;
-        #endregion
+        private BUS_Staff bus_staff;
+        private BUS_Imported bus_imported;
+        private BUS_Ordered bus_ordered;
 
         public FormBill(Ordered bill)
         {
             InitializeComponent();
+
+            bus_staff = new BUS_Staff();
+            bus_ordered = new BUS_Ordered();
+
             LoadData(bill);
         }
 
         public FormBill(Imported bill)
         {
             InitializeComponent();
+
+            bus_staff = new BUS_Staff();
+            bus_imported = new BUS_Imported();
+
             LoadData(bill);
         }
 
         #region MoveForm
+        private Point firstPoint;
+        private bool mouseIsDown = false;
+
         private void pnlMove_MouseDown(object sender, MouseEventArgs e)
         {
             firstPoint = e.Location;
@@ -61,11 +65,11 @@ namespace BasicGroceryStore
             txtTotalPrice.Text = bill.Value.ToString();
             
             if (bill.StaffID != "")
-                txtStaffName.Text = BLL.Instance.getStaff(bill.StaffID).Name;
+                txtStaffName.Text = bus_staff.GetStaff(bill.StaffID).Name;
 
             txtCustomerName.Text = bill.CustomerName;
 
-            dgvBillDetails.DataSource = BLL.Instance.getOrderedDetails(bill);
+            dgvBillDetails.DataSource = bus_ordered.GetAllItemInBill(bill.ID);
         }
 
         private void LoadData(Imported bill)
@@ -75,12 +79,12 @@ namespace BasicGroceryStore
             txtTotalPrice.Text = bill.Value.ToString();
 
             if (bill.StaffID != "")
-                txtStaffName.Text = BLL.Instance.getStaff(bill.StaffID).Name;
+                txtStaffName.Text = bus_staff.GetStaff(bill.StaffID).Name;
 
             lblCustomerName.Visible = false;
             txtCustomerName.Visible = false;
 
-            dgvBillDetails.DataSource = BLL.Instance.getImportedDetails(bill);
+            dgvBillDetails.DataSource = bus_imported.GetAllItemInBill(bill.ID);
         }
 
         private void btnMinimize_Click(object sender, EventArgs e)
@@ -90,7 +94,7 @@ namespace BasicGroceryStore
 
         private void btnCancel_Click(object sender, EventArgs e)
         {
-            Close();
+            this.Close();
         }
     }
 }

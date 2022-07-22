@@ -3,26 +3,29 @@ using System.Data.SqlClient;
 
 namespace BasicGroceryStore
 {
-    public class DAO
+    public class DataProvider
     {
         private string connectionString = Config.getSQLConnectionString();
-        private static SqlConnection connection;
-        private static SqlCommand cmd;
-
-        private static DAO instance;
-        public static DAO Instance
+        private SqlConnection connection;
+        private SqlCommand cmd;
+        
+        /// <summary>
+        /// Singleton DataProvider
+        /// </summary>
+        private static DataProvider instance;
+        public static DataProvider Instance
         {
             get
             {
                 if(instance == null)
                 {
-                    instance = new DAO();  
+                    instance = new DataProvider();  
                 }
                 return instance;
             }
         }
 
-        public DAO()
+        public DataProvider()
         {
             connection = new SqlConnection(connectionString);
             if (connection.State == ConnectionState.Open)
@@ -33,6 +36,13 @@ namespace BasicGroceryStore
             cmd = connection.CreateCommand();
         }
 
+        /// <summary>
+        /// Query for INSERT, UPDATE, DELETE
+        /// </summary>
+        /// <param name="sqlExpess"></param>
+        /// <param name="type"></param>
+        /// <param name="param"></param>
+        /// <returns>Number of rows</returns>
         public int ExecuteNonQuery(string sqlExpess, CommandType type, params SqlParameter[] param)
         {
             cmd.CommandType = type;
@@ -52,6 +62,13 @@ namespace BasicGroceryStore
             }
         }
 
+        /// <summary>
+        /// Query for SELECT
+        /// </summary>
+        /// <param name="sqlExpess"></param>
+        /// <param name="type"></param>
+        /// <param name="param"></param>
+        /// <returns>DataTable for List Object</returns>
         public DataTable ExecuteQuery(string sqlExpess, CommandType type, params SqlParameter[] param)
         {
             cmd.CommandType = type;
@@ -68,10 +85,18 @@ namespace BasicGroceryStore
             return dt;
         }
 
-        public object ExecuteScalar(string sql, CommandType type, params SqlParameter[] param)
+        /// <summary>
+        /// Query for value (using function in sql)
+        /// </summary>
+        /// <param name="sqlExpess"></param>
+        /// <param name="type"></param>
+        /// <param name="param"></param>
+        /// <returns>Number or String of Object (may be null)</returns>
+        public object ExecuteScalar(string sqlExpess, CommandType type, params SqlParameter[] param)
         {
             cmd.CommandType = type;
-            cmd.CommandText = sql;
+            cmd.CommandText = sqlExpess;
+            
             if (param != null)
             {
                 foreach (SqlParameter p in param)

@@ -26,7 +26,7 @@ namespace BasicGroceryStore
 
         public Product()
         {
-            this.iD = AdditionalFunctions.MakeIDByTime();
+            this.iD = GetFormatString.MakingIDNow();
             this.name = "";
             this.typeProduct = "";
             this.unit = "";

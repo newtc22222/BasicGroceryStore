@@ -7,24 +7,25 @@ namespace BasicGroceryStore
 {
     public partial class FormSupplierSynthetic : Form
     {
-        #region Properties
-        private Point firstPoint;
-        private bool mouseIsDown = false;
+        private BUS_Product bus_product;
+        private BUS_Supplier bus_supplier;
         private Supplier supplier_choosing;
-        #endregion
 
         public FormSupplierSynthetic()
         {
             InitializeComponent();
+
+            bus_product = new BUS_Product();
+            bus_supplier = new BUS_Supplier();
             LoadData();
         }
 
         private void LoadData()
         {
             dgvSupplier.Controls.Clear();
-            cbTypeProductFilter.DataSource = BLL.Instance.getAllTypeOfProduct();
+            cbTypeProductFilter.DataSource = bus_product.GetAllTypeOfProduct();
 
-            dgvSupplier.DataSource = BLL.Instance.getAllSupplier();
+            dgvSupplier.DataSource = bus_supplier.GetAllSupplier();
             supplier_choosing = new Supplier();
         }
 
@@ -57,6 +58,9 @@ namespace BasicGroceryStore
         }
 
         #region MoveForm
+        private Point firstPoint;
+        private bool mouseIsDown = false;
+
         private void pnlMove_MouseDown(object sender, MouseEventArgs e)
         {
             firstPoint = e.Location;
@@ -88,7 +92,7 @@ namespace BasicGroceryStore
                 if( MessageBox.Show($"Bạn có thực sự muốn xóa nhà cung cấp {supplier_choosing.Name} không?", "CẢNH BÁO", 
                     MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
                 {
-                    if (BLL.Instance.deleteSupplier(supplier_choosing.ID))
+                    if (bus_supplier.Delete(supplier_choosing))
                     {
                         supplier_choosing = null;
                         MessageBox.Show("Đã xóa thông tin thành công!", "THÔNG BÁO");
@@ -146,17 +150,17 @@ namespace BasicGroceryStore
 
             if (chbSupplierName.Checked)
             {
-                table_filter = BLL.Instance.FindSupplierByName(txtSupplierNameFilter.Text.Trim());
+                table_filter = bus_supplier.FindSupplierByName(txtSupplierNameFilter.Text.Trim());
                 table = getTableFilter(table, table_filter);
             }
             if (chbSupplierAddress.Checked)
             {
-                table_filter = BLL.Instance.FindSupplierByAddress(txtSupplierAddressFilter.Text.Trim());
+                table_filter = bus_supplier.FindSupplierByAddress(txtSupplierAddressFilter.Text.Trim());
                 table = getTableFilter(table, table_filter);
             }
             if (chbTypeProduct.Checked)
             {
-                table_filter = BLL.Instance.FindSupplierByTypeProduct(cbTypeProductFilter.Text);
+                table_filter = bus_supplier.FindSupplierByTypeProduct(cbTypeProductFilter.Text);
                 table = getTableFilter(table, table_filter);
             }
 

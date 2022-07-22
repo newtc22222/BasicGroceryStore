@@ -7,21 +7,22 @@ namespace BasicGroceryStore
 {
     public partial class FormLogin : Form
     {
-        #region Properties
-        private Point firstPoint;
-        private bool mouseIsDown = false;
-        #endregion
+        private BUS_Account bus_account;
+        private BUS_Staff bus_staff;
 
         public FormLogin()
         {
             InitializeComponent();
+
+            bus_account = new BUS_Account();
+            bus_staff = new BUS_Staff();
             LoadAccount();
         }
 
         private void LoadAccount()
         {
             DAO_Information dao = new DAO_Information("Account.xml");
-            List<object> data = dao.loadSaveAccount();
+            List<object> data = dao.LoadSaveAccount();
             txtUsername.Text = data[1].ToString();
             txtPassword.Text = data[2].ToString();
             chbRemember.Checked = Boolean.Parse(data[3].ToString());
@@ -33,6 +34,9 @@ namespace BasicGroceryStore
         }
 
         #region MoveForm
+        private Point firstPoint;
+        private bool mouseIsDown = false;
+
         private void pnlMove_MouseDown(object sender, MouseEventArgs e)
         {
             firstPoint = e.Location;
@@ -61,14 +65,16 @@ namespace BasicGroceryStore
         {
             string username = txtUsername.Text.Trim();
             string password = txtPassword.Text.Trim();
-            string staff_id = BLL.Instance.CheckLogin(username, password);
+            string staff_id = bus_account.CheckLogin(username, password);
+
             if (staff_id != "")
             {
                 Account main_login = new Account(staff_id, username, password);
-                BLL.Instance.SaveAccount(main_login, chbRemember.Checked);
-                UCHomePage.Instance.staff_using = BLL.Instance.getStaff(staff_id);
-                UCHomePage.Instance.LoadStaffData();
-                Close();
+                bus_account.SaveAccount(main_login, chbRemember.Checked);
+
+                MainForm.staff_using = bus_staff.GetStaff(staff_id);
+                UCHomePage.Instance.LoadStaffData(MainForm.staff_using);
+                this.Close();
             } 
             else
             {

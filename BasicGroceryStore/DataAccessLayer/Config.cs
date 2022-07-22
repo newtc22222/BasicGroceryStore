@@ -1,18 +1,18 @@
 ﻿namespace BasicGroceryStore
 {
-    internal class Config
+    internal static class Config
     {
         private static string serverName = @"PHIVO_Z1704\PHIVO";
         private static string databaseName = "GroceryStore";
         private static string username = "sa";
         private static string password = "123456";
 
-        public static void setUserName(string UserName)
+        public static void setUsername(string Username)
         {
-            username = UserName;
+            username = Username;
         }
 
-        public static void setPassword(string Password)
+        public static void setPassword(string Password) 
         {
             password = Password;
         }

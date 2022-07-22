@@ -16,7 +16,7 @@
 
         public Supplier()
         {
-            this.iD = AdditionalFunctions.MakeIDByTime();
+            this.iD = GetFormatString.MakingIDNow();
             this.name = "";
             this.address = "";
             this.email = "";

@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Data;
 using System.Drawing;
 using System.Windows.Forms;
 
@@ -8,16 +6,18 @@ namespace BasicGroceryStore
 {
     public partial class FormStaff : Form
     {
-        #region Properties
-        private Point firstPoint;
-        private bool mouseIsDown = false;
+        private BUS_Contract bus_contract;
+        private BUS_Staff bus_staff;
+
         private Staff staff = null;
-        #endregion
-  
 
         public FormStaff(Staff staff)
         {
             InitializeComponent();
+
+            bus_contract = new BUS_Contract();
+            bus_staff = new BUS_Staff();
+
             LoadContentCombobox();
             this.staff = staff;
 
@@ -37,9 +37,9 @@ namespace BasicGroceryStore
 
             picRepresent.Image = staff.Images;
 
-            if (staff.Name != "")
+            if (staff.Name != "") // Not a new staff
             {
-                Contracts contracts = BLL.Instance.getNewestContractOfStaff(staff.ID);
+                Contract contracts = bus_contract.GetNewestContractOfStaff(staff.ID);
                 txtContractID.Text = contracts.ID;
                 dtPickStart.Value = contracts.DayStart;
                 dtPickEnd.Value = contracts.DayEnd;
@@ -56,9 +56,9 @@ namespace BasicGroceryStore
         {
             if (staff.Name == "" || staff.Address == "" || staff.CitizenID.Length < 9 || staff.Phone.Length < 10)
                 return false;
-            if (!staff.Email.Contains("@"))
+            if (!Checking.IsValidEmail(staff.Email)) // Check email valid
                 return false;
-            if(staff.DateOfBirth >= DateTime.Now)
+            if(staff.DateOfBirth >= DateTime.Now || staff.getAge() < 16)
                 return false;
             if (staff.Images == null)
                 return false;
@@ -67,12 +67,15 @@ namespace BasicGroceryStore
 
         private void LoadContentCombobox()
         {
-            cbGender.DataSource = new List<string>() { "nam", "nữ", "khác" };
+            cbGender.DataSource = Enum.GetValues(typeof(GenderVietnamese));
             cbTypeWork.DataSource = Enum.GetValues(typeof(TypeWork));
             cbSpells.DataSource = Enum.GetValues(typeof(Spells));
         }
 
         #region MoveForm
+        private Point firstPoint;
+        private bool mouseIsDown = false;
+
         private void pnlMove_MouseDown(object sender, MouseEventArgs e)
         {
             firstPoint = e.Location;
@@ -124,9 +127,9 @@ namespace BasicGroceryStore
 
             if (isValid(staff))
             {
-                if(BLL.Instance.getStaff(staff.ID) == null) // new Staff
+                if(bus_staff.GetStaff(staff.ID) == null) // new Staff
                 {
-                    if (BLL.Instance.createStaff(staff))
+                    if (bus_staff.Create(staff))
                     {
                         MessageBox.Show("Bổ sung nhân viên thành công!", "THÔNG BÁO", MessageBoxButtons.OK);
                         Close();
@@ -138,7 +141,7 @@ namespace BasicGroceryStore
                 }
                 else
                 {
-                    if (BLL.Instance.updateStaff(staff))
+                    if (bus_staff.Update(staff))
                     {
                         MessageBox.Show("Cập nhật thông tin nhân viên thành công!", "THÔNG BÁO", MessageBoxButtons.OK);
                         Close();
@@ -151,7 +154,8 @@ namespace BasicGroceryStore
             }
             else
             {
-                MessageBox.Show("Thông tin chưa hợp lệ!\nVui lòng điều chỉnh lại!", "LỖI", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Thông tin chưa hợp lệ!\nVui lòng điều chỉnh lại!", "LỖI", 
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
