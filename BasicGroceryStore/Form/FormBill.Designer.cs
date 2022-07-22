@@ -69,7 +69,7 @@
             this.lblTabShow.AutoSize = true;
             this.lblTabShow.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTabShow.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.lblTabShow.Location = new System.Drawing.Point(12, 6);
+            this.lblTabShow.Location = new System.Drawing.Point(18, 9);
             this.lblTabShow.Name = "lblTabShow";
             this.lblTabShow.Size = new System.Drawing.Size(195, 24);
             this.lblTabShow.TabIndex = 4;

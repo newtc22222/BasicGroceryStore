@@ -50,7 +50,7 @@ namespace BasicGroceryStore
 
         private void btnChangeStoreInfor_Click(object sender, EventArgs e)
         {
-
+            new FormStoreInfomation().ShowDialog();
         }
 
         private void btnChangeYourInfor_Click(object sender, EventArgs e)
@@ -73,27 +73,62 @@ namespace BasicGroceryStore
 
         private void picYoutube_Click(object sender, EventArgs e)
         {
-            Process.Start(link["youtube"]);
+            try
+            {
+                Process.Start(link["youtube"]);
+            } 
+            catch(Exception)
+            {
+                MessageBox.Show("Địa chỉ được lưu không hợp lệ, vui lòng kiểm tra!", "LỖI", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }            
         }
 
         private void picFace_Click(object sender, EventArgs e)
         {
-            Process.Start(link["facebook"]);
+            try
+            {
+                Process.Start(link["facebook"]);
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Địa chỉ được lưu không hợp lệ, vui lòng kiểm tra!", "LỖI", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void picInsta_Click(object sender, EventArgs e)
         {
-            Process.Start(link["instagram"]);
+            try
+            {
+                Process.Start(link["instagram"]);
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Địa chỉ được lưu không hợp lệ, vui lòng kiểm tra!", "LỖI", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void picLinkedIn_Click(object sender, EventArgs e)
         {
-            Process.Start(link["linkedin"]);
+            try
+            {
+                Process.Start(link["linkedin"]);
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Địa chỉ được lưu không hợp lệ, vui lòng kiểm tra!", "LỖI", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void picStoreLocation_Click(object sender, EventArgs e)
         {
-            Process.Start(link["map"]);
+            try
+            {
+                Process.Start(link["map"]);
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Địa chỉ được lưu không hợp lệ, vui lòng kiểm tra!", "LỖI", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void pictContact_Click(object sender, EventArgs e)

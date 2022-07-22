@@ -30,14 +30,14 @@ namespace BasicGroceryStore
         private void InitializeComponent()
         {
             this.pnlBrowser = new System.Windows.Forms.Panel();
+            this.webBrowser = new System.Windows.Forms.WebBrowser();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.txtContent = new System.Windows.Forms.TextBox();
             this.btnFind = new System.Windows.Forms.Button();
             this.btnReload = new System.Windows.Forms.Button();
             this.btnRedo = new System.Windows.Forms.Button();
             this.btnUndo = new System.Windows.Forms.Button();
+            this.txtContent = new System.Windows.Forms.TextBox();
             this.btnHome = new System.Windows.Forms.Button();
-            this.webBrowser = new System.Windows.Forms.WebBrowser();
             this.pnlBrowser.SuspendLayout();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
@@ -49,6 +49,15 @@ namespace BasicGroceryStore
             this.pnlBrowser.Name = "pnlBrowser";
             this.pnlBrowser.Size = new System.Drawing.Size(1344, 803);
             this.pnlBrowser.TabIndex = 0;
+            // 
+            // webBrowser
+            // 
+            this.webBrowser.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.webBrowser.Location = new System.Drawing.Point(0, 0);
+            this.webBrowser.MinimumSize = new System.Drawing.Size(20, 20);
+            this.webBrowser.Name = "webBrowser";
+            this.webBrowser.Size = new System.Drawing.Size(1344, 803);
+            this.webBrowser.TabIndex = 0;
             // 
             // panel1
             // 
@@ -62,15 +71,6 @@ namespace BasicGroceryStore
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1344, 45);
             this.panel1.TabIndex = 1;
-            // 
-            // txtContent
-            // 
-            this.txtContent.Font = new System.Drawing.Font("Montserrat", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtContent.Location = new System.Drawing.Point(251, 5);
-            this.txtContent.Name = "txtContent";
-            this.txtContent.Size = new System.Drawing.Size(1028, 31);
-            this.txtContent.TabIndex = 4;
-            this.txtContent.Text = "www.google.com";
             // 
             // btnFind
             // 
@@ -120,6 +120,15 @@ namespace BasicGroceryStore
             this.btnUndo.TabIndex = 5;
             this.btnUndo.UseVisualStyleBackColor = false;
             // 
+            // txtContent
+            // 
+            this.txtContent.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtContent.Location = new System.Drawing.Point(251, 5);
+            this.txtContent.Name = "txtContent";
+            this.txtContent.Size = new System.Drawing.Size(1028, 29);
+            this.txtContent.TabIndex = 4;
+            this.txtContent.Text = "www.google.com";
+            // 
             // btnHome
             // 
             this.btnHome.BackColor = System.Drawing.Color.Black;
@@ -132,25 +141,16 @@ namespace BasicGroceryStore
             this.btnHome.TabIndex = 0;
             this.btnHome.UseVisualStyleBackColor = false;
             // 
-            // webBrowser
-            // 
-            this.webBrowser.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.webBrowser.Location = new System.Drawing.Point(0, 0);
-            this.webBrowser.MinimumSize = new System.Drawing.Size(20, 20);
-            this.webBrowser.Name = "webBrowser";
-            this.webBrowser.Size = new System.Drawing.Size(1344, 803);
-            this.webBrowser.TabIndex = 0;
-            // 
             // UCBrowser
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 22F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.DimGray;
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.pnlBrowser);
-            this.Font = new System.Drawing.Font("Montserrat", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ForeColor = System.Drawing.Color.MistyRose;
-            this.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.Margin = new System.Windows.Forms.Padding(5);
             this.Name = "UCBrowser";
             this.Size = new System.Drawing.Size(1350, 860);
             this.pnlBrowser.ResumeLayout(false);
