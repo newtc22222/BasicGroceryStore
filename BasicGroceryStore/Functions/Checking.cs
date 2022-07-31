@@ -2,11 +2,11 @@
 
 namespace BasicGroceryStore
 {
-    static class Checking
+    internal static class Checking
     {
         /// <summary>
         /// Checking Email Valid (for staff and supplier).
-        /// Source:https://stackoverflow.com/questions/1365407/c-sharp-code-to-validate-email-address
+        /// Source: https://stackoverflow.com/questions/1365407/c-sharp-code-to-validate-email-address
         /// </summary>
         /// <param name="email"></param>
         /// <returns></returns>
