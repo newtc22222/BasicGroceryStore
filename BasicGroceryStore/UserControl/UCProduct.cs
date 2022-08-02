@@ -45,9 +45,7 @@ namespace BasicGroceryStore
             dgvProduct.Controls.Clear();
             dgvProduct.DataSource = bus_product.GetAllProduct();
 
-            dgvProduct.Columns[0].Visible = false;
-            dgvProduct.Columns[5].Visible = false;
-            dgvProduct.Columns[8].Visible = false;
+            dgvProduct.Columns[0].Visible = false; //Hide ID column
         }
 
         private void ClearProductDataForm()
@@ -75,6 +73,12 @@ namespace BasicGroceryStore
             dgvProductOfSupplier.DataSource = null;
         }
 
+        /// <summary>
+        /// Using for get union data from multiple tables
+        /// </summary>
+        /// <param name="table"></param>
+        /// <param name="table_filter"></param>
+        /// <returns></returns>
         private DataTable getTableFilter(DataTable table, DataTable table_filter)
         {
             DataTable dataTable;
@@ -220,22 +224,8 @@ namespace BasicGroceryStore
 
             ClearSupplierForm();
 
-            _product.ID =  dgvProduct.CurrentRow.Cells[0].Value.ToString();
-            _product.Name = dgvProduct.CurrentRow.Cells[1].Value.ToString();
-            _product.TypeProduct = dgvProduct.CurrentRow.Cells[2].Value.ToString();
-            _product.Unit = dgvProduct.CurrentRow.Cells[3].Value.ToString();
-            _product.Quantity = int.Parse(dgvProduct.CurrentRow.Cells[4].Value.ToString());
-
-            if (dgvProduct.CurrentRow.Cells[5].Value != DBNull.Value)
-                _product.Image = Convert.ByteArrayToImage((byte[])dgvProduct.CurrentRow.Cells[5].Value);
-            else
-                _product.Image = null;
-
-            _product.Note = dgvProduct.CurrentRow.Cells[6].Value.ToString();
-            _product.Price = float.Parse(dgvProduct.CurrentRow.Cells[7].Value.ToString());
-            _product.SupplierID = dgvProduct.CurrentRow.Cells[8].Value.ToString();     
+            _product = bus_product.GetProduct(dgvProduct.CurrentRow.Cells[0].Value.ToString()); 
             
-
             txtName.Text = _product.Name;
             txtTypeProduct.Text = _product.TypeProduct;
             txtUnit.Text = _product.Unit;
@@ -250,20 +240,7 @@ namespace BasicGroceryStore
             if (dgvProductOfSupplier.CurrentCell.RowIndex == dgvProductOfSupplier.RowCount - 1)
                 return;
 
-            _product.ID = dgvProductOfSupplier.CurrentRow.Cells[0].Value.ToString();
-            _product.Name = dgvProductOfSupplier.CurrentRow.Cells[1].Value.ToString();
-            _product.TypeProduct = dgvProductOfSupplier.CurrentRow.Cells[2].Value.ToString();
-            _product.Unit = dgvProductOfSupplier.CurrentRow.Cells[3].Value.ToString();
-            _product.Quantity = int.Parse(dgvProductOfSupplier.CurrentRow.Cells[4].Value.ToString());
-
-            if (dgvProductOfSupplier.CurrentRow.Cells[5].Value != DBNull.Value)
-                _product.Image = Convert.ByteArrayToImage((byte[])dgvProductOfSupplier.CurrentRow.Cells[5].Value);
-            else
-                _product.Image = null;
-
-            _product.Note = dgvProductOfSupplier.CurrentRow.Cells[6].Value.ToString();
-            _product.Price = float.Parse(dgvProductOfSupplier.CurrentRow.Cells[7].Value.ToString());
-
+            _product = bus_product.GetProduct(dgvProductOfSupplier.CurrentRow.Cells[0].Value.ToString());
 
             txtName.Text = _product.Name;
             txtTypeProduct.Text = _product.TypeProduct;

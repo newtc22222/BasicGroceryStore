@@ -1,6 +1,8 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
+using System.Drawing;
 
 namespace BasicGroceryStore
 {
@@ -44,7 +46,34 @@ namespace BasicGroceryStore
 
         public DataTable GetAllProduct()
         {
-            return DataProvider.Instance.ExecuteQuery("select * from Product", CommandType.Text, null);
+            return DataProvider.Instance.ExecuteQuery("sp_GetAllProduct", CommandType.StoredProcedure, null);
+        }
+
+        public Product GetProduct(string product_id)
+        {
+            if (product_id == "")
+                return null;
+
+            DataTable dt = DataProvider.Instance.ExecuteQuery($"select * from Product where Id='{product_id}'", CommandType.Text, null);
+            DataRow row = dt.Rows[0];
+
+            Image image = null;
+            if (row[5] != DBNull.Value)
+            {
+                image = Convert.ByteArrayToImage((byte[])row[5]);
+            }
+
+            Product product = new Product(
+                iD: row[0].ToString(),
+                name: row[1].ToString(),
+                typeProduct: row[2].ToString(),
+                unit: row[3].ToString(),
+                quantity: int.Parse(row[4].ToString()),
+                image: image,
+                note: row[6].ToString(),
+                price: float.Parse(row[7].ToString()),
+                supplierID: row[8].ToString());
+            return product;
         }
 
         public DataTable GetProductOfSupplier(string supplier_id)

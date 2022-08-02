@@ -27,6 +27,19 @@ namespace BasicGroceryStore
 
             bus_imported = new BUS_Imported();
             bus_ordered = new BUS_Ordered();
+
+            LoadData();
+        }
+
+        private void LoadData()
+        {
+            dgvSellingHistory.Controls.Clear();
+            dgvSellingHistory.DataSource = bus_ordered.GetAllBill();
+            dgvSellingHistory.Columns[0].Visible = false;
+
+            dgvImportHistory.Controls.Clear();
+            dgvImportHistory.DataSource = bus_imported.GetAllBill();
+            dgvImportHistory.Columns[0].Visible = false;
         }
 
         private void radReportToday_CheckedChanged(object sender, EventArgs e)

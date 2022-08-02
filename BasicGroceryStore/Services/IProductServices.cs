@@ -12,6 +12,13 @@ namespace BasicGroceryStore
         DataTable GetAllProduct();
 
         /// <summary>
+        /// Get data of a product
+        /// </summary>
+        /// <param name="product_id"></param>
+        /// <returns></returns>
+        Product GetProduct(string product_id);
+
+        /// <summary>
         /// Get all products of a supplier in DBMS
         /// </summary>
         /// <param name="supplier_id"></param>

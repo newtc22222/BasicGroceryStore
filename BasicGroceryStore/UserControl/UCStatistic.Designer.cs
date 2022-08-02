@@ -75,11 +75,9 @@ namespace BasicGroceryStore
             this.chartSales = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.gbImportHistory = new System.Windows.Forms.GroupBox();
             this.btnReloadImportHistory = new System.Windows.Forms.Button();
-            this.btnEditImportHistory = new System.Windows.Forms.Button();
             this.dgvImportHistory = new System.Windows.Forms.DataGridView();
             this.gbSellingHistory = new System.Windows.Forms.GroupBox();
             this.btnReloadSellingHistory = new System.Windows.Forms.Button();
-            this.btnEditSellingHistory = new System.Windows.Forms.Button();
             this.dgvSellingHistory = new System.Windows.Forms.DataGridView();
             this.pnlMain.SuspendLayout();
             this.gbMakeReport.SuspendLayout();
@@ -547,7 +545,6 @@ namespace BasicGroceryStore
             // 
             this.gbImportHistory.BackColor = System.Drawing.Color.Turquoise;
             this.gbImportHistory.Controls.Add(this.btnReloadImportHistory);
-            this.gbImportHistory.Controls.Add(this.btnEditImportHistory);
             this.gbImportHistory.Controls.Add(this.dgvImportHistory);
             this.gbImportHistory.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.gbImportHistory.Location = new System.Drawing.Point(406, 30);
@@ -561,21 +558,11 @@ namespace BasicGroceryStore
             // 
             this.btnReloadImportHistory.Location = new System.Drawing.Point(6, 286);
             this.btnReloadImportHistory.Name = "btnReloadImportHistory";
-            this.btnReloadImportHistory.Size = new System.Drawing.Size(150, 33);
+            this.btnReloadImportHistory.Size = new System.Drawing.Size(370, 33);
             this.btnReloadImportHistory.TabIndex = 2;
             this.btnReloadImportHistory.Text = "Tải lại";
             this.btnReloadImportHistory.UseVisualStyleBackColor = true;
             this.btnReloadImportHistory.Click += new System.EventHandler(this.btnReloadImportHistory_Click);
-            // 
-            // btnEditImportHistory
-            // 
-            this.btnEditImportHistory.Location = new System.Drawing.Point(232, 286);
-            this.btnEditImportHistory.Name = "btnEditImportHistory";
-            this.btnEditImportHistory.Size = new System.Drawing.Size(150, 33);
-            this.btnEditImportHistory.TabIndex = 1;
-            this.btnEditImportHistory.Text = "Chỉnh sửa";
-            this.btnEditImportHistory.UseVisualStyleBackColor = true;
-            this.btnEditImportHistory.Click += new System.EventHandler(this.btnEditImportHistory_Click);
             // 
             // dgvImportHistory
             // 
@@ -592,7 +579,6 @@ namespace BasicGroceryStore
             // 
             this.gbSellingHistory.BackColor = System.Drawing.Color.Turquoise;
             this.gbSellingHistory.Controls.Add(this.btnReloadSellingHistory);
-            this.gbSellingHistory.Controls.Add(this.btnEditSellingHistory);
             this.gbSellingHistory.Controls.Add(this.dgvSellingHistory);
             this.gbSellingHistory.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.gbSellingHistory.Location = new System.Drawing.Point(6, 30);
@@ -606,21 +592,11 @@ namespace BasicGroceryStore
             // 
             this.btnReloadSellingHistory.Location = new System.Drawing.Point(6, 286);
             this.btnReloadSellingHistory.Name = "btnReloadSellingHistory";
-            this.btnReloadSellingHistory.Size = new System.Drawing.Size(150, 33);
+            this.btnReloadSellingHistory.Size = new System.Drawing.Size(380, 33);
             this.btnReloadSellingHistory.TabIndex = 2;
             this.btnReloadSellingHistory.Text = "Tải lại";
             this.btnReloadSellingHistory.UseVisualStyleBackColor = true;
             this.btnReloadSellingHistory.Click += new System.EventHandler(this.btnReloadSellingHistory_Click);
-            // 
-            // btnEditSellingHistory
-            // 
-            this.btnEditSellingHistory.Location = new System.Drawing.Point(236, 286);
-            this.btnEditSellingHistory.Name = "btnEditSellingHistory";
-            this.btnEditSellingHistory.Size = new System.Drawing.Size(150, 33);
-            this.btnEditSellingHistory.TabIndex = 1;
-            this.btnEditSellingHistory.Text = "Chỉnh sửa";
-            this.btnEditSellingHistory.UseVisualStyleBackColor = true;
-            this.btnEditSellingHistory.Click += new System.EventHandler(this.btnEditSellingHistory_Click);
             // 
             // dgvSellingHistory
             // 
@@ -680,10 +656,8 @@ namespace BasicGroceryStore
         private System.Windows.Forms.DataVisualization.Charting.Chart chartSales;
         private System.Windows.Forms.GroupBox gbImportHistory;
         private System.Windows.Forms.Button btnReloadImportHistory;
-        private System.Windows.Forms.Button btnEditImportHistory;
         private System.Windows.Forms.DataGridView dgvImportHistory;
         private System.Windows.Forms.Button btnReloadSellingHistory;
-        private System.Windows.Forms.Button btnEditSellingHistory;
         private System.Windows.Forms.DataGridView dgvSellingHistory;
         private System.Windows.Forms.DataVisualization.Charting.Chart cbInformationPlus;
         private System.Windows.Forms.GroupBox gbCheckTypeProductChart;

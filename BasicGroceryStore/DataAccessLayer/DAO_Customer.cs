@@ -7,7 +7,7 @@ namespace BasicGroceryStore
     {
         public bool Create(Customer customer)
         {
-            return (DataProvider.Instance.ExecuteNonQuery("exec sp_InsertCustomerMember", CommandType.StoredProcedure,
+            return (DataProvider.Instance.ExecuteNonQuery("sp_InsertCustomerMember", CommandType.StoredProcedure,
                 new SqlParameter("@Name", customer.Name),
                 new SqlParameter("@Phone", customer.Phone),
                 new SqlParameter("@DateJoin", customer.DateJoin),
@@ -17,7 +17,7 @@ namespace BasicGroceryStore
 
         public bool Update(Customer customer)
         {
-            return (DataProvider.Instance.ExecuteNonQuery("exec sp_UpdateCustomerMember", CommandType.StoredProcedure,
+            return (DataProvider.Instance.ExecuteNonQuery("sp_UpdateCustomerMember", CommandType.StoredProcedure,
                 new SqlParameter("@Name", customer.Name),
                 new SqlParameter("@Phone", customer.Phone),
                 new SqlParameter("@DateJoin", customer.DateJoin),
@@ -27,7 +27,7 @@ namespace BasicGroceryStore
 
         public bool Delete(Customer customer)
         {
-            return (DataProvider.Instance.ExecuteNonQuery("exec sp_DeleteCustomerMember", CommandType.StoredProcedure,
+            return (DataProvider.Instance.ExecuteNonQuery("sp_DeleteCustomerMember", CommandType.StoredProcedure,
                 new SqlParameter("@Name", customer.Name)) > 0) ? true : false;
         }
 

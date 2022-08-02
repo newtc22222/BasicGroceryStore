@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Data;
 using System.Windows.Forms;
 
 namespace BasicGroceryStore
@@ -44,10 +45,8 @@ namespace BasicGroceryStore
             dgvStaff.Controls.Clear();
 
             dgvStaff.DataSource = bus_staff.GetAllStaff();
-            dgvStaff.Columns[0].Visible = false;
-            dgvStaff.Columns[4].Visible = false;
-            dgvStaff.Columns[7].Visible = false;
-            dgvStaff.Columns[8].Visible = false;
+            
+            dgvStaff.Columns[0].Visible = false; //Hide ID column
         }
 
         private void ClearInformation()
@@ -75,6 +74,29 @@ namespace BasicGroceryStore
             cbTypeWork.DataSource = Enum.GetValues(typeof(TypeWork));
             cbSpells.DataSource = Enum.GetValues(typeof(Spells));
             cbDateContract.DataSource = Enum.GetValues(typeof(StatusOfContract));
+        }
+
+        private DataTable getTableFilter(DataTable table, DataTable table_filter)
+        {
+            DataTable dataTable;
+            if (table == null)
+            {
+                table = table_filter;
+                table.PrimaryKey = new DataColumn[] { table.Columns["ID"] };
+                dataTable = table;
+            }
+            else
+            {
+                dataTable = table.Clone();
+                foreach (DataRow row in table_filter.Rows)
+                {
+                    if (table.Rows.Contains(row[0]))
+                    {
+                        dataTable.ImportRow(row);
+                    }
+                }
+            }
+            return dataTable;
         }
 
         #region Filter_Change
@@ -144,7 +166,59 @@ namespace BasicGroceryStore
 
         private void btnFind_Click(object sender, EventArgs e)
         {
+            if (!chbName.Checked && !chbAge.Checked && !chbAddress.Checked && !chbGender.Checked &&
+                !chbDateContract.Checked && !chbTypeWork.Checked && !chbSpells.Checked)
+                return;
 
+            DataTable table = null;
+            DataTable table_filter;
+
+            if (chbName.Checked)
+            {
+                table_filter = bus_staff.FindStaffByName(txtNameFilter.Text);
+                table = getTableFilter(table, table_filter);
+            }
+            if (chbAge.Checked)
+            {
+                int from = (int)numUDFrom.Value;
+                int to = (int)numUDTo.Value;
+                if (from > to)
+                {
+                    MessageBox.Show("Giá trị bắt đầu phải lớn hơn hoặc bằng giá trị kết thúc!", "THÔNG BÁO");
+                    return;
+                }
+
+                table_filter = bus_staff.FindStaffByAgeRange(from, to);
+                table = getTableFilter(table, table_filter);
+            }
+            if (chbAddress.Checked)
+            {
+                table_filter = bus_staff.FindStaffByAddress(txtAddressFilter.Text);
+                table = getTableFilter(table, table_filter);
+            }
+            if (chbGender.Checked)
+            {
+                table_filter = bus_staff.FindStaffByGender(cbGenderFilter.Text);
+                table = getTableFilter(table, table_filter);
+            }
+            if (chbDateContract.Checked)
+            {
+                table_filter = bus_staff.FindStaffByContractStatus(cbDateContract.Text);
+                table = getTableFilter(table, table_filter);
+            }
+            if (chbTypeWork.Checked)
+            {
+                table_filter = bus_staff.FindStaffByTypeWork(cbTypeWork.Text);
+                table = getTableFilter(table, table_filter);
+            }
+            if (chbSpells.Checked)
+            {
+                table_filter = bus_staff.FindStaffBySpells(cbSpells.Text);
+                table = getTableFilter(table, table_filter);
+            }
+
+            dgvStaff.Controls.Clear();
+            dgvStaff.DataSource = table;
         }
 
         private void btnShowPassword_Click(object sender, EventArgs e)
@@ -189,19 +263,7 @@ namespace BasicGroceryStore
         {
             ClearStaffSecretInformation();
 
-            _staff.ID = dgvStaff.CurrentRow.Cells[0].Value.ToString();
-            _staff.Name = dgvStaff.CurrentRow.Cells[1].Value.ToString();
-            _staff.Gender = dgvStaff.CurrentRow.Cells[2].Value.ToString();
-            _staff.DateOfBirth = (DateTime)dgvStaff.CurrentRow.Cells[3].Value;
-            _staff.CitizenID = dgvStaff.CurrentRow.Cells[4].Value.ToString();
-            _staff.Address = dgvStaff.CurrentRow.Cells[5].Value.ToString();
-            _staff.Phone = dgvStaff.CurrentRow.Cells[6].Value.ToString();
-            _staff.Email = dgvStaff.CurrentRow.Cells[7].Value.ToString();
-
-            if (dgvStaff.CurrentRow.Cells[8].Value != DBNull.Value)
-                _staff.Images = Convert.ByteArrayToImage((byte[])dgvStaff.CurrentRow.Cells[8].Value);
-            else
-                _staff.Images = null;
+            _staff = bus_staff.GetStaff(dgvStaff.CurrentRow.Cells[0].Value.ToString()); // Id cell
 
             txtName.Text = _staff.Name;
             txtGender.Text = _staff.Gender;

@@ -58,6 +58,12 @@
     <Compile Include="BusinessLogicLayer\BUS_Product.cs" />
     <Compile Include="BusinessLogicLayer\BUS_Staff.cs" />
     <Compile Include="BusinessLogicLayer\BUS_Supplier.cs" />
+    <Compile Include="Form\FormCustomer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\FormCustomer.Designer.cs">
+      <DependentUpon>FormCustomer.cs</DependentUpon>
+    </Compile>
     <Compile Include="Form\FormStoreInfomation.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -196,6 +202,9 @@
     <Compile Include="UserControl\UCStatistic.Designer.cs">
       <DependentUpon>UCStatistic.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Form\FormCustomer.resx">
+      <DependentUpon>FormCustomer.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Form\FormStoreInfomation.resx">
       <DependentUpon>FormStoreInfomation.cs</DependentUpon>
     </EmbeddedResource>

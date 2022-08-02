@@ -47,7 +47,7 @@
     public enum Spells 
     { 
         morning, 
-        evening, 
+        afternoon, 
         night 
     }
 

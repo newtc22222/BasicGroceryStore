@@ -1,15 +1,15 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <DocumentElement>
-	<Information>
-		<address>Số 1 Võ Văn Ngân, phường Linh Trung, quận Thủ Đức, Thành phố Thủ Đức, Thành phố Hồ Chí Minh</address>
-		<email>sunflynf@gmail.com</email>
-		<phone>(+84) 94 767 9570 </phone>
-		<link>
-			<map>https://goo.gl/maps/vo8q51C3nzS5srxW9</map>
-			<facebook>https://www.facebook.com/fi.fine.21/</facebook>
-			<instagram>https://www.instagram.com/phi_fine_174/</instagram>
-			<linkedin>https://www.linkedin.com/in/f1-fine-5005a821b/</linkedin>
-			<youtube>https://www.youtube.com/channel/UCLfFRTihY2az3rYCe9R0UDA</youtube>
-		</link>
-	</Information>
+  <information>
+    <address>64/1L, đường số 17, phường Linh Trung, quận Thủ Đức, Thành phố Thủ Đức, Thành phố Hồ Chí Minh</address>
+    <email>sunflynf@gmail.com</email>
+    <phone>(84 ) 94 -767</phone>
+    <link>
+      <map>https://goo.gl/maps/vo8q51C3nzS5srxW9</map>
+      <facebook>https://www.facebook.com/fi.fine.21/</facebook>
+      <instagram>https://www.instagram.com/phi_fine_174/</instagram>
+      <linkedin>https://www.linkedin.com/in/f1-fine-5005a821b/</linkedin>
+      <youtube>https://www.youtube.com/channel/UCLfFRTihY2az3rYCe9R0UDA</youtube>
+    </link>
+  </information>
 </DocumentElement>

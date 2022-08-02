@@ -32,6 +32,11 @@ namespace BasicGroceryStore
             return dao.GetAllProduct();
         }
 
+        public Product GetProduct(string product_id)
+        {
+            return dao.GetProduct(product_id);
+        }
+
         public DataTable GetProductOfSupplier(string supplier_id)
         {
             return dao.GetProductOfSupplier(supplier_id);

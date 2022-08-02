@@ -43,9 +43,7 @@ namespace BasicGroceryStore
             dgvProduct.DataSource = bus_product.GetAllProduct();
             
 
-            dgvProduct.Columns[0].Visible = false;
-            dgvProduct.Columns[5].Visible = false;
-            dgvProduct.Columns[8].Visible = false;
+            dgvProduct.Columns[0].Visible = false; // Hide ID Column
         }
 
         public void settingStaffInformation()

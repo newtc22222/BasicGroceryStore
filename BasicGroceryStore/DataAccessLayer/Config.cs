@@ -2,7 +2,7 @@
 {
     internal static class Config
     {
-        private static string serverName = @"PHIVO_Z1704\PHIVO";
+        private static string serverName = @"DESKTOP-LI9ERHL";
         private static string databaseName = "GroceryStore";
         private static string username = "sa";
         private static string password = "123456";

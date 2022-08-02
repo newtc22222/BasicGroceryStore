@@ -45,7 +45,15 @@ namespace BasicGroceryStore
         #region ButtonControl
         private void btnChangeCustomerInfor_Click(object sender, EventArgs e)
         {
+            if (txtCustomerName.Text == "")
+                return;
 
+            new FormCustomer(new Customer(
+                name: txtCustomerName.Text,
+                phone: txtCustomerPhone.Text,
+                dateJoin: dtCustomerDateJoin.Value,
+                value: float.Parse(txtCustomerValue.Text),
+                e_level: dgvCustomer.CurrentRow.Cells[4].Value.ToString())).ShowDialog();
         }
 
         private void btnChangeStoreInfor_Click(object sender, EventArgs e)
@@ -60,7 +68,7 @@ namespace BasicGroceryStore
 
         private void btnAddCustomer_Click(object sender, EventArgs e)
         {
-
+            new FormCustomer().ShowDialog();
         }
 
         private void btnReloadValue_Click(object sender, EventArgs e)
@@ -150,6 +158,7 @@ namespace BasicGroceryStore
             lblEmail.Text = "Email: " + data["email"];
             lblPhone.Text = "Số điện thoại: " + data["phone"];
 
+            link.Clear();
             link.Add("map", data["link_map"]);
             link.Add("facebook", data["link_fb"]);
             link.Add("instagram", data["link_ig"]);

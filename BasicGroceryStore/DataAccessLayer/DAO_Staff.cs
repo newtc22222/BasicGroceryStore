@@ -53,17 +53,26 @@ namespace BasicGroceryStore
 
             Image image = null;
             if (row[8] != DBNull.Value)
+            {
                 image = Convert.ByteArrayToImage((byte[])row[8]);
+            }
 
-            Staff staff =  new Staff(row[0].ToString(), row[1].ToString(), row[2].ToString(), 
-                                        (DateTime)row[3], row[4].ToString(), row[5].ToString(), 
-                                        row[6].ToString(), row[7].ToString(), image);
+            Staff staff =  new Staff(
+                iD: row[0].ToString(), 
+                name: row[1].ToString(), 
+                gender: row[2].ToString(), 
+                dateOfBirth: (DateTime)row[3],
+                citizenID: row[4].ToString(),
+                address: row[5].ToString(), 
+                phone: row[6].ToString(), 
+                email: row[7].ToString(), 
+                images: image);
             return staff;
         }
 
         public DataTable GetAllStaff()
         {
-            return DataProvider.Instance.ExecuteQuery("select * from Staff", CommandType.Text, null);
+            return DataProvider.Instance.ExecuteQuery("sp_GetAllStaff", CommandType.StoredProcedure, null);
         }
 
         public int GetNumberOfStaff()
@@ -73,12 +82,12 @@ namespace BasicGroceryStore
 
         public DataTable FindStaffByAddress(string address)
         {
-            return DataProvider.Instance.ExecuteQuery($"select * from func_FindStaffByAddress('{address}')", CommandType.Text);
+            return DataProvider.Instance.ExecuteQuery($"select * from func_FindStaffByAddress(N'{address}')", CommandType.Text);
         }
 
         public DataTable FindStaffByName(string name)
         {
-            return DataProvider.Instance.ExecuteQuery($"select * from func_FindStaffByName('{name}')", CommandType.Text);
+            return DataProvider.Instance.ExecuteQuery($"select * from func_FindStaffByName(N'{name}')", CommandType.Text);
         }
 
         public DataTable FindStaffByAgeRange(float from, float to)
@@ -88,12 +97,12 @@ namespace BasicGroceryStore
 
         public DataTable FindStaffByContractStatus(string status)
         {
-            return DataProvider.Instance.ExecuteQuery($"select * from func_FindStaffByContract('{status}')", CommandType.Text);
+            return DataProvider.Instance.ExecuteQuery($"select * from func_FindStaffByContracts('{status}')", CommandType.Text);
         }
 
         public DataTable FindStaffByGender(string gender)
         {
-            return DataProvider.Instance.ExecuteQuery($"select * from func_FindStaffByGender('{gender}')", CommandType.Text);
+            return DataProvider.Instance.ExecuteQuery($"select * from func_FindStaffByGender(N'{gender}')", CommandType.Text);
         }
 
         public DataTable FindStaffBySpells(string spells)

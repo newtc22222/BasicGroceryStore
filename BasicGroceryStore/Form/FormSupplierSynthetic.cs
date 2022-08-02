@@ -26,6 +26,8 @@ namespace BasicGroceryStore
             cbTypeProductFilter.DataSource = bus_product.GetAllTypeOfProduct();
 
             dgvSupplier.DataSource = bus_supplier.GetAllSupplier();
+            dgvSupplier.Columns[0].Visible = false;
+
             supplier_choosing = new Supplier();
         }
 

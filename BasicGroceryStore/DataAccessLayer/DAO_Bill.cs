@@ -21,7 +21,7 @@ namespace BasicGroceryStore
                 new SqlParameter("@Value", bill.Value),
                 new SqlParameter("@StaffID", bill.StaffID) };
         
-            if (typeBill == "Ordered") // for Ordered
+            if (customerName != "") // for Ordered
             {
                 param.Add(new SqlParameter("@CustomerName", customerName));
             }
@@ -37,7 +37,7 @@ namespace BasicGroceryStore
                     new SqlParameter("@Value", bill.Value),
                     new SqlParameter("@StaffID", bill.StaffID) };
 
-            if (typeBill == "Ordered") // for Ordered
+            if (customerName != "") // for Ordered
             {
                 param[param.Length] = new SqlParameter("@CustomerName", customerName);
             }
