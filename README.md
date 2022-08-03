@@ -3,18 +3,22 @@
 - Application languages: Vietnamese (gui), English (code)
 - Programming languages: C# (main), xml (for save information)
 - GUI: Windows Form 
+- IDE: Visual Studio 2019
 - Framework: .Net Framework 4.7.2
 - Database: Microsoft SQL Server 2019
 - Connection: ADO.NET
 - Design: Three-layer architecture (Form/UC - BUS - DAO)
+
 ## OBJECT
 - Staff + Account + Contract
 - Supplier
 - Product
 - Bill (Import, Order) + Bill_item
+
 ## FUNCTION
 - CRUD
 - Search for data
+
 ## Extra information
 - Using the function of DBMS
     - Store procedure (insert, update, delete, select)
