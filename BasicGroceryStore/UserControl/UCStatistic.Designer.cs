@@ -29,13 +29,13 @@ namespace BasicGroceryStore
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Series series3 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea6 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend6 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series9 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea5 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend5 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series7 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Series series8 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.pnlMain = new System.Windows.Forms.Panel();
             this.gbMakeReport = new System.Windows.Forms.GroupBox();
             this.gbChooseReportInfor = new System.Windows.Forms.GroupBox();
@@ -428,18 +428,18 @@ namespace BasicGroceryStore
             // 
             // cbInformationPlus
             // 
-            chartArea1.Name = "ChartArea1";
-            this.cbInformationPlus.ChartAreas.Add(chartArea1);
-            legend1.Name = "Legend1";
-            this.cbInformationPlus.Legends.Add(legend1);
+            chartArea6.Name = "ChartArea1";
+            this.cbInformationPlus.ChartAreas.Add(chartArea6);
+            legend6.Name = "Legend1";
+            this.cbInformationPlus.Legends.Add(legend6);
             this.cbInformationPlus.Location = new System.Drawing.Point(6, 248);
             this.cbInformationPlus.Name = "cbInformationPlus";
             this.cbInformationPlus.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.Pastel;
-            series1.ChartArea = "ChartArea1";
-            series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Pie;
-            series1.Legend = "Legend1";
-            series1.Name = "Series1";
-            this.cbInformationPlus.Series.Add(series1);
+            series9.ChartArea = "ChartArea1";
+            series9.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Pie;
+            series9.Legend = "Legend1";
+            series9.Name = "Series1";
+            this.cbInformationPlus.Series.Add(series9);
             this.cbInformationPlus.Size = new System.Drawing.Size(526, 273);
             this.cbInformationPlus.TabIndex = 1;
             this.cbInformationPlus.Text = " ";
@@ -518,25 +518,25 @@ namespace BasicGroceryStore
             // chartSales
             // 
             this.chartSales.BorderlineWidth = 4;
-            chartArea2.Name = "ChartArea1";
-            this.chartSales.ChartAreas.Add(chartArea2);
-            legend2.Name = "Legend1";
-            this.chartSales.Legends.Add(legend2);
+            chartArea5.Name = "ChartArea1";
+            this.chartSales.ChartAreas.Add(chartArea5);
+            legend5.Name = "Legend1";
+            this.chartSales.Legends.Add(legend5);
             this.chartSales.Location = new System.Drawing.Point(6, 431);
             this.chartSales.Name = "chartSales";
             this.chartSales.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.Pastel;
-            series2.BorderWidth = 4;
-            series2.ChartArea = "ChartArea1";
-            series2.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
-            series2.Legend = "Legend1";
-            series2.Name = "Thu nhập";
-            series3.BorderWidth = 4;
-            series3.ChartArea = "ChartArea1";
-            series3.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
-            series3.Legend = "Legend1";
-            series3.Name = "Chi tiêu";
-            this.chartSales.Series.Add(series2);
-            this.chartSales.Series.Add(series3);
+            series7.BorderWidth = 4;
+            series7.ChartArea = "ChartArea1";
+            series7.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+            series7.Legend = "Legend1";
+            series7.Name = "Thu nhập";
+            series8.BorderWidth = 4;
+            series8.ChartArea = "ChartArea1";
+            series8.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+            series8.Legend = "Legend1";
+            series8.Name = "Chi tiêu";
+            this.chartSales.Series.Add(series7);
+            this.chartSales.Series.Add(series8);
             this.chartSales.Size = new System.Drawing.Size(788, 417);
             this.chartSales.TabIndex = 5;
             this.chartSales.Text = "Biểu đồ thu nhập";
@@ -574,7 +574,7 @@ namespace BasicGroceryStore
             this.dgvImportHistory.RowHeadersVisible = false;
             this.dgvImportHistory.Size = new System.Drawing.Size(376, 254);
             this.dgvImportHistory.TabIndex = 0;
-            this.dgvImportHistory.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvImportHistory_CellContentClick);
+            this.dgvImportHistory.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvImportHistory_CellClick);
             // 
             // gbSellingHistory
             // 
@@ -608,7 +608,7 @@ namespace BasicGroceryStore
             this.dgvSellingHistory.RowHeadersVisible = false;
             this.dgvSellingHistory.Size = new System.Drawing.Size(382, 254);
             this.dgvSellingHistory.TabIndex = 0;
-            this.dgvSellingHistory.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvSellingHistory_CellContentClick);
+            this.dgvSellingHistory.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvSellingHistory_CellClick);
             // 
             // UCStatistic
             // 

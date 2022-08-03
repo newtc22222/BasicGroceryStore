@@ -48,30 +48,6 @@ namespace BasicGroceryStore
             chbReportSpending.Enabled = chbReportSpending.Checked = !radReportToday.Checked;
         }
 
-        private void dgvSellingHistory_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-            Ordered bill = new Ordered();
-            bill.ID = dgvSellingHistory.CurrentRow.Cells[0].Value.ToString();
-            bill.DateCreate = (DateTime)dgvSellingHistory.CurrentRow.Cells[1].Value;
-            bill.Value = float.Parse(dgvSellingHistory.CurrentRow.Cells[2].Value.ToString());           
-            bill.StaffID = dgvSellingHistory.CurrentRow.Cells[4].Value.ToString();
-            
-            bill.CustomerName = dgvSellingHistory.CurrentRow.Cells[3].Value.ToString();
-
-            new FormBill(bill).Show();
-        }
-
-        private void dgvImportHistory_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-            Imported bill = new Imported();
-            bill.ID = dgvImportHistory.CurrentRow.Cells[0].Value.ToString();
-            bill.DateCreate = (DateTime)dgvImportHistory.CurrentRow.Cells[1].Value;
-            bill.Value = float.Parse(dgvImportHistory.CurrentRow.Cells[2].Value.ToString());
-            bill.StaffID = dgvImportHistory.CurrentRow.Cells[3].Value.ToString();
-
-            new FormBill(bill).Show();
-        }
-
         private void btnReloadSellingHistory_Click(object sender, EventArgs e)
         {
             dgvSellingHistory.Controls.Clear();
@@ -79,21 +55,11 @@ namespace BasicGroceryStore
             dgvSellingHistory.Columns[0].Visible = false;
         }
 
-        private void btnEditSellingHistory_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void btnReloadImportHistory_Click(object sender, EventArgs e)
         {
             dgvImportHistory.Controls.Clear();
             dgvImportHistory.DataSource = bus_imported.GetAllBill();
             dgvImportHistory.Columns[0].Visible = false;
-        }
-
-        private void btnEditImportHistory_Click(object sender, EventArgs e)
-        {
-
         }
 
         private void btnCreateChart_Click(object sender, EventArgs e)
@@ -148,6 +114,30 @@ namespace BasicGroceryStore
                     chartSales.Series["Thu nhập"].Points.AddXY(date.Year, income / 1000000);
                 }
             }
+        }
+
+        private void dgvSellingHistory_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            Ordered bill = new Ordered();
+            bill.ID = dgvSellingHistory.CurrentRow.Cells[0].Value.ToString();
+            bill.DateCreate = (DateTime)dgvSellingHistory.CurrentRow.Cells[1].Value;
+            bill.Value = float.Parse(dgvSellingHistory.CurrentRow.Cells[2].Value.ToString());
+            bill.StaffID = dgvSellingHistory.CurrentRow.Cells[4].Value.ToString();
+
+            bill.CustomerName = dgvSellingHistory.CurrentRow.Cells[3].Value.ToString();
+
+            new FormBill(bill).Show();
+        }
+
+        private void dgvImportHistory_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            Imported bill = new Imported();
+            bill.ID = dgvImportHistory.CurrentRow.Cells[0].Value.ToString();
+            bill.DateCreate = (DateTime)dgvImportHistory.CurrentRow.Cells[1].Value;
+            bill.Value = float.Parse(dgvImportHistory.CurrentRow.Cells[2].Value.ToString());
+            bill.StaffID = dgvImportHistory.CurrentRow.Cells[3].Value.ToString();
+
+            new FormBill(bill).Show();
         }
     }
 }

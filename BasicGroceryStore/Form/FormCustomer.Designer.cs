@@ -33,6 +33,8 @@ namespace BasicGroceryStore
             this.lblTabShow = new System.Windows.Forms.Label();
             this.btnMinimize = new System.Windows.Forms.Button();
             this.pnlMain = new System.Windows.Forms.Panel();
+            this.btnCancel = new System.Windows.Forms.Button();
+            this.btnSave = new System.Windows.Forms.Button();
             this.dtPickDateJoin = new System.Windows.Forms.DateTimePicker();
             this.txtPhone = new System.Windows.Forms.MaskedTextBox();
             this.txtCustomerValue = new System.Windows.Forms.TextBox();
@@ -41,8 +43,6 @@ namespace BasicGroceryStore
             this.lblCustomerValue = new System.Windows.Forms.Label();
             this.lblCustomerDateJoin = new System.Windows.Forms.Label();
             this.lblCustomerName = new System.Windows.Forms.Label();
-            this.btnSave = new System.Windows.Forms.Button();
-            this.btnCancel = new System.Windows.Forms.Button();
             this.pnlMove.SuspendLayout();
             this.pnlMain.SuspendLayout();
             this.SuspendLayout();
@@ -100,6 +100,26 @@ namespace BasicGroceryStore
             this.pnlMain.Size = new System.Drawing.Size(500, 240);
             this.pnlMain.TabIndex = 4;
             // 
+            // btnCancel
+            // 
+            this.btnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.btnCancel.Location = new System.Drawing.Point(342, 196);
+            this.btnCancel.Name = "btnCancel";
+            this.btnCancel.Size = new System.Drawing.Size(146, 33);
+            this.btnCancel.TabIndex = 54;
+            this.btnCancel.Text = "Hủy";
+            this.btnCancel.UseVisualStyleBackColor = true;
+            // 
+            // btnSave
+            // 
+            this.btnSave.Location = new System.Drawing.Point(150, 196);
+            this.btnSave.Name = "btnSave";
+            this.btnSave.Size = new System.Drawing.Size(186, 33);
+            this.btnSave.TabIndex = 53;
+            this.btnSave.Text = "Lưu thông tin";
+            this.btnSave.UseVisualStyleBackColor = true;
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
+            // 
             // dtPickDateJoin
             // 
             this.dtPickDateJoin.Format = System.Windows.Forms.DateTimePickerFormat.Short;
@@ -131,6 +151,7 @@ namespace BasicGroceryStore
             // 
             this.txtName.Location = new System.Drawing.Point(150, 15);
             this.txtName.Name = "txtName";
+            this.txtName.ReadOnly = true;
             this.txtName.Size = new System.Drawing.Size(338, 26);
             this.txtName.TabIndex = 49;
             // 
@@ -169,26 +190,6 @@ namespace BasicGroceryStore
             this.lblCustomerName.Size = new System.Drawing.Size(57, 20);
             this.lblCustomerName.TabIndex = 45;
             this.lblCustomerName.Text = "Họ tên";
-            // 
-            // btnSave
-            // 
-            this.btnSave.Location = new System.Drawing.Point(150, 196);
-            this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(186, 33);
-            this.btnSave.TabIndex = 53;
-            this.btnSave.Text = "Lưu thông tin";
-            this.btnSave.UseVisualStyleBackColor = true;
-            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
-            // 
-            // btnCancel
-            // 
-            this.btnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.btnCancel.Location = new System.Drawing.Point(342, 196);
-            this.btnCancel.Name = "btnCancel";
-            this.btnCancel.Size = new System.Drawing.Size(146, 33);
-            this.btnCancel.TabIndex = 54;
-            this.btnCancel.Text = "Hủy";
-            this.btnCancel.UseVisualStyleBackColor = true;
             // 
             // FormCustomer
             // 
