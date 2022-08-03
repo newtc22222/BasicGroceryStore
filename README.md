@@ -1,13 +1,13 @@
 # Grocery Store Management Application
 ## INFORMATION
-- Application languages: Vietnamese (gui), English (code)
-- Programming languages: C# (main), xml (for save information)
-- GUI: Windows Form 
-- IDE: Visual Studio 2019
-- Framework: .Net Framework 4.7.2
-- Database: Microsoft SQL Server 2019
-- Connection: ADO.NET
-- Design: Three-layer architecture (Form/UC - BUS - DAO)
+- **Application languages:** Vietnamese (gui), English (code)
+- **Programming languages:** C# (main), xml (for save information)
+- **GUI:** Windows Form 
+- **IDE:** Visual Studio 2019
+- **Framework:** .Net Framework 4.7.2
+- **Database:** Microsoft SQL Server 2019
+- **Connection:** ADO.NET
+- **Design:** Three-layer architecture (Form/UC - BUS - DAO)
 
 ## OBJECT
 - Staff + Account + Contract
