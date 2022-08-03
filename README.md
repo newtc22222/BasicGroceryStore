@@ -21,13 +21,5 @@
     - View
     - Triggers
     - Function (table, scalar)
-<hr>
-## IMAGE
-![Home page]()
-![Product]()
-![Import]()
-![Order]()
-![Supplier]()
-![Staff]()
-![Staff details](https://photos.app.goo.gl/k2d5gkB2xgNHsHAQ7)
-![Login form](https://photos.app.goo.gl/vZR98ssXVYsRS5o76)
+
+[__IMAGE LINK__](https://photos.app.goo.gl/V2NPiqFeZXUaQ15s7)
