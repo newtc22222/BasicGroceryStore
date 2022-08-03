@@ -6,12 +6,12 @@ namespace BasicGroceryStore
     {
         private string iD;
         private DateTime dateCreate;
-        private float value;
+        private double value;
         private string staffID;
 
         public string ID { get => iD; set => iD = value; }
         public DateTime DateCreate { get => dateCreate; set => dateCreate = value; }
-        public float Value { get => value; set => this.value = value; }
+        public double Value { get => value; set => this.value = value; }
         public string StaffID { get => staffID; set => staffID = value; }
 
         public Bill()

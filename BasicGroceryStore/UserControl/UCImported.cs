@@ -13,7 +13,6 @@ namespace BasicGroceryStore
 
         private Imported _import;
         private List<Imported_Item> _importedDetails;
-        private DataTable table;
 
         static UCImported _obj;
         public static UCImported Instance
@@ -27,6 +26,7 @@ namespace BasicGroceryStore
                 return _obj;
             }
         }
+
         public UCImported()
         {
             InitializeComponent();
@@ -35,6 +35,7 @@ namespace BasicGroceryStore
             bus_imported = new BUS_Imported();
             bus_item = new BUS_Imported_Item();
         }
+
         public void LoadData()
         {
             cbTypeProduct.DataSource = bus_product.GetAllTypeOfProduct();
@@ -72,39 +73,10 @@ namespace BasicGroceryStore
             txtStaffName.Clear();
             txtTotalPrice.Clear();
 
-            dgvImportedDetails.DataSource = null;
-            dgvImportedDetails.Controls.Clear();
+            flowpnl_Item.Controls.Clear();
 
             _importedDetails.Clear();
             _import = null;
-        }
-
-        private void createTableBillDetails()
-        {
-            table = new DataTable();
-
-            table.Columns.Add("ProductID", typeof(string));
-            table.Columns.Add("Tên", typeof(string));
-            table.Columns.Add("Đơn vị", typeof(string));
-            table.Columns.Add("Giá", typeof(float));
-            table.Columns.Add("Số lượng", typeof(int));
-            table.Columns.Add("Tổng", typeof(float));
-            table.PrimaryKey = new DataColumn[] { table.Columns["ProductID"] };
-        }
-        
-        private void changeBills(DataTable tb)
-        {
-            float bill_sum = 0;
-
-            for (int i = 0; i < tb.Rows.Count; i++)
-            {
-                bill_sum += float.Parse(tb.Rows[i][5].ToString());
-            }
-
-            txtTotalPrice.Text = bill_sum.ToString();
-            dgvImportedDetails.Controls.Clear();
-            dgvImportedDetails.DataSource = tb;
-            dgvImportedDetails.Columns[0].Visible = false;
         }
 
         private DataTable getTableFilter(DataTable table, DataTable table_filter)
@@ -135,11 +107,6 @@ namespace BasicGroceryStore
             LoadData();
         }
 
-        private void dgvImported_CellClick(object sender, DataGridViewCellEventArgs e)
-        {
-            settingInformation();
-        }
-
         private void btnCancelBill_Click(object sender, EventArgs e)
         {
             if(MessageBox.Show("Hủy toàn bộ phiếu nhập hàng?", "CẢNH BÁO", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
@@ -155,42 +122,45 @@ namespace BasicGroceryStore
                         break;
                     }
                 case DialogResult.No:
-                    for (int i = 0; i < table.Rows.Count; i++)
                     {
-                        _importedDetails.Add(new Imported_Item(
-                            iD: i + 1,
-                            billID: _import.ID, 
-                            productID: table.Rows[i][0].ToString(),
-                            price: float.Parse(table.Rows[i][3].ToString()), 
-                            quantity: int.Parse(table.Rows[i][4].ToString()))
-                            );
-                    }
-
-                    if (MainForm.staff_using != null)
-                        _import.StaffID = MainForm.staff_using.ID;
-                    else
-                        _import.StaffID = "";
-                    
-                    _import.Value = float.Parse(txtTotalPrice.Text);
-
-                    if (bus_imported.Create(_import))
-                    {
-                        foreach (Imported_Item item in _importedDetails)
+                        for (int i = 0; i < flowpnl_Item.Controls.Count; i++)
                         {
-                            bus_item.Create(item);
+                            UCProductItem item = (UCProductItem)flowpnl_Item.Controls[i];
+                            _importedDetails.Add(new Imported_Item(
+                                iD: i + 1,
+                                billID: _import.ID,
+                                productID: item.product_id,
+                                price: item.product_price,
+                                quantity: item.product_quantity)
+                                );
                         }
 
-                        MessageBox.Show("Đã lưu thông tin hóa đơn!", "THÔNG BÁO");
+                        if (MainForm.staff_using != null)
+                            _import.StaffID = MainForm.staff_using.ID;
+                        else
+                            _import.StaffID = "";
 
-                        MainForm.LoadData.Invoke();
-                    }
-                    else
-                    {
-                        MessageBox.Show("Lỗi khi xử lý hóa đơn", "LỖI", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    }
+                        _import.Value = float.Parse(txtTotalPrice.Text);
 
-                    clearInformation();
-                    break;
+                        if (bus_imported.Create(_import))
+                        {
+                            foreach (Imported_Item item in _importedDetails)
+                            {
+                                bus_item.Create(item);
+                            }
+
+                            MessageBox.Show("Đã lưu thông tin hóa đơn!", "THÔNG BÁO");
+
+                            MainForm.LoadData.Invoke();
+                        }
+                        else
+                        {
+                            MessageBox.Show("Lỗi khi xử lý hóa đơn", "LỖI", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        }
+
+                        clearInformation();
+                        break;
+                    }                    
                 default:
                     break;
             }
@@ -198,12 +168,12 @@ namespace BasicGroceryStore
 
         private void btnChooseProduct_Click(object sender, EventArgs e)
         {
-
+            
         }
 
         private void btnCheckHistory_Click(object sender, EventArgs e)
         {
-
+            UCStatistic.Instance.BringToFront();
         }
 
         private void btnMakeNewProduct_Click(object sender, EventArgs e)
@@ -214,30 +184,6 @@ namespace BasicGroceryStore
         private void btnCheckSupplier_Click(object sender, EventArgs e)
         {
             new FormSupplierSynthetic().ShowDialog();
-        }
-
-        private void dgvImportedDetails_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-            if (dgvImportedDetails.CurrentCell.RowIndex == dgvImportedDetails.RowCount - 1)
-                return;
-
-            DataRowView currentDataRowView = (DataRowView)dgvImportedDetails.CurrentRow.DataBoundItem;
-            DataRow row = currentDataRowView.Row;
-
-            int quantity = int.Parse(row[4].ToString());
-            if (quantity > 1)
-            {
-                int new_quantity = quantity - 1;
-                float price = float.Parse(table.Rows[table.Rows.IndexOf(row)][3].ToString());
-                table.Rows[table.Rows.IndexOf(row)][4] = new_quantity;
-                table.Rows[table.Rows.IndexOf(row)][5] = new_quantity * price;
-            }
-            else
-            {
-                table.Rows.Remove(row);
-            }
-
-            changeBills(table);
         }
 
         private void btnFind_Click(object sender, EventArgs e)
@@ -282,39 +228,23 @@ namespace BasicGroceryStore
             dgvProduct.DataSource = table;
         }
 
-        private void dgvProduct_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        private void dgvProduct_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             if (dgvProduct.CurrentCell.RowIndex == dgvProduct.RowCount - 1)
                 return;
 
-            if (dgvImportedDetails.DataSource == null)
+            if (_import == null)
             {
                 _import = settingInformation();
-                _importedDetails = new List<Imported_Item>();
-                createTableBillDetails();
             }
+            _importedDetails = new List<Imported_Item>();
 
             string product_id = dgvProduct.CurrentRow.Cells[0].Value.ToString();
             string name = dgvProduct.CurrentRow.Cells[1].Value.ToString();
-            string unit = dgvProduct.CurrentRow.Cells[3].Value.ToString();
-            float price = float.Parse(dgvProduct.CurrentRow.Cells[7].Value.ToString());
+            float price = float.Parse(dgvProduct.CurrentRow.Cells[6].Value.ToString());
 
-            if (table.Rows.Contains(product_id))
-            {
-                DataRow row = table.Select("ProductID = " + product_id)[0];
-                int row_index = table.Rows.IndexOf(row);
-
-                int new_quantity = int.Parse(table.Rows[row_index][4].ToString()) + 1;
-
-                table.Rows[row_index][4] = new_quantity;
-                table.Rows[row_index][5] = new_quantity * price;
-            }
-            else
-            {
-                table.Rows.Add(product_id, name, unit, price, 1, price * 1);
-            }
-
-            changeBills(table);
+            UCProductItem item = new UCProductItem(flowpnl_Item, txtTotalPrice, product_id, name, price);
+            item.SettingItem();
         }
     }
 }

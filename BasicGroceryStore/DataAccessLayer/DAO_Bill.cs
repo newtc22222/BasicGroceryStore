@@ -21,7 +21,7 @@ namespace BasicGroceryStore
                 new SqlParameter("@Value", bill.Value),
                 new SqlParameter("@StaffID", bill.StaffID) };
         
-            if (customerName != "") // for Ordered
+            if (typeBill == "Ordered") // for Ordered
             {
                 param.Add(new SqlParameter("@CustomerName", customerName));
             }
@@ -37,7 +37,7 @@ namespace BasicGroceryStore
                     new SqlParameter("@Value", bill.Value),
                     new SqlParameter("@StaffID", bill.StaffID) };
 
-            if (customerName != "") // for Ordered
+            if (typeBill == "Ordered") // for Ordered
             {
                 param[param.Length] = new SqlParameter("@CustomerName", customerName);
             }
@@ -68,7 +68,9 @@ namespace BasicGroceryStore
 
         public DataTable GetAllItemInBill(string bill_id)
         {
-            return DataProvider.Instance.ExecuteQuery($"select * from {typeBill}Detail where {typeBill}Id='{bill_id}'", CommandType.Text, null);
+            return DataProvider.Instance.ExecuteQuery("sp_GetAllItemInBill", CommandType.StoredProcedure, 
+                new SqlParameter("@TypeBill", typeBill),
+                new SqlParameter("@ID", bill_id));
         }
 
         public double? GetValueOfAllBills()

@@ -13,7 +13,6 @@ namespace BasicGroceryStore
 
         private Ordered _order;
         private List<Ordered_Item> _orderedDetails;
-        private DataTable table;
 
         static UCOrdered _obj;
         public static UCOrdered Instance
@@ -59,7 +58,6 @@ namespace BasicGroceryStore
             Ordered order = new Ordered();
             txtBillID.Text = order.ID;
             dtPickDateCreate.Value = order.DateCreate;
-            txtTotalPrice.Text = order.Value.ToString();
 
             settingStaffInformation();
 
@@ -73,40 +71,10 @@ namespace BasicGroceryStore
             txtTotalPrice.Clear();
             txtCustomerName.Clear();
 
-            dgvOrderedDetails.DataSource = null;
-            dgvOrderedDetails.Controls.Clear();
+            flowpnl_Item.Controls.Clear();
 
             _orderedDetails.Clear();
             _order = null;
-        }
-
-        private void createTableBillDetails()
-        {
-            table = new DataTable();
-
-            table.Columns.Add("ProductID", typeof(string));
-            table.Columns.Add("Tên", typeof(string));
-            table.Columns.Add("Đơn vị", typeof(string));
-            table.Columns.Add("Giá", typeof(float));
-            table.Columns.Add("Số lượng", typeof(int));
-            table.Columns.Add("Tổng", typeof(float));
-            table.PrimaryKey = new DataColumn[] { table.Columns["ProductID"] };
-        }
-
-        private void changeBills(DataTable tb)
-        {
-            float bill_sum = 0;
-
-            for (int i = 0; i < tb.Rows.Count; i++)
-            {
-                bill_sum += float.Parse(tb.Rows[i][5].ToString());
-            }
-
-            txtTotalPrice.Text = bill_sum.ToString();
-
-            dgvOrderedDetails.Controls.Clear();
-            dgvOrderedDetails.DataSource = tb; 
-            dgvOrderedDetails.Columns[0].Visible = false;
         }
 
         private DataTable getTableFilter(DataTable table, DataTable table_filter)
@@ -153,14 +121,15 @@ namespace BasicGroceryStore
                     }
                 case DialogResult.No:
                     {
-                        for (int i = 0; i < table.Rows.Count; i++)
+                        for (int i = 0; i < flowpnl_Item.Controls.Count; i++)
                         {
+                            UCProductItem item = (UCProductItem)flowpnl_Item.Controls[i];
                             _orderedDetails.Add(new Ordered_Item(
-                                iD: i + 1, 
-                                billID: _order.ID, 
-                                productID: table.Rows[i][0].ToString(),
-                                price: float.Parse(table.Rows[i][3].ToString()),
-                                quantity: int.Parse(table.Rows[i][4].ToString()))
+                                iD: i + 1,
+                                billID: _order.ID,
+                                productID: item.product_id,
+                                price: item.product_price,
+                                quantity: item.product_quantity)
                                 );
                         }
 
@@ -172,7 +141,7 @@ namespace BasicGroceryStore
                         _order.CustomerName = txtCustomerName.Text.Trim();
                         _order.Value = float.Parse(txtTotalPrice.Text);
 
-                        if (bus_order.Create(_order))
+                        if (bus_order.Create(_order, _order.CustomerName))
                         {
                             foreach (Ordered_Item item in _orderedDetails)
                             {
@@ -207,7 +176,7 @@ namespace BasicGroceryStore
 
         private void btnCheckHistory_Click(object sender, EventArgs e)
         {
-
+            UCStatistic.Instance.BringToFront();
         }
 
         private void btnUseScanMachine_Click(object sender, EventArgs e)
@@ -217,7 +186,7 @@ namespace BasicGroceryStore
 
         private void btnCheckCustomer_Click(object sender, EventArgs e)
         {
-
+            UCHomePage.Instance.BringToFront();
         }
 
         private void btnFind_Click(object sender, EventArgs e)
@@ -262,76 +231,41 @@ namespace BasicGroceryStore
             dgvProduct.DataSource = table;
         }
 
-        private void dgvOrderedDetails_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-            if (dgvOrderedDetails.CurrentCell.RowIndex == dgvOrderedDetails.RowCount - 1)
-                return;
-
-            DataRowView currentDataRowView = (DataRowView)dgvOrderedDetails.CurrentRow.DataBoundItem;
-            DataRow row = currentDataRowView.Row;
-
-            int quantity = int.Parse(row[4].ToString());
-            if (quantity > 1)
-            {
-                int new_quantity = quantity - 1;
-                float price = float.Parse(table.Rows[table.Rows.IndexOf(row)][3].ToString());
-                table.Rows[table.Rows.IndexOf(row)][4] = new_quantity;
-                table.Rows[table.Rows.IndexOf(row)][5] = new_quantity * price;
-            }
-            else
-            {
-                table.Rows.Remove(row);
-            }
-
-            changeBills(table);
-        }
-
-        private void dgvProduct_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        private void dgvProduct_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             if (dgvProduct.CurrentCell.RowIndex == dgvProduct.RowCount - 1)
                 return;
 
-            if (dgvOrderedDetails.DataSource == null)
+            if (_order == null)
             {
                 _order = settingInformation();
-                _orderedDetails = new List<Ordered_Item>();
-                createTableBillDetails();
             }
-
-            string product_id = dgvProduct.CurrentRow.Cells[0].Value.ToString();
-            string name = dgvProduct.CurrentRow.Cells[1].Value.ToString();
-            string unit = dgvProduct.CurrentRow.Cells[3].Value.ToString();
-            float price = float.Parse(dgvProduct.CurrentRow.Cells[7].Value.ToString());
+            _orderedDetails = new List<Ordered_Item>();
 
             int store_quantity = int.Parse(dgvProduct.CurrentRow.Cells[4].Value.ToString());
 
-            if (table.Rows.Contains(product_id))
+            string product_id = dgvProduct.CurrentRow.Cells[0].Value.ToString();
+            string name = dgvProduct.CurrentRow.Cells[1].Value.ToString();
+            float price = float.Parse(dgvProduct.CurrentRow.Cells[6].Value.ToString());
+
+            UCProductItem item = new UCProductItem(flowpnl_Item, txtTotalPrice, product_id, name, price);
+            if(store_quantity < 1)
             {
-                DataRow row = table.Select("ProductID = " + product_id)[0];
-                int row_index = table.Rows.IndexOf(row);
-
-                int new_quantity = int.Parse(table.Rows[row_index][4].ToString()) + 1;
-
-                if (new_quantity > store_quantity)
-                {
-                    MessageBox.Show("Không đủ số lượng trong kho!", "THÔNG BÁO", MessageBoxButtons.OK);
-                    return;
-                }
-
-                table.Rows[row_index][4] = new_quantity;
-                table.Rows[row_index][5] = new_quantity * price;
-            }
-            else if (store_quantity > 0)
-            {
-                table.Rows.Add(product_id, name, unit, price, 1, price * 1);
+                MessageBox.Show("Vui lòng nhập thêm sản phẩm!", "THÔNG BÁO", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             else
             {
-                MessageBox.Show("Không đủ số lượng trong kho!", "THÔNG BÁO", MessageBoxButtons.OK);
-                return;
+                int index = item.FindThisItemInContainer();
+                if((index != -1) && store_quantity == ((UCProductItem)flowpnl_Item.Controls[index]).product_quantity)
+                {
+                    MessageBox.Show("Không đủ số lượng hàng trong kho!", "THÔNG BÁO", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                else
+                {
+                    item.SettingMaxQuantity(store_quantity);
+                    item.SettingItem();
+                }
             }
-
-            changeBills(table);
         }
     }
 }

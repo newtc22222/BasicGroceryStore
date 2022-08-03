@@ -153,7 +153,7 @@ namespace BasicGroceryStore
             this.lblYourGender.ForeColor = System.Drawing.Color.White;
             this.lblYourGender.Location = new System.Drawing.Point(190, 82);
             this.lblYourGender.Name = "lblYourGender";
-            this.lblYourGender.Size = new System.Drawing.Size(71, 16);
+            this.lblYourGender.Size = new System.Drawing.Size(72, 16);
             this.lblYourGender.TabIndex = 23;
             this.lblYourGender.Text = "Giới tính: ";
             // 
@@ -163,7 +163,7 @@ namespace BasicGroceryStore
             this.lblYourName.ForeColor = System.Drawing.Color.White;
             this.lblYourName.Location = new System.Drawing.Point(190, 39);
             this.lblYourName.Name = "lblYourName";
-            this.lblYourName.Size = new System.Drawing.Size(60, 16);
+            this.lblYourName.Size = new System.Drawing.Size(61, 16);
             this.lblYourName.TabIndex = 22;
             this.lblYourName.Text = "Họ tên: ";
             // 
@@ -173,7 +173,7 @@ namespace BasicGroceryStore
             this.lblYourPhone.ForeColor = System.Drawing.Color.White;
             this.lblYourPhone.Location = new System.Drawing.Point(190, 168);
             this.lblYourPhone.Name = "lblYourPhone";
-            this.lblYourPhone.Size = new System.Drawing.Size(106, 16);
+            this.lblYourPhone.Size = new System.Drawing.Size(107, 16);
             this.lblYourPhone.TabIndex = 21;
             this.lblYourPhone.Text = "Số điện thoại: ";
             // 
@@ -193,7 +193,7 @@ namespace BasicGroceryStore
             this.lblYourEmail.ForeColor = System.Drawing.Color.White;
             this.lblYourEmail.Location = new System.Drawing.Point(190, 125);
             this.lblYourEmail.Name = "lblYourEmail";
-            this.lblYourEmail.Size = new System.Drawing.Size(54, 16);
+            this.lblYourEmail.Size = new System.Drawing.Size(55, 16);
             this.lblYourEmail.TabIndex = 20;
             this.lblYourEmail.Text = "Email: ";
             // 
@@ -341,7 +341,7 @@ namespace BasicGroceryStore
             this.label8.ForeColor = System.Drawing.Color.Black;
             this.label8.Location = new System.Drawing.Point(15, 118);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(111, 16);
+            this.label8.Size = new System.Drawing.Size(112, 16);
             this.label8.TabIndex = 27;
             this.label8.Text = "Ngày tham gia:";
             // 
@@ -351,7 +351,7 @@ namespace BasicGroceryStore
             this.label9.ForeColor = System.Drawing.Color.Black;
             this.label9.Location = new System.Drawing.Point(16, 156);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(108, 16);
+            this.label9.Size = new System.Drawing.Size(109, 16);
             this.label9.TabIndex = 26;
             this.label9.Text = "Giá trị tích lũy: ";
             // 
@@ -361,7 +361,7 @@ namespace BasicGroceryStore
             this.label6.ForeColor = System.Drawing.Color.Black;
             this.label6.Location = new System.Drawing.Point(14, 42);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(60, 16);
+            this.label6.Size = new System.Drawing.Size(61, 16);
             this.label6.TabIndex = 25;
             this.label6.Text = "Họ tên: ";
             // 
@@ -371,7 +371,7 @@ namespace BasicGroceryStore
             this.label7.ForeColor = System.Drawing.Color.Black;
             this.label7.Location = new System.Drawing.Point(15, 80);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(106, 16);
+            this.label7.Size = new System.Drawing.Size(107, 16);
             this.label7.TabIndex = 24;
             this.label7.Text = "Số điện thoại: ";
             // 
@@ -564,11 +564,11 @@ namespace BasicGroceryStore
             // 
             // listBoxProductNewImport
             // 
+            this.listBoxProductNewImport.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.listBoxProductNewImport.FormattingEnabled = true;
-            this.listBoxProductNewImport.ItemHeight = 24;
             this.listBoxProductNewImport.Location = new System.Drawing.Point(6, 30);
             this.listBoxProductNewImport.Name = "listBoxProductNewImport";
-            this.listBoxProductNewImport.Size = new System.Drawing.Size(306, 196);
+            this.listBoxProductNewImport.Size = new System.Drawing.Size(306, 186);
             this.listBoxProductNewImport.TabIndex = 0;
             // 
             // pnlValue

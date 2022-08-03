@@ -10,12 +10,18 @@ namespace BasicGroceryStore
         private BUS_Imported bus_imported;
         private BUS_Ordered bus_ordered;
 
+        private Bill bill;
+        private string typeBill;
+
         public FormBill(Ordered bill)
         {
             InitializeComponent();
 
             bus_staff = new BUS_Staff();
             bus_ordered = new BUS_Ordered();
+
+            this.bill = bill;
+            this.typeBill = "Ordered";            
 
             LoadData(bill);
         }
@@ -26,6 +32,9 @@ namespace BasicGroceryStore
 
             bus_staff = new BUS_Staff();
             bus_imported = new BUS_Imported();
+
+            this.bill = bill;
+            this.typeBill = "Imported";
 
             LoadData(bill);
         }
@@ -62,7 +71,7 @@ namespace BasicGroceryStore
         {
             txtBillID.Text = bill.ID;
             txtDateCreate.Text = bill.DateCreate.ToString();
-            txtTotalPrice.Text = bill.Value.ToString();
+            txtTotalPrice.Text = GetFormatString.GetCurrencyString(bill.Value);
             
             if (bill.StaffID != "")
                 txtStaffName.Text = bus_staff.GetStaff(bill.StaffID).Name;
@@ -76,7 +85,7 @@ namespace BasicGroceryStore
         {
             txtBillID.Text = bill.ID;
             txtDateCreate.Text = bill.DateCreate.ToString();
-            txtTotalPrice.Text = bill.Value.ToString();
+            txtTotalPrice.Text = GetFormatString.GetCurrencyString(bill.Value);
 
             if (bill.StaffID != "")
                 txtStaffName.Text = bus_staff.GetStaff(bill.StaffID).Name;
@@ -95,6 +104,40 @@ namespace BasicGroceryStore
         private void btnCancel_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void btnDeleteBill_Click(object sender, EventArgs e)
+        {
+            if (typeBill == "Ordered")
+            {
+                if(MessageBox.Show("Bạn có muốn xóa đơn hàng này không?", "CẢNH BÁO", 
+                    MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
+                {
+                    if (bus_ordered.Delete(bill))
+                    {
+                        MessageBox.Show("Đã xóa thông tin hóa đơn!", "THÔNG BÁO", MessageBoxButtons.OK);
+                    }
+                    else
+                    {
+                        MessageBox.Show("Không thể xóa thông tin hóa đơn!", "THÔNG BÁO", MessageBoxButtons.OK);
+                    }
+                }
+            }
+            else
+            {
+                if (MessageBox.Show("Bạn có muốn xóa đơn hàng này không?", "CẢNH BÁO",
+                    MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
+                {
+                    if (bus_imported.Delete(bill))
+                    {
+                        MessageBox.Show("Đã xóa thông tin hóa đơn!", "THÔNG BÁO", MessageBoxButtons.OK);
+                    }
+                    else
+                    {
+                        MessageBox.Show("Không thể xóa thông tin hóa đơn!", "THÔNG BÁO", MessageBoxButtons.OK);
+                    }
+                }
+            }
         }
     }
 }

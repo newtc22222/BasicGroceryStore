@@ -570,6 +570,7 @@ namespace BasicGroceryStore
             this.dgvImportHistory.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvImportHistory.Location = new System.Drawing.Point(6, 26);
             this.dgvImportHistory.Name = "dgvImportHistory";
+            this.dgvImportHistory.ReadOnly = true;
             this.dgvImportHistory.RowHeadersVisible = false;
             this.dgvImportHistory.Size = new System.Drawing.Size(376, 254);
             this.dgvImportHistory.TabIndex = 0;
@@ -603,6 +604,7 @@ namespace BasicGroceryStore
             this.dgvSellingHistory.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvSellingHistory.Location = new System.Drawing.Point(6, 26);
             this.dgvSellingHistory.Name = "dgvSellingHistory";
+            this.dgvSellingHistory.ReadOnly = true;
             this.dgvSellingHistory.RowHeadersVisible = false;
             this.dgvSellingHistory.Size = new System.Drawing.Size(382, 254);
             this.dgvSellingHistory.TabIndex = 0;

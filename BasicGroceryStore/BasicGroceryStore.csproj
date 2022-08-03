@@ -154,6 +154,12 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <Compile Include="UserControl\UCProductItem.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControl\UCProductItem.Designer.cs">
+      <DependentUpon>UCProductItem.cs</DependentUpon>
+    </Compile>
     <Compile Include="UserControl\UCCalendar.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -233,6 +239,9 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <SubType>Designer</SubType>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControl\UCProductItem.resx">
+      <DependentUpon>UCProductItem.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserControl\UCCalendar.resx">
       <DependentUpon>UCCalendar.cs</DependentUpon>

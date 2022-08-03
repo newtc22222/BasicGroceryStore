@@ -251,6 +251,7 @@ namespace BasicGroceryStore
                 {
                     MessageBox.Show($"Xóa thông tin nhân viên {_staff.Name} thành công!", "THÔNG BÁO", MessageBoxButtons.OK);
                     _staff = new Staff();
+                    LoadData();
                 }
                 else
                 {

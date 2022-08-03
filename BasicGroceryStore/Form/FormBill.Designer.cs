@@ -197,6 +197,7 @@
             this.dgvBillDetails.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvBillDetails.Location = new System.Drawing.Point(12, 166);
             this.dgvBillDetails.Name = "dgvBillDetails";
+            this.dgvBillDetails.ReadOnly = true;
             this.dgvBillDetails.Size = new System.Drawing.Size(476, 345);
             this.dgvBillDetails.TabIndex = 2;
             // 
@@ -218,6 +219,7 @@
             this.btnDeleteBill.TabIndex = 0;
             this.btnDeleteBill.Text = "Xóa đơn hàng";
             this.btnDeleteBill.UseVisualStyleBackColor = true;
+            this.btnDeleteBill.Click += new System.EventHandler(this.btnDeleteBill_Click);
             // 
             // FormBill
             // 
