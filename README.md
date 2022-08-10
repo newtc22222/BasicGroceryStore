@@ -26,5 +26,6 @@
     - Triggers
     - Function (table, scalar)
 
-[__IMAGE LINK__](https://photos.app.goo.gl/V2NPiqFeZXUaQ15s7)
+<hr>
+[__IMAGE LINK__](https://photos.app.goo.gl/V2NPiqFeZXUaQ15s7) <br>
 [Project diagram and Data](https://drive.google.com/drive/folders/1lGjKD39tPiDKPTIxipprk8vLVv0A4WFY?usp=sharing)
