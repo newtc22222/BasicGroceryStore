@@ -1,8 +1,10 @@
-﻿namespace BasicGroceryStore
+﻿using System.Data.SqlClient;
+
+namespace BasicGroceryStore
 {
     internal static class Config
     {
-        private static string serverName = @"DESKTOP-LI9ERHL";
+        private static string serverName = "DESKTOP-LI9ERHL";
         private static string databaseName = "GroceryStore";
         private static string username = "sa";
         private static string password = "123456";
@@ -24,7 +26,13 @@
 
         public static string getSQLConnectionStringWithUser()
         {
-            return $"Data Source={serverName};Initial Catalog={databaseName};User ID={username};Password={password}";
+            SqlConnectionStringBuilder connectionString = new SqlConnectionStringBuilder();
+            connectionString["Server"] = serverName;
+            connectionString["Database"] = databaseName;
+            connectionString["User ID"] = username;
+            connectionString["Password"] = password;
+            return connectionString.ToString();
+            //return $"Data Source={serverName};Initial Catalog={databaseName};User ID={username};Password={password}";
         }
     }
 }
